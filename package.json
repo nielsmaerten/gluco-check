@@ -8,9 +8,11 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
+    "@types/jest": "^26.0.3",
+    "@types/node": "^13.11.1",
     "gts": "^2.0.2",
-    "typescript": "^3.8.3",
-    "@types/node": "^13.11.1"
+    "jest": "^26.1.0",
+    "typescript": "^3.8.3"
   },
   "scripts": {
     "check": "gts check",
@@ -19,6 +21,7 @@
     "fix": "gts fix",
     "prepare": "yarn.cmd run compile",
     "pretest": "yarn.cmd run compile",
-    "posttest": "yarn.cmd run check"
+    "posttest": "yarn.cmd run check",
+    "test": "jest"
   }
 }
