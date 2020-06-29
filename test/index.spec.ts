@@ -1,9 +1,11 @@
-import GlucoCheck from '../src';
+import {composeAssistantReply, decodeAssistantQuery} from '../src';
 
-// TODO
-describe('GlucoCheck Module', () => {
-  it('says hello', () => {
-    const greeting = GlucoCheck.sayHello();
-    expect(greeting).toBe('Hello, world!');
+describe('GlucoCheck Core', () => {
+  it('exports function: composeAssistantReply', () => {
+    expect(typeof composeAssistantReply).toBe('function');
+  });
+
+  it('exports function: decodeAssistantReply', () => {
+    expect(typeof decodeAssistantQuery).toBe('function');
   });
 });

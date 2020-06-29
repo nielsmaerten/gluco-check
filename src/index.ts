@@ -1,5 +1,4 @@
-export default class GlucoCheck {
-  static sayHello() {
-    return 'Hello, world!';
-  }
-}
+import decodeAssistantQuery from './actions/decodeAssistantQuery';
+import composeAssistantReply from './actions/composeAssistantReply';
+
+export {decodeAssistantQuery, composeAssistantReply};
