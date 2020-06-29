@@ -2,7 +2,7 @@
 
 # Gluco Check
 
-Gluco Check will be the successor of "Nightscout Assistant" (https://github.com/nielsmaerten/nightscout-assistant)
+Gluco Check will be the successor to "Nightscout Assistant" (https://github.com/nielsmaerten/nightscout-assistant)
 
 ## Project Goals
 
