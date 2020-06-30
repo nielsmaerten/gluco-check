@@ -19,9 +19,9 @@
     "clean": "gts clean",
     "compile": "tsc",
     "fix": "gts fix",
-    "prepare": "yarn.cmd run compile",
-    "pretest": "yarn.cmd run compile",
-    "posttest": "yarn.cmd run check",
+    "prepare": "yarn run compile",
+    "pretest": "yarn run compile",
+    "posttest": "yarn run check",
     "test": "jest",
     "watch:test": "jest --watch",
     "watch:compile": "tsc --watch"
