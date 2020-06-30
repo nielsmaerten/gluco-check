@@ -22,6 +22,8 @@
     "prepare": "yarn.cmd run compile",
     "pretest": "yarn.cmd run compile",
     "posttest": "yarn.cmd run check",
-    "test": "jest"
+    "test": "jest",
+    "watch:test": "jest --watch",
+    "watch:compile": "tsc --watch"
   }
 }
