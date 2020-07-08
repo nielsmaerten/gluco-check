@@ -1,11 +1,10 @@
-import {composeAssistantReply, decodeAssistantQuery} from '../src';
+// TODO: What should the main interface of the core library look like?
+
+import * as GlucoCheck from '../src';
 
 describe('GlucoCheck Core', () => {
-  it('exports function: composeAssistantReply', () => {
-    expect(typeof composeAssistantReply).toBe('function');
-  });
-
-  it('exports function: decodeAssistantReply', () => {
-    expect(typeof decodeAssistantQuery).toBe('function');
+  it('passes an end-to-end test', () => {
+    const userQuery = GlucoCheck.decodeConversation(mockConversation);
+    const userReply = GlucoCheck.resolveUserQuery(userQuery);
   });
 });

@@ -1,1 +1,12 @@
-TODO
+# Contributing
+
+## I want to help!
+You're awesome!  
+Gluco Check is currently in a very early stage, so no pull requests will be accepted right now.  
+However, if you want to join the team behind this project, feel free to reach out to me via email or GitHub
+
+## Setting up a dev environment (TODO)
+Stack:
+- IDE: VS Code (optional, but recommended)
+- Runtime: NodeJS
+- Package management: Yarn
