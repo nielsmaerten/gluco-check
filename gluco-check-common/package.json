@@ -1,0 +1,16 @@
+{
+  "name": "gluco-check-common",
+  "version": "0.0.1",
+  "repository": "https://github.com/nielsmaerten/nightscout-assistant",
+  "author": {
+    "name": "Niels Maerten",
+    "url": "https://github.com/nielsmaerten"
+  },
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "purge": "rimraf node_modules/",
+    "test":":",
+    "build":":"
+  }
+}
