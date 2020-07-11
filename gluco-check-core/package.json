@@ -12,7 +12,8 @@
     "gts": "^2.0.2",
     "jest": "^26.1.0",
     "typescript": "^3.8.3",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "gluco-check-common": "*"
   },
   "scripts": {
     "build": "tsc",
