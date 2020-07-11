@@ -1,29 +1,19 @@
 {
-  "name": "gluco-check-core",
-  "version": "0.0.1",
-  "description": "Core functionality of Gluco Check",
-  "main": "dist/index.js",
-  "repository": "https://github.com/nielsmaerten/nightscout-assistant",
-  "author": "Niels Maerten",
-  "license": "MIT",
   "private": true,
-  "devDependencies": {
-    "@types/jest": "^26.0.3",
-    "@types/node": "^13.11.1",
-    "gts": "^2.0.2",
-    "jest": "^26.1.0",
-    "typescript": "^3.8.3"
+  "workspaces": {
+    "packages": [
+      "gluco-check-*/"
+    ],
+    "nohoist": [
+      "**/gts",
+      "**/gts/**"
+    ]
   },
   "scripts": {
-    "check": "gts check",
-    "clean": "gts clean",
-    "compile": "tsc",
-    "fix": "gts fix",
-    "prepare": "yarn run compile",
-    "pretest": "yarn run compile",
-    "posttest": "yarn run check",
-    "test": "jest",
-    "watch:test": "jest --watch",
-    "watch:compile": "tsc --watch"
+    "purge": "yarn workspaces run purge && rimraf node_modules/ && echo Run yarn to reinstall dependencies.",
+    "build": "yarn workspaces run build"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2"
   }
 }
