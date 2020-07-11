@@ -1,0 +1,9 @@
+{
+  "extends": "./node_modules/gts/",
+  "ignorePatterns": "build/**/*",
+  "globals": {
+    "describe": "readonly",
+    "it": "readonly",
+    "expect": "readonly"
+  }
+}

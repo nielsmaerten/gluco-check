@@ -1,0 +1,39 @@
+{
+  "name": "gluco-check-webhooks",
+  "version": "0.0.1",
+  "description": "Webhooks called by Google Assistant",
+  "main": "build/index.js",
+  "repository": "https://github.com/nielsmaerten/nightscout-assistant",
+  "author": "Niels Maerten",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@types/jest": "^26.0.3",
+    "@types/node": "^13.11.1",
+    "gts": "^2.0.2",
+    "jest": "^26.1.0",
+    "typescript": "^3.8.3",
+    "rimraf": "^3.0.2",
+    "firebase-functions-test": "^0.2.0",
+    "gluco-check-common": "*"
+  },
+  "dependencies": {
+    "firebase-admin": "^8.10.0",
+    "firebase-functions": "^3.6.1"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "gts check",
+    "lint:fix": "gts fix",
+    "clean:build": "gts clean",
+    "watch:test": "jest --watch",
+    "watch:compile": "tsc --watch",
+    "purge": "rimraf node_modules/",
+    "test": "tsc && jest && gts check",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  }
+}
