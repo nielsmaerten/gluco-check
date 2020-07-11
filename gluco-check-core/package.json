@@ -1,0 +1,27 @@
+{
+  "name": "gluco-check-core",
+  "version": "0.0.1",
+  "description": "Core functionality of Gluco Check",
+  "repository": "https://github.com/nielsmaerten/nightscout-assistant",
+  "author": "Niels Maerten",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@types/jest": "^26.0.3",
+    "@types/node": "^13.11.1",
+    "gts": "^2.0.2",
+    "jest": "^26.1.0",
+    "typescript": "^3.8.3",
+    "rimraf": "^3.0.2"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "gts check",
+    "lint:fix": "gts fix",
+    "clean:build": "gts clean",
+    "watch:test": "jest --watch",
+    "watch:compile": "tsc --watch",
+    "purge": "rimraf node_modules/",
+    "test": "tsc && jest && gts check"
+  }
+}
