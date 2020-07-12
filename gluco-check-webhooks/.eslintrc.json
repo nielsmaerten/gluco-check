@@ -5,5 +5,8 @@
     "describe": "readonly",
     "it": "readonly",
     "expect": "readonly"
+  },
+  "rules": {
+    "@typescript-eslint/no-var-requires": "off"
   }
 }

@@ -1,3 +1,6 @@
+## Custom gluco-check ignores
+build/
+
 # Created by https://www.toptal.com/developers/gitignore/api/yarn,node,firebase
 # Edit at https://www.toptal.com/developers/gitignore?templates=yarn,node,firebase
 
@@ -135,5 +138,3 @@ dist
 # .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/yarn,node,firebase
-
-build/

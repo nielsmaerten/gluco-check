@@ -10,12 +10,12 @@
   "devDependencies": {
     "@types/jest": "^26.0.3",
     "@types/node": "^13.11.1",
+    "firebase-functions-test": "^0.2.0",
+    "gluco-check-common": "*",
     "gts": "^2.0.2",
     "jest": "^26.1.0",
-    "typescript": "^3.8.3",
     "rimraf": "^3.0.2",
-    "firebase-functions-test": "^0.2.0",
-    "gluco-check-common": "*"
+    "typescript": "^3.8.3"
   },
   "dependencies": {
     "firebase-admin": "^8.10.0",
