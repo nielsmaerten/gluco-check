@@ -8,7 +8,7 @@ import * as functions from 'firebase-functions';
 //   response.send("Hello from Firebase!");
 // });
 
-export const validateNightscoutUrl = functions.https.onRequest((req, res) => {
-  functions.logger.info('Validating Nightscout URL');
-  res.status(500).send('Not implemented.');
-});
+export const validateNightscoutUrl = functions.https.onRequest(
+  require('./url-validation')
+);
+export const dialogflow = functions.https.onRequest(require('./dialogflow'));
