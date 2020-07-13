@@ -8,6 +8,10 @@
   },
   "rules": {
     "@typescript-eslint/no-var-requires": "off",
-    "node/no-unpublished-import": "off"
+    "node/no-unpublished-import": "off",
+    "node/no-unsupported-features/node-builtins": ["error", {
+      // Version of node running on Firebase Functions
+      "version": "^10.0.0"
+  }]
   }
 }
