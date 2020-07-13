@@ -4,25 +4,29 @@
   "description": "Core functionality of Gluco Check",
   "repository": "https://github.com/nielsmaerten/nightscout-assistant",
   "author": "Niels Maerten",
+  "main": "build/src/index.js",
   "license": "MIT",
   "private": true,
   "devDependencies": {
     "@types/jest": "^26.0.3",
     "@types/node": "^13.11.1",
+    "gluco-check-common": "*",
     "gts": "^2.0.2",
     "jest": "^26.1.0",
-    "typescript": "^3.8.3",
     "rimraf": "^3.0.2",
-    "gluco-check-common": "*"
+    "typescript": "^3.8.3"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "gts clean && tsc",
     "lint": "gts check",
     "lint:fix": "gts fix",
     "clean:build": "gts clean",
     "watch:test": "jest --watch",
     "watch:compile": "tsc --watch",
     "purge": "rimraf node_modules/",
-    "test": "tsc && jest && gts check"
+    "test": "yarn build && jest && gts check"
+  },
+  "dependencies": {
+    "actions-on-google": "^2.12.0"
   }
 }
