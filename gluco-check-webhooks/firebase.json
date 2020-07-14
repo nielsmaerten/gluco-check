@@ -3,7 +3,11 @@
     "source": ".",
     "predeploy": [
       "npm --prefix \"$RESOURCE_DIR\" run lint",
-      "npm --prefix \"$RESOURCE_DIR\" run build"
+      "npm --prefix \"$RESOURCE_DIR\" run build",
+      "yarn node deploy-hooks.js --pre"
+    ],
+    "postdeploy": [
+      "yarn node deploy-hooks.js --post"
     ]
   },
   "emulators": {

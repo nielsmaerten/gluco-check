@@ -7,11 +7,10 @@
     "expect": "readonly"
   },
   "rules": {
+    // So we can lazy load modules using require()
     "@typescript-eslint/no-var-requires": "off",
-    "node/no-unpublished-import": "off",
-    "node/no-unsupported-features/node-builtins": ["error", {
-      // Version of node running on Firebase Functions
-      "version": "^10.0.0"
-  }]
+    
+    // So we can use local packages like gluco-check-core
+    "node/no-unpublished-import": "off"
   }
 }
