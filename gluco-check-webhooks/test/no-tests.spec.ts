@@ -1,3 +1,3 @@
 describe('Gluco Check Webhooks', () => {
-  it('has no tests', () => {});
+  it.skip('has no tests', () => {});
 });

@@ -8,8 +8,8 @@ import {MainHandler, ReadSingleParamHandler} from 'gluco-check-core';
 import * as functions from 'firebase-functions';
 
 enum HandlerNames {
-  Main = 'Main Invocation',
-  ReadSingleParameter = 'Read Single Parameter',
+  Main = 'main_invocation',
+  ReadSingleParameter = 'read_single_parameter',
 }
 
 export default class ConversationHandler {
