@@ -1,9 +1,9 @@
-import {DialogflowConversation} from 'actions-on-google';
+import {ConversationV3} from '@assistant/conversation';
 
-export const DefaultIntentHandler = (conversation: DialogflowConversation) => {
-  conversation.close('Gluco Check DefaultIntent handler: not yet implemented.');
+export const MainHandler = (conversation: ConversationV3) => {
+  conversation.add('Gluco Check DefaultIntent handler: not yet implemented.');
 };
 
-export const SignInIntentHandler = (conversation: DialogflowConversation) => {
-  conversation.close('Gluco Check DefaultIntent handler: not yet implemented.');
+export const ReadSingleParamHandler = (conversation: ConversationV3) => {
+  conversation.add('Gluco Check DefaultIntent handler: not yet implemented.');
 };

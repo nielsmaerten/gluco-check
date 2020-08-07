@@ -5,8 +5,35 @@ You're awesome!
 Gluco Check is currently in a very early stage, so no pull requests will be accepted right now.  
 However, if you want to join the team behind this project, feel free to reach out to me via email or GitHub
 
-## Setting up a dev environment (TODO)
-Stack:
-- IDE: VS Code (optional, but recommended)
-- Runtime: NodeJS
-- Package management: Yarn
+## Setting up a dev environment
+Run `yarn` in the repository root to install dependencies and link packages.
+
+Requirements:
+- Node 10+ (14 recommended)
+- Yarn 1.x
+
+Recommended:
+- VS Code 
+
+### Packages
+#### gluco-check-common
+Shared constants and translatable strings
+
+#### gluco-check-webhooks
+HTTPS functions running on Google Firebase. Sends HTTP requests to gluco-check-core for processing
+
+#### gluco-check-core
+Core logic of the application.  
+Responsible for resolving an HTTP request (coming from a user through Google Assistant)
+into a reply that can be spoken by the Assistant
+
+### Scripts
+#### Global scripts
+- `yarn test` runs tests. For watch mode, use `yarn watch:test`
+- `yarn lint[:fix]` runs ESLint and Prettier. Optionally reformats and fixes errors
+- `yarn purge` removes all node_modules dirs so you can start with a clean slate
+- `yarn build` builds Typescript code
+
+#### Scripts for gluco-check-webhooks
+- `yarn serve` starts the emulator. Use in parallel with `yarn watch:compile`
+- `yarn watch:compile` compiles Typescript in background

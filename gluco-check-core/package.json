@@ -27,6 +27,6 @@
     "test": "yarn build && jest && gts check"
   },
   "dependencies": {
-    "actions-on-google": "^2.12.0"
+    "@assistant/conversation": "^3.0.1"
   }
 }
