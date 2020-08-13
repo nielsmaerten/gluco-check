@@ -1,9 +1,19 @@
 import {ConversationV3} from '@assistant/conversation';
+import UserQueryResolver from './main/UserQueryResolver';
+import ConversationDecoder from './main/ConversationDecoder';
 
-export const MainHandler = (conversation: ConversationV3) => {
-  conversation.add('Main handler is not yet implemented.');
-};
+export class GlucoCheckCore {
+  constructor(
+    private ConversationDecoder: ConversationDecoder,
+    private UserQueryResolver: UserQueryResolver
+  ) {}
 
-export const ReadSingleParamHandler = (conversation: ConversationV3) => {
-  conversation.add('Read single parameter handler is not yet implemented.');
-};
+  handleAssistantConversation(conversation: ConversationV3) {
+    const userQuery = this.ConversationDecoder.decode(conversation);
+    const userQueryResponse = this.UserQueryResolver.resolve(userQuery);
+
+    conversation.add(userQueryResponse.SSML);
+  }
+}
+
+export default Container.get(GlucoCheckCore);

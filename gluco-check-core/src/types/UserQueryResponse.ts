@@ -3,7 +3,7 @@
  * A UserReply is something that can be said back by Google Assistant in response to a question
  */
 export default class UserReply {
-  speechSynthesisMarkupLanguage!: string;
+  SSML!: string;
   timestamp!: number;
   locale!: string;
 
