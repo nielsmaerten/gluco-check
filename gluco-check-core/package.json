@@ -12,7 +12,9 @@
     "@types/node": "^13.11.1",
     "gluco-check-common": "*",
     "gts": "^2.0.2",
+    "inversify": "^5.0.1",
     "jest": "^26.1.0",
+    "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "typescript": "^3.8.3"
   },

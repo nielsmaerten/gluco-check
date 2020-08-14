@@ -1,6 +1,9 @@
 {
   "extends": "./node_modules/gts/tsconfig-google.json",
   "compilerOptions": {
+    //"types": ["reflect-metadata", "jest", "expect"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "rootDir": ".",
     "outDir": "build"
   },

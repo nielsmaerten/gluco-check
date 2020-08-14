@@ -1,10 +1,9 @@
 import GlucoCheckCore from '../src';
-import ConversationDecoder from '../src/main/ConversationDecoder';
 
 describe('GlucoCheck Core', () => {
   let stub = jest.fn();
   beforeAll(() => {
-    Container.bind(ConversationDecoder, {decode: stub });
+    //Container.bind(ConversationDecoder, {decode: stub });
   })
   it('exports global conversation handler', () => {
     GlucoCheckCore.handleAssistantConversation;

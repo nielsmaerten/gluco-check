@@ -1,7 +1,10 @@
 import {ConversationV3} from '@assistant/conversation';
 import UserQueryResolver from './main/UserQueryResolver';
 import ConversationDecoder from './main/ConversationDecoder';
+import { injectable } from 'inversify';
+import container from './inversify.config';
 
+@injectable()
 export class GlucoCheckCore {
   constructor(
     private ConversationDecoder: ConversationDecoder,
@@ -16,4 +19,4 @@ export class GlucoCheckCore {
   }
 }
 
-export default Container.get(GlucoCheckCore);
+export default container.get(GlucoCheckCore);
