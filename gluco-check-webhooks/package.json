@@ -29,14 +29,13 @@
     "node": "10"
   },
   "scripts": {
-    "build": "gts clean && tsc",
-    "lint": "gts check",
-    "lint:fix": "gts fix",
-    "clean:build": "gts clean",
+    "build": "rimraf build && tsc",
+    "lint": "eslint {src,test}/**/*",
+    "lint:fix": "eslint --fix {src,test}/**/*",
     "watch:test": "jest --watch",
     "watch:compile": "tsc --watch",
     "purge": "rimraf node_modules/",
-    "test": "yarn build && jest && gts check",
+    "test": "yarn build && jest && yarn lint",
     "serve": "echo !! Start 'watch:compile' in a separate process && firebase emulators:start --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
