@@ -7,30 +7,28 @@ export const validateNightscoutUrl = functions.https.onRequest(
   require('./url-validation')
 );
 
-export const conversation = functions.https.onRequest(
-  async (request, response) => {
-    // HTTP Request accepted. Save starting time.
-    const start = performance.now();
-    const requestId = nanoid();
-    functions.logger.debug(
-      `[${requestId}] Start processing new GAssistant request`
-    );
-    request.headers['gluco-check-request-id'] = requestId;
+export const conversation = functions.https.onRequest(async (request, response) => {
+  // HTTP Request accepted. Save starting time.
+  const start = performance.now();
 
-    // Pass request and response objects to the DialogFlow App.
-    await conversationHandler.Instance(request, response);
+  // Generate a unique ID to track this request
+  const requestId = nanoid();
+  functions.logger.debug(`[${requestId}] Start processing new GAssistant request`);
+  request.headers['gluco-check-request-id'] = requestId;
 
-    // Request finished. Calculate total elapsed time.
-    const stop = performance.now();
-    const elapsed = Math.floor(stop - start);
+  // Pass request and response objects to the Assistant App.
+  await conversationHandler.Instance(request, response);
 
-    // Write log message and exit.
-    functions.logger.write({
-      message: `GAssistant request ${requestId} completed in ${elapsed} ms.`,
-      severity: getLogSeverity(elapsed),
-    });
-  }
-);
+  // Request finished. Calculate total elapsed time.
+  const stop = performance.now();
+  const elapsed = Math.floor(stop - start);
+
+  // Write log message and exit.
+  functions.logger.write({
+    message: `GAssistant request ${requestId} completed in ${elapsed} ms.`,
+    severity: getLogSeverity(elapsed),
+  });
+});
 
 const getLogSeverity = (elapsedMs: number) => {
   let severity: functions.logger.LogSeverity;
