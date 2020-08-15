@@ -4,8 +4,9 @@ import {
   ConversationV3,
   OmniHandler,
 } from '@assistant/conversation';
-import {MainHandler, ReadSingleParamHandler} from 'gluco-check-core';
 import * as functions from 'firebase-functions';
+
+import GlucoCheckCore from 'gluco-check-core';
 
 enum HandlerNames {
   Main = 'main_invocation',
@@ -28,7 +29,7 @@ export default class ConversationHandler {
   }
 
   private registerHandlers() {
-    this.app.handle(HandlerNames.Main, MainHandler);
-    this.app.handle(HandlerNames.ReadSingleParameter, ReadSingleParamHandler);
+    this.app.handle(HandlerNames.Main, GlucoCheckCore.handler);
+    this.app.handle(HandlerNames.ReadSingleParameter, GlucoCheckCore.handler);
   }
 }
