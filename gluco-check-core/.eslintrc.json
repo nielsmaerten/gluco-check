@@ -1,9 +1,14 @@
 {
   "extends": "./node_modules/gts/",
   "ignorePatterns": "build/**/*",
+  "rules": {
+    "node/no-unpublished-import": "off"
+  },
   "globals": {
     "describe": "readonly",
     "it": "readonly",
-    "expect": "readonly"
+    "expect": "readonly",
+    "beforeAll": "readonly",
+    "jest": "readonly"
   }
 }

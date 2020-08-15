@@ -1,6 +1,6 @@
 import UserQuery from '../types/UserQuery';
 import UserQueryResponse from '../types/UserQueryResponse';
-import { injectable } from 'inversify';
+import {injectable} from 'inversify';
 
 @injectable()
 export default class UserQueryResolver {

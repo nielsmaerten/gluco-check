@@ -1,22 +1,10 @@
-import {ConversationV3} from '@assistant/conversation';
-import UserQueryResolver from './main/UserQueryResolver';
-import ConversationDecoder from './main/ConversationDecoder';
-import { injectable } from 'inversify';
-import container from './inversify.config';
+import 'reflect-metadata';
+import {Container} from 'inversify';
+import GlucoCheckCore from './main';
 
-@injectable()
-export class GlucoCheckCore {
-  constructor(
-    private ConversationDecoder: ConversationDecoder,
-    private UserQueryResolver: UserQueryResolver
-  ) {}
+// Initialize the IOC Container with automatic binding
+const container = new Container({autoBindInjectable: true});
 
-  handleAssistantConversation(conversation: ConversationV3) {
-    const userQuery = this.ConversationDecoder.decode(conversation);
-    const userQueryResponse = this.UserQueryResolver.resolve(userQuery);
-
-    conversation.add(userQueryResponse.SSML);
-  }
-}
-
+// Default export of this library package is an initialized instance
+// of the GlucoCheckCore Class
 export default container.get(GlucoCheckCore);

@@ -1,6 +1,6 @@
 import {ConversationV3} from '@assistant/conversation';
 import UserQuery from '../types/UserQuery';
-import { injectable } from 'inversify';
+import {injectable} from 'inversify';
 
 @injectable()
 export default class ConversationDecoder {
