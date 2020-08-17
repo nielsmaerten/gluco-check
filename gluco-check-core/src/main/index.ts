@@ -1,5 +1,5 @@
 import ConversationDecoder from './ConversationDecoder';
-import UserQueryResolver from './UserQueryResolver';
+import DiabetesQueryResolver from './DiabetesQueryResolver';
 
 import {injectable} from 'inversify';
 import {ConversationV3} from '@assistant/conversation';
@@ -13,16 +13,16 @@ import {ConversationV3} from '@assistant/conversation';
 export default class GlucoCheckCore {
   constructor(
     private ConversationDecoder: ConversationDecoder,
-    private UserQueryResolver: UserQueryResolver
+    private QueryResolver: DiabetesQueryResolver
   ) {}
 
   /**
    * Pass this method to the 'handle' function of an @assistant/conversation
    */
   handler(conversation: ConversationV3) {
-    const userQuery = this.ConversationDecoder.decode(conversation);
-    const userQueryResponse = this.UserQueryResolver.resolve(userQuery);
+    const diabetesQuery = this.ConversationDecoder.decode(conversation);
+    const assistantResponse = this.QueryResolver.resolve(diabetesQuery);
 
-    conversation.add(userQueryResponse.SSML);
+    conversation.add(assistantResponse.SSML);
   }
 }

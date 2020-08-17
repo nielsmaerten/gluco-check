@@ -2,12 +2,12 @@ import 'reflect-metadata';
 import {Container} from 'inversify';
 import GlucoCheckCore from '../../src/main';
 import ConversationDecoder from '../../src/main/ConversationDecoder';
-import UserQueryResolver from '../../src/main/UserQueryResolver';
+import DiabetesQueryResolver from '../../src/main/DiabetesQueryResolver';
 
 describe('GlucoCheck Core', () => {
   const mocks = {
     conversationDecoder: {decode: jest.fn()},
-    userQueryResolver: {resolve: jest.fn().mockReturnValue({SSML: 'foo'})},
+    queryResolver: {resolve: jest.fn().mockReturnValue({SSML: 'foo'})},
     conversation: {add: jest.fn()},
   };
 
@@ -22,7 +22,7 @@ describe('GlucoCheck Core', () => {
   });
 
   it('tries to resolve a userQuery', () => {
-    expect(mocks.userQueryResolver.resolve).toHaveBeenCalled();
+    expect(mocks.queryResolver.resolve).toHaveBeenCalled();
   });
 
   it('adds a response to the conversation', () => {
@@ -39,7 +39,7 @@ const getTestContainer = (mocks: any) => {
 
   c.bind(GlucoCheckCore).toSelf();
   c.bind(ConversationDecoder).toConstantValue(mocks.conversationDecoder);
-  c.bind(UserQueryResolver).toConstantValue(mocks.userQueryResolver);
+  c.bind(DiabetesQueryResolver).toConstantValue(mocks.queryResolver);
 
   return c;
 };
