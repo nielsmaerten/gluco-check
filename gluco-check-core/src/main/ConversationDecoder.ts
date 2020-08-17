@@ -22,9 +22,8 @@ export default class ConversationDecoder {
 function getDiabetesPointers(conversation: ConversationV3): DiabetesPointer[] {
   const intentParams = conversation.intent.params || {};
 
-  if (!intentParams['diabetesPointer']) {
-    throw `Intent '${conversation.intent.name}' did not specify a diabetesPointer. 
-    Currently, only intents specifying this param can be handled.`;
+  if (conversation.intent.name === "actions.intent.MAIN") {
+    return [DiabetesPointer.Everything]
   }
 
   return intentParams.diabetesPointer.resolved;

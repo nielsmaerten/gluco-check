@@ -14,5 +14,11 @@ export default class DiabetesQuery {
     public userId: string,
     public locale: string,
     public pointers: DiabetesPointer[]
-  ) {}
+  ) {
+    if (pointers.includes(DiabetesPointer.Everything)) {
+      // expand to all available pointers except 'Everything' itself
+      const allPointers = Object.values(DiabetesPointer);
+      this.pointers = allPointers.filter(v => v !== DiabetesPointer.Everything);
+    }
+  }
 }
