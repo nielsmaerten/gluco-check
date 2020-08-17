@@ -9,7 +9,7 @@ export const validateNightscoutUrl = functions.https.onRequest(
 export const conversation = functions.https.onRequest(async (request, response) => {
   // HTTP Request accepted. Save starting time.
   const start = performance.now();
-  functions.logger.debug(`Start processing new Assistant request`);
+  functions.logger.debug('Start processing new Assistant request');
 
   // Get the version of the Action calling the webhook
   request.headers['gluco-check-version'] = request.query['v']?.toString();

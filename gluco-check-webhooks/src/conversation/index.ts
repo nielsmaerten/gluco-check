@@ -10,7 +10,7 @@ import GlucoCheckCore from 'gluco-check-core';
 
 enum HandlerNames {
   Main = 'main_invocation',
-  ReadSingleParameter = 'read_single_parameter',
+  ReadPointers = 'read_pointers',
 }
 
 export default class ConversationHandler {
@@ -32,7 +32,7 @@ export default class ConversationHandler {
     this.app.handle(HandlerNames.Main, conversation =>
       GlucoCheckCore.handler(conversation)
     );
-    this.app.handle(HandlerNames.ReadSingleParameter, conversation =>
+    this.app.handle(HandlerNames.ReadPointers, conversation =>
       GlucoCheckCore.handler(conversation)
     );
   }
