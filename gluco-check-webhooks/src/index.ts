@@ -13,7 +13,7 @@ export const conversation = functions.https.onRequest(async (request, response) 
 
   // Generate a unique ID to track this request
   const requestId = nanoid();
-  functions.logger.debug(`[${requestId}] Start processing new GAssistant request`);
+  functions.logger.debug(`[${requestId}] Start processing new Assistant request`);
   request.headers['gluco-check-request-id'] = requestId;
 
   // Pass request and response objects to the Assistant App.
@@ -25,7 +25,7 @@ export const conversation = functions.https.onRequest(async (request, response) 
 
   // Write log message and exit.
   functions.logger.write({
-    message: `GAssistant request ${requestId} completed in ${elapsed} ms.`,
+    message: `[${requestId}] Assistant request completed in ${elapsed} ms.`,
     severity: getLogSeverity(elapsed),
   });
 });

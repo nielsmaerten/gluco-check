@@ -20,7 +20,7 @@ export default class GlucoCheckCore {
    * Pass this method to the 'handle' function of an @assistant/conversation
    */
   handler(conversation: ConversationV3) {
-    const diabetesQuery = this.conversationDecoder.decode(conversation);
+    const diabetesQuery = this.conversationDecoder.decode(conversation); // FIXME
     const assistantResponse = this.queryResolver.resolve(diabetesQuery);
 
     conversation.add(assistantResponse.SSML);
