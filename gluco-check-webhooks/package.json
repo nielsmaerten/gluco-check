@@ -22,8 +22,7 @@
     "firebase-admin": "^8.10.0",
     "firebase-functions": "^3.6.1",
     "gluco-check-common": "*",
-    "gluco-check-core": "*",
-    "nanoid": "^3.1.10"
+    "gluco-check-core": "*"
   },
   "engines": {
     "node": "10"

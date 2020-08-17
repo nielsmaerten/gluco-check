@@ -29,7 +29,11 @@ export default class ConversationHandler {
   }
 
   private registerHandlers() {
-    this.app.handle(HandlerNames.Main, GlucoCheckCore.handler);
-    this.app.handle(HandlerNames.ReadSingleParameter, GlucoCheckCore.handler);
+    this.app.handle(HandlerNames.Main, conversation =>
+      GlucoCheckCore.handler(conversation)
+    );
+    this.app.handle(HandlerNames.ReadSingleParameter, conversation =>
+      GlucoCheckCore.handler(conversation)
+    );
   }
 }

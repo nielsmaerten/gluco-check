@@ -1,7 +1,6 @@
 import * as functions from 'firebase-functions';
 import conversationHandler from './conversation';
 import {performance} from 'perf_hooks';
-import {nanoid} from 'nanoid/non-secure';
 
 export const validateNightscoutUrl = functions.https.onRequest(
   require('./url-validation')
@@ -10,11 +9,10 @@ export const validateNightscoutUrl = functions.https.onRequest(
 export const conversation = functions.https.onRequest(async (request, response) => {
   // HTTP Request accepted. Save starting time.
   const start = performance.now();
+  functions.logger.debug(`Start processing new Assistant request`);
 
-  // Generate a unique ID to track this request
-  const requestId = nanoid();
-  functions.logger.debug(`[${requestId}] Start processing new Assistant request`);
-  request.headers['gluco-check-request-id'] = requestId;
+  // Get the version of the Action calling the webhook
+  request.headers['gluco-check-version'] = request.query['v']?.toString();
 
   // Pass request and response objects to the Assistant App.
   await conversationHandler.Instance(request, response);
@@ -25,7 +23,7 @@ export const conversation = functions.https.onRequest(async (request, response) 
 
   // Write log message and exit.
   functions.logger.write({
-    message: `[${requestId}] Assistant request completed in ${elapsed} ms.`,
+    message: `Assistant request completed in ${elapsed} ms.`,
     severity: getLogSeverity(elapsed),
   });
 });
