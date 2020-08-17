@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import 'reflect-metadata';
 import {Container} from 'inversify';
 import GlucoCheckCore from '../../src/main';

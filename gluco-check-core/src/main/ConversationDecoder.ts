@@ -2,7 +2,6 @@ import {ConversationV3} from '@assistant/conversation';
 import DiabetesQuery from '../types/DiabetesQuery';
 import {injectable} from 'inversify';
 import {DiabetesPointer} from '../types/DiabetesPointer';
-import {IntentParameterValue} from '@assistant/conversation/dist/api/schema';
 
 @injectable()
 /**

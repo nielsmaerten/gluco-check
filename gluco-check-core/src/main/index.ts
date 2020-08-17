@@ -12,16 +12,16 @@ import {ConversationV3} from '@assistant/conversation';
  */
 export default class GlucoCheckCore {
   constructor(
-    private ConversationDecoder: ConversationDecoder,
-    private QueryResolver: DiabetesQueryResolver
+    private conversationDecoder: ConversationDecoder,
+    private queryResolver: DiabetesQueryResolver
   ) {}
 
   /**
    * Pass this method to the 'handle' function of an @assistant/conversation
    */
   handler(conversation: ConversationV3) {
-    const diabetesQuery = this.ConversationDecoder.decode(conversation);
-    const assistantResponse = this.QueryResolver.resolve(diabetesQuery);
+    const diabetesQuery = this.conversationDecoder.decode(conversation);
+    const assistantResponse = this.queryResolver.resolve(diabetesQuery);
 
     conversation.add(assistantResponse.SSML);
   }
