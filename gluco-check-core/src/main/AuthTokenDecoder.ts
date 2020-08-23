@@ -9,18 +9,18 @@ export default class AuthTokenDecoder {
   private authHeaderProcessor = new AuthHeaderProcessor();
 
   constructor() {
-    logger.info('Initializing new AuthTokenDecoder');
+    logger.debug('Initializing new AuthTokenDecoder');
     this.clientId = config().auth.client_id;
 
     if (!this.clientId)
       throw 'Firebase Functions config must define an auth.client_id property';
   }
 
-  decodeGoogleUserToken(conversation: ConversationV3) {
+  async decodeGoogleUserToken(conversation: ConversationV3) {
     const header = '' + conversation.headers.authorization;
     const processor = this.authHeaderProcessor;
     const clientId = this.clientId;
 
-    return conversation.user.processAuthHeader(header, processor, clientId);
+    await conversation.user.processAuthHeader(header, processor, clientId);
   }
 }

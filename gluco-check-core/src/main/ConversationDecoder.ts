@@ -3,6 +3,7 @@ import DiabetesQuery from '../types/DiabetesQuery';
 import {injectable} from 'inversify';
 import {DiabetesPointer} from '../types/DiabetesPointer';
 import AuthTokenDecoder from './AuthTokenDecoder';
+import { logger } from 'firebase-functions';
 
 @injectable()
 /**
@@ -14,14 +15,16 @@ export default class ConversationDecoder {
 
   async decode(conversation: ConversationV3): Promise<DiabetesQuery> {
     // Decode the authorization header into a user object
-    const user = await this.authTokenDecoder.decodeGoogleUserToken(conversation);
+    await this.authTokenDecoder.decodeGoogleUserToken(conversation);
 
     // The following info needs to be extracted from the Conversation:
-    const locale = user.locale;
-    const userId = user.params.tokenPayload.email;
+    const locale = conversation.user.locale;
+    const userId = conversation.user.params.tokenPayload.email;
     const pointers = getDiabetesPointers(conversation);
 
-    return new DiabetesQuery(userId, locale, pointers);
+    const diabetesQuery = new DiabetesQuery(userId, locale, pointers);
+    logger.info('Processing diabetes query:', diabetesQuery)
+    return diabetesQuery
   }
 }
 
