@@ -19,8 +19,8 @@ export default class GlucoCheckCore {
   /**
    * Pass this method to the 'handle' function of an @assistant/conversation
    */
-  handler(conversation: ConversationV3) {
-    const diabetesQuery = this.conversationDecoder.decode(conversation);
+  async handler(conversation: ConversationV3) {
+    const diabetesQuery = await this.conversationDecoder.decode(conversation);
     const assistantResponse = this.queryResolver.resolve(diabetesQuery);
 
     conversation.add(assistantResponse.SSML);
