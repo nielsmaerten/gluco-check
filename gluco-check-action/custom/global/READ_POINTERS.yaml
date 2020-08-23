@@ -1,0 +1,8 @@
+handler:
+  staticPrompt:
+    candidates:
+    - promptResponse:
+        firstSimple:
+          variants:
+          - speech: You used Deep Invocation. Transition to Custom Pointers.
+transitionToScene: CustomPointers

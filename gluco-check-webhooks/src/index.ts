@@ -12,7 +12,9 @@ export const conversation = functions.https.onRequest(async (request, response) 
   functions.logger.debug('Start processing new Assistant request');
 
   // Get the version of the Action calling the webhook
-  request.headers['gluco-check-version'] = request.query['v']?.toString();
+  const actionVersion = request.query['v']?.toString();
+  request.headers['gluco-check-version'] = actionVersion;
+  functions.logger.debug(`Detected Action version: ${actionVersion}`);
 
   // Pass request and response objects to the Assistant App.
   await conversationHandler.Instance(request, response);

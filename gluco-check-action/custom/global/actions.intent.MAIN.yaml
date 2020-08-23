@@ -1,0 +1,8 @@
+handler:
+  staticPrompt:
+    candidates:
+    - promptResponse:
+        firstSimple:
+          variants:
+          - speech: You used the Main Invocation. Transition to Default Pointers.
+transitionToScene: DefaultPointers

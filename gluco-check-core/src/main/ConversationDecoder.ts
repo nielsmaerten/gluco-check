@@ -22,7 +22,8 @@ export default class ConversationDecoder {
 function getDiabetesPointers(conversation: ConversationV3): DiabetesPointer[] {
   const intentParams = conversation.intent.params || {};
 
-  if (conversation.intent.name === "actions.intent.MAIN") {
+  if (conversation.handler.name === "default_pointers") {
+    // TODO: Get default parameters for this user 
     return [DiabetesPointer.Everything]
   }
 
