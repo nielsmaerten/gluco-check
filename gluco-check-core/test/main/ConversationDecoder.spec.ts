@@ -3,30 +3,48 @@ import 'reflect-metadata';
 import ConversationDecoder from '../../src/main/ConversationDecoder';
 import {DiabetesPointer} from '../../src/types/DiabetesPointer';
 import DiabetesQuery from '../../src/types/DiabetesQuery';
-import AuthTokenDecoder from '../data/mocks/AuthTokenDecoder';
+import {Container} from 'inversify';
+import UserProfileClient from '../../src/main/UserProfileClient';
+import AuthTokenDecoder from '../../src/main/AuthTokenDecoder';
+import mock_AuthTokenDecoder from '../data/mocks/AuthTokenDecoder';
+import mock_UserProfileClient from '../data/mocks/UserProfileClient';
 
 describe('Conversation Decoder', () => {
-  const mockAuthTokenDecoder = new AuthTokenDecoder() as any;
-  const conversationDecoder = new ConversationDecoder(mockAuthTokenDecoder);
-  const testWebhookRequest = '../data/conversations/read-pointers-intent';
-  const testConversation = require(testWebhookRequest).requestJson;
-
-  let diabetesQuery: DiabetesQuery;
+  const testConversations = {
+    custom: require('../data/conversations/custom_pointers').requestJson,
+    default: require('../data/conversations/default_pointers').requestJson,
+  };
+  let mainInvocationResult: DiabetesQuery;
+  let deepInvocationResult: DiabetesQuery;
 
   beforeAll(async () => {
-    diabetesQuery = await conversationDecoder.decode(testConversation);
+    const conversationDecoder = getTestContainer().get(ConversationDecoder);
+    deepInvocationResult = await conversationDecoder.decode(testConversations.custom);
+    mainInvocationResult = await conversationDecoder.decode(testConversations.default);
   });
 
-  it('extracts a parameter', () => {
-    expect(diabetesQuery.pointers).toContain(DiabetesPointer.BloodSugar);
-    expect(diabetesQuery.pointers).toContain(DiabetesPointer.InsulinOnBoard);
+  it("returns the user's default pointers when called through main intent", () => {
+    const pointers = mainInvocationResult.pointers;
+    expect(pointers).toContain(DiabetesPointer.BloodSugar);
   });
 
-  it('extracts the userId', () => {
-    expect(diabetesQuery.userId).toBe('test@example.com');
+  it('extracts pointers from the intent params', () => {
+    const pointers = deepInvocationResult.pointers;
+    expect(pointers).toContain(DiabetesPointer.BloodSugar);
+    expect(pointers).toContain(DiabetesPointer.SensorAge);
+    expect(pointers).toContain(DiabetesPointer.InsulinOnBoard);
   });
 
   it('extracts the user locale', () => {
-    expect(diabetesQuery.locale).toEqual('en-US');
+    expect(mainInvocationResult.locale).toEqual('en-US');
+    expect(deepInvocationResult.locale).toEqual('en-US');
   });
 });
+
+function getTestContainer() {
+  const c = new Container();
+  c.bind(ConversationDecoder).toSelf();
+  c.bind(AuthTokenDecoder).toConstantValue(new mock_AuthTokenDecoder() as any);
+  c.bind(UserProfileClient).toConstantValue(new mock_UserProfileClient() as any);
+  return c;
+}
