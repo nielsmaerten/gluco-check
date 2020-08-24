@@ -29,8 +29,7 @@ module.exports = {
       },
     },
     session: {
-      id:
-        'xyz',
+      id: 'xyz',
       params: {
         diabetesPointer: ['insulin on board', 'blood sugar', 'sensor age'],
       },
