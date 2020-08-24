@@ -1,4 +1,5 @@
 import {DiabetesPointer} from './DiabetesPointer';
+import User from './User';
 
 /**
  * A DiabetesQuery represents a request for information (query) that the user has asked of Gluco Check.
@@ -11,12 +12,12 @@ import {DiabetesPointer} from './DiabetesPointer';
  */
 export default class DiabetesQuery {
   constructor(
-    public userId: string,
+    public user: User,
     public locale: string,
-    public pointers: DiabetesPointer[]
+    public pointers: DiabetesPointer[],
   ) {
     if (pointers.includes(DiabetesPointer.Everything)) {
-      // expand to all available pointers except 'Everything' itself
+      // expand to all available pointers
       const allPointers = Object.values(DiabetesPointer);
       this.pointers = allPointers.filter(v => v !== DiabetesPointer.Everything);
     }
