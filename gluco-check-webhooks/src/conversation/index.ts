@@ -29,11 +29,10 @@ export default class ConversationHandler {
   }
 
   private registerHandlers() {
-    this.app.handle(HandlerNames.DefaultPointers, conversation =>
-      GlucoCheckCore.handler(conversation)
-    );
-    this.app.handle(HandlerNames.CustomPointers, conversation =>
-      GlucoCheckCore.handler(conversation)
-    );
+    const globalHandler = async (conversation: ConversationV3) => {
+      return GlucoCheckCore.handler(conversation);
+    };
+    this.app.handle(HandlerNames.DefaultPointers, globalHandler);
+    this.app.handle(HandlerNames.CustomPointers, globalHandler);
   }
 }
