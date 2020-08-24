@@ -2,6 +2,10 @@ import {ConversationV3} from '@assistant/conversation';
 import DiabetesQuery from '../types/DiabetesQuery';
 import {injectable} from 'inversify';
 import {DiabetesPointer} from '../types/DiabetesPointer';
+import AuthTokenDecoder from './AuthTokenDecoder';
+import UserProfileClient from './UserProfileClient';
+import {logger} from 'firebase-functions';
+import User from '../types/User';
 
 @injectable()
 /**
@@ -9,22 +13,49 @@ import {DiabetesPointer} from '../types/DiabetesPointer';
  * It takes in a 'conversation' object from Google Actions, and decodes it into a DiabetesQuery
  */
 export default class ConversationDecoder {
-  decode(conversation: ConversationV3): DiabetesQuery {
+  constructor(
+    private authTokenDecoder: AuthTokenDecoder,
+    private userProfileClient: UserProfileClient
+  ) {}
+
+  /**
+   * Interprets an Assistant Conversation object and returns a DiabetesQuery
+   * representing what the user asked for
+   */
+  async decode(conv: ConversationV3): Promise<DiabetesQuery> {
+    // Populate conversation.user with info from json web token
+    await this.authTokenDecoder.decodeGoogleUserToken(conv);
+
     // The following info needs to be extracted from the Conversation:
-    const locale = conversation.user.locale;
-    const userId = 'TODO'; // TODO
-    const pointers = getDiabetesPointers(conversation);
+    const locale = conv.user.locale;
+    const userId = conv.user.params.tokenPayload.email;
+    const user = await this.userProfileClient.getUser(userId);
 
-    return new DiabetesQuery(userId, locale, pointers);
+    if (!user.exists) {
+      logger.warn(`'${userId}' invoked Gluco Check but does not exist in db`);
+      return new DiabetesQuery(user, locale, []);
+    }
+
+    // Build DiabetesQuery object with all info required to respond to the user
+    const diabetesPointers = await this.getPointers(conv, user);
+    const diabetesQuery = new DiabetesQuery(user, locale, diabetesPointers);
+    logger.info('Processing diabetes query:', diabetesQuery);
+
+    return diabetesQuery;
   }
-}
 
-function getDiabetesPointers(conversation: ConversationV3): DiabetesPointer[] {
-  const intentParams = conversation.intent.params || {};
+  /**
+   * Extracts which DiabetesPointers were asked for in the conversation
+   */
+  async getPointers(conv: ConversationV3, user: User): Promise<DiabetesPointer[]> {
+    const isDeepInvocation = conv.handler.name === 'custom_pointers';
 
-  if (conversation.intent.name === "actions.intent.MAIN") {
-    return [DiabetesPointer.Everything]
+    if (isDeepInvocation) {
+      // Get requested pointers from intent params
+      return conv.intent.params?.diabetesPointer?.resolved;
+    } else {
+      // Get requested pointers from user profile
+      return user.defaultPointers!;
+    }
   }
-
-  return intentParams.diabetesPointer.resolved;
 }

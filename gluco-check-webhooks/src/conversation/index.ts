@@ -9,8 +9,8 @@ import * as functions from 'firebase-functions';
 import GlucoCheckCore from 'gluco-check-core';
 
 enum HandlerNames {
-  Main = 'main_invocation',
-  ReadPointers = 'read_pointers',
+  DefaultPointers = 'default_pointers',
+  CustomPointers = 'custom_pointers',
 }
 
 export default class ConversationHandler {
@@ -29,11 +29,10 @@ export default class ConversationHandler {
   }
 
   private registerHandlers() {
-    this.app.handle(HandlerNames.Main, conversation =>
-      GlucoCheckCore.handler(conversation)
-    );
-    this.app.handle(HandlerNames.ReadPointers, conversation =>
-      GlucoCheckCore.handler(conversation)
-    );
+    const globalHandler = async (conversation: ConversationV3) => {
+      return GlucoCheckCore.handler(conversation);
+    };
+    this.app.handle(HandlerNames.DefaultPointers, globalHandler);
+    this.app.handle(HandlerNames.CustomPointers, globalHandler);
   }
 }

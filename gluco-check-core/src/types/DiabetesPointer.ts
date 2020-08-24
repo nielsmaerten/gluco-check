@@ -9,7 +9,7 @@
  * This statement has 2 DiabetesPointers: BloodSugar and CarbsOnBoard
  */
 export enum DiabetesPointer {
-  Everything = "everything",
+  Everything = 'everything',
   BloodSugar = 'blood sugar',
   InsulinOnBoard = 'insulin on board',
   CarbsOnBoard = 'carbs on board',
