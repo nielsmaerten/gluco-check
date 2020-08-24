@@ -1,20 +1,15 @@
 module.exports = {
   requestJson: {
     handler: {
-      name: 'read_single_parameter',
+      name: 'default_pointers',
     },
     intent: {
-      name: 'read_pointers',
-      params: {
-        diabetesPointer: {
-          original: '',
-          resolved: ['blood sugar', 'insulin on board'],
-        },
-      },
-      query: "ask gluco nightly what's my bg and iob",
+      name: 'actions.intent.MAIN',
+      params: {},
+      query: 'Talk to Gluco Nightly',
     },
     scene: {
-      name: 'actions.scene.START_CONVERSATION',
+      name: 'DefaultPointers',
       slotFillingStatus: 'UNSPECIFIED',
       slots: {},
       next: {
@@ -22,7 +17,7 @@ module.exports = {
       },
     },
     session: {
-      id: 'abcdefghijklmnopqrstuvwxyz',
+      id: '',
       params: {},
       typeOverrides: [],
       languageCode: '',
@@ -30,10 +25,10 @@ module.exports = {
     user: {
       locale: 'en-US',
       params: {},
-      accountLinkingStatus: 'ACCOUNT_LINKING_STATUS_UNSPECIFIED',
+      accountLinkingStatus: 'LINKED',
       verificationStatus: 'VERIFIED',
       packageEntitlements: [],
-      lastSeenTime: '2020-08-17T13:38:21Z',
+      lastSeenTime: '2020-08-24T01:11:14Z',
     },
     home: {
       params: {},

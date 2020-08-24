@@ -14,7 +14,7 @@ export default class DiabetesQuery {
   constructor(
     public user: User,
     public locale: string,
-    public pointers: DiabetesPointer[],
+    public pointers: DiabetesPointer[]
   ) {
     if (pointers.includes(DiabetesPointer.Everything)) {
       // expand to all available pointers
