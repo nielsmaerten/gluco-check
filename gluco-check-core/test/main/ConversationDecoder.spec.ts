@@ -39,12 +39,29 @@ describe('Conversation Decoder', () => {
     expect(mainInvocationResult.locale).toEqual('en-US');
     expect(deepInvocationResult.locale).toEqual('en-US');
   });
+
+  it('returns a Query for non-existing users', async () => {
+    // Get a special conversationDecoder that will have a non-existing user
+    const decoder = getTestContainer(false).get(ConversationDecoder);
+    const deepInvocationResult = await decoder.decode(testConversations.custom);
+    const mainInvocationResult = await decoder.decode(testConversations.default);
+  
+    // In case of deep invocation, the pointers should be the ones asked for
+    expect(deepInvocationResult.pointers).toContain(DiabetesPointer.BloodSugar);
+    expect(deepInvocationResult.pointers).toContain(DiabetesPointer.SensorAge);
+    expect(deepInvocationResult.pointers).toContain(DiabetesPointer.InsulinOnBoard);
+
+    // In case of main invocation, the pointer should just be BloodSugar
+    expect(mainInvocationResult.pointers).toContain(DiabetesPointer.BloodSugar);
+  });
 });
 
-function getTestContainer() {
+function getTestContainer(userExists = true) {
   const c = new Container();
   c.bind(ConversationDecoder).toSelf();
   c.bind(AuthTokenDecoder).toConstantValue(new mock_AuthTokenDecoder() as any);
-  c.bind(UserProfileClient).toConstantValue(new mock_UserProfileClient() as any);
+  c.bind(UserProfileClient).toConstantValue(
+    new mock_UserProfileClient(userExists) as any
+  );
   return c;
 }

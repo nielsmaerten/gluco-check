@@ -33,13 +33,13 @@ export default class ConversationDecoder {
 
     if (!user.exists) {
       logger.warn(`'${userId}' invoked Gluco Check but does not exist in db`);
-      return new DiabetesQuery(user, locale, []);
+      user.defaultPointers = [DiabetesPointer.BloodSugar];
     }
 
     // Build DiabetesQuery object with all info required to respond to the user
     const diabetesPointers = await this.getPointers(conv, user);
     const diabetesQuery = new DiabetesQuery(user, locale, diabetesPointers);
-    logger.info('Processing diabetes query:', diabetesQuery);
+    user.exists && logger.info('Processing diabetes query:', diabetesQuery);
 
     return diabetesQuery;
   }

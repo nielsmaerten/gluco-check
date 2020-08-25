@@ -13,5 +13,6 @@ describe('DiabetesQuery', () => {
     expect(query.pointers).toContain(DiabetesPointer.SensorAge);
     expect(query.pointers).toContain(DiabetesPointer.PumpBattery);
     expect(query.pointers).not.toContain(DiabetesPointer.Everything);
+    expect(query.pointers).toHaveLength(6);
   });
 });
