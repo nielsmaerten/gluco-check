@@ -45,7 +45,7 @@ describe('Conversation Decoder', () => {
     const decoder = getTestContainer(false).get(ConversationDecoder);
     const deepInvocationResult = await decoder.decode(testConversations.custom);
     const mainInvocationResult = await decoder.decode(testConversations.default);
-  
+
     // In case of deep invocation, the pointers should be the ones asked for
     expect(deepInvocationResult.pointers).toContain(DiabetesPointer.BloodSugar);
     expect(deepInvocationResult.pointers).toContain(DiabetesPointer.SensorAge);
