@@ -1,7 +1,7 @@
 import {injectable} from 'inversify';
 import {logger} from 'firebase-functions';
 import FirebaseClient from './FirebaseClient';
-import User from '../types/User';
+import User from '../../types/User';
 
 @injectable()
 export default class UserProfileClient {

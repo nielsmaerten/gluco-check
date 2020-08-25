@@ -3,7 +3,7 @@ import DiabetesQuery from '../types/DiabetesQuery';
 import {injectable} from 'inversify';
 import {DiabetesPointer} from '../types/DiabetesPointer';
 import AuthTokenDecoder from './AuthTokenDecoder';
-import UserProfileClient from './UserProfileClient';
+import UserProfileClient from './clients/UserProfileClient';
 import {logger} from 'firebase-functions';
 import User from '../types/User';
 
