@@ -1,16 +1,11 @@
-import {URL} from 'url';
-
 export default class NightscoutProps {
-  constructor(url: string, hashedApiSecret?: string, token?: string) {
-    this.url = new URL(url);
-    if (hashedApiSecret) {
-      // TODO
-    }
-    if (token) {
-      this.url.searchParams.set('token', token);
-    }
+  constructor(private _url: string, private _token?: string) {}
+
+  get url(): string {
+    return this._url;
   }
-  public url!: URL;
-  public hashedApiSecret?: string;
-  public token?: string;
+
+  get token(): string | undefined {
+    return this._token;
+  }
 }

@@ -10,6 +10,7 @@
   "devDependencies": {
     "@types/jest": "^26.0.3",
     "@types/node": "^13.11.1",
+    "axios-mock-adapter": "^1.18.2",
     "gluco-check-common": "*",
     "gts": "^2.0.2",
     "jest": "^26.1.0",
@@ -27,6 +28,7 @@
   },
   "dependencies": {
     "@assistant/conversation": "^3.0.1",
+    "axios": "^0.20.0",
     "firebase-admin": "^9.1.1",
     "firebase-functions": "^3.11.0",
     "inversify": "^5.0.1",

@@ -11,4 +11,6 @@ export enum GlucoseTrend {
   FallingSlowly = 'SlightDown',
   Falling = 'SingleDown',
   FallingRapidly = 'DoubleDown',
+
+  Unknown = 'Unknown',
 }

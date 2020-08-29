@@ -3,6 +3,7 @@
         "Gluco",
         "SSML",
         "conv",
+        "devicestatus",
         "inversify",
         "mmol"
     ]

@@ -9,9 +9,15 @@ export default class DiabetesSnapshot {
   timestamp!: number;
 
   // Blood sugar
-  glucoseValue?: number;
   glucoseTrend?: GlucoseTrend;
   glucoseUnit?: GlucoseUnit;
+  glucoseValueMgDl?: number;
+
+  glucoseValue() {
+    if (this.glucoseValueMgDl === undefined) return undefined;
+    if (this.glucoseUnit === GlucoseUnit.mgDl) return this.glucoseValueMgDl;
+    return this.glucoseValueMgDl / 18;
+  }
 
   // Food and Insulin
   carbsOnBoard?: number;
@@ -21,10 +27,7 @@ export default class DiabetesSnapshot {
   sensorInserted?: number;
   cannulaInserted?: number;
 
-  constructor(params: DiabetesSnapshot) {
-    Object.assign(this, params);
-    if (!this.timestamp || this.timestamp <= 0) {
-      throw 'DiabetesSnapshot.timestamp is a required property';
-    }
+  constructor(timestamp: number) {
+    this.timestamp = timestamp;
   }
 }
