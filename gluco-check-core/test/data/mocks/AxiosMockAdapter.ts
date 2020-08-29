@@ -37,4 +37,14 @@ const respondWith401Unauthorized = () => {
   mock.onAny().reply(401, 'Unauthorized.');
 };
 
-export default {respondWith401Unauthorized, respondWithMockData, axios};
+const respondWithTimeout = () => {
+  mock.reset();
+  mock.onAny().timeout();
+};
+
+export default {
+  respondWith401Unauthorized,
+  respondWithTimeout,
+  respondWithMockData,
+  axios,
+};

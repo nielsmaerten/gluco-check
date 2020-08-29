@@ -63,4 +63,20 @@ describe('NightscoutClient', () => {
     const data = await testClient.getPointer(DiabetesPointer.SensorAge);
     expect(data.sensorInserted).toEqual(expected.sensorInserted);
   });
+
+  it('throws when Nightscout is unavailable', done => {
+    AxiosMock.respondWithTimeout();
+    testClient.getPointer(DiabetesPointer.BloodSugar).catch(e => {
+      expect(e).toEqual('Nightscout Unavailable');
+      done();
+    });
+  });
+
+  it('throws when unauthorized', done => {
+    AxiosMock.respondWith401Unauthorized();
+    testClient.getPointer(DiabetesPointer.BloodSugar).catch(e => {
+      expect(e).toEqual('Nightscout Unauthorized');
+      done();
+    });
+  });
 });

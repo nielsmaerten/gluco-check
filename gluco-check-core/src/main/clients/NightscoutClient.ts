@@ -50,20 +50,24 @@ export default class NightscoutClient {
       },
     };
 
-    // Send request
-    const response = await axios.request(request);
+    try {
+      // Send request
+      const response = await axios.request(request);
 
-    // Inspect response
-    if (response.status === 200) {
-      const data = response.data[0];
-      this.cache[query.path] = data;
-      return query.callback(data);
+      // Inspect response
+      if (response.status === 200) {
+        const data = response.data[0];
+        this.cache[query.path] = data;
+        return query.callback(data);
+      }
+
+      // Handle errors
+    } catch (error) {
+      if (error.response?.status === 401) {
+        throw ErrorTypes.NightscoutUnauthorized;
+      }
+
+      throw ErrorTypes.NightscoutUnavailable;
     }
-
-    if (response.status === 401) {
-      throw ErrorTypes.NightscoutUnauthorized;
-    }
-
-    throw ErrorTypes.NightscoutUnavailable;
   }
 }

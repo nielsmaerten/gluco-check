@@ -52,7 +52,7 @@ export default class ConversationDecoder {
 
     if (isDeepInvocation) {
       // Get requested pointers from intent params
-      return conv.intent.params?.diabetesPointer?.resolved;
+      return conv.intent.params!.diabetesPointer!.resolved;
     } else {
       // Get requested pointers from user profile
       return user.defaultPointers!;
