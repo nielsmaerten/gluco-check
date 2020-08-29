@@ -16,7 +16,7 @@ export default class DiabetesSnapshot {
   glucoseValue() {
     if (this.glucoseValueMgDl === undefined) return undefined;
     if (this.glucoseUnit === GlucoseUnit.mgDl) return this.glucoseValueMgDl;
-    return this.glucoseValueMgDl / 18;
+    return mg_dl_to_mmol_l(this.glucoseValueMgDl);
   }
 
   // Food and Insulin
@@ -31,3 +31,5 @@ export default class DiabetesSnapshot {
     this.timestamp = timestamp;
   }
 }
+
+const mg_dl_to_mmol_l = (val: number) => Math.round(val / 1.8) / 10;

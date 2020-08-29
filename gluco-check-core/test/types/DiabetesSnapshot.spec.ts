@@ -6,4 +6,10 @@ describe('DiabetesSnapshot', () => {
     expect(snapshot).toBeDefined();
     expect(snapshot.timestamp).toBeDefined();
   });
+
+  it('converts mmol/l', () => {
+    const snapshot = new DiabetesSnapshot(Date.now());
+    snapshot.glucoseValueMgDl = 120;
+    expect(snapshot.glucoseValue()).toEqual(6.7);
+  });
 });
