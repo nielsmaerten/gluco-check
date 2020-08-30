@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import 'reflect-metadata';
-import ConversationDecoder from '../../src/main/ConversationDecoder';
+import ConversationDecoder from '../../src/main/core/ConversationDecoder';
 import {DiabetesPointer} from '../../src/types/DiabetesPointer';
 import DiabetesQuery from '../../src/types/DiabetesQuery';
 import {Container} from 'inversify';
 import UserProfileClient from '../../src/main/clients/UserProfileClient';
-import AuthTokenDecoder from '../../src/main/AuthTokenDecoder';
+import AuthTokenDecoder from '../../src/main/core/AuthTokenDecoder';
 import mock_AuthTokenDecoder from '../data/mocks/AuthTokenDecoder';
 import mock_UserProfileClient from '../data/mocks/UserProfileClient';
 

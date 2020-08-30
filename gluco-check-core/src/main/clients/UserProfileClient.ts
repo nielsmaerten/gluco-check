@@ -4,6 +4,9 @@ import FirebaseClient from './FirebaseClient';
 import User from '../../types/User';
 
 @injectable()
+/**
+ * Provides methods for interacting with the Users collection in Firestore
+ */
 export default class UserProfileClient {
   private users = this.firebaseClient.firestore().collection('users');
 

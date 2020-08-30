@@ -1,11 +1,15 @@
-import DiabetesQuery from '../types/DiabetesQuery';
-import AssistantResponse from '../types/AssistantResponse';
+import DiabetesQuery from '../../types/DiabetesQuery';
+import AssistantResponse from '../../types/AssistantResponse';
 import ResponseFormatter from './ResponseFormatter';
-import {ErrorTypes} from '../types/ErrorTypes';
-import DiabetesSnapshot from '../types/DiabetesSnapshot';
-import NightscoutClient from './clients/NightscoutClient';
+import {ErrorTypes} from '../../types/ErrorTypes';
+import DiabetesSnapshot from '../../types/DiabetesSnapshot';
+import NightscoutClient from '../clients/NightscoutClient';
 import {injectable} from 'inversify';
 
+/**
+ * DiabetesQuery resolver accepts a DiabetesSnapshot and turns it into an AssistantResponse.
+ * It is responsible for getting the data for each Pointer in the Query by calling Clients
+ */
 @injectable()
 export default class DiabetesQueryResolver {
   constructor(private responseFormatter: ResponseFormatter) {}

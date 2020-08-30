@@ -7,10 +7,18 @@
 import axios, {AxiosRequestConfig} from 'axios';
 import NightscoutProps from '../../types/NightscoutProps';
 import {URL} from 'url';
-import {BloodSugar, CannulaAge, SensorAge, DeviceStatus} from './NightscoutQueries';
+import {
+  BloodSugar,
+  CannulaAge,
+  SensorAge,
+  DeviceStatus,
+} from './NightscoutClient-Queries';
 import {DiabetesPointer} from '../../types/DiabetesPointer';
 import {ErrorTypes} from '../../types/ErrorTypes';
 
+/**
+ * Provides methods for querying a Nightscout site
+ */
 export default class NightscoutClient {
   constructor(private nightscout: NightscoutProps) {}
   private cache: any = {};

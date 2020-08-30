@@ -1,11 +1,11 @@
 import {ConversationV3} from '@assistant/conversation';
-import DiabetesQuery from '../types/DiabetesQuery';
+import DiabetesQuery from '../../types/DiabetesQuery';
 import {injectable} from 'inversify';
-import {DiabetesPointer} from '../types/DiabetesPointer';
+import {DiabetesPointer} from '../../types/DiabetesPointer';
 import AuthTokenDecoder from './AuthTokenDecoder';
-import UserProfileClient from './clients/UserProfileClient';
+import UserProfileClient from '../clients/UserProfileClient';
 import {logger} from 'firebase-functions';
-import User from '../types/User';
+import User from '../../types/User';
 
 @injectable()
 /**

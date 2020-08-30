@@ -2,8 +2,8 @@
 import 'reflect-metadata';
 import {Container} from 'inversify';
 import GlucoCheckCore from '../../src/main';
-import ConversationDecoder from '../../src/main/ConversationDecoder';
-import DiabetesQueryResolver from '../../src/main/DiabetesQueryResolver';
+import ConversationDecoder from '../../src/main/core/ConversationDecoder';
+import DiabetesQueryResolver from '../../src/main/core/DiabetesQueryResolver';
 
 describe('GlucoCheck Core', () => {
   const mocks = {

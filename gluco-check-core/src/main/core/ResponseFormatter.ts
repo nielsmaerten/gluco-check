@@ -1,7 +1,7 @@
-import dQuery from '../types/DiabetesQuery';
-import dSnapshot from '../types/DiabetesSnapshot';
-import aResponse from '../types/AssistantResponse';
-import {ErrorTypes} from '../types/ErrorTypes';
+import dQuery from '../../types/DiabetesQuery';
+import dSnapshot from '../../types/DiabetesSnapshot';
+import aResponse from '../../types/AssistantResponse';
+import {ErrorTypes} from '../../types/ErrorTypes';
 import {injectable} from 'inversify';
 
 @injectable()

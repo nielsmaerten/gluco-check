@@ -1,14 +1,13 @@
-import ConversationDecoder from './ConversationDecoder';
-import DiabetesQueryResolver from './DiabetesQueryResolver';
+import ConversationDecoder from './core/ConversationDecoder';
+import DiabetesQueryResolver from './core/DiabetesQueryResolver';
 
 import {injectable} from 'inversify';
 import {ConversationV3} from '@assistant/conversation';
 
 @injectable()
 /**
- * Main entry point of the package gluco-check-core:
- * Exposes a single method 'handler' which should be passed to
- * Google Assistant apps
+ * This is the main entry point of the core library:
+ * It exposes a single method 'handler' which should be passed to Google Assistant apps
  */
 export default class GlucoCheckCore {
   constructor(

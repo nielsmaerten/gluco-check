@@ -16,8 +16,8 @@ export default class DiabetesQuery {
     public locale: string,
     public pointers: DiabetesPointer[]
   ) {
+    // The pointer 'Everything' should be expanded to all available pointers
     if (pointers.includes(DiabetesPointer.Everything)) {
-      // expand to all available pointers
       const allPointers = Object.values(DiabetesPointer);
       this.pointers = allPointers.filter(v => v !== DiabetesPointer.Everything);
     }

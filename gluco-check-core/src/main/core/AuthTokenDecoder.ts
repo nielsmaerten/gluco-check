@@ -4,6 +4,10 @@ import {logger, config} from 'firebase-functions';
 import {injectable} from 'inversify';
 
 @injectable()
+/**
+ * Decodes the Authorization header of a request coming from Google Assistant
+ * into a JWT with all user properties and adds this to the conversation object
+ */
 export default class AuthTokenDecoder {
   private clientId: string;
   private authHeaderProcessor = new AuthHeaderProcessor();
