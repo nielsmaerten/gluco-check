@@ -26,13 +26,12 @@ export default class ResponseFormatter {
     const timeAgo = this.humanizeTime(snapshot.timestamp, locale);
 
     if (query.pointers.length === 1) {
-      // 120 and stable as of 3 minutes ago.
+      // (120 and stable) as of (3 minutes) ago.
     } else {
-      // As of 2 minutes ago,
-      // blood sugar is 120 and stable.
-      // IOB is 23.
+      // (blood sugar) is (120 and stable) as of (2 minutes) ago.
+      // (IOB) is (23).
       // and
-      // there are 12 carbs on board.
+      // there are (12) (carbs on board).
     }
 
     return new AssistantResponse("TODO", locale);
@@ -52,5 +51,8 @@ export default class ResponseFormatter {
     } else return snapshot.glucoseValue();
   }
 
-  private formatCarbsOnBoard(cob: number) {}
+  formatCarbsOnBoard = (cob: number) => `There are ${cob} carbs on board.`;
+  formatIOB = (iob: number) => `There's ${iob} insulin units on board.`;
+  formatSensorAge = (timeAgo: number) => `The sensor was inserted ${timeAgo} ago.`;
+  formatCannulaAge = (timeAgo: number) => `The cannula is ${timeAgo} old.`
 }
