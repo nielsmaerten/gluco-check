@@ -29,7 +29,6 @@
   "dependencies": {
     "@assistant/conversation": "^3.0.1",
     "axios": "^0.20.0",
-    "date-fns": "^2.16.0",
     "firebase-admin": "^9.1.1",
     "firebase-functions": "^3.11.0",
     "inversify": "^5.0.1",
