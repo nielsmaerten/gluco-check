@@ -1,46 +1,56 @@
-import dQuery from '../../types/DiabetesQuery';
-import dSnapshot from '../../types/DiabetesSnapshot';
-import aResponse from '../../types/AssistantResponse';
-import {ErrorTypes} from '../../types/ErrorTypes';
 import {injectable} from 'inversify';
-import {formatDistanceToNow} from 'date-fns';
+import * as dayjs from 'dayjs';
+import * as relativeTime from 'dayjs/plugin/relativeTime';
+dayjs.extend(relativeTime);
+
+import {ErrorTypes} from '../../types/ErrorTypes';
+import {GlucoseTrend} from '../../types/GlucoseTrend';
+import DiabetesSnapshot from '../../types/DiabetesSnapshot';
+import DiabetesQuery from '../../types/DiabetesQuery';
+import AssistantResponse from '../../types/AssistantResponse';
 
 @injectable()
 export default class ResponseFormatter {
   constructor() {}
 
-  public formatError(errorType: ErrorTypes, query: dQuery): aResponse {
+  public formatError(errorType: ErrorTypes, query: DiabetesQuery): AssistantResponse {
     // TODO
-    return new aResponse(errorType, Date.now(), query.locale);
+    return new AssistantResponse(errorType, query.locale);
   }
 
-  public async formatSnapshot(snapshot: dSnapshot, locale: string): Promise<aResponse> {
-    // const {
-    //   glucoseTrend,
-    //   timestamp,
-    //   cannulaInserted,
-    //   carbsOnBoard,
-    //   insulinOnBoard,
-    //   sensorInserted,
-    // } = snapshot;
-    // const glucoseValue = snapshot.glucoseValue();
-    // const timeDiff = await this.humanizeTimestamp(timestamp, query.locale);
+  public async formatSnapshot(
+    snapshot: DiabetesSnapshot,
+    query: DiabetesQuery,
+    locale: string
+  ): Promise<AssistantResponse> {
+    const timeAgo = this.humanizeTime(snapshot.timestamp, locale);
 
-    // let SSML = '';
+    if (query.pointers.length === 1) {
+      // 120 and stable as of 3 minutes ago.
+    } else {
+      // As of 2 minutes ago,
+      // blood sugar is 120 and stable.
+      // IOB is 23.
+      // and
+      // there are 12 carbs on board.
+    }
 
-    // if (glucoseValue) {
-    //   SSML += `${glucoseValue} and ${glucoseTrend} as of ${timeDiff}`;
-    // }
-
-    return new aResponse('102 and stable as of a few seconds ago.', Date.now(), locale);
+    return new AssistantResponse("TODO", locale);
   }
 
-  private async humanizeTimestamp(timestamp: number, localeId: string) {
-    const locale = await import(`date-fns/locale/${localeId}`);
-
-    const s = formatDistanceToNow(timestamp, {
-      locale,
-    });
-    return s;
+  /**
+   * Formats a relative timestamp to 'a few seconds', 'a minute', '3 minutes', etc.
+   */
+  private async humanizeTime(timestamp: number, locale: string) {
+    await import(`dayjs/locale/${locale}`);
+    return dayjs(timestamp).locale(locale).fromNow(true);
   }
+
+  private formatBloodSugar(snapshot: DiabetesSnapshot) {
+    if (snapshot.glucoseTrend !== GlucoseTrend.Unknown) {
+      return '120 and stable';
+    } else return snapshot.glucoseValue();
+  }
+
+  private formatCarbsOnBoard(cob: number) {}
 }
