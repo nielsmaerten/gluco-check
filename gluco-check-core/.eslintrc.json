@@ -10,6 +10,7 @@
     "expect": "readonly",
     "beforeAll": "readonly",
     "beforeEach": "readonly",
-    "jest": "readonly"
+    "jest": "readonly",
+    "fail": "readonly"
   }
 }

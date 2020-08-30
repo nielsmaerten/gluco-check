@@ -1,16 +1,25 @@
-/* eslint-disable */ // TODO: remove this
 import dQuery from '../types/DiabetesQuery';
 import dSnapshot from '../types/DiabetesSnapshot';
 import aResponse from '../types/AssistantResponse';
+import {ErrorTypes} from '../types/ErrorTypes';
+import {injectable} from 'inversify';
 
-export default abstract class ResponseFormatter {
-  public static formatError(errorType: any, query: dQuery): aResponse {
-    // TODO (after NightscoutClient)
-    return new aResponse('', 0, '');
+@injectable()
+export default class ResponseFormatter {
+  constructor() {}
+
+  public formatError(errorType: ErrorTypes, query: dQuery): aResponse {
+    // TODO
+    return new aResponse(errorType, Date.now(), query.locale);
   }
 
-  public static formatSnapshot(snapshot: dSnapshot, query: dQuery): aResponse {
-    // TODO (after NightscoutClient)
-    return new aResponse('', 0, '');
+  public formatSnapshot(snapshot: dSnapshot, query: dQuery): aResponse {
+    const {glucoseTrend, timestamp, glucoseValue} = snapshot;
+    // TODO
+    return new aResponse(
+      `${glucoseValue()} and ${glucoseTrend} as of ${timestamp}`,
+      Date.now(),
+      query.locale
+    );
   }
 }
