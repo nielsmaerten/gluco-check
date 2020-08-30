@@ -13,7 +13,7 @@ import {injectable} from 'inversify';
 @injectable()
 export default class DiabetesQueryResolver {
   constructor(private responseFormatter: ResponseFormatter) {}
-  resolve(query: DiabetesQuery): AssistantResponse {
+  async resolve(query: DiabetesQuery): Promise<AssistantResponse> {
     // Ensure user exists and has a Nightscout Site
     if (!query.user.exists || !query.user.nightscout) {
       return this.responseFormatter.formatError(ErrorTypes.UserNotFound, query);
