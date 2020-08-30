@@ -29,6 +29,6 @@ export default class DiabetesQueryResolver {
       snapshot = {...value, ...snapshot};
     });
 
-    return this.responseFormatter.formatSnapshot(snapshot, query);
+    return this.responseFormatter.formatSnapshot(snapshot, query.locale);
   }
 }

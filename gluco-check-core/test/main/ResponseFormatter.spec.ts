@@ -15,7 +15,7 @@ describe.only('Response Formatter', () => {
   };
 
   const testSnapshot = {
-    timestamp: Date.now(),
+    ...new DiabetesSnapshot(Date.now()),
     glucoseValueMgDl: 102,
     glucoseTrend: GlucoseTrend.Stable,
     glucoseUnit: GlucoseUnit.mgDl,
@@ -24,7 +24,10 @@ describe.only('Response Formatter', () => {
   const responseFormatter = new ResponseFormatter();
 
   it('generates SSML from a DiabetesSnapshot', async () => {
-    const response = await responseFormatter.formatSnapshot(testSnapshot, testQuery);
+    const response = await responseFormatter.formatSnapshot(
+      testSnapshot,
+      testQuery.locale
+    );
     expect(response.SSML).toEqual('102 and stable as of a few seconds ago.');
   });
 });

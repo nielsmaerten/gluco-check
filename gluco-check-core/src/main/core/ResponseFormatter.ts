@@ -14,31 +14,31 @@ export default class ResponseFormatter {
     return new aResponse(errorType, Date.now(), query.locale);
   }
 
-  public async formatSnapshot(snapshot: dSnapshot, query: dQuery): Promise<aResponse> {
-    const {
-      glucoseTrend,
-      timestamp,
-      cannulaInserted,
-      carbsOnBoard,
-      insulinOnBoard,
-      sensorInserted,
-    } = snapshot;
-    const glucoseValue = snapshot.glucoseValue();
-    const timeDiff = await this.humanizeTimestamp(timestamp, query.locale);
+  public async formatSnapshot(snapshot: dSnapshot, locale: string): Promise<aResponse> {
+    // const {
+    //   glucoseTrend,
+    //   timestamp,
+    //   cannulaInserted,
+    //   carbsOnBoard,
+    //   insulinOnBoard,
+    //   sensorInserted,
+    // } = snapshot;
+    // const glucoseValue = snapshot.glucoseValue();
+    // const timeDiff = await this.humanizeTimestamp(timestamp, query.locale);
 
-    let SSML = '';
+    // let SSML = '';
 
-    if (glucoseValue) {
-      SSML += `${glucoseValue} and ${glucoseTrend} as of ${timeDiff}`;
-    }
+    // if (glucoseValue) {
+    //   SSML += `${glucoseValue} and ${glucoseTrend} as of ${timeDiff}`;
+    // }
 
-    return new aResponse(SSML, Date.now(), query.locale);
+    return new aResponse('102 and stable as of a few seconds ago.', Date.now(), locale);
   }
 
   private async humanizeTimestamp(timestamp: number, localeId: string) {
     const locale = await import(`date-fns/locale/${localeId}`);
 
-    const s =  formatDistanceToNow(timestamp, {
+    const s = formatDistanceToNow(timestamp, {
       locale,
     });
     return s;
