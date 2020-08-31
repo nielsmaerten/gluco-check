@@ -1,9 +1,8 @@
-import DiabetesSnapshot from "./DiabetesSnapshot";
+import DiabetesSnapshot from './DiabetesSnapshot';
 
 export default class FormatParams {
-    public snapshot!: DiabetesSnapshot;
-    public locale!: string;
-    public sayTimeAgo: boolean = true;
-    public sayPointerName: boolean = false;
-  }
-  
+  public snapshot!: DiabetesSnapshot;
+  public locale!: string;
+  public sayTimeAgo = true;
+  public sayPointerName = false;
+}

@@ -1,4 +1,6 @@
-import i18next, {TFunction} from 'i18next';
+/* eslint-disable @typescript-eslint/no-var-requires */
+import {TFunction, i18n} from 'i18next';
+const i18next: i18n = require('i18next');
 
 export default class Localizer {
   private i18nextInitialized: Promise<TFunction>;

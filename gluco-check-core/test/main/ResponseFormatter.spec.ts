@@ -26,10 +26,7 @@ describe('Response Formatter', () => {
   const responseFormatter = new ResponseFormatter(new Localizer());
 
   it('generates SSML from a DiabetesSnapshot', async () => {
-    const response = await responseFormatter.formatSnapshot(
-      testSnapshot,
-      testQuery
-    );
+    const response = await responseFormatter.formatSnapshot(testSnapshot, testQuery);
     expect(response.SSML).toEqual('102 and stable as of a few seconds ago.');
   });
 });

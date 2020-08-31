@@ -10,8 +10,8 @@ export async function formatBloodSugar(params: FormatParams) {
     timeAgo: await formatTimestamp(params.snapshot.timestamp, params.locale),
   };
   const key = `[Blood sugar is] ${ctx.value} [and ${ctx.trend}] [as of ${ctx.timeAgo} ago]`;
-  console.log(i18next.t("my.key", ctx))
-  return "hello";
+  console.log(i18next.t('my.key', ctx));
+  return 'hello';
 }
 
 export async function formatCannulaAge(params: FormatParams) {
