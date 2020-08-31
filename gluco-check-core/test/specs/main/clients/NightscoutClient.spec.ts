@@ -1,5 +1,5 @@
 import User from '../../../../src/types/User';
-import AxiosMock from '../../../mocks/AxiosMockAdapter';
+import AxiosMock from '../../../stubs/AxiosMockAdapter';
 import {DiabetesPointer} from '../../../../src/types/DiabetesPointer';
 import NightscoutProps from '../../../../src/types/NightscoutProps';
 import NightscoutClient from '../../../../src/main/clients/NightscoutClient';

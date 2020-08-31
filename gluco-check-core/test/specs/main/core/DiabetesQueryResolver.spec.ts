@@ -6,15 +6,12 @@ import ResponseFormatter from '../../../../src/main/core/ResponseFormatter';
 import {Container} from 'inversify';
 import NightscoutProps from '../../../../src/types/NightscoutProps';
 import DiabetesQuery from '../../../../src/types/DiabetesQuery';
+import stub_ResponseFormatter = require('../../../stubs/ResponseFormatter');
 
-const stubbed_ResponseFormatter = {
-  formatError: jest.fn(),
-  formatSnapshot: jest.fn(),
-};
 describe('Diabetes Query Resolver', () => {
   beforeEach(() => {
-    stubbed_ResponseFormatter.formatError.mockReset();
-    stubbed_ResponseFormatter.formatError.mockReset();
+    stub_ResponseFormatter.formatError.mockReset();
+    stub_ResponseFormatter.formatError.mockReset();
   });
   const container = getTestContainer();
   const diabetesQueryResolver = container.get(DiabetesQueryResolver);
@@ -33,8 +30,8 @@ describe('Diabetes Query Resolver', () => {
     testQuery.user.nightscout = new NightscoutProps('', '');
     diabetesQueryResolver.resolve(testQuery);
 
-    expect(stubbed_ResponseFormatter.formatError).toHaveBeenCalled();
-    expect(stubbed_ResponseFormatter.formatSnapshot).not.toHaveBeenCalled();
+    expect(stub_ResponseFormatter.formatError).toHaveBeenCalled();
+    expect(stub_ResponseFormatter.formatSnapshot).not.toHaveBeenCalled();
   });
 
   it('calls formatError when no nightscout site is defined', () => {
@@ -42,8 +39,8 @@ describe('Diabetes Query Resolver', () => {
     testQuery.user.nightscout = undefined;
     diabetesQueryResolver.resolve(testQuery);
 
-    expect(stubbed_ResponseFormatter.formatError).toHaveBeenCalled();
-    expect(stubbed_ResponseFormatter.formatSnapshot).not.toHaveBeenCalled();
+    expect(stub_ResponseFormatter.formatError).toHaveBeenCalled();
+    expect(stub_ResponseFormatter.formatSnapshot).not.toHaveBeenCalled();
   });
 
   it('calls formatResponse when query has a user and nightscout site', () => {
@@ -51,14 +48,14 @@ describe('Diabetes Query Resolver', () => {
     testQuery.user.nightscout = new NightscoutProps('', '');
     diabetesQueryResolver.resolve(testQuery);
 
-    expect(stubbed_ResponseFormatter.formatError).not.toHaveBeenCalled();
-    expect(stubbed_ResponseFormatter.formatSnapshot).toHaveBeenCalled();
+    expect(stub_ResponseFormatter.formatError).not.toHaveBeenCalled();
+    expect(stub_ResponseFormatter.formatSnapshot).toHaveBeenCalled();
   });
 });
 
 function getTestContainer() {
   const c = new Container();
-  c.bind(ResponseFormatter).toConstantValue(stubbed_ResponseFormatter as any);
-  c.bind(DiabetesQueryResolver).to(DiabetesQueryResolver);
+  c.bind(ResponseFormatter).toConstantValue(stub_ResponseFormatter as any);
+  c.bind(DiabetesQueryResolver).toSelf();
   return c;
 }

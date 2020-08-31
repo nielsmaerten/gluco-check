@@ -6,8 +6,8 @@ import DiabetesQuery from '../../../../src/types/DiabetesQuery';
 import {Container} from 'inversify';
 import UserProfileClient from '../../../../src/main/clients/UserProfileClient';
 import AuthTokenDecoder from '../../../../src/main/core/AuthTokenDecoder';
-import mock_AuthTokenDecoder = require('../../../mocks/AuthTokenDecoder');
-import mock_UserProfileClient from '../../../mocks/UserProfileClient';
+import stub_AuthTokenDecoder = require('../../../stubs/AuthTokenDecoder');
+import stub_UserProfileClient from '../../../stubs/UserProfileClient';
 
 describe('Conversation Decoder', () => {
   const testConversations = {
@@ -58,10 +58,9 @@ describe('Conversation Decoder', () => {
 
 function getTestContainer(userExists = true) {
   const c = new Container();
+  const _stub_UserProfileClient = new stub_UserProfileClient(userExists);
   c.bind(ConversationDecoder).toSelf();
-  c.bind(AuthTokenDecoder).toConstantValue(mock_AuthTokenDecoder as any);
-  c.bind(UserProfileClient).toConstantValue(
-    new mock_UserProfileClient(userExists) as any
-  );
+  c.bind(AuthTokenDecoder).toConstantValue(stub_AuthTokenDecoder as any);
+  c.bind(UserProfileClient).toConstantValue(_stub_UserProfileClient as any);
   return c;
 }
