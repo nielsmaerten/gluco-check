@@ -2,10 +2,10 @@ import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
 // Mock data
-import mock_sensorAge from '../mocks/api-mocks/sensor-change';
-import mock_cannulaAge from '../mocks/api-mocks/cannula-change';
-import mock_currentEntry from '../mocks/api-mocks/current-entry';
-import mock_deviceStatus from '../mocks/api-mocks/devicestatus';
+import mock_sensorAge from '../http-examples/responses/sensor-change';
+import mock_cannulaAge from '../http-examples/responses/cannula-change';
+import mock_currentEntry from '../http-examples/responses/current-entry';
+import mock_deviceStatus from '../http-examples/responses/devicestatus';
 
 const mock = new MockAdapter(axios);
 const baseUrl = 'https://cgm.example.com/api';

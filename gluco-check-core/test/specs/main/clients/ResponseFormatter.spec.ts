@@ -1,12 +1,12 @@
 import 'reflect-metadata';
-import ResponseFormatter from '../../src/main/core/ResponseFormatter';
-import Localizer from '../../src/main/i18n';
-import DiabetesSnapshot from '../../src/types/DiabetesSnapshot';
-import {GlucoseTrend} from '../../src/types/GlucoseTrend';
-import {GlucoseUnit} from '../../src/types/GlucoseUnit';
-import DiabetesQuery from '../../src/types/DiabetesQuery';
-import {DiabetesPointer} from '../../src/types/DiabetesPointer';
-import User from '../../src/types/User';
+import ResponseFormatter from '../../../../src/main/core/ResponseFormatter';
+import Localizer from '../../../../src/main/i18n';
+import DiabetesSnapshot from '../../../../src/types/DiabetesSnapshot';
+import {GlucoseTrend} from '../../../../src/types/GlucoseTrend';
+import {GlucoseUnit} from '../../../../src/types/GlucoseUnit';
+import DiabetesQuery from '../../../../src/types/DiabetesQuery';
+import {DiabetesPointer} from '../../../../src/types/DiabetesPointer';
+import User from '../../../../src/types/User';
 
 describe('Response Formatter', () => {
   const testQuery: DiabetesQuery = {
@@ -22,7 +22,6 @@ describe('Response Formatter', () => {
     glucoseUnit: GlucoseUnit.mgDl,
   } as DiabetesSnapshot;
 
-  debugger;
   const responseFormatter = new ResponseFormatter(new Localizer());
 
   it('generates SSML from a DiabetesSnapshot', async () => {

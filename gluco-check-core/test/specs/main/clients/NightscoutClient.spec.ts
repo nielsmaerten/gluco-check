@@ -1,11 +1,11 @@
-import User from '../../src/types/User';
-import AxiosMock from '../data/mocks/AxiosMockAdapter';
-import {DiabetesPointer} from '../../src/types/DiabetesPointer';
-import NightscoutProps from '../../src/types/NightscoutProps';
-import NightscoutClient from '../../src/main/clients/NightscoutClient';
-import DiabetesSnapshot from '../../src/types/DiabetesSnapshot';
-import {GlucoseTrend} from '../../src/types/GlucoseTrend';
-import {GlucoseUnit} from '../../src/types/GlucoseUnit';
+import User from '../../../../src/types/User';
+import AxiosMock from '../../../mocks/AxiosMockAdapter';
+import {DiabetesPointer} from '../../../../src/types/DiabetesPointer';
+import NightscoutProps from '../../../../src/types/NightscoutProps';
+import NightscoutClient from '../../../../src/main/clients/NightscoutClient';
+import DiabetesSnapshot from '../../../../src/types/DiabetesSnapshot';
+import {GlucoseTrend} from '../../../../src/types/GlucoseTrend';
+import {GlucoseUnit} from '../../../../src/types/GlucoseUnit';
 
 describe('NightscoutClient', () => {
   const testUser: User = {

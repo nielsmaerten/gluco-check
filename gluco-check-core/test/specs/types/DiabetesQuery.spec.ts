@@ -1,6 +1,6 @@
-import DiabetesQuery from '../../src/types/DiabetesQuery';
-import User from '../../src/types/User';
-import {DiabetesPointer} from '../../src/types/DiabetesPointer';
+import DiabetesQuery from '../../../src/types/DiabetesQuery';
+import User from '../../../src/types/User';
+import {DiabetesPointer} from '../../../src/types/DiabetesPointer';
 
 describe('DiabetesQuery', () => {
   it("expands the 'Everything' type to all other types", () => {

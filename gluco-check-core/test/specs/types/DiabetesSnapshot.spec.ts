@@ -1,4 +1,4 @@
-import DiabetesSnapshot from '../../src/types/DiabetesSnapshot';
+import DiabetesSnapshot from '../../../src/types/DiabetesSnapshot';
 
 describe('DiabetesSnapshot', () => {
   it('always has a timestamp', () => {

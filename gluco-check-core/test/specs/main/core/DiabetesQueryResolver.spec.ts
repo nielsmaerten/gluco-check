@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import 'reflect-metadata';
 
-import DiabetesQueryResolver from '../../src/main/core/DiabetesQueryResolver';
-import ResponseFormatter from '../../src/main/core/ResponseFormatter';
+import DiabetesQueryResolver from '../../../../src/main/core/DiabetesQueryResolver';
+import ResponseFormatter from '../../../../src/main/core/ResponseFormatter';
 import {Container} from 'inversify';
-import NightscoutProps from '../../src/types/NightscoutProps';
-import DiabetesQuery from '../../src/types/DiabetesQuery';
+import NightscoutProps from '../../../../src/types/NightscoutProps';
+import DiabetesQuery from '../../../../src/types/DiabetesQuery';
 
 const stubbed_ResponseFormatter = {
   formatError: jest.fn(),
