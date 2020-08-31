@@ -1,10 +1,10 @@
 import DiabetesQuery from '../../types/DiabetesQuery';
 import AssistantResponse from '../../types/AssistantResponse';
-import ResponseFormatter from './ResponseFormatter';
 import {ErrorTypes} from '../../types/ErrorTypes';
 import DiabetesSnapshot from '../../types/DiabetesSnapshot';
 import NightscoutClient from '../clients/NightscoutClient';
 import {injectable} from 'inversify';
+import ResponseFormatter from './ResponseFormatter';
 
 /**
  * DiabetesQuery resolver accepts a DiabetesSnapshot and turns it into an AssistantResponse.
@@ -13,6 +13,7 @@ import {injectable} from 'inversify';
 @injectable()
 export default class DiabetesQueryResolver {
   constructor(private responseFormatter: ResponseFormatter) {}
+
   async resolve(query: DiabetesQuery): Promise<AssistantResponse> {
     // Ensure user exists and has a Nightscout Site
     if (!query.user.exists || !query.user.nightscout) {
@@ -29,6 +30,6 @@ export default class DiabetesQueryResolver {
       snapshot = {...value, ...snapshot};
     });
 
-    return this.responseFormatter.formatSnapshot(snapshot, query.locale);
+    return this.responseFormatter.formatSnapshot(snapshot, query);
   }
 }

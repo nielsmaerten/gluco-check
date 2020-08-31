@@ -4,55 +4,67 @@ import * as relativeTime from 'dayjs/plugin/relativeTime';
 dayjs.extend(relativeTime);
 
 import {ErrorTypes} from '../../types/ErrorTypes';
-import {GlucoseTrend} from '../../types/GlucoseTrend';
+import i18n from '../i18n';
 import DiabetesSnapshot from '../../types/DiabetesSnapshot';
 import DiabetesQuery from '../../types/DiabetesQuery';
 import AssistantResponse from '../../types/AssistantResponse';
+import {DiabetesPointer} from '../../types/DiabetesPointer';
+import FormatParams from '../../types/FormatParams';
+import {
+  formatCarbsOnBoard,
+  formatBloodSugar,
+  formatCannulaAge,
+  formatInsulinOnBoard,
+  formatSensorAge,
+} from '../i18n/Formatters';
 
 @injectable()
 export default class ResponseFormatter {
-  constructor() {}
-
-  public formatError(errorType: ErrorTypes, query: DiabetesQuery): AssistantResponse {
+  constructor(private i18n: i18n) {}
+  async formatError(
+    errorType: ErrorTypes,
+    query: DiabetesQuery
+  ): Promise<AssistantResponse> {
     // TODO
     return new AssistantResponse(errorType, query.locale);
   }
 
-  public async formatSnapshot(
+  async formatSnapshot(
     snapshot: DiabetesSnapshot,
-    query: DiabetesQuery,
-    locale: string
+    query: DiabetesQuery
   ): Promise<AssistantResponse> {
-    const timeAgo = this.humanizeTime(snapshot.timestamp, locale);
+    await this.i18n.ensureLocale(query.locale);
+    let SSML = '<speak>';
 
-    if (query.pointers.length === 1) {
-      // (120 and stable) as of (3 minutes) ago.
-    } else {
-      // (blood sugar) is (120 and stable) as of (2 minutes) ago.
-      // (IOB) is (23).
-      // and
-      // there are (12) (carbs on board).
-    }
+    query.pointers.forEach(async (pointer, i) => {
+      const params = {
+        pointer,
+        snapshot,
+        locale: query.locale,
+        sayTimeAgo: i === 0, // Include time (as of N minutes ago) on the first pointer
+        sayPointerName: query.pointers.length > 1, // Say the name of each pointer if there's > 1
+      };
+      SSML += `<s>${await formatPointer(pointer, params)}</s>`;
+    });
 
-    return new AssistantResponse("TODO", locale);
+    SSML += '</speak>';
+    return new AssistantResponse(SSML, query.locale);
   }
+}
 
-  /**
-   * Formats a relative timestamp to 'a few seconds', 'a minute', '3 minutes', etc.
-   */
-  private async humanizeTime(timestamp: number, locale: string) {
-    await import(`dayjs/locale/${locale}`);
-    return dayjs(timestamp).locale(locale).fromNow(true);
+function formatPointer(pointer: DiabetesPointer, params: FormatParams): Promise<string> {
+  switch (pointer) {
+    case DiabetesPointer.BloodSugar:
+      return formatBloodSugar(params);
+    case DiabetesPointer.CannulaAge:
+      return formatCannulaAge(params);
+    case DiabetesPointer.CarbsOnBoard:
+      return formatCarbsOnBoard(params);
+    case DiabetesPointer.InsulinOnBoard:
+      return formatInsulinOnBoard(params);
+    case DiabetesPointer.SensorAge:
+      return formatSensorAge(params);
+    default:
+      throw 'Unable to format pointer ' + pointer;
   }
-
-  private formatBloodSugar(snapshot: DiabetesSnapshot) {
-    if (snapshot.glucoseTrend !== GlucoseTrend.Unknown) {
-      return '120 and stable';
-    } else return snapshot.glucoseValue();
-  }
-
-  formatCarbsOnBoard = (cob: number) => `There are ${cob} carbs on board.`;
-  formatIOB = (iob: number) => `There's ${iob} insulin units on board.`;
-  formatSensorAge = (timeAgo: number) => `The sensor was inserted ${timeAgo} ago.`;
-  formatCannulaAge = (timeAgo: number) => `The cannula is ${timeAgo} old.`
 }
