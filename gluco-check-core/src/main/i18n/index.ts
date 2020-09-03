@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import {TFunction, i18n} from 'i18next';
-const i18next: i18n = require('i18next');
+const i18next: i18n = require('i18next'); // i18next requires a 'require' style import
 
 export default class Localizer {
   private i18nextInitialized: Promise<TFunction>;
+  private loadedLocales = new Map<string, any>();
 
   constructor() {
     const options = {
@@ -18,10 +19,16 @@ export default class Localizer {
   async ensureLocale(locale: string): Promise<void> {
     await this.i18nextInitialized;
 
-    const localeId = locale.substr(0, 2);
-    const resourcePath = `gluco-check-common/${localeId}/strings.json`;
+    // Check if the locale is already loaded
+    if (this.loadedLocales.has(locale)) return;
+// TODO
+    // Import the locale's resource bundle
+    const resourcePath = `gluco-check-common/${locale}/strings`;
     const resourceBundle = require(resourcePath);
 
+    // Add the bundle to i18next
     i18next.addResourceBundle(locale, 'global', resourceBundle);
   }
+
+
 }

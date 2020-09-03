@@ -36,16 +36,19 @@ export default class ResponseFormatter {
     await this.i18n.ensureLocale(query.locale);
     let SSML = '<speak>';
 
-    query.pointers.forEach(async (pointer, i) => {
-      const params = {
-        pointer,
-        snapshot,
-        locale: query.locale,
-        sayTimeAgo: i === 0, // Include time (as of N minutes ago) on the first pointer
-        sayPointerName: query.pointers.length > 1, // Say the name of each pointer if there's > 1
-      };
-      SSML += `<s>${await formatPointer(pointer, params)}</s>`;
-    });
+    const pointers_formatted = await Promise.all(
+      query.pointers.map(async (pointer, i) => {
+        const params = {
+          pointer,
+          snapshot,
+          locale: query.locale,
+          sayTimeAgo: i === 0, // Include time (as of N minutes ago) on the first pointer
+          sayPointerName: query.pointers.length > 1, // Say the name of each pointer if there's > 1
+        };
+        return await formatPointer(pointer, params);
+      })
+    );
+    SSML += pointers_formatted.join();
 
     SSML += '</speak>';
     return new AssistantResponse(SSML, query.locale);
