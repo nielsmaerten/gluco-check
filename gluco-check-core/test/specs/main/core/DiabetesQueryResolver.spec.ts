@@ -1,12 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import 'reflect-metadata';
 
+const stub_ResponseFormatter = {
+  formatError: jest.fn(),
+  formatSnapshot: jest.fn()
+} as any;
+
 import DiabetesQueryResolver from '../../../../src/main/core/DiabetesQueryResolver';
 import ResponseFormatter from '../../../../src/main/core/ResponseFormatter';
 import {Container} from 'inversify';
 import NightscoutProps from '../../../../src/types/NightscoutProps';
 import DiabetesQuery from '../../../../src/types/DiabetesQuery';
-import stub_ResponseFormatter = require('../../../stubs/ResponseFormatter');
 
 describe('Diabetes Query Resolver', () => {
   beforeEach(() => {
@@ -55,7 +59,7 @@ describe('Diabetes Query Resolver', () => {
 
 function getTestContainer() {
   const c = new Container();
-  c.bind(ResponseFormatter).toConstantValue(stub_ResponseFormatter as any);
+  c.bind(ResponseFormatter).toConstantValue(stub_ResponseFormatter);
   c.bind(DiabetesQueryResolver).toSelf();
   return c;
 }

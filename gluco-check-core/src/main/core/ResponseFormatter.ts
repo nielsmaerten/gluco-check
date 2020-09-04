@@ -21,6 +21,7 @@ import {
 @injectable()
 export default class ResponseFormatter {
   constructor(private i18n: i18n) {}
+
   async formatError(
     errorType: ErrorTypes,
     query: DiabetesQuery
@@ -45,10 +46,10 @@ export default class ResponseFormatter {
           sayTimeAgo: i === 0, // Include time (as of N minutes ago) on the first pointer
           sayPointerName: query.pointers.length > 1, // Say the name of each pointer if there's > 1
         };
-        return await formatPointer(pointer, params);
+        return `<s>${await formatPointer(pointer, params)}</s>`;
       })
     );
-    SSML += pointers_formatted.join();
+    SSML += pointers_formatted.join('');
 
     SSML += '</speak>';
     return new AssistantResponse(SSML, query.locale);
