@@ -1,5 +1,6 @@
 import {TFunction, i18n} from 'i18next';
 import {logger} from 'firebase-functions';
+import {injectable} from 'inversify';
 
 // i18next won't work unless we import it using 'require'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -9,6 +10,7 @@ export {i18next};
 /**
  * Localizer sets up i18next and manages loading translations
  */
+@injectable()
 export default class Localizer {
   private i18nextInitialized: Promise<TFunction>;
   private loadedLocales = new Set<string>();

@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 import {formatBloodSugar} from '../../../../src/main/i18n/Humanizers';
 import DiabetesSnapshot from '../../../../src/types/DiabetesSnapshot';
 import {GlucoseTrend} from '../../../../src/types/GlucoseTrend';
