@@ -27,7 +27,7 @@ assistant_responses:
   carbs_on_board:
     long;with_time: >
       There's {{value}} carbs on board as of {{time}} ago.
-    long;without_time: >
+    long;no_time: >
       There are {{value}} carbs on board.
     short;with_time: >
       {{value}} carbs on board as of {{time}} ago.

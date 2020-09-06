@@ -19,28 +19,53 @@ export async function formatBloodSugar(params: FormatParams): Promise<string> {
   // Build translation key
   let key = 'assistant_responses.blood_sugar.';
   key += ctx.sayPointerName ? 'long;' : 'short;';
-  key += ctx.trend === GlucoseTrend.Unknown ? 'no_trend;' : 'with_trend;';
+  key += ctx.trend ? 'with_trend;' : 'no_trend;';
   key += ctx.sayTimeAgo ? 'with_time' : 'no_time';
 
   // Get localized string
   return i18next.getFixedT(params.locale)(key, ctx);
 }
 
-export async function formatCannulaAge(params: FormatParams): Promise<string> {
-  // Cannula was inserted {{timeAgo}} ago.
-  return '';
-}
 export async function formatCarbsOnBoard(params: FormatParams): Promise<string> {
-  // There's {{value}} carbs on board as of {{timeAgo}} ago.
-  return '';
+  const ctx = {
+    value: params.snapshot.carbsOnBoard,
+    time: await humanizeTimestamp(params.snapshot.timestamp, params.locale),
+  };
+
+  let key = 'assistant_responses.carbs_on_board.';
+  key += params.sayPointerName ? 'long;' : 'short;';
+  key += params.sayTimeAgo ? 'with_time' : 'no_time';
+
+  return i18next.getFixedT(params.locale)(key, ctx);
 }
+
 export async function formatInsulinOnBoard(params: FormatParams): Promise<string> {
-  return '';
-  // There are {{value}} units of insulin on board as of {{timeAgo}} ago.
+  const ctx = {
+    value: params.snapshot.insulinOnBoard,
+    time: await humanizeTimestamp(params.snapshot.timestamp, params.locale),
+  };
+
+  let key = 'assistant_responses.insulin_on_board.';
+  key += params.sayPointerName ? 'long;' : 'short;';
+  key += params.sayTimeAgo ? 'with_time' : 'no_time';
+
+  return i18next.getFixedT(params.locale)(key, ctx);
 }
+
 export async function formatSensorAge(params: FormatParams): Promise<string> {
-  // Sensor was inserted {{timeAgo}} ago.
-  return '';
+  const ctx = {
+    time: await humanizeTimestamp(params.snapshot.timestamp, params.locale),
+  };
+  const key = 'assistant_responses.sensor_age';
+  return i18next.getFixedT(params.locale)(key, ctx);
+}
+
+export async function formatCannulaAge(params: FormatParams): Promise<string> {
+  const ctx = {
+    time: await humanizeTimestamp(params.snapshot.timestamp, params.locale),
+  };
+  const key = 'assistant_responses.cannula_age';
+  return i18next.getFixedT(params.locale)(key, ctx);
 }
 
 /**
@@ -56,7 +81,7 @@ async function humanizeTimestamp(timestamp: number, locale: string) {
 }
 
 function translateTrend(locale: string, trend?: string) {
-  if (!trend) return undefined;
+  if (trend === GlucoseTrend.Unknown) return undefined;
   const key = `assistant_responses.blood_sugar.trends.${trend}`;
   return i18next.getFixedT(locale)(key);
 }
