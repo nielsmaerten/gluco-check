@@ -3,7 +3,7 @@ import 'reflect-metadata';
 
 const stub_ResponseFormatter = {
   formatError: jest.fn(),
-  formatSnapshot: jest.fn()
+  formatSnapshot: jest.fn(),
 } as any;
 
 import DiabetesQueryResolver from '../../../../src/main/core/DiabetesQueryResolver';

@@ -4,7 +4,7 @@ import * as relativeTime from 'dayjs/plugin/relativeTime';
 dayjs.extend(relativeTime);
 
 import {ErrorTypes} from '../../types/ErrorTypes';
-import i18n from '../i18n';
+import i18n from '../i18n'; // eslint-disable-line
 import DiabetesSnapshot from '../../types/DiabetesSnapshot';
 import DiabetesQuery from '../../types/DiabetesQuery';
 import AssistantResponse from '../../types/AssistantResponse';
