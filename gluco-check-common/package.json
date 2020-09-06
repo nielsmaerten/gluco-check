@@ -12,7 +12,6 @@
     "purge": "rimraf node_modules/",
     "test": ":",
     "build": "yarn node compile-yaml.js",
-    "watch:build": "yarn build --watch",
     "postinstall": "yarn build"
   },
   "dependencies": {

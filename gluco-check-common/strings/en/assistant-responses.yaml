@@ -15,6 +15,15 @@ assistant_responses:
     short;with_trend;with_time: >
       {{value}} and {{trend}} as of {{time}} ago.
 
+    trends:
+      DoubleUp: "rising rapidly"
+      SingleUp: "rising"
+      SlightUp: "rising slowly"
+      Stable: "stable"
+      SlightDown: "falling slowly"
+      SingleDown: "falling"
+      DoubleDown: "falling rapidly"
+
   carbs_on_board:
     long;with_time: >
       There's {{value}} carbs on board as of {{time}} ago.

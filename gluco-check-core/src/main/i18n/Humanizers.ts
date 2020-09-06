@@ -1,6 +1,6 @@
 import FormatParams from '../../types/FormatParams';
 import {GlucoseTrend} from '../../types/GlucoseTrend';
-import { i18next } from './Localizer';
+import {i18next} from './Localizer';
 import {logger} from 'firebase-functions';
 
 import dayjs = require('dayjs');
@@ -10,8 +10,8 @@ dayjs.extend(relativeTime);
 export async function formatBloodSugar(params: FormatParams): Promise<string> {
   const ctx = {
     value: params.snapshot.glucoseValue(),
-    trend: params.snapshot.glucoseTrend,
-    timeAgo: await humanizeTimestamp(params.snapshot.timestamp, params.locale),
+    trend: translateTrend(params.locale, params.snapshot.glucoseTrend),
+    time: await humanizeTimestamp(params.snapshot.timestamp, params.locale),
     sayPointerName: params.sayPointerName,
     sayTimeAgo: params.sayTimeAgo,
   };
@@ -53,6 +53,12 @@ async function humanizeTimestamp(timestamp: number, locale: string) {
 
   // Turn the timestamp into a human expression
   return dayjs(timestamp).locale(locale).fromNow(true);
+}
+
+function translateTrend(locale: string, trend?: string) {
+  if (!trend) return undefined;
+  const key = `assistant_responses.blood_sugar.trends.${trend}`;
+  return i18next.getFixedT(locale)(key);
 }
 
 const loadedDayJsLocales = new Set<string>();
