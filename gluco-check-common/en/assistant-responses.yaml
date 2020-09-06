@@ -1,0 +1,41 @@
+# DO NOT TRANSLATE THIS FILE DIRECTLY
+# If you want to suggest new translations, visit https://diabase.app/translate
+assistant responses:
+  blood sugar:
+    long, with trend, with time: >
+      Blood sugar is {{value}} and {{trend}} as of {{time}} ago.
+    long, no trend, with time: >
+      Blood sugar is {{value}} as of {{time}} ago.
+    long, with trend, no time: >
+      Blood sugar is {{value}} and {{trend}}.
+    long, no trend, no time: >
+      Blood sugar is {{value}}.
+    short, no trend, with time: >
+      {{value}} as of {{time}} ago.
+    short, with trend, with time: >
+      {{value}} and {{trend}} as of {{time}} ago.
+
+  carbs on board:
+    long, with time: >
+      There's {{value}} carbs on board as of {{time}} ago.
+    long, without time: >
+      There are {{value}} carbs on board.
+    short, with time: >
+      {{value}} carbs on board as of {{time}} ago.
+
+  insulin on board:
+    long, with time: >
+      There's {{value}} insulin units as of {{time}} ago.
+    long, no time: >
+      There are {{value}} insulin units on board.
+    short, with time: >
+      {{value}} insulin units on board as of {{time}} ago.
+
+  cannula age: >
+    The cannula was inserted {{time}} ago.
+
+  sensor age: >
+    The sensor was inserted {{time}} ago.
+  
+  pump battery: >
+    The pump's battery is at {{percent}}%.
