@@ -89,19 +89,24 @@ function translateTrend(locale: string, trend?: string) {
 const loadedDayJsLocales = new Set<string>();
 
 async function loadDayJsLocale(locale: string) {
-  // Bail if locale was loaded previously
+  // DayJs formats all locales as lowercase
+  locale = locale.toLowerCase();
+
+  // Bail if locale (or its fallback) was loaded previously
   if (loadedDayJsLocales.has(locale)) return locale;
+  const fallback = locale.substr(0, 2);
+  if (loadedDayJsLocales.has(fallback)) return fallback;
 
   try {
     // Attempt loading the exact locale
-    await import(`dayjs/locale/${locale.toLowerCase()}`);
-  } catch (error) {
-    logger.warn(`No exact DayJs locale available for ${locale}. Attempting fallback`);
-
-    locale = locale.substr(0, 2);
     await import(`dayjs/locale/${locale}`);
+    loadedDayJsLocales.add(locale);
+    return locale;
+  } catch (error) {
+    // Attempt loading the fallback
+    logger.warn(`No exact DayJs locale available for ${locale}. Attempting fallback`);
+    await import(`dayjs/locale/${fallback}`);
+    loadedDayJsLocales.add(fallback);
+    return fallback;
   }
-
-  // Return the (possibly modified) locale name
-  return locale;
 }

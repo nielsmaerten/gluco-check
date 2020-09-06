@@ -1,8 +1,8 @@
+// HTTP response cache can contain 'any' types
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+// FIXME: Required because of: https://github.com/axios/axios/issues/3219
 /// <reference lib="DOM" />
-// FIXME: Upgrade Axios to remove ref to DOM
-// Bug: https://github.com/axios/axios/issues/3219
 
 import axios, {AxiosRequestConfig} from 'axios';
 import NightscoutProps from '../../types/NightscoutProps';
