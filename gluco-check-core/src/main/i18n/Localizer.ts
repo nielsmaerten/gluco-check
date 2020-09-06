@@ -1,13 +1,13 @@
 import {TFunction, i18n} from 'i18next';
 import {logger} from 'firebase-functions';
 
+// i18next won't work unless we import it using 'require'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const i18next: i18n = require('i18next');
 export {i18next};
 
 /**
- * Localizer sets up i18next and manages loading of
- * translations
+ * Localizer sets up i18next and manages loading translations
  */
 export default class Localizer {
   private i18nextInitialized: Promise<TFunction>;
@@ -16,13 +16,9 @@ export default class Localizer {
   constructor() {
     logger.debug('Initializing i18next');
 
-    // Inspect env vars to find out if we're debugging
-    const isDebugging = process.env.NODE_ENV === 'test';
-    isDebugging && console.warn("Don't forget to compile gluco-check-common!");
-
     this.i18nextInitialized = i18next.init({
       resources: {},
-      debug: isDebugging,
+      debug: false && process.env.NODE_ENV === 'test',
     });
   }
 

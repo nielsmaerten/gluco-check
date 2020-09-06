@@ -1,6 +1,6 @@
 // @ts-check
-/* eslint node/no-unpublished-require : 0 */
-/* eslint no-prototype-builtins : 0 */
+/* eslint-disable node/no-unpublished-require */
+/* eslint-disable no-prototype-builtins */
 
 const filenamePackage = 'package.json';
 const filenamePackageBackup = 'package.json.backup';

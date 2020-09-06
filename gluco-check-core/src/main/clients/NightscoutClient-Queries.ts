@@ -1,4 +1,6 @@
+// Because data returned from an axios endpoint is always 'any':
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 import {GlucoseTrend} from '../../types/GlucoseTrend';
 import {DiabetesPointer} from '../../types/DiabetesPointer';
 
