@@ -1,26 +1,18 @@
 import {injectable} from 'inversify';
-import * as dayjs from 'dayjs';
-import * as relativeTime from 'dayjs/plugin/relativeTime';
-dayjs.extend(relativeTime);
+
+import Localizer from '../i18n/Localizer';
+import DiabetesSnapshot from '../../types/DiabetesSnapshot';
+import AssistantResponse from '../../types/AssistantResponse';
+import DiabetesQuery from '../../types/DiabetesQuery';
+import FormatParams from '../../types/FormatParams';
 
 import {ErrorTypes} from '../../types/ErrorTypes';
-import i18n from '../i18n'; // eslint-disable-line
-import DiabetesSnapshot from '../../types/DiabetesSnapshot';
-import DiabetesQuery from '../../types/DiabetesQuery';
-import AssistantResponse from '../../types/AssistantResponse';
 import {DiabetesPointer} from '../../types/DiabetesPointer';
-import FormatParams from '../../types/FormatParams';
-import {
-  formatCarbsOnBoard,
-  formatBloodSugar,
-  formatCannulaAge,
-  formatInsulinOnBoard,
-  formatSensorAge,
-} from '../i18n/Formatters';
+import * as Humanizer from '../i18n/Humanizers';
 
 @injectable()
 export default class ResponseFormatter {
-  constructor(private i18n: i18n) {}
+  constructor(private localizer: Localizer) {}
 
   async formatError(
     errorType: ErrorTypes,
@@ -34,41 +26,61 @@ export default class ResponseFormatter {
     snapshot: DiabetesSnapshot,
     query: DiabetesQuery
   ): Promise<AssistantResponse> {
-    await this.i18n.ensureLocale(query.locale);
+    // Wait until the required language has been loaded
+    await this.localizer.ensureLocale(query.locale);
+
+    // Start a new SSML string
     let SSML = '<speak>';
 
-    const pointers_formatted = await Promise.all(
-      query.pointers.map(async (pointer, i) => {
-        const params = {
-          pointer,
-          snapshot,
-          locale: query.locale,
-          sayTimeAgo: i === 0, // Include time (as of N minutes ago) on the first pointer
-          sayPointerName: query.pointers.length > 1, // Say the name of each pointer if there's > 1
-        };
-        return `<s>${await formatPointer(pointer, params)}</s>`;
-      })
-    );
-    SSML += pointers_formatted.join('');
+    // Turn each pointer into 'human' text
+    const humanized_pointers = query.pointers.map(async (pointer, i) => {
+      const params = {
+        pointer,
+        snapshot,
+        locale: query.locale,
 
+        // The first pointer in the list will include the time:
+        // eg: 'Foo bar as of 5 minutes ago'
+        sayTimeAgo: i === 0,
+
+        // If the list has > 1 pointer, we read out each pointer's name:
+        // eg: 'Blood sugar is foo bar '
+        sayPointerName: query.pointers.length > 1,
+      };
+      return `<s>${await humanizePointer(pointer, params)}</s>`;
+    });
+
+    // Wait until all pointers have been turned into text,
+    // then append them to the SSML
+    SSML += (await Promise.all(humanized_pointers)).join('');
+
+    // Close the SSML string and return
     SSML += '</speak>';
     return new AssistantResponse(SSML, query.locale);
   }
 }
 
-function formatPointer(pointer: DiabetesPointer, params: FormatParams): Promise<string> {
+function humanizePointer(
+  pointer: DiabetesPointer,
+  params: FormatParams
+): Promise<string> {
   switch (pointer) {
     case DiabetesPointer.BloodSugar:
-      return formatBloodSugar(params);
+      return Humanizer.formatBloodSugar(params);
+
     case DiabetesPointer.CannulaAge:
-      return formatCannulaAge(params);
+      return Humanizer.formatCannulaAge(params);
+
     case DiabetesPointer.CarbsOnBoard:
-      return formatCarbsOnBoard(params);
+      return Humanizer.formatCarbsOnBoard(params);
+
     case DiabetesPointer.InsulinOnBoard:
-      return formatInsulinOnBoard(params);
+      return Humanizer.formatInsulinOnBoard(params);
+
     case DiabetesPointer.SensorAge:
-      return formatSensorAge(params);
+      return Humanizer.formatSensorAge(params);
+
     default:
-      throw 'Unable to format pointer ' + pointer;
+      throw 'Unable to humanize pointer ' + pointer;
   }
 }

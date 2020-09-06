@@ -1,41 +1,41 @@
 # DO NOT TRANSLATE THIS FILE DIRECTLY
-# If you want to suggest new translations, visit https://diabase.app/translate
-assistant responses:
-  blood sugar:
-    long, with trend, with time: >
+# If you want to contribute translations, visit https://diabase.app/translate
+assistant_responses:
+  blood_sugar:
+    long;with_trend;with_time: >
       Blood sugar is {{value}} and {{trend}} as of {{time}} ago.
-    long, no trend, with time: >
+    long;no_trend;with_time: >
       Blood sugar is {{value}} as of {{time}} ago.
-    long, with trend, no time: >
+    long;with_trend;no_time: >
       Blood sugar is {{value}} and {{trend}}.
-    long, no trend, no time: >
+    long;no_trend;no_time: >
       Blood sugar is {{value}}.
-    short, no trend, with time: >
+    short;no_trend;with_time: >
       {{value}} as of {{time}} ago.
-    short, with trend, with time: >
+    short;with_trend;with_time: >
       {{value}} and {{trend}} as of {{time}} ago.
 
-  carbs on board:
-    long, with time: >
+  carbs_on_board:
+    long;with_time: >
       There's {{value}} carbs on board as of {{time}} ago.
-    long, without time: >
+    long;without_time: >
       There are {{value}} carbs on board.
-    short, with time: >
+    short;with_time: >
       {{value}} carbs on board as of {{time}} ago.
 
-  insulin on board:
-    long, with time: >
+  insulin_on_board:
+    long;with_time: >
       There's {{value}} insulin units as of {{time}} ago.
-    long, no time: >
+    long;no_time: >
       There are {{value}} insulin units on board.
-    short, with time: >
+    short;with_time: >
       {{value}} insulin units on board as of {{time}} ago.
 
-  cannula age: >
+  cannula_age: >
     The cannula was inserted {{time}} ago.
 
-  sensor age: >
+  sensor_age: >
     The sensor was inserted {{time}} ago.
   
-  pump battery: >
+  pump_battery: >
     The pump's battery is at {{percent}}%.

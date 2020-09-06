@@ -5,20 +5,20 @@ const mock_i18n = {
   ensureLocale: jest.fn(),
 };
 
-jest.doMock('../../../../src/main/i18n/Formatters');
+jest.doMock('../../../../src/main/i18n/Humanizers');
 
 import ResponseFormatter from '../../../../src/main/core/ResponseFormatter';
 import DiabetesSnapshot from '../../../../src/types/DiabetesSnapshot';
 import DiabetesQuery from '../../../../src/types/DiabetesQuery';
 import {DiabetesPointer} from '../../../../src/types/DiabetesPointer';
 import User from '../../../../src/types/User';
-import * as Formatters from '../../../../src/main/i18n/Formatters';
+import * as Humanizer from '../../../../src/main/i18n/Humanizers';
 
-(Formatters as any).formatBloodSugar.mockReturnValue('BG');
-(Formatters as any).formatCannulaAge.mockReturnValue('CAGE');
-(Formatters as any).formatInsulinOnBoard.mockReturnValue('IOB');
-(Formatters as any).formatSensorAge.mockReturnValue('SAGE');
-(Formatters as any).formatCarbsOnBoard.mockReturnValue('COB');
+(Humanizer as any).formatBloodSugar.mockReturnValue('BG');
+(Humanizer as any).formatCannulaAge.mockReturnValue('CAGE');
+(Humanizer as any).formatInsulinOnBoard.mockReturnValue('IOB');
+(Humanizer as any).formatSensorAge.mockReturnValue('SAGE');
+(Humanizer as any).formatCarbsOnBoard.mockReturnValue('COB');
 
 describe('Response Formatter', () => {
   const testQuery: DiabetesQuery = {
