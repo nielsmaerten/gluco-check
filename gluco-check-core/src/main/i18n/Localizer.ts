@@ -3,6 +3,7 @@ import {logger} from 'firebase-functions';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const i18next: i18n = require('i18next');
+export {i18next};
 
 /**
  * Localizer sets up i18next and manages loading of

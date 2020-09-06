@@ -1,15 +1,11 @@
 import FormatParams from '../../types/FormatParams';
 import {GlucoseTrend} from '../../types/GlucoseTrend';
+import { i18next } from './Localizer';
 import {logger} from 'firebase-functions';
 
 import dayjs = require('dayjs');
 import relativeTime = require('dayjs/plugin/relativeTime');
 dayjs.extend(relativeTime);
-
-import {i18n} from 'i18next';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const i18next: i18n = require('i18next');
-const translate = i18next.getFixedT;
 
 export async function formatBloodSugar(params: FormatParams): Promise<string> {
   const ctx = {
@@ -27,7 +23,7 @@ export async function formatBloodSugar(params: FormatParams): Promise<string> {
   key += ctx.sayTimeAgo ? 'with_time' : 'no_time';
 
   // Get localized string
-  return translate(params.locale)(key, ctx);
+  return i18next.getFixedT(params.locale)(key, ctx);
 }
 
 export async function formatCannulaAge(params: FormatParams): Promise<string> {
