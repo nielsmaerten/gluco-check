@@ -15,15 +15,19 @@ import {
 } from './NightscoutClient-Queries';
 import {DiabetesPointer} from '../../types/DiabetesPointer';
 import {ErrorTypes} from '../../types/ErrorTypes';
+import {logger} from 'firebase-functions';
 
 /**
  * Provides methods for querying a Nightscout site
  */
 export default class NightscoutClient {
-  constructor(private nightscout: NightscoutProps) {}
+  constructor(private nightscout: NightscoutProps) {
+    logger.debug('Initializing a NightscoutClient for:', nightscout.url);
+  }
   private cache: any = {};
 
   async getPointer(pointer: DiabetesPointer) {
+    logger.debug(`Querying Nightscout for: ${pointer}`);
     switch (pointer) {
       case DiabetesPointer.BloodSugar:
         return await this.doApiCall(BloodSugar);
@@ -68,6 +72,8 @@ export default class NightscoutClient {
         this.cache[query.path] = data;
         return query.callback(data);
       }
+
+      throw `Unexpected: Nightscout responded with ${response.status}`;
 
       // Handle errors
     } catch (error) {
