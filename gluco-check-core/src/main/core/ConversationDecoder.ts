@@ -39,7 +39,8 @@ export default class ConversationDecoder {
     // Build DiabetesQuery object with all info required to respond to the user
     const diabetesPointers = await this.getPointers(conv, user);
     const diabetesQuery = new DiabetesQuery(user, locale, diabetesPointers);
-    user.exists && logger.info('Processing diabetes query:', diabetesQuery);
+    user.exists && logger.debug('Processing diabetes query:', diabetesQuery);
+    logger.info(`'${user.userId}' requested: ${diabetesQuery.pointers}`)
 
     return diabetesQuery;
   }
