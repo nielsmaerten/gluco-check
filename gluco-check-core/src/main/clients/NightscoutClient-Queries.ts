@@ -19,6 +19,7 @@ export const BloodSugar = {
     return {
       glucoseTrend: parseNightscoutTrend(data.direction),
       glucoseValueMgDl: data.sgv || data.mbg || data.cal || data.etc,
+      timestamp: data.date,
     };
   },
 };
@@ -31,6 +32,7 @@ export const DeviceStatus = {
     return {
       carbsOnBoard: data.openaps.suggested.COB,
       insulinOnBoard: data.openaps.iob.iob,
+      timestamp: new Date(data.created_at),
     };
   },
 };

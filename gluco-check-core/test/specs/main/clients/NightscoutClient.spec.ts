@@ -36,10 +36,11 @@ describe('NightscoutClient', () => {
 
   it('fetches Glucose', async () => {
     const data = await testClient.getPointer(DiabetesPointer.BloodSugar);
-    expect(data).toEqual({
+    expect(data).toMatchObject({
       glucoseTrend: expected.glucoseTrend,
       glucoseValueMgDl: expected.glucoseValue(),
     });
+    expect(data).toHaveProperty('timestamp');
   });
 
   it('does not repeat api calls', async () => {

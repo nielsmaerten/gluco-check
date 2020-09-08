@@ -40,7 +40,7 @@ export default class ConversationDecoder {
     const diabetesPointers = await this.getPointers(conv, user);
     const diabetesQuery = new DiabetesQuery(user, locale, diabetesPointers);
     user.exists && logger.debug('Processing diabetes query:', diabetesQuery);
-    logger.info(`'${user.userId}' requested: ${diabetesQuery.pointers}`)
+    logger.info(`'${user.userId}' requested: ${diabetesQuery.pointers}`);
 
     return diabetesQuery;
   }
