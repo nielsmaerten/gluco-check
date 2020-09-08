@@ -29,6 +29,7 @@ export default class NightscoutClient {
 
       case DiabetesPointer.CarbsOnBoard:
       case DiabetesPointer.InsulinOnBoard:
+      case DiabetesPointer.PumpBattery:
         return await this.doApiCall(QueryConfig.DeviceStatus);
 
       case DiabetesPointer.SensorAge:

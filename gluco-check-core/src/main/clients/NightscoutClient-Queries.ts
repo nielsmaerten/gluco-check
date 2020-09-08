@@ -25,13 +25,18 @@ export const BloodSugar = {
 };
 
 export const DeviceStatus = {
-  pointers: [DiabetesPointer.CarbsOnBoard, DiabetesPointer.InsulinOnBoard],
+  pointers: [
+    DiabetesPointer.CarbsOnBoard,
+    DiabetesPointer.InsulinOnBoard,
+    DiabetesPointer.PumpBattery,
+  ],
   path: '/api/v1/devicestatus',
   params: {count: 1},
   callback: (data: any) => {
     return {
       carbsOnBoard: data.openaps.suggested.COB,
       insulinOnBoard: data.openaps.iob.iob,
+      pumpBattery: data.pump.battery.percent,
       timestamp: new Date(data.created_at),
     };
   },
