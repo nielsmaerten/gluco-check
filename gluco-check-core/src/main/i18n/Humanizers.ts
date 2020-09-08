@@ -52,7 +52,7 @@ export async function formatInsulinOnBoard(params: FormatParams): Promise<string
 
 export async function formatSensorAge(params: FormatParams): Promise<string> {
   const ctx = {
-    time: await humanizeTimestamp(params.snapshot.timestamp, params.locale),
+    time: await humanizeTimestamp(params.snapshot.sensorInserted!, params.locale),
   };
   const key = 'assistant_responses.sensor_age';
   return i18next.getFixedT(params.locale)(key, ctx);
@@ -60,9 +60,17 @@ export async function formatSensorAge(params: FormatParams): Promise<string> {
 
 export async function formatCannulaAge(params: FormatParams): Promise<string> {
   const ctx = {
-    time: await humanizeTimestamp(params.snapshot.timestamp, params.locale),
+    time: await humanizeTimestamp(params.snapshot.cannulaInserted!, params.locale),
   };
   const key = 'assistant_responses.cannula_age';
+  return i18next.getFixedT(params.locale)(key, ctx);
+}
+
+export async function formatPumpBattery(params: FormatParams): Promise<string> {
+  const ctx = {
+    percent: params.snapshot.pumpBattery,
+  };
+  const key = 'assistant_responses.pump_battery';
   return i18next.getFixedT(params.locale)(key, ctx);
 }
 
