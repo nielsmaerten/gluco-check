@@ -22,7 +22,6 @@ export default class NightscoutClient {
   private cache: any = {};
 
   async getPointer(pointer: DiabetesPointer) {
-    logger.debug(`Querying Nightscout for: ${pointer}`);
     switch (pointer) {
       case DiabetesPointer.BloodSugar:
         return await this.doApiCall(QueryConfig.BloodSugar);
@@ -53,7 +52,6 @@ export default class NightscoutClient {
       url: url.toString(),
       params: {
         now: Date.now(),
-        limit: 1,
         token: !this.nightscout.token ? undefined : this.nightscout.token,
         ...query.params,
       },
@@ -62,7 +60,7 @@ export default class NightscoutClient {
     try {
       // Send request
       const response = await axios.request(request);
-      logger.debug('Nightscout Response:', response.data);
+      logger.debug(`NS Response(${query.pointers}):`, response.data);
 
       // Inspect response
       if (response.status === 200) {

@@ -31,7 +31,7 @@ export const DeviceStatus = {
     DiabetesPointer.PumpBattery,
   ],
   path: '/api/v1/devicestatus',
-  params: {count: 1},
+  params: {sort$desc: 'created_at', count: 1},
   callback: (data: any) => {
     return {
       carbsOnBoard: data.openaps.suggested.COB,
@@ -45,7 +45,7 @@ export const DeviceStatus = {
 export const CannulaAge = {
   pointers: [DiabetesPointer.CannulaAge],
   path: '/api/v3/treatments',
-  params: {eventType: 'Site Change'},
+  params: {eventType: 'Site Change', sort$desc: 'created_at', limit: 1},
   callback: (data: any) => {
     return {
       cannulaInserted: new Date(data.created_at).getTime(),
@@ -56,7 +56,7 @@ export const CannulaAge = {
 export const SensorAge = {
   pointers: [DiabetesPointer.SensorAge],
   path: '/api/v3/treatments',
-  params: {eventType: 'Sensor Change'},
+  params: {eventType: 'Sensor Change', sort$desc: 'created_at', limit: 1},
   callback: (data: any) => {
     return {
       sensorInserted: new Date(data.created_at).getTime(),
