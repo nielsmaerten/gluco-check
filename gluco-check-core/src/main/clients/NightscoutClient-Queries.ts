@@ -37,7 +37,7 @@ export const DeviceStatus = {
       carbsOnBoard: data.openaps.suggested.COB,
       insulinOnBoard: data.openaps.iob.iob,
       pumpBattery: data.pump.battery.percent,
-      timestamp: new Date(data.created_at),
+      timestamp: new Date(data.created_at).getTime(),
     };
   },
 };
