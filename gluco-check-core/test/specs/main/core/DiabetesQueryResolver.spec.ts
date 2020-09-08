@@ -11,46 +11,48 @@ import ResponseFormatter from '../../../../src/main/core/ResponseFormatter';
 import {Container} from 'inversify';
 import NightscoutProps from '../../../../src/types/NightscoutProps';
 import DiabetesQuery from '../../../../src/types/DiabetesQuery';
+import {DiabetesPointer} from '../../../../src/types/DiabetesPointer';
+import AxiosMockAdapter from '../../../stubs/AxiosMockAdapter';
 
 describe('Diabetes Query Resolver', () => {
+  let testQuery: DiabetesQuery;
+  const container = getTestContainer();
+  const diabetesQueryResolver = container.get(DiabetesQueryResolver);
+  AxiosMockAdapter.respondWithMockData();
+
   beforeEach(() => {
     stub_ResponseFormatter.formatError.mockReset();
     stub_ResponseFormatter.formatError.mockReset();
-  });
-  const container = getTestContainer();
-  const diabetesQueryResolver = container.get(DiabetesQueryResolver);
-  const testQuery: DiabetesQuery = {
-    locale: 'en-US',
-    pointers: [],
-    user: {
-      exists: false,
-      userId: '',
-      nightscout: new NightscoutProps('', ''),
-    },
-  };
 
-  it('calls formatError when user is not found', () => {
+    testQuery = {
+      locale: 'en-US',
+      pointers: [DiabetesPointer.BloodSugar, DiabetesPointer.CannulaAge],
+      user: {
+        exists: true,
+        userId: '',
+        nightscout: new NightscoutProps('https://cgm.example.com', ''),
+      },
+    };
+  });
+
+  it('calls formatError when user is not found', async () => {
     testQuery.user.exists = false;
-    testQuery.user.nightscout = new NightscoutProps('', '');
-    diabetesQueryResolver.resolve(testQuery);
+    await diabetesQueryResolver.resolve(testQuery);
 
     expect(stub_ResponseFormatter.formatError).toHaveBeenCalled();
     expect(stub_ResponseFormatter.formatSnapshot).not.toHaveBeenCalled();
   });
 
-  it('calls formatError when no nightscout site is defined', () => {
-    testQuery.user.exists = true;
+  it('calls formatError when user exists but has no Nightscout site', async () => {
     testQuery.user.nightscout = undefined;
-    diabetesQueryResolver.resolve(testQuery);
+    await diabetesQueryResolver.resolve(testQuery);
 
     expect(stub_ResponseFormatter.formatError).toHaveBeenCalled();
     expect(stub_ResponseFormatter.formatSnapshot).not.toHaveBeenCalled();
   });
 
-  it('calls formatResponse when query has a user and nightscout site', () => {
-    testQuery.user.exists = true;
-    testQuery.user.nightscout = new NightscoutProps('', '');
-    diabetesQueryResolver.resolve(testQuery);
+  it('calls formatResponse when query has a user and nightscout site', async () => {
+    await diabetesQueryResolver.resolve(testQuery);
 
     expect(stub_ResponseFormatter.formatError).not.toHaveBeenCalled();
     expect(stub_ResponseFormatter.formatSnapshot).toHaveBeenCalled();
