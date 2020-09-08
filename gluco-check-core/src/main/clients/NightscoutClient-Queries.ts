@@ -13,7 +13,7 @@ import {DiabetesPointer} from '../../types/DiabetesPointer';
  */
 export const BloodSugar = {
   pointers: DiabetesPointer.BloodSugar,
-  path: '/api/v1/entries/current.json',
+  path: '/api/v1/entries/current',
   params: {},
   callback: (data: any) => {
     return {
@@ -26,7 +26,7 @@ export const BloodSugar = {
 
 export const DeviceStatus = {
   pointers: [DiabetesPointer.CarbsOnBoard, DiabetesPointer.InsulinOnBoard],
-  path: '/api/v1/devicestatus.json',
+  path: '/api/v1/devicestatus',
   params: {count: 1},
   callback: (data: any) => {
     return {
@@ -39,23 +39,21 @@ export const DeviceStatus = {
 
 export const CannulaAge = {
   pointers: [DiabetesPointer.CannulaAge],
-  path: '/api/v3/treatments.json',
+  path: '/api/v3/treatments',
   params: {eventType: 'Site Change'},
   callback: (data: any) => {
     return {
       cannulaInserted: new Date(data.created_at).getTime(),
-      sensorInserted: new Date(data.created_at).getTime(),
     };
   },
 };
 
 export const SensorAge = {
   pointers: [DiabetesPointer.SensorAge],
-  path: '/api/v3/treatments.json',
+  path: '/api/v3/treatments',
   params: {eventType: 'Sensor Change'},
   callback: (data: any) => {
     return {
-      cannulaInserted: new Date(data.created_at).getTime(),
       sensorInserted: new Date(data.created_at).getTime(),
     };
   },

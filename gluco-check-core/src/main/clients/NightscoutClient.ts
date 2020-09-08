@@ -7,12 +7,7 @@
 import axios, {AxiosRequestConfig} from 'axios';
 import NightscoutProps from '../../types/NightscoutProps';
 import {URL} from 'url';
-import {
-  BloodSugar,
-  CannulaAge,
-  SensorAge,
-  DeviceStatus,
-} from './NightscoutClient-Queries';
+import * as QueryConfig from './NightscoutClient-Queries';
 import {DiabetesPointer} from '../../types/DiabetesPointer';
 import {ErrorTypes} from '../../types/ErrorTypes';
 import {logger} from 'firebase-functions';
@@ -30,17 +25,17 @@ export default class NightscoutClient {
     logger.debug(`Querying Nightscout for: ${pointer}`);
     switch (pointer) {
       case DiabetesPointer.BloodSugar:
-        return await this.doApiCall(BloodSugar);
+        return await this.doApiCall(QueryConfig.BloodSugar);
 
       case DiabetesPointer.CarbsOnBoard:
       case DiabetesPointer.InsulinOnBoard:
-        return await this.doApiCall(DeviceStatus);
+        return await this.doApiCall(QueryConfig.DeviceStatus);
 
       case DiabetesPointer.SensorAge:
-        return await this.doApiCall(SensorAge);
+        return await this.doApiCall(QueryConfig.SensorAge);
 
       case DiabetesPointer.CannulaAge:
-        return await this.doApiCall(CannulaAge);
+        return await this.doApiCall(QueryConfig.CannulaAge);
 
       default:
         throw `${pointer} has no associated NightscoutQuery`;
@@ -57,6 +52,7 @@ export default class NightscoutClient {
       url: url.toString(),
       params: {
         now: Date.now(),
+        limit: 1,
         token: !this.nightscout.token ? undefined : this.nightscout.token,
         ...query.params,
       },
@@ -64,7 +60,9 @@ export default class NightscoutClient {
 
     try {
       // Send request
+      logger.debug('Nightscout Request:', request);
       const response = await axios.request(request);
+      logger.debug('Nightscout Response:', response.data);
 
       // Inspect response
       if (response.status === 200) {

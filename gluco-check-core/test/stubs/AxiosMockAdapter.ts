@@ -13,10 +13,10 @@ const baseUrl = 'https://cgm.example.com/api';
 const respondWithMockData = () => {
   mock.reset();
 
-  mock.onGet(`${baseUrl}/v1/entries/current.json`).reply(() => [200, stub_currentEntry]);
-  mock.onGet(`${baseUrl}/v1/devicestatus.json`).reply(() => [200, stub_deviceStatus]);
+  mock.onGet(`${baseUrl}/v1/entries/current`).reply(() => [200, stub_currentEntry]);
+  mock.onGet(`${baseUrl}/v1/devicestatus`).reply(() => [200, stub_deviceStatus]);
 
-  mock.onGet(`${baseUrl}/v3/treatments.json`).reply(config => {
+  mock.onGet(`${baseUrl}/v3/treatments`).reply(config => {
     // Depending on requested treatment, respond w/ different mock data
     const eventType = config.params.eventType;
     switch (eventType) {
