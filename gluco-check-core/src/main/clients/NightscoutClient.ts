@@ -61,7 +61,6 @@ export default class NightscoutClient {
 
     try {
       // Send request
-      logger.debug('Nightscout Request:', request);
       const response = await axios.request(request);
       logger.debug('Nightscout Response:', response.data);
 

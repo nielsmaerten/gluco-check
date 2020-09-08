@@ -49,7 +49,9 @@ export default class ResponseFormatter {
         // eg: 'Blood sugar is foo bar '
         sayPointerName: query.pointers.length > 1,
       };
-      return `<s>${await humanizePointer(pointer, params)}</s>`;
+      const humanPointer = await humanizePointer(pointer, params);
+      logger.info(humanPointer);
+      return `<s>${humanPointer}</s>`;
     });
 
     // Wait until all pointers have been turned into text,
