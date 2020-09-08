@@ -42,9 +42,14 @@ const respondWithTimeout = () => {
   mock.onAny().timeout();
 };
 
+const resetMock = () => {
+  mock.reset();
+}
+
 export default {
   respondWith401Unauthorized,
   respondWithTimeout,
   respondWithMockData,
+  resetMock,
   axios,
 };

@@ -25,9 +25,11 @@ export default class DiabetesQueryResolver {
     const nsClient = new NightscoutClient(query.user.nightscout);
 
     // Query each requested pointer and merge into snapshot
-    query.pointers.forEach(async pointer => {
-      const value = await nsClient.getPointer(pointer);
-      snapshot = {...value, ...snapshot};
+    const snapshotParts = await Promise.all(
+      query.pointers.map(p => nsClient.getPointer(p))
+    );
+    snapshotParts.forEach(part => {
+      Object.assign(snapshot, part);
     });
 
     return this.responseFormatter.formatSnapshot(snapshot, query);

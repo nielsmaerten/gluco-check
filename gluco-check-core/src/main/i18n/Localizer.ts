@@ -17,10 +17,12 @@ export default class Localizer {
 
   constructor() {
     logger.debug('Initializing i18next');
+    const debug = false;
+    //const debug = process.env.NODE_ENV === 'test';
 
     this.i18nextInitialized = i18next.init({
       resources: {},
-      debug: false && process.env.NODE_ENV === 'test',
+      debug
     });
   }
 

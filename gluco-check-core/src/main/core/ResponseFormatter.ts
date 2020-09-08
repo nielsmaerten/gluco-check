@@ -9,6 +9,7 @@ import FormatParams from '../../types/FormatParams';
 import {ErrorTypes} from '../../types/ErrorTypes';
 import {DiabetesPointer} from '../../types/DiabetesPointer';
 import * as Humanizer from '../i18n/Humanizers';
+import { logger } from 'firebase-functions';
 
 @injectable()
 export default class ResponseFormatter {
@@ -26,6 +27,7 @@ export default class ResponseFormatter {
     snapshot: DiabetesSnapshot,
     query: DiabetesQuery
   ): Promise<AssistantResponse> {
+    logger.debug("Rendering response using snapshot:", snapshot);
     // Wait until the required language has been loaded
     await this.localizer.ensureLocale(query.locale);
 
