@@ -51,7 +51,7 @@ export default class ResponseFormatter {
       };
       const humanPointer = await humanizePointer(pointer, params);
       logger.info(humanPointer);
-      return `<s>${humanPointer}</s>`;
+      return `<s>${humanPointer} </s>`; // Note the space at the end of each pointer!
     });
 
     // Wait until all pointers have been turned into text,
@@ -83,6 +83,8 @@ function humanizePointer(
 
     case DiabetesPointer.SensorAge:
       return Humanizer.formatSensorAge(params);
+    case DiabetesPointer.PumpBattery:
+      return Humanizer.formatPumpBattery(params);
 
     default:
       throw 'Unable to humanize pointer ' + pointer;

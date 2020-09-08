@@ -39,7 +39,7 @@ describe('Response Formatter', () => {
   it('combines formatted pointers into SSML', async () => {
     const response = await responseFormatter.formatSnapshot(testSnapshot, testQuery);
     expect(response.SSML).toEqual(
-      '<speak><s>BG</s><s>CAGE</s><s>IOB</s><s>SAGE</s><s>COB</s></speak>'
+      '<speak><s>BG </s><s>CAGE </s><s>IOB </s><s>SAGE </s><s>COB </s></speak>'
     );
   });
 });
