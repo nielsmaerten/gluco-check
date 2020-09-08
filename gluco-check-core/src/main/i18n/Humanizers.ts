@@ -12,15 +12,13 @@ export async function formatBloodSugar(params: FormatParams): Promise<string> {
     value: params.snapshot.glucoseValue(),
     trend: translateTrend(params.locale, params.snapshot.glucoseTrend),
     time: await humanizeTimestamp(params.snapshot.timestamp, params.locale),
-    sayPointerName: params.sayPointerName,
-    sayTimeAgo: params.sayTimeAgo,
   };
 
   // Build translation key
   let key = 'assistant_responses.blood_sugar.';
-  key += ctx.sayPointerName ? 'long;' : 'short;';
+  key += params.sayPointerName ? 'long;' : 'short;';
   key += ctx.trend ? 'with_trend;' : 'no_trend;';
-  key += ctx.sayTimeAgo ? 'with_time' : 'no_time';
+  key += params.sayTimeAgo ? 'with_time' : 'no_time';
 
   // Get localized string
   return i18next.getFixedT(params.locale)(key, ctx);
@@ -28,7 +26,7 @@ export async function formatBloodSugar(params: FormatParams): Promise<string> {
 
 export async function formatCarbsOnBoard(params: FormatParams): Promise<string> {
   const ctx = {
-    value: params.snapshot.carbsOnBoard,
+    value: round(params.snapshot.carbsOnBoard),
     time: await humanizeTimestamp(params.snapshot.timestamp, params.locale),
   };
 
@@ -41,7 +39,7 @@ export async function formatCarbsOnBoard(params: FormatParams): Promise<string> 
 
 export async function formatInsulinOnBoard(params: FormatParams): Promise<string> {
   const ctx = {
-    value: params.snapshot.insulinOnBoard,
+    value: round(params.snapshot.insulinOnBoard, 2),
     time: await humanizeTimestamp(params.snapshot.timestamp, params.locale),
   };
 
@@ -87,6 +85,12 @@ function translateTrend(locale: string, trend?: string) {
 }
 
 const loadedDayJsLocales = new Set<string>();
+
+function round(v?: number, precision = 1) {
+  if (v === undefined) return undefined;
+  precision = Math.pow(10, precision);
+  return Math.round(v * precision) / precision;
+}
 
 async function loadDayJsLocale(locale: string) {
   // DayJs formats all locales as lowercase
