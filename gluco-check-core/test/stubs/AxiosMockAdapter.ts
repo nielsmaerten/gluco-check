@@ -44,7 +44,7 @@ const respondWithTimeout = () => {
 
 const resetMock = () => {
   mock.reset();
-}
+};
 
 export default {
   respondWith401Unauthorized,

@@ -22,7 +22,7 @@ export default class Localizer {
 
     this.i18nextInitialized = i18next.init({
       resources: {},
-      debug
+      debug,
     });
   }
 

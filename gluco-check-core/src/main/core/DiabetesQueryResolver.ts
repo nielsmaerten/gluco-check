@@ -21,7 +21,7 @@ export default class DiabetesQueryResolver {
     }
 
     // Build a new snapshot and Client
-    let snapshot = new DiabetesSnapshot(Date.now());
+    const snapshot = new DiabetesSnapshot(Date.now());
     const nsClient = new NightscoutClient(query.user.nightscout);
 
     // Query each requested pointer and merge into snapshot
