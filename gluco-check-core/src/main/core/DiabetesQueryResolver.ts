@@ -1,10 +1,10 @@
 import DiabetesQuery from '../../types/DiabetesQuery';
 import AssistantResponse from '../../types/AssistantResponse';
-import ResponseFormatter from './ResponseFormatter';
 import {ErrorTypes} from '../../types/ErrorTypes';
 import DiabetesSnapshot from '../../types/DiabetesSnapshot';
 import NightscoutClient from '../clients/NightscoutClient';
 import {injectable} from 'inversify';
+import ResponseFormatter from './ResponseFormatter';
 
 /**
  * DiabetesQuery resolver accepts a DiabetesSnapshot and turns it into an AssistantResponse.
@@ -13,20 +13,24 @@ import {injectable} from 'inversify';
 @injectable()
 export default class DiabetesQueryResolver {
   constructor(private responseFormatter: ResponseFormatter) {}
-  resolve(query: DiabetesQuery): AssistantResponse {
+
+  async resolve(query: DiabetesQuery): Promise<AssistantResponse> {
     // Ensure user exists and has a Nightscout Site
     if (!query.user.exists || !query.user.nightscout) {
       return this.responseFormatter.formatError(ErrorTypes.UserNotFound, query);
     }
 
     // Build a new snapshot and Client
-    let snapshot = new DiabetesSnapshot(Date.now());
+    const snapshot = new DiabetesSnapshot(Date.now());
+    snapshot.glucoseUnit = query.user.glucoseUnit;
     const nsClient = new NightscoutClient(query.user.nightscout);
 
     // Query each requested pointer and merge into snapshot
-    query.pointers.forEach(async pointer => {
-      const value = await nsClient.getPointer(pointer);
-      snapshot = {...value, ...snapshot};
+    const snapshotParts = await Promise.all(
+      query.pointers.map(p => nsClient.getPointer(p))
+    );
+    snapshotParts.forEach(part => {
+      Object.assign(snapshot, part);
     });
 
     return this.responseFormatter.formatSnapshot(snapshot, query);

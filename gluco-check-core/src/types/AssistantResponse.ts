@@ -9,5 +9,5 @@
  * {SSML: "120 and stable...", timestamp: 1233556, locale: "en-US"}
  */
 export default class AssistantResponse {
-  constructor(public SSML: string, public timestamp: number, public locale: string) {}
+  constructor(public SSML: string, public locale: string) {}
 }

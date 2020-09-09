@@ -1,0 +1,3 @@
+Don't forget to 'build' this package after updating translations!
+
+Translations in the .yaml files need to be compiled to .json to be available to the other packages.

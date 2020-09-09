@@ -10,7 +10,11 @@
   "private": true,
   "scripts": {
     "purge": "rimraf node_modules/",
-    "test":":",
-    "build":":"
+    "test": "yarn build && echo Package gluco-check-common has no tests.",
+    "build": "yarn node compile-yaml.js",
+    "postinstall": "yarn build"
+  },
+  "dependencies": {
+    "yamljs": "^0.3.0"
   }
 }

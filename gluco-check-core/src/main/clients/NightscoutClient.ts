@@ -1,42 +1,41 @@
+// HTTP response cache can contain 'any' types
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+// FIXME: Required because of: https://github.com/axios/axios/issues/3219
 /// <reference lib="DOM" />
-// FIXME: Upgrade Axios to remove ref to DOM
-// Bug: https://github.com/axios/axios/issues/3219
 
 import axios, {AxiosRequestConfig} from 'axios';
 import NightscoutProps from '../../types/NightscoutProps';
 import {URL} from 'url';
-import {
-  BloodSugar,
-  CannulaAge,
-  SensorAge,
-  DeviceStatus,
-} from './NightscoutClient-Queries';
+import * as QueryConfig from './NightscoutClient-Queries';
 import {DiabetesPointer} from '../../types/DiabetesPointer';
 import {ErrorTypes} from '../../types/ErrorTypes';
+import {logger} from 'firebase-functions';
 
 /**
  * Provides methods for querying a Nightscout site
  */
 export default class NightscoutClient {
-  constructor(private nightscout: NightscoutProps) {}
+  constructor(private nightscout: NightscoutProps) {
+    logger.debug('Initializing a NightscoutClient for:', nightscout.url);
+  }
   private cache: any = {};
 
   async getPointer(pointer: DiabetesPointer) {
     switch (pointer) {
       case DiabetesPointer.BloodSugar:
-        return await this.doApiCall(BloodSugar);
+        return await this.doApiCall(QueryConfig.BloodSugar);
 
       case DiabetesPointer.CarbsOnBoard:
       case DiabetesPointer.InsulinOnBoard:
-        return await this.doApiCall(DeviceStatus);
+      case DiabetesPointer.PumpBattery:
+        return await this.doApiCall(QueryConfig.DeviceStatus);
 
       case DiabetesPointer.SensorAge:
-        return await this.doApiCall(SensorAge);
+        return await this.doApiCall(QueryConfig.SensorAge);
 
       case DiabetesPointer.CannulaAge:
-        return await this.doApiCall(CannulaAge);
+        return await this.doApiCall(QueryConfig.CannulaAge);
 
       default:
         throw `${pointer} has no associated NightscoutQuery`;
@@ -61,6 +60,7 @@ export default class NightscoutClient {
     try {
       // Send request
       const response = await axios.request(request);
+      logger.debug(`NS Response(${query.pointers}):`, response.data);
 
       // Inspect response
       if (response.status === 200) {
@@ -68,6 +68,8 @@ export default class NightscoutClient {
         this.cache[query.path] = data;
         return query.callback(data);
       }
+
+      throw `Unexpected: Nightscout responded with ${response.status}`;
 
       // Handle errors
     } catch (error) {

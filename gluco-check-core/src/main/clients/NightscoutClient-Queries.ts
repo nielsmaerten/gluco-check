@@ -1,4 +1,6 @@
+// Because data returned from an axios endpoint is always 'any':
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 import {GlucoseTrend} from '../../types/GlucoseTrend';
 import {DiabetesPointer} from '../../types/DiabetesPointer';
 
@@ -11,47 +13,52 @@ import {DiabetesPointer} from '../../types/DiabetesPointer';
  */
 export const BloodSugar = {
   pointers: DiabetesPointer.BloodSugar,
-  path: '/api/v1/entries/current.json',
+  path: '/api/v1/entries/current',
   params: {},
   callback: (data: any) => {
     return {
       glucoseTrend: parseNightscoutTrend(data.direction),
       glucoseValueMgDl: data.sgv || data.mbg || data.cal || data.etc,
+      timestamp: data.date,
     };
   },
 };
 
 export const DeviceStatus = {
-  pointers: [DiabetesPointer.CarbsOnBoard, DiabetesPointer.InsulinOnBoard],
-  path: '/api/v1/devicestatus.json',
-  params: {count: 1},
+  pointers: [
+    DiabetesPointer.CarbsOnBoard,
+    DiabetesPointer.InsulinOnBoard,
+    DiabetesPointer.PumpBattery,
+  ],
+  path: '/api/v1/devicestatus',
+  params: {sort$desc: 'created_at', count: 1},
   callback: (data: any) => {
     return {
       carbsOnBoard: data.openaps.suggested.COB,
       insulinOnBoard: data.openaps.iob.iob,
+      pumpBattery: data.pump.battery.percent,
+      timestamp: new Date(data.created_at).getTime(),
     };
   },
 };
 
 export const CannulaAge = {
   pointers: [DiabetesPointer.CannulaAge],
-  path: '/api/v3/treatments.json',
-  params: {eventType: 'Site Change'},
+  path: '/api/v3/treatments',
+  params: {eventType: 'Site Change', sort$desc: 'created_at', limit: 1},
   callback: (data: any) => {
     return {
       cannulaInserted: new Date(data.created_at).getTime(),
-      sensorInserted: new Date(data.created_at).getTime(),
     };
   },
 };
 
 export const SensorAge = {
   pointers: [DiabetesPointer.SensorAge],
-  path: '/api/v3/treatments.json',
-  params: {eventType: 'Sensor Change'},
+  path: '/api/v3/treatments',
+  params: {eventType: 'Sensor Change', sort$desc: 'created_at', limit: 1},
   callback: (data: any) => {
     return {
-      cannulaInserted: new Date(data.created_at).getTime(),
       sensorInserted: new Date(data.created_at).getTime(),
     };
   },

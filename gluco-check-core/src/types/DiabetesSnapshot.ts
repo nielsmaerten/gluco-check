@@ -26,6 +26,7 @@ export default class DiabetesSnapshot {
   // Sensor and pump
   sensorInserted?: number;
   cannulaInserted?: number;
+  pumpBattery?: number;
 
   constructor(timestamp: number) {
     this.timestamp = timestamp;

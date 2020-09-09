@@ -1,7 +1,7 @@
 import {ConversationV3} from '@assistant/conversation';
 
-export default class AuthTokenDecoder {
-  async decodeGoogleUserToken(conversation: ConversationV3) {
+module.exports = {
+  decodeGoogleUserToken: async (conversation: ConversationV3) => {
     Object.assign(conversation.user, {
       params: {
         tokenPayload: {
@@ -9,5 +9,5 @@ export default class AuthTokenDecoder {
         },
       },
     });
-  }
-}
+  },
+};

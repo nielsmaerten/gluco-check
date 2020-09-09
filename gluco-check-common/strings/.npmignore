@@ -1,0 +1,2 @@
+# json translation files should be included in the package when it is deployed
+!*.json

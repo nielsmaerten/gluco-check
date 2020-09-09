@@ -1,18 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import 'reflect-metadata';
-import ConversationDecoder from '../../src/main/core/ConversationDecoder';
-import {DiabetesPointer} from '../../src/types/DiabetesPointer';
-import DiabetesQuery from '../../src/types/DiabetesQuery';
+import ConversationDecoder from '../../../../src/main/core/ConversationDecoder';
+import {DiabetesPointer} from '../../../../src/types/DiabetesPointer';
+import DiabetesQuery from '../../../../src/types/DiabetesQuery';
 import {Container} from 'inversify';
-import UserProfileClient from '../../src/main/clients/UserProfileClient';
-import AuthTokenDecoder from '../../src/main/core/AuthTokenDecoder';
-import mock_AuthTokenDecoder from '../data/mocks/AuthTokenDecoder';
-import mock_UserProfileClient from '../data/mocks/UserProfileClient';
+import UserProfileClient from '../../../../src/main/clients/UserProfileClient';
+import AuthTokenDecoder from '../../../../src/main/core/AuthTokenDecoder';
+import stub_AuthTokenDecoder = require('../../../stubs/AuthTokenDecoder');
+import stub_UserProfileClient from '../../../stubs/UserProfileClient';
 
 describe('Conversation Decoder', () => {
   const testConversations = {
-    custom: require('../data/conversations/custom_pointers').requestJson,
-    default: require('../data/conversations/default_pointers').requestJson,
+    custom: require('../../../http-examples/requests/custom_pointers').requestJson,
+    default: require('../../../http-examples/requests/default_pointers').requestJson,
   };
   let mainInvocationResult: DiabetesQuery;
   let deepInvocationResult: DiabetesQuery;
@@ -58,10 +58,9 @@ describe('Conversation Decoder', () => {
 
 function getTestContainer(userExists = true) {
   const c = new Container();
+  const _stub_UserProfileClient = new stub_UserProfileClient(userExists);
   c.bind(ConversationDecoder).toSelf();
-  c.bind(AuthTokenDecoder).toConstantValue(new mock_AuthTokenDecoder() as any);
-  c.bind(UserProfileClient).toConstantValue(
-    new mock_UserProfileClient(userExists) as any
-  );
+  c.bind(AuthTokenDecoder).toConstantValue(stub_AuthTokenDecoder as any);
+  c.bind(UserProfileClient).toConstantValue(_stub_UserProfileClient as any);
   return c;
 }
