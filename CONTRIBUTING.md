@@ -76,11 +76,11 @@ Gluco Check's webhooks are 2 [Firebase Functions]:
 
 [firebase functions]: https://firebase.google.com
 
-#### validateUrl
+##### validateUrl
 
 Used by the web interface to check if the Nightscout URL a user has entered is valid.
 
-#### conversation
+##### conversation
 
 Called by Google Actions. When a request comes in, it is routed to the `core` package for processing.
 
