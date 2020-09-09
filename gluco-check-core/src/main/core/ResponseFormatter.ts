@@ -83,6 +83,7 @@ function humanizePointer(
 
     case DiabetesPointer.SensorAge:
       return Humanizer.formatSensorAge(params);
+
     case DiabetesPointer.PumpBattery:
       return Humanizer.formatPumpBattery(params);
 
