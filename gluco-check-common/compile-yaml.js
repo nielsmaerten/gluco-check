@@ -4,6 +4,8 @@ const fs = require("fs");
 const path = require("path");
 const glob = require("glob");
 
+// Convert all .yaml files to .json
+// Trim translation strings
 glob.sync("**/*.yaml").forEach((yamlFile) => {
   const dir = path.dirname(yamlFile);
   const outFile = path.basename(yamlFile, ".yaml") + ".json";
