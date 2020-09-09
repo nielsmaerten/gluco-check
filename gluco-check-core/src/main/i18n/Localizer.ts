@@ -41,17 +41,17 @@ export default class Localizer {
       // Fallback to generic language bundle if not found
       const fallback = locale.substr(0, 2);
       logger.warn(
-        `I18Next: No exact translation for ${locale}.`,
+        `[Localizer.I18Next]: No exact translation for ${locale}.`,
         `Attempting fallback to ${fallback}`
       );
       resourceBundle = this.importResources(fallback);
-      logger.info('I18next: fallback successful');
+      logger.info('[Localizer.I18Next]: Fallback successful');
     }
 
     // Add the bundle to i18next (using default namespace 'translation')
     this.loadedLocales.add(locale);
     i18next.addResourceBundle(locale, 'translation', resourceBundle);
-    logger.debug(`Loaded translation for ${locale}`);
+    logger.debug(`[Localizer.I18Next]: Translations for ${locale} have been loaded`);
   }
 
   private importResources(locale: string) {

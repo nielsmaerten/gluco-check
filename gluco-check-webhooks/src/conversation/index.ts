@@ -18,7 +18,7 @@ export default class ConversationHandler {
   private app: OmniHandler & ConversationV3App<ConversationV3>;
 
   private constructor() {
-    functions.logger.debug('Initializing new Conversation Handler');
+    functions.logger.debug('[Webhook]: Initializing new ConversationHandler');
     this.app = conversation();
     this.registerHandlers();
   }

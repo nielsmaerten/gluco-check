@@ -140,10 +140,13 @@ async function loadDayJsLocale(locale: string): Promise<string> {
     return locale;
   } catch (error) {
     // Attempt loading the fallback
-    logger.warn(`DayJS: no locale for '${locale}'. Attempting fallback to '${fallback}'`);
+    logger.warn(
+      `[Humanizer.DayJS]: No locale for '${locale}'.`,
+      `Attempting fallback to '${fallback}'`
+    );
     await import(`dayjs/locale/${fallback}`);
     loadedDayJsLocales.add(fallback);
-    logger.info('DayJs: Fallback successful');
+    logger.info('[Humanizer.DayJs]: Fallback successful');
     return fallback;
   }
 }
