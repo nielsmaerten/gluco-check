@@ -5,7 +5,7 @@ import {logger} from 'firebase-functions';
 @injectable()
 export default class FirebaseClient {
   constructor() {
-    logger.debug('Initializing Firebase App');
+    logger.debug('[FirebaseClient]: Initializing Firebase App');
     initializeApp();
   }
 

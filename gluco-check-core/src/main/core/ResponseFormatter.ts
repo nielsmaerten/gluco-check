@@ -27,7 +27,7 @@ export default class ResponseFormatter {
     snapshot: DiabetesSnapshot,
     query: DiabetesQuery
   ): Promise<AssistantResponse> {
-    logger.debug('Rendering response using snapshot:', snapshot);
+    logger.debug('[ResponseFormatter]: Rendering', snapshot);
     // Wait until the required language has been loaded
     await this.localizer.ensureLocale(query.locale);
 
