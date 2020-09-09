@@ -16,7 +16,7 @@ export default class Localizer {
   private loadedLocales = new Set<string>();
 
   constructor() {
-    logger.debug('Initializing i18next');
+    logger.debug('I18Next: Initializing');
     const debug = false;
     //const debug = process.env.NODE_ENV === 'test';
 
@@ -39,14 +39,19 @@ export default class Localizer {
       resourceBundle = this.importResources(locale);
     } catch {
       // Fallback to generic language bundle if not found
-      logger.warn(`No exact translations for ${locale}. Attempting fallback`);
-      resourceBundle = this.importResources(locale.substr(0, 2));
+      const fallback = locale.substr(0, 2);
+      logger.warn(
+        `I18Next: No exact translation for ${locale}.`,
+        `Attempting fallback to ${fallback}`
+      );
+      resourceBundle = this.importResources(fallback);
+      logger.info('I18next: fallback successful');
     }
 
-    // Add the bundle to i18next
+    // Add the bundle to i18next (using default namespace 'translation')
     this.loadedLocales.add(locale);
     i18next.addResourceBundle(locale, 'translation', resourceBundle);
-    logger.debug(`Loaded translations for ${locale}`);
+    logger.debug(`Loaded translation for ${locale}`);
   }
 
   private importResources(locale: string) {

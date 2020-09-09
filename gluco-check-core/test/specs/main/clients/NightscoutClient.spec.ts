@@ -40,7 +40,7 @@ describe('NightscoutClient', () => {
       glucoseTrend: expected.glucoseTrend,
       glucoseValueMgDl: expected.glucoseValue(),
     });
-    expect(data).toHaveProperty('timestamp');
+    expect(data.timestamp).toBeDefined();
   });
 
   it('does not repeat api calls', async () => {
