@@ -10,15 +10,13 @@
  */
 import FormatParams from '../../types/FormatParams';
 import {GlucoseTrend} from '../../types/GlucoseTrend';
-import {i18next} from './Localizer';
-import {logger} from 'firebase-functions';
+import {i18next, loadDayJsLocale} from './Localizer';
 
 import dayjs = require('dayjs');
 import relativeTime = require('dayjs/plugin/relativeTime');
 dayjs.extend(relativeTime);
 
 //#region Humanizer Functions
-
 export async function formatBloodSugar(params: FormatParams): Promise<string> {
   const ctx = {
     value: params.snapshot.glucoseValue(),
@@ -85,7 +83,6 @@ export async function formatPumpBattery(params: FormatParams): Promise<string> {
   const key = 'assistant_responses.pump_battery';
   return i18next.getFixedT(params.locale)(key, ctx);
 }
-
 //#endregion
 
 /**
@@ -117,34 +114,3 @@ function round(v?: number, precision = 1) {
   precision = Math.pow(10, precision);
   return Math.round(v * precision) / precision;
 }
-
-/**
- * Extends DayJs with translations so that it can
- * convert timestamps to human form in the specified locale.
- * 300000 ==> '5 minutes'
- * @returns The id of the locale that was loaded. Pass this id to dayjs(foo).locale(id)
- */
-async function loadDayJsLocale(locale: string): Promise<string> {
-  // DayJs uses lowercase to identify its locales
-  locale = locale.toLowerCase();
-
-  // Bail if locale (or its fallback) was loaded previously
-  if (loadedDayJsLocales.has(locale)) return locale;
-  const fallback = locale.substr(0, 2);
-  if (loadedDayJsLocales.has(fallback)) return fallback;
-
-  try {
-    // Attempt loading the exact locale
-    await import(`dayjs/locale/${locale}`);
-    loadedDayJsLocales.add(locale);
-    return locale;
-  } catch (error) {
-    // Attempt loading the fallback
-    logger.warn(`DayJS: no locale for '${locale}'. Attempting fallback to '${fallback}'`);
-    await import(`dayjs/locale/${fallback}`);
-    loadedDayJsLocales.add(fallback);
-    logger.info('DayJs: Fallback successful');
-    return fallback;
-  }
-}
-const loadedDayJsLocales = new Set<string>();

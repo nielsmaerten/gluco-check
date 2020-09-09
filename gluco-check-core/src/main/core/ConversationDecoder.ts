@@ -32,15 +32,23 @@ export default class ConversationDecoder {
     const user = await this.userProfileClient.getUser(userId);
 
     if (!user.exists) {
-      logger.warn(`'${userId}' invoked Gluco Check but does not exist in db`);
+      logger.warn(
+        `[ConversationDecoder]: '${userId}'`,
+        'invoked Gluco Check but does not exist in db'
+      );
       user.defaultPointers = [DiabetesPointer.BloodSugar];
     }
 
     // Build DiabetesQuery object with all info required to respond to the user
     const diabetesPointers = await this.getPointers(conv, user);
     const diabetesQuery = new DiabetesQuery(user, locale, diabetesPointers);
-    user.exists && logger.debug('Processing diabetes query:', diabetesQuery);
-    logger.info(`'${user.userId}' requested: ${diabetesQuery.pointers}`);
+    if (user.exists) {
+      logger.debug('[ConversationDecoder]: Processing query:', diabetesQuery);
+    }
+    logger.info(
+      `[ConversationDecoder]: ${user.userId.substr(0, 4)}...`,
+      `requested: ${diabetesQuery.pointers}`
+    );
 
     return diabetesQuery;
   }

@@ -27,7 +27,7 @@ export default class ResponseFormatter {
     snapshot: DiabetesSnapshot,
     query: DiabetesQuery
   ): Promise<AssistantResponse> {
-    logger.debug('Rendering response using snapshot:', snapshot);
+    logger.debug('[ResponseFormatter]: Rendering', snapshot);
     // Wait until the required language has been loaded
     await this.localizer.ensureLocale(query.locale);
 
@@ -50,7 +50,7 @@ export default class ResponseFormatter {
         sayPointerName: query.pointers.length > 1,
       };
       const humanPointer = await humanizePointer(pointer, params);
-      logger.info(humanPointer);
+      logger.info('[ResponseFormatter]:', humanPointer);
       return `<s>${humanPointer} </s>`; // Note the space at the end of each pointer!
     });
 

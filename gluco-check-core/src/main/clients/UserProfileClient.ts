@@ -11,7 +11,7 @@ export default class UserProfileClient {
   private users = this.firebaseClient.firestore().collection('users');
 
   constructor(private firebaseClient: FirebaseClient) {
-    logger.info('Initializing new UserProfileClient');
+    logger.info('[UserProfileClient]: Initializing new instance');
   }
 
   async getUser(userId: string): Promise<User> {

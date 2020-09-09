@@ -13,11 +13,11 @@ export default class AuthTokenDecoder {
   private authHeaderProcessor = new AuthHeaderProcessor();
 
   constructor() {
-    logger.debug('Initializing new AuthTokenDecoder');
+    logger.debug('[AuthTokenDecoder]: Initializing new instance');
     this.clientId = config().auth.client_id;
 
     if (!this.clientId)
-      throw 'Firebase Functions config must define an auth.client_id property';
+      throw '[AuthTokenDecoder]: Firebase Functions config must define an auth.client_id property';
   }
 
   async decodeGoogleUserToken(conversation: ConversationV3) {

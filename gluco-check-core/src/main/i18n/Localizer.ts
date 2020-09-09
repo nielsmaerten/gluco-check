@@ -16,7 +16,7 @@ export default class Localizer {
   private loadedLocales = new Set<string>();
 
   constructor() {
-    logger.debug('I18Next: Initializing');
+    logger.debug('[Localizer]: Initializing new instance');
     const debug = false;
     //const debug = process.env.NODE_ENV === 'test';
 
@@ -40,18 +40,17 @@ export default class Localizer {
     } catch {
       // Fallback to generic language bundle if not found
       const fallback = locale.substr(0, 2);
-      logger.warn(
-        `I18Next: No exact translation for ${locale}.`,
+      logger.debug(
+        `[Localizer.I18Next]: No exact translation for ${locale}.`,
         `Attempting fallback to ${fallback}`
       );
       resourceBundle = this.importResources(fallback);
-      logger.info('I18next: fallback successful');
     }
 
     // Add the bundle to i18next (using default namespace 'translation')
     this.loadedLocales.add(locale);
     i18next.addResourceBundle(locale, 'translation', resourceBundle);
-    logger.debug(`Loaded translation for ${locale}`);
+    logger.debug(`[Localizer.I18Next]: Translations for ${locale} have been loaded`);
   }
 
   private importResources(locale: string) {
@@ -59,3 +58,37 @@ export default class Localizer {
     return require(`gluco-check-common/strings/${locale}/${resourceName}`);
   }
 }
+
+/**
+ * Extends DayJs with translations so that it can
+ * convert timestamps to human form in the specified locale.
+ * 300000 ==> '5 minutes'
+ * @returns The id of the locale that was loaded. Pass this id to dayjs(foo).locale(id)
+ */
+export async function loadDayJsLocale(locale: string): Promise<string> {
+  // DayJs uses lowercase to identify its locales
+  locale = locale.toLowerCase();
+
+  // Bail if locale (or its fallback) was loaded previously
+  if (loadedDayJsLocales.has(locale)) return locale;
+  const fallback = locale.substr(0, 2);
+  if (loadedDayJsLocales.has(fallback)) return fallback;
+
+  try {
+    // Attempt loading the exact locale
+    await import(`dayjs/locale/${locale}`);
+    loadedDayJsLocales.add(locale);
+    return locale;
+  } catch (error) {
+    // Attempt loading the fallback
+    logger.warn(
+      `[Localizer.DayJS]: No locale for '${locale}'.`,
+      `Attempting fallback to '${fallback}'`
+    );
+    await import(`dayjs/locale/${fallback}`);
+    loadedDayJsLocales.add(fallback);
+    logger.info('[Localizer.DayJs]: Fallback successful');
+    return fallback;
+  }
+}
+const loadedDayJsLocales = new Set<string>();

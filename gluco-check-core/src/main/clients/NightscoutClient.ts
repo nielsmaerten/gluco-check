@@ -17,7 +17,7 @@ import {logger} from 'firebase-functions';
  */
 export default class NightscoutClient {
   constructor(private nightscout: NightscoutProps) {
-    logger.debug('Initializing a NightscoutClient for:', nightscout.url);
+    logger.debug('[NightscoutClient]: Initializing for:', nightscout.url);
   }
   private cache: any = {};
 
@@ -38,7 +38,7 @@ export default class NightscoutClient {
         return await this.doApiCall(QueryConfig.CannulaAge);
 
       default:
-        throw `${pointer} has no associated NightscoutQuery`;
+        throw `[NightscoutClient]: ${pointer} has no associated NightscoutQuery`;
     }
   }
 
@@ -60,7 +60,7 @@ export default class NightscoutClient {
     try {
       // Send request
       const response = await axios.request(request);
-      logger.debug(`NS Response(${query.pointers}):`, response.data);
+      logger.debug(`[NightscoutClient]: Response(${query.pointers}):`, response.data);
 
       // Inspect response
       if (response.status === 200) {
@@ -69,7 +69,7 @@ export default class NightscoutClient {
         return query.callback(data);
       }
 
-      throw `Unexpected: Nightscout responded with ${response.status}`;
+      throw `[NightscoutClient]: Unexpected http response status: ${response.status}`;
 
       // Handle errors
     } catch (error) {
