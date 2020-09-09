@@ -1,50 +1,38 @@
 [![Code Style: Google](https://img.shields.io/badge/code%20style-google-blueviolet.svg)](https://github.com/google/gts)
+// TODO: Add more badges here (test coverage, tech stack identifiers, translation, ...)
 
 # Gluco Check
 
-Gluco Check will be the successor to "Nightscout Assistant" (https://github.com/nielsmaerten/nightscout-assistant)
+(Formerly Nightscout Assistant & Nightscout Status)
 
-## Project Goals
+## "Hey Google, ask Gluco Check what my blood sugar is"
 
-- Faster responses
-- Easier L10N
-- Support for more queries (eg COB, IOB, Sensor age, ...)
+_Gluco Check_ lets you check your current blood sugar using your voice.  
+It works on all Google Assistant devices, including Google Home and Google Nest Hub.
 
-## This is a work in progress
+## Visit https://diabase.app to get started
 
-No ETA just yet. But feel free to subscribe to the repo for updates :)
+You'll need your own Nightscout site to use Gluco Check.  
+Don't have Nightscout yet? Check out http://www.nightscout.info
 
-## Notes, ToDos, etc
+### Thing you can ask:
 
-GlucoCheck will consist of a few different node packages:
+"Hey Google, ask Gluco Check..."
 
-- _gluco-check-webhook_
+- my blood sugar / my BG / my glucose / ...
+- my insulin on board / IOB / insulin
+- my carbs on board / COB / carbs
+- pump battery
+- How old is my cannula / When did I insert my cannula?
+- What's the sensor's age?
+- Everything / all values
 
-  - Google Assistant works by passing an HTTP request to a webhook when a user asks the app a question.  
-    The webhook should then answer within 5s, but ideally much faster.
-  - So, _gluco-check-webhook_ will be a Firebase Cloud Function listening for those requests.
-  - When a request comes in, Google Actions provides a 'conversation' object as a parameter. This will be passed on to the next package: _gluco-check-core_
+## Contributing
 
-- _gluco-check-core_ will contain the core logic of the app.  
-  It's job is to translate a Conversation object (representing a question asked by a user) into a response that Google Assistant should say back.
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-- _gluco-check-web_ will be the web interface. This is where users will enter the URL to their nightscout site, set the preferred glucose unit, etc.
+Please make sure to update tests as appropriate.
 
-- _gluco-check-strings_ will be shared among the packages above, and will contain all localized strings used by the app. This will be the package that's going to be managed by CrowdIn. I intend to use Lerna to share the strings package with other packages without having to resort to actually publishing it to a registry
+## License
 
-### Gluco Check Core:
-
-When a Google Actions Conversation object comes in, it will be decoded into a UserQuery. This UserQuery will then represent what the user is actually asking for. This could be:
-
-- just the current glucose level
-- the current COB value
-- all available values
-- (in some future version?) the glucose level of someone else?
-
-Then, the UserQuery should be resolved into a UserReply. But this is basically just speech XML, or a string we can get Google Assistant to say back.
-
-How do we get from Query to Reply? By reaching out to Nightscout**. Depending on the Query, we'll need to do one or more API calls. These calls should then result into a UserSnapshot.
-
-A UserSnapshot represents the diabetes of a person at a certain point in time. It contains things like glucose, cob, etc. We can use a UserSnapshot to build a Reply.
-
-** I'd like to be able to add different glucose sharing services in later versions as well
+[MIT](./LICENSE)
