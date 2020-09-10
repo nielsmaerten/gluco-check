@@ -81,11 +81,12 @@ Run `yarn deploy` to deploy the webhooks to Firebase.
 
 ### gluco-check-core
 
-_(the snippets below are Mermaid SequenceDiagrams, but GitHub can't display them yet. Open this file in a supported editor like [Typora] or [Mermaid Live] to see them)_
+_(the snippets below are Mermaid SequenceDiagrams, but GitHub can't display them yet. Open this file in an editor like [Typora] to see them, or install this [browser extension])_
 
 When a user says: _'Ok Google, talk to Gluco Check'_, the Google Assistant invokes our `webhook` to get a response. The incoming HTTP request is transformed into a `Conversation` object by the Actions SDK:
 
-```sequenceDiagram
+```mermaid
+sequenceDiagram
 User->Google Actions: "'Ok Google, Talk to Gluco Check'"
 Google Actions->Webhook: HTTP Request
 Webhook->Core: JSON Conversation Object
@@ -97,7 +98,8 @@ Google Actions->User: "'103 and stable as of a minute ago'"
 
 When the `core` package receives a `Conversation`, it is first routed to the `ConversationDecoder`. The `ConversationDecoder` inspects the request to find out what exactly the user asked for. A user can ask for 1 or more `DiabetesPointers`. Blood sugar, Insulin on board and Sensor Age are all examples of `DiabetesPointers`. From the `DiabetesPointers`, the `ConversationDecoder` builds a `DiabetesQuery` and forwards it to `DiabetesQueryResolver`:
 
-```sequenceDiagram
+```mermaid
+sequenceDiagram
 Core->ConversationDecoder: Conversation
 Note right of ConversationDecoder: Extract requested DiabetesPointer(s)
 Note right of ConversationDecoder: 'DiabetesPointers' = iob, glucose, ...
@@ -111,7 +113,8 @@ DiabetesQueryResolver->Core: AssistantResponse
 
 The `DiabetesSnapshot` is now forwarded to the `ResponseFormatter`, which will turn it into text that the Google Assistant can say back in response to the user's question:
 
-```sequenceDiagram
+```mermaid
+sequenceDiagram
 Note left of DiabetesQueryResolver: DiabetsQuery comes in...
 DiabetesQueryResolver->Firebase: Lookup user
 Firebase->DiabetesQueryResolver: UserProfile
@@ -123,5 +126,4 @@ Note left of ResponseFormatter: Builds response in the user's locale
 ResponseFormatter->DiabetesQueryResolver: AssistantResponse
 ```
 
-[Mermaid Live]: https://mermaid-js.github.io/mermaid-live-editor/
 [Typora]: https://typora.io/
