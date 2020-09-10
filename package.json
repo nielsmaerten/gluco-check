@@ -11,7 +11,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn workspaces run lint",
+      "pre-push": "yarn workspaces run lint",
       "post-merge": "yarn workspace gluco-check-common build"
     }
   },
