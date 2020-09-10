@@ -81,7 +81,7 @@ Run `yarn deploy` to deploy the webhooks to Firebase.
 
 ### gluco-check-core
 
-_(the snippets below are Mermaid SequenceDiagrams, but GitHub can't display them yet. Open this file in an editor like [Typora] to see them, or install this [browser extension])_
+_(the snippets below are Mermaid Diagrams, but GitHub can't display them yet. Open this file in an editor like [Typora] to see them, or install this [browser extension])_
 
 When a user says: _'Ok Google, talk to Gluco Check'_, the Google Assistant invokes our `webhook` to get a response. The incoming HTTP request is transformed into a `Conversation` object by the Actions SDK:
 
@@ -126,4 +126,5 @@ Note left of ResponseFormatter: Builds response in the user's locale
 ResponseFormatter->DiabetesQueryResolver: AssistantResponse
 ```
 
-[Typora]: https://typora.io/
+[browser extension]: https://github.com/BackMarket/github-mermaid-extension
+[typora]: https://typora.io/
