@@ -45,7 +45,7 @@ Running `yarn` installs 3rd party dependencies, and links the packages together 
 
 ### gluco-check-action
 
-This action is built using [Google Actions Builder] and exported to YAML files using the [`gactions` CLI]. Using these YAML files, the CLI can also redeploy the entire action back to Google Cloud.
+This action is built using [Google Actions Builder] and exported to YAML files using the [`gactions`] CLI. Using these YAML files, the CLI can also redeploy the entire action back to Google Cloud.
 
 There are 2 ways to invoke the Action:
 
@@ -59,43 +59,29 @@ Both invocations will result in the `webhook` being called. In case of deep invo
 
 ### gluco-check-common
 
-All translated strings live here.
+All translated strings live here. The YAML files in `common` should not be changed manually. Instead, [Crowdin] auto-updates them with new translations. To speed up cold starts, the other packages don't directly read the YAML files. Instead, they import JSON files with the same name.
 
-The YAML files in `common` should not be changed manually. Instead, [Crowdin] auto-updates them with new translations.
-
-To speed up cold starts, the other packages don't directly read the YAML files. Instead, they import JSON files with the same name.
-
-`yarn build` converts the YAML to JSON.  
-**Don't forget to rebuild after pulling new translations from Git.**
+`yarn build` converts the YAML to JSON.
 
 [crowdin]: (https://crowdin.com)
 
 ### gluco-check-webhook
 
-Gluco Check's webhooks are 2 [Firebase Functions]:
+There are two webhooks. They are deployed as [Firebase] HTTP functions.
 
-[firebase functions]: https://firebase.google.com
+[firebase]: https://firebase.google.com
 
-##### validateUrl
+- **validateUrl**:  
+  Used by the web interface to check if the Nightscout URL a user has entered is valid.
 
-Used by the web interface to check if the Nightscout URL a user has entered is valid.
+- **conversation**:  
+  Called by Google Actions. When a request comes in, it is routed to the `core` package for processing. (see further)
 
-##### conversation
-
-Called by Google Actions. When a request comes in, it is routed to the `core` package for processing.
-
-#### Deploying
-
-Run:
-
-```
-yarn deploy
-```
-
-Note: it's important to run the pre- and post-deploy hooks in `deploy-hooks.js`. Otherwise the `common` and `core` packages won't be available to `webhooks`.  
-`yarn build` will run the hooks automatically.
+Run `yarn deploy` to deploy the webhooks to Firebase.
 
 ### gluco-check-core
+
+_(the snippets below are Sequence Diagrams, but GitHub can't display them yet. Open this file in a supported editor like VSCode's Markdown Preview to see them)_
 
 When a user says: _'Ok Google, talk to Gluco Check'_, the Google Assistant invokes our `webhook` to get a response. The incoming HTTP request is transformed into a `Conversation` object by the Actions SDK:
 
@@ -109,7 +95,7 @@ Webhook->Google Actions: HTTP Response
 Google Actions->User: "'103 and stable as of a minute ago'"
 ```
 
-When the `core` package receives a `Conversation`, it is first routed to the `ConversationDecoder`. The `ConversationDecoder` inspects the request to find out what exactly the user asked for. The user can ask for 1 or more `DiabetesPointers`. Blood sugar, Insulin on board and Sensor Age are all examples of `DiabetesPointers`. From the `DiabetesPointers`, the `ConversationDecoder` builds a `DiabetesQuery` and forwards it to `DiabetesQueryResolver`:
+When the `core` package receives a `Conversation`, it is first routed to the `ConversationDecoder`. The `ConversationDecoder` inspects the request to find out what exactly the user asked for. A user can ask for 1 or more `DiabetesPointers`. Blood sugar, Insulin on board and Sensor Age are all examples of `DiabetesPointers`. From the `DiabetesPointers`, the `ConversationDecoder` builds a `DiabetesQuery` and forwards it to `DiabetesQueryResolver`:
 
 ```sequence
 Core->ConversationDecoder: Conversation
