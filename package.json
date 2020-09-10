@@ -9,12 +9,19 @@
       "**/gts/**"
     ]
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn workspaces run lint",
+      "post-merge": "yarn workspace gluco-check-common build"
+    }
+  },
   "scripts": {
     "purge": "yarn workspaces run purge && rimraf node_modules/ && echo Run yarn to reinstall dependencies.",
     "build": "yarn workspaces run build",
     "test": "yarn workspaces run test"
   },
   "devDependencies": {
+    "husky": "^4.3.0",
     "rimraf": "^3.0.2"
   }
 }
