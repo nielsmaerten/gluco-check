@@ -10,9 +10,11 @@
 ### 🙋‍♀️ Who's it for?
 
 - For myself, in case I need to get reacquainted with the project after working on something else for a while
-- For you! If you want to contribute to Gluco Check, or want to run it on your own.
+- For you! If you want to contribute to Gluco Check, or want to run it on your own
 
-## 🌱 Setting up your dev environment
+---
+
+## Setting up your dev environment
 
 ### 🔧 Tools
 
@@ -35,13 +37,15 @@ yarn
 
 Gluco Check consists of multiple node packages. Each packages serves a well defined function, and is explained in more detail below.
 
-Running `yarn` installs 3rd party dependencies, and links the packages together (they can depend on each other)
+Running `yarn` installs 3rd party dependencies, and links the packages together (they can depend on each other).
 
-## 🧱 Architecture
+---
 
-### gluco-check-actions
+## Architecture
 
-This action is built using [Google Actions Builder] and exported to YAML files using the [`gactions` CLI]. Using these YAML files, the CLI can also redeploy the entire action back to Google Cloud.
+### gluco-check-action
+
+This action is built using [Google Actions Builder] and exported to YAML files using the [`gactions`] CLI. Using these YAML files, the CLI can also redeploy the entire action back to Google Cloud.
 
 There are 2 ways to invoke the Action:
 
@@ -55,46 +59,72 @@ Both invocations will result in the `webhook` being called. In case of deep invo
 
 ### gluco-check-common
 
-All translated strings live here.
+All translated strings live here. The YAML files in `common` should not be changed manually. Instead, [Crowdin] auto-updates them with new translations. To speed up cold starts, the other packages don't directly read the YAML files. Instead, they import JSON files with the same name.
 
-The YAML files in `common` should not be changed manually. Instead, [Crowdin] auto-updates them with new translations.
-
-To speed up cold starts, the other packages don't directly read the YAML files. Instead, they import JSON files with the same name.
-
-`yarn build` converts the YAML to JSON.  
-**Don't forget to rebuild after pulling new translations from Git.**
-
-```
-// TODO: Maybe add a git hook to run yarn build after each pull?
-```
+`yarn build` converts the YAML to JSON.
 
 [crowdin]: (https://crowdin.com)
 
 ### gluco-check-webhook
 
-Gluco Check's webhooks are 2 [Firebase Functions]:
+There are two webhooks. They are deployed as [Firebase] HTTP functions.
 
-[firebase functions]: https://firebase.google.com
+[firebase]: https://firebase.google.com
 
-##### validateUrl
+- **validateUrl**:  
+  Used by the web interface to check if the Nightscout URL a user has entered is valid.
 
-Used by the web interface to check if the Nightscout URL a user has entered is valid.
+- **conversation**:  
+  Called by Google Actions. When a request comes in, it is routed to the `core` package for processing. (see further)
 
-##### conversation
-
-Called by Google Actions. When a request comes in, it is routed to the `core` package for processing.
-
-#### Deploying
-
-Run:
-
-```
-yarn deploy
-```
-
-Note: it's important to run the pre- and post-deploy hooks in `deploy-hooks.js`. Otherwise the `common` and `core` packages won't be available to `webhooks`.  
-`yarn build` will run the hooks automatically.
+Run `yarn deploy` to deploy the webhooks to Firebase.
 
 ### gluco-check-core
 
-# TODO :)
+_(the snippets below are Mermaid Diagrams, but GitHub can't display them yet. Open this file in an editor like [Typora] to see them, or install this [browser extension])_
+
+When a user says: _'Ok Google, talk to Gluco Check'_, the Google Assistant invokes our `webhook` to get a response. The incoming HTTP request is transformed into a `Conversation` object by the Actions SDK:
+
+```mermaid
+sequenceDiagram
+User->>Google Actions: 'Ok Google, Talk to Gluco Check'
+Google Actions->>Webhook: HTTP Request
+Webhook->>Core: JSON Conversation Object
+Note left of Core: Processing...
+Core->>Webhook: Conversation Response
+Webhook->>Google Actions: HTTP Response
+Google Actions->>User: '103 and stable as of a minute ago'
+```
+
+When the `core` package receives a `Conversation`, it is first routed to the `ConversationDecoder`. The `ConversationDecoder` inspects the request to find out what exactly the user asked for. A user can ask for 1 or more `DiabetesPointers`. Blood sugar, Insulin on board and Sensor Age are all examples of `DiabetesPointers`. From the `DiabetesPointers`, the `ConversationDecoder` builds a `DiabetesQuery` and forwards it to `DiabetesQueryResolver`:
+
+```mermaid
+sequenceDiagram
+Core->>ConversationDecoder: Conversation
+Note right of ConversationDecoder: Extract requested DiabetesPointer(s)
+Note right of ConversationDecoder: 'DiabetesPointers' = iob, glucose, ...
+ConversationDecoder->>Core: DiabetesQuery
+Core->>DiabetesQueryResolver: DiabetesQuery
+Note left of DiabetesQueryResolver: Processing...
+DiabetesQueryResolver->>Core: AssistantResponse
+```
+
+`DiabetesQueryResolver` looks up the user in Firebase to find the URL to their Nightscout Site. It then uses the Nightscout API to query the requested data. From this, it constructs a `DiabetesSnapshot`. A `DiabetesSnapshot` is the state of the user's diabetes at a certain point in time. It may contains a timestamp, and the values for all `DiabetesPointers` the user has requested.
+
+The `DiabetesSnapshot` is now forwarded to the `ResponseFormatter`, which will turn it into text that the Google Assistant can say back in response to the user's question:
+
+```mermaid
+sequenceDiagram
+Note left of DiabetesQueryResolver: DiabetsQuery comes in...
+DiabetesQueryResolver->>Firebase: Lookup user
+Firebase->>DiabetesQueryResolver: UserProfile
+DiabetesQueryResolver->>Nightscout: Lookup requested data
+Nightscout->>DiabetesQueryResolver: Nightscout Data
+Note right of DiabetesQueryResolver: Builds a DiabetesSnapshot
+DiabetesQueryResolver->>ResponseFormatter: DiabetesSnapshot
+Note left of ResponseFormatter: Builds response in the user's locale
+ResponseFormatter->>DiabetesQueryResolver: AssistantResponse
+```
+
+[browser extension]: https://github.com/BackMarket/github-mermaid-extension
+[typora]: https://typora.io/
