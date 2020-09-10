@@ -87,26 +87,26 @@ When a user says: _'Ok Google, talk to Gluco Check'_, the Google Assistant invok
 
 ```mermaid
 sequenceDiagram
-User->Google Actions: "'Ok Google, Talk to Gluco Check'"
-Google Actions->Webhook: HTTP Request
-Webhook->Core: JSON Conversation Object
+User->>Google Actions: 'Ok Google, Talk to Gluco Check'
+Google Actions->>Webhook: HTTP Request
+Webhook->>Core: JSON Conversation Object
 Note left of Core: Processing...
-Core->Webhook: Conversation Response
-Webhook->Google Actions: HTTP Response
-Google Actions->User: "'103 and stable as of a minute ago'"
+Core->>Webhook: Conversation Response
+Webhook->>Google Actions: HTTP Response
+Google Actions->>User: '103 and stable as of a minute ago'
 ```
 
 When the `core` package receives a `Conversation`, it is first routed to the `ConversationDecoder`. The `ConversationDecoder` inspects the request to find out what exactly the user asked for. A user can ask for 1 or more `DiabetesPointers`. Blood sugar, Insulin on board and Sensor Age are all examples of `DiabetesPointers`. From the `DiabetesPointers`, the `ConversationDecoder` builds a `DiabetesQuery` and forwards it to `DiabetesQueryResolver`:
 
 ```mermaid
 sequenceDiagram
-Core->ConversationDecoder: Conversation
+Core->>ConversationDecoder: Conversation
 Note right of ConversationDecoder: Extract requested DiabetesPointer(s)
 Note right of ConversationDecoder: 'DiabetesPointers' = iob, glucose, ...
-ConversationDecoder->Core: DiabetesQuery
-Core->DiabetesQueryResolver: DiabetesQuery
+ConversationDecoder->>Core: DiabetesQuery
+Core->>DiabetesQueryResolver: DiabetesQuery
 Note left of DiabetesQueryResolver: Processing...
-DiabetesQueryResolver->Core: AssistantResponse
+DiabetesQueryResolver->>Core: AssistantResponse
 ```
 
 `DiabetesQueryResolver` looks up the user in Firebase to find the URL to their Nightscout Site. It then uses the Nightscout API to query the requested data. From this, it constructs a `DiabetesSnapshot`. A `DiabetesSnapshot` is the state of the user's diabetes at a certain point in time. It may contains a timestamp, and the values for all `DiabetesPointers` the user has requested.
@@ -116,14 +116,14 @@ The `DiabetesSnapshot` is now forwarded to the `ResponseFormatter`, which will t
 ```mermaid
 sequenceDiagram
 Note left of DiabetesQueryResolver: DiabetsQuery comes in...
-DiabetesQueryResolver->Firebase: Lookup user
-Firebase->DiabetesQueryResolver: UserProfile
-DiabetesQueryResolver->Nightscout: Lookup requested data
-Nightscout->DiabetesQueryResolver: Nightscout Data
+DiabetesQueryResolver->>Firebase: Lookup user
+Firebase->>DiabetesQueryResolver: UserProfile
+DiabetesQueryResolver->>Nightscout: Lookup requested data
+Nightscout->>DiabetesQueryResolver: Nightscout Data
 Note right of DiabetesQueryResolver: Builds a DiabetesSnapshot
-DiabetesQueryResolver->ResponseFormatter: DiabetesSnapshot
+DiabetesQueryResolver->>ResponseFormatter: DiabetesSnapshot
 Note left of ResponseFormatter: Builds response in the user's locale
-ResponseFormatter->DiabetesQueryResolver: AssistantResponse
+ResponseFormatter->>DiabetesQueryResolver: AssistantResponse
 ```
 
 [browser extension]: https://github.com/BackMarket/github-mermaid-extension
