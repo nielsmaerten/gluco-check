@@ -118,7 +118,7 @@ The `DiabetesSnapshot` is now forwarded to the `ResponseFormatter`, which will t
 
 ```mermaid
 sequenceDiagram
-Note left of DiabetesQueryResolver: DiabetsQuery comes in...
+Note left of DiabetesQueryResolver: DiabetesQuery comes in...
 DiabetesQueryResolver->>Firebase: Lookup user
 Firebase-->>DiabetesQueryResolver: UserProfile
 DiabetesQueryResolver->>Nightscout: Lookup requested data
