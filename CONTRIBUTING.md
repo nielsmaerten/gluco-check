@@ -35,8 +35,7 @@ In the repo's root folder, run:
 yarn
 ```
 
-Gluco Check consists of multiple node packages. Each packages serves a well defined function, and is explained in more detail below.
-
+Gluco Check consists of multiple node packages. Each packages serves a well defined function, and is explained in more detail below.  
 Running `yarn` installs 3rd party dependencies, and links the packages together (they can depend on each other).
 
 ---
@@ -55,7 +54,7 @@ There are 2 ways to invoke the Action:
 Both invocations will result in the `webhook` being called. In case of deep invocation, the HTTP request will also include the items the user has asked for.
 
 [google actions builder]: https://console.actions.google.com
-[`gactions` cli]: https://developers.google.com/assistant/conversational/df-asdk/actions-sdk/gactions-cli
+[`gactions`]: https://developers.google.com/assistant/conversational/df-asdk/actions-sdk/gactions-cli
 
 ### gluco-check-common
 
@@ -63,7 +62,7 @@ All translated strings live here. The YAML files in `common` should not be chang
 
 `yarn build` converts the YAML to JSON.
 
-[crowdin]: (https://crowdin.com)
+[Crowdin]: (https://crowdin.com)
 
 ### gluco-check-webhook
 
@@ -81,7 +80,11 @@ Run `yarn deploy` to deploy the webhooks to Firebase.
 
 ### gluco-check-core
 
-_(the snippets below are Mermaid Diagrams, but GitHub can't display them yet. Open this file in an editor like [Typora] to see them, or install this [browser extension])_
+_(the snippets below are [Mermaid] Diagrams, but GitHub can't display them yet. Open this file in an editor like [Typora] to see them, or install this [browser extension])_
+
+[Mermaid]: https://mermaid-js.github.io/mermaid-live-editor
+[browser extension]: https://github.com/BackMarket/github-mermaid-extension
+[Typora]: https://typora.io/
 
 When a user says: _'Ok Google, talk to Gluco Check'_, the Google Assistant invokes our `webhook` to get a response. The incoming HTTP request is transformed into a `Conversation` object by the Actions SDK:
 
@@ -91,9 +94,9 @@ User->>Google Actions: 'Ok Google, Talk to Gluco Check'
 Google Actions->>Webhook: HTTP Request
 Webhook->>Core: JSON Conversation Object
 Note left of Core: Processing...
-Core->>Webhook: Conversation Response
-Webhook->>Google Actions: HTTP Response
-Google Actions->>User: '103 and stable as of a minute ago'
+Core-->>Webhook: Conversation Response
+Webhook-->>Google Actions: HTTP Response
+Google Actions-->>User: '103 and stable as of a minute ago'
 ```
 
 When the `core` package receives a `Conversation`, it is first routed to the `ConversationDecoder`. The `ConversationDecoder` inspects the request to find out what exactly the user asked for. A user can ask for 1 or more `DiabetesPointers`. Blood sugar, Insulin on board and Sensor Age are all examples of `DiabetesPointers`. From the `DiabetesPointers`, the `ConversationDecoder` builds a `DiabetesQuery` and forwards it to `DiabetesQueryResolver`:
@@ -103,13 +106,13 @@ sequenceDiagram
 Core->>ConversationDecoder: Conversation
 Note right of ConversationDecoder: Extract requested DiabetesPointer(s)
 Note right of ConversationDecoder: 'DiabetesPointers' = iob, glucose, ...
-ConversationDecoder->>Core: DiabetesQuery
+ConversationDecoder-->>Core: DiabetesQuery
 Core->>DiabetesQueryResolver: DiabetesQuery
 Note left of DiabetesQueryResolver: Processing...
-DiabetesQueryResolver->>Core: AssistantResponse
+DiabetesQueryResolver-->>Core: AssistantResponse
 ```
 
-`DiabetesQueryResolver` looks up the user in Firebase to find the URL to their Nightscout Site. It then uses the Nightscout API to query the requested data. From this, it constructs a `DiabetesSnapshot`. A `DiabetesSnapshot` is the state of the user's diabetes at a certain point in time. It may contains a timestamp, and the values for all `DiabetesPointers` the user has requested.
+`DiabetesQueryResolver` looks up the user in Firebase to find the URL to their Nightscout site. It then uses the Nightscout API to query the requested data. From this, it constructs a `DiabetesSnapshot`. A `DiabetesSnapshot` is the state of the user's diabetes at a certain point in time. It contains a timestamp, and values for every `DiabetesPointer` the user requested.
 
 The `DiabetesSnapshot` is now forwarded to the `ResponseFormatter`, which will turn it into text that the Google Assistant can say back in response to the user's question:
 
@@ -117,14 +120,11 @@ The `DiabetesSnapshot` is now forwarded to the `ResponseFormatter`, which will t
 sequenceDiagram
 Note left of DiabetesQueryResolver: DiabetsQuery comes in...
 DiabetesQueryResolver->>Firebase: Lookup user
-Firebase->>DiabetesQueryResolver: UserProfile
+Firebase-->>DiabetesQueryResolver: UserProfile
 DiabetesQueryResolver->>Nightscout: Lookup requested data
-Nightscout->>DiabetesQueryResolver: Nightscout Data
+Nightscout-->>DiabetesQueryResolver: Nightscout Data
 Note right of DiabetesQueryResolver: Builds a DiabetesSnapshot
 DiabetesQueryResolver->>ResponseFormatter: DiabetesSnapshot
 Note left of ResponseFormatter: Builds response in the user's locale
-ResponseFormatter->>DiabetesQueryResolver: AssistantResponse
+ResponseFormatter-->>DiabetesQueryResolver: AssistantResponse
 ```
-
-[browser extension]: https://github.com/BackMarket/github-mermaid-extension
-[typora]: https://typora.io/
