@@ -1,13 +1,15 @@
 # Gluco Check
 
-## Visit https://diabase.app to get started.
+formerly Nightscout Assistant / Nightscout Status
 
-### Hey Google, ask Gluco Check what my blood sugar is
+## Hey Google, talk to Gluco Check
 
-> "102 and rising slowly as of 4 minutes ago."
+> "Blood sugar is 102 and rising slowly as of 4 minutes ago."
 
-_Gluco Check_ lets you check your current blood sugar using your voice.  
-It works on all Google Assistant devices, including Google Home and Google Nest Hub.
+## Bèta testing is now open
+
+Are you comfortable trying out new and (possibly) unstable features?  
+Message me on [Gitter](https://gitter.im/nielsmaerten)!
 
 ---
 
@@ -23,10 +25,11 @@ It works on all Google Assistant devices, including Google Home and Google Nest 
 - What's the sensor's age?
 - _Everything / all values_
 
-### [Contributing](./CONTRIBUTING.md)
+### Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Pull requests are welcome. For detailed tech docs, check [CONTRIBUTING.md](./CONTRIBUTING.md)
 
-Please make sure to update tests as appropriate.
 
 ### License: [MIT](./LICENSE)
+
+Copyright (c) 2020 Niels Maerten
