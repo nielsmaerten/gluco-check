@@ -15,6 +15,7 @@
     "gts": "^2.0.2",
     "jest": "^26.1.0",
     "rimraf": "^3.0.2",
+    "ts-jest": "^26.4.0",
     "typescript": "^3.8.3"
   },
   "scripts": {
@@ -24,7 +25,7 @@
     "watch:test": "jest --watch",
     "watch:compile": "tsc --watch",
     "purge": "rimraf node_modules/",
-    "test": "yarn build && jest && yarn lint"
+    "test": "rimraf build && jest && yarn lint"
   },
   "dependencies": {
     "@assistant/conversation": "^3.0.1",
