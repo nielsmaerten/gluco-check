@@ -25,7 +25,7 @@
     "watch:test": "jest --watch",
     "watch:compile": "tsc --watch",
     "purge": "rimraf node_modules/",
-    "test": "rimraf build && jest && yarn lint"
+    "test": "jest && yarn lint"
   },
   "dependencies": {
     "@assistant/conversation": "^3.0.1",
