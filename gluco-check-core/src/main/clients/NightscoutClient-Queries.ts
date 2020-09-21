@@ -31,7 +31,7 @@ export const DeviceStatus = {
     DiabetesPointer.PumpBattery,
   ],
   path: '/api/v3/devicestatus',
-  params: {sort$desc: 'created_at', limit: 1, 'pump.clock$gte': '1970-01-01'},
+  params: {sort$desc: 'created_at', limit: 1, 'pump.clock$gte': ''},
   callback: (data: any) => {
     return {
       carbsOnBoard: data.openaps.suggested.COB,
