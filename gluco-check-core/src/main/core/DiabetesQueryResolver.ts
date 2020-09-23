@@ -5,6 +5,8 @@ import DiabetesSnapshot from '../../types/DiabetesSnapshot';
 import NightscoutClient from '../clients/NightscoutClient';
 import {injectable} from 'inversify';
 import ResponseFormatter from './ResponseFormatter';
+import {logger} from 'firebase-functions';
+import {performance} from 'perf_hooks';
 
 /**
  * DiabetesQuery resolver accepts a DiabetesSnapshot and turns it into an AssistantResponse.
@@ -25,14 +27,19 @@ export default class DiabetesQueryResolver {
     snapshot.glucoseUnit = query.user.glucoseUnit;
     const nsClient = new NightscoutClient(query.user.nightscout);
 
-    // Query each requested pointer and merge into snapshot
+    // Perform queries for each pointer
+    const queryStart = performance.now();
     const snapshotParts = await Promise.all(
       query.pointers.map(p => nsClient.getPointer(p))
     );
+    const totalQueryTime = Math.floor(performance.now() - queryStart);
+
+    // Merge partial snapshots together
     snapshotParts.forEach(part => {
       Object.assign(snapshot, part);
     });
 
+    logger.info(`[DiabetesQueryResolver]: Total query time: ${totalQueryTime} ms.`);
     return this.responseFormatter.formatSnapshot(snapshot, query);
   }
 }
