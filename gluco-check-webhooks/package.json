@@ -25,7 +25,7 @@
     "gluco-check-core": "*"
   },
   "engines": {
-    "node": "10"
+    "node": ">=10"
   },
   "scripts": {
     "build": "rimraf build && tsc",
