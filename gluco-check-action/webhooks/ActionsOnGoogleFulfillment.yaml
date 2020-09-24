@@ -1,6 +1,19 @@
+##############################
+# NIGHTLY
+##############################
 handlers:
 - name: custom_pointers
 - name: default_pointers
 httpsEndpoint:
   baseUrl: https://us-central1-gluco-check-nightly.cloudfunctions.net/conversation?v=1
   endpointApiVersion: 2
+
+##############################
+# PRODUCTION
+##############################
+# handlers:
+# - name: custom_pointers
+# - name: default_pointers
+# httpsEndpoint:
+#   baseUrl: https://us-central1-gluco-check-prod.cloudfunctions.net/conversation?v=1
+#   endpointApiVersion: 2
