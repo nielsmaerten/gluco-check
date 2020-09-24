@@ -1,3 +1,6 @@
+##############################
+# NIGHTLY
+##############################
 accountLinking:
   enableAccountCreation: true
   linkingType: GOOGLE_SIGN_IN
@@ -7,3 +10,16 @@ localizedSettings:
   pronunciation: Gluco Nightly
   voice: female_1
 projectId: gluco-check-nightly
+
+##############################
+# PRODUCTION
+##############################
+# accountLinking:
+#   enableAccountCreation: true
+#   linkingType: GOOGLE_SIGN_IN
+# defaultLocale: en
+# localizedSettings:
+#   displayName: Gluco Check
+#   pronunciation: Gluco Check
+#   voice: female_1
+# projectId: gluco-check-prod
