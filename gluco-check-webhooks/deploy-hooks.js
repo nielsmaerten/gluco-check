@@ -46,7 +46,7 @@ const preDeploy = () => {
   // Write updated package.json
   fs.existsSync(filenamePackageBackup) && fs.unlinkSync(filenamePackageBackup);
   fs.renameSync(filenamePackage, filenamePackageBackup);
-  fs.writeFileSync(filenamePackage, JSON.stringify(package));
+  fs.writeFileSync(filenamePackage, JSON.stringify(package, null, 2));
 };
 
 const postDeploy = () => {
