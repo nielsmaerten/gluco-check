@@ -65,29 +65,25 @@ export default class Localizer {
  * 300000 ==> '5 minutes'
  * @returns The id of the locale that was loaded. Pass this id to dayjs(foo).locale(id)
  */
-export async function loadDayJsLocale(locale: string): Promise<string> {
+export async function loadDayJsLocale(_locale: string): Promise<string> {
   // DayJs uses lowercase to identify its locales
-  locale = locale.toLowerCase();
+  const locale = _locale.toLowerCase();
+  const fallback = locale.substr(0, 2);
 
   // Bail if locale (or its fallback) was loaded previously
   if (loadedDayJsLocales.has(locale)) return locale;
-  const fallback = locale.substr(0, 2);
   if (loadedDayJsLocales.has(fallback)) return fallback;
 
+  logger.debug(`[Localizer.DayJS]: Importing locale: ${locale}`);
   try {
     // Attempt loading the exact locale
-    await import(`dayjs/locale/${locale}`);
     loadedDayJsLocales.add(locale);
+    await import(`dayjs/locale/${locale}`);
     return locale;
   } catch (error) {
     // Attempt loading the fallback
-    logger.warn(
-      `[Localizer.DayJS]: No locale for '${locale}'.`,
-      `Attempting fallback to '${fallback}'`
-    );
-    await import(`dayjs/locale/${fallback}`);
     loadedDayJsLocales.add(fallback);
-    logger.info('[Localizer.DayJs]: Fallback successful');
+    await import(`dayjs/locale/${fallback}`);
     return fallback;
   }
 }
