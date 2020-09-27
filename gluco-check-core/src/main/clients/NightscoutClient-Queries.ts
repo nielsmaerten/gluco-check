@@ -12,6 +12,7 @@ import {DiabetesPointer} from '../../types/DiabetesPointer';
  * - a callback function that gets the required data from the http response
  */
 export const BloodSugar = {
+  key: 0,
   pointers: DiabetesPointer.BloodSugar,
   path: '/api/v1/entries/current',
   params: {},
@@ -25,6 +26,7 @@ export const BloodSugar = {
 };
 
 export const DeviceStatus = {
+  key: 1,
   pointers: [
     DiabetesPointer.CarbsOnBoard,
     DiabetesPointer.InsulinOnBoard,
@@ -43,6 +45,7 @@ export const DeviceStatus = {
 };
 
 export const CannulaAge = {
+  key: 2,
   pointers: [DiabetesPointer.CannulaAge],
   path: '/api/v3/treatments',
   params: {eventType: 'Site Change', sort$desc: 'created_at', limit: 1},
@@ -54,6 +57,7 @@ export const CannulaAge = {
 };
 
 export const SensorAge = {
+  key: 3,
   pointers: [DiabetesPointer.SensorAge],
   path: '/api/v3/treatments',
   params: {eventType: 'Sensor Change', sort$desc: 'created_at', limit: 1},
