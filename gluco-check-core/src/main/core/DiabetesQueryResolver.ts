@@ -39,7 +39,7 @@ export default class DiabetesQueryResolver {
       Object.assign(snapshot, part);
     });
 
-    logger.info(`[DiabetesQueryResolver]: Total query time: ${totalQueryTime} ms.`);
+    logger.info(`[DiabetesQueryResolver]: Nightscout queries took ${totalQueryTime} ms.`);
     return this.responseFormatter.formatSnapshot(snapshot, query);
   }
 }

@@ -49,7 +49,7 @@ export async function formatCarbsOnBoard(params: FormatParams): Promise<string> 
 
 export async function formatInsulinOnBoard(params: FormatParams): Promise<string> {
   const ctx = {
-    value: round(params.snapshot.insulinOnBoard, 2),
+    value: round(params.snapshot.insulinOnBoard),
     time: await translateTimestamp(params.snapshot.timestamp, params.locale),
   };
 

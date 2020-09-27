@@ -24,52 +24,68 @@ export default class NightscoutClient {
   async getPointer(pointer: DiabetesPointer) {
     switch (pointer) {
       case DiabetesPointer.BloodSugar:
-        return await this.doApiCall(QueryConfig.BloodSugar);
+        return await this.runQuery(QueryConfig.BloodSugar);
 
       case DiabetesPointer.CarbsOnBoard:
       case DiabetesPointer.InsulinOnBoard:
       case DiabetesPointer.PumpBattery:
-        return await this.doApiCall(QueryConfig.DeviceStatus);
+        return await this.runQuery(QueryConfig.DeviceStatus);
 
       case DiabetesPointer.SensorAge:
-        return await this.doApiCall(QueryConfig.SensorAge);
+        return await this.runQuery(QueryConfig.SensorAge);
 
       case DiabetesPointer.CannulaAge:
-        return await this.doApiCall(QueryConfig.CannulaAge);
+        return await this.runQuery(QueryConfig.CannulaAge);
 
       default:
         throw `[NightscoutClient]: ${pointer} has no associated NightscoutQuery`;
     }
   }
 
-  private async doApiCall(query: any) {
-    // Build URL
-    const url = new URL(query.path, this.nightscout.url);
-    if (this.cache[query.path]) return this.cache[query.path];
+  private async runQuery(query: any) {
+    const {params, path, callback, key} = query;
 
-    // Build request
-    const request: AxiosRequestConfig = {
-      url: url.toString(),
-      params: {
-        now: Date.now(),
-        token: !this.nightscout.token ? undefined : this.nightscout.token,
-        ...query.params,
-      },
-    };
+    // Build query URL
+    const url = new URL(path, this.nightscout.url);
 
+    // Have we seen this query before?
+    if (!this.cache[key]) {
+      // Build query request
+      const request: AxiosRequestConfig = {
+        url: String(url),
+        params: {
+          now: Date.now(),
+          token: this.nightscout.token,
+          ...params,
+        },
+      };
+
+      // Do HTTP call, store promise in cache
+      const responsePromise = this.callNightscout(request);
+      this.cache[key] = responsePromise;
+    } else {
+      logger.debug(`[NightscoutClient]: Using cached ${path}`);
+    }
+
+    // Extract requested data from response
+    const response = await this.cache[key];
+    return callback(response);
+  }
+
+  private async callNightscout(request: AxiosRequestConfig) {
     try {
       // Send request
       const response = await axios.request(request);
-      logger.debug(`[NightscoutClient]: Response(${query.pointers}):`, response.data);
 
-      // Inspect response
-      if (response.status === 200) {
-        const data = response.data[0];
-        this.cache[query.path] = data;
-        return query.callback(data);
+      // Check if response is valid
+      if (response.status !== 200) {
+        throw `[NightscoutClient]: Unexpected http response status: ${response.status}`;
+      }
+      if (response.data.length !== 1) {
+        throw '[NightscoutClient]: Nightscout responses should have exactly 1 item.';
       }
 
-      throw `[NightscoutClient]: Unexpected http response status: ${response.status}`;
+      return response.data[0];
 
       // Handle errors
     } catch (error) {

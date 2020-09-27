@@ -50,7 +50,7 @@ export default class ResponseFormatter {
         sayPointerName: query.pointers.length > 1,
       };
       const humanPointer = await humanizePointer(pointer, params);
-      logger.info('[ResponseFormatter]:', humanPointer);
+      logger.debug('[ResponseFormatter]:', humanPointer);
       return `<s>${humanPointer} </s>`; // Note the space at the end of each pointer!
     });
 
