@@ -89,6 +89,7 @@ export default class NightscoutClient {
 
       // Handle errors
     } catch (error) {
+      logger.warn(`Error querying Nightscout '${request.url}': ${error}`);
       if (error.response?.status === 401) {
         throw ErrorTypes.NightscoutUnauthorized;
       }
