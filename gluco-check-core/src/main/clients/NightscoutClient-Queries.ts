@@ -36,9 +36,9 @@ export const DeviceStatus = {
   params: {sort$desc: 'created_at', limit: 1, 'pump.clock$gte': ''},
   callback: (data: any) => {
     return {
-      carbsOnBoard: data.openaps.suggested.COB,
-      insulinOnBoard: data.openaps.iob.iob,
-      pumpBattery: data.pump.battery.percent,
+      carbsOnBoard: data.openaps?.suggested?.COB || data.loop?.cob.cob,
+      insulinOnBoard: data.openaps?.iob.iob || data.loop?.iob.iob,
+      pumpBattery: data.pump.battery?.percent,
       timestamp: new Date(data.created_at).getTime(),
     };
   },
