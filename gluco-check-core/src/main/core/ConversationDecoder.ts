@@ -36,11 +36,11 @@ export default class ConversationDecoder {
         `[ConversationDecoder]: '${userId}'`,
         'invoked Gluco Check but does not exist in db'
       );
-      user.defaultPointers = [DiabetesPointer.BloodSugar];
+      user.defaultPointers = [DiabetesPointer.BloodSugar]; // FIXME: this seems illogical?
     }
 
     // Build DiabetesQuery object with all info required to respond to the user
-    const diabetesPointers = await this.getPointers(conv, user);
+    const diabetesPointers = await this.extractPointers(conv, user);
     const diabetesQuery = new DiabetesQuery(user, locale, diabetesPointers);
     if (user.exists) {
       logger.debug('[ConversationDecoder]: Processing query:', diabetesQuery);
@@ -56,7 +56,7 @@ export default class ConversationDecoder {
   /**
    * Extracts which DiabetesPointers were asked for in the conversation
    */
-  async getPointers(conv: ConversationV3, user: User): Promise<DiabetesPointer[]> {
+  async extractPointers(conv: ConversationV3, user: User): Promise<DiabetesPointer[]> {
     const isDeepInvocation = conv.handler.name === 'custom_pointers';
 
     if (isDeepInvocation) {
