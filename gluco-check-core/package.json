@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@assistant/conversation": "^3.1.0",
-    "axios": "^0.20.0",
+    "axios": "^0.21.0",
     "dayjs": "^1.9.1",
     "firebase-admin": "^9.2.0",
     "firebase-functions": "^3.11.0",
