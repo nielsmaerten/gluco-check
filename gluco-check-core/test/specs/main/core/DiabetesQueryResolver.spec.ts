@@ -2,8 +2,8 @@
 import 'reflect-metadata';
 
 const stub_ResponseFormatter = {
-  formatError: jest.fn(),
-  formatSnapshot: jest.fn(),
+  buildErrorResponse: jest.fn(),
+  buildResponse: jest.fn(),
 } as any;
 
 import DiabetesQueryResolver from '../../../../src/main/core/DiabetesQueryResolver';
@@ -21,11 +21,13 @@ describe('Diabetes Query Resolver', () => {
   AxiosMockAdapter.respondWithMockData();
 
   beforeEach(() => {
-    stub_ResponseFormatter.formatError.mockReset();
-    stub_ResponseFormatter.formatError.mockReset();
+    stub_ResponseFormatter.buildErrorResponse.mockReset();
+    stub_ResponseFormatter.buildResponse.mockReset();
 
     testQuery = {
+      // TODO: replace with fakeDiabetesQuery
       locale: 'en-US',
+      metadata: {mentionHealthDisclaimer: true, mentionMissingPointers: true},
       pointers: [DiabetesPointer.BloodSugar, DiabetesPointer.CannulaAge],
       user: {
         exists: true,
@@ -39,23 +41,23 @@ describe('Diabetes Query Resolver', () => {
     testQuery.user.exists = false;
     await diabetesQueryResolver.resolve(testQuery);
 
-    expect(stub_ResponseFormatter.formatError).toHaveBeenCalled();
-    expect(stub_ResponseFormatter.formatSnapshot).not.toHaveBeenCalled();
+    expect(stub_ResponseFormatter.buildErrorResponse).toHaveBeenCalled();
+    expect(stub_ResponseFormatter.buildResponse).not.toHaveBeenCalled();
   });
 
   it('calls formatError when user exists but has no Nightscout site', async () => {
     testQuery.user.nightscout = undefined;
     await diabetesQueryResolver.resolve(testQuery);
 
-    expect(stub_ResponseFormatter.formatError).toHaveBeenCalled();
-    expect(stub_ResponseFormatter.formatSnapshot).not.toHaveBeenCalled();
+    expect(stub_ResponseFormatter.buildErrorResponse).toHaveBeenCalled();
+    expect(stub_ResponseFormatter.buildResponse).not.toHaveBeenCalled();
   });
 
   it('calls formatResponse when query has a user and nightscout site', async () => {
     await diabetesQueryResolver.resolve(testQuery);
 
-    expect(stub_ResponseFormatter.formatError).not.toHaveBeenCalled();
-    expect(stub_ResponseFormatter.formatSnapshot).toHaveBeenCalled();
+    expect(stub_ResponseFormatter.buildErrorResponse).not.toHaveBeenCalled();
+    expect(stub_ResponseFormatter.buildResponse).toHaveBeenCalled();
   });
 });
 
