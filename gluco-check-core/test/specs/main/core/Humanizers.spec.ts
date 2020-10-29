@@ -6,6 +6,8 @@ import {GlucoseTrend} from '../../../../src/types/GlucoseTrend';
 import {GlucoseUnit} from '../../../../src/types/GlucoseUnit';
 import Localizer from '../../../../src/main/i18n/Localizer';
 import FormatParams from '../../../../src/types/FormatParams';
+import fakeQuery from '../../../fakes/objects/fakeDiabetesQuery';
+import {DiabetesPointer} from '../../../../src/types/DiabetesPointer';
 
 let params: FormatParams;
 
@@ -13,10 +15,11 @@ describe('Humanizer', () => {
   // Prepare a full snapshot and formatParams object to test against
   beforeEach(async () => {
     params = {
+      pointer: DiabetesPointer.BloodSugar,
       locale: 'en-US',
       sayPointerName: true,
       sayTimeAgo: true,
-      snapshot: new DiabetesSnapshot(Date.now() - 300000), // 5 minutes ago
+      snapshot: new DiabetesSnapshot(Date.now() - 300000, fakeQuery), // 5 minutes ago
     };
 
     Object.assign(params.snapshot, {
