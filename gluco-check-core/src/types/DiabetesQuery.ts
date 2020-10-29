@@ -11,15 +11,34 @@ import User from './User';
  * {userId: "email@domain.com", locale: "en-US", pointers: [DiabetesPointer.IOB]}
  */
 export default class DiabetesQuery {
-  constructor(
-    public user: User,
-    public locale: string,
-    public pointers: DiabetesPointer[]
-  ) {
-    // The pointer 'Everything' should be expanded to all available pointers
-    if (pointers.includes(DiabetesPointer.Everything)) {
-      const allPointers = Object.values(DiabetesPointer);
-      this.pointers = allPointers.filter(v => v !== DiabetesPointer.Everything);
+  // Basic data needed to fulfill the query
+  public user: User;
+  public locale: string;
+  public pointers: DiabetesPointer[];
+
+  // Metadata to format the AssistantResponse
+  // TODO: this doesn't belong here!
+  public metadata = {
+    mentionHealthDisclaimer: true,
+    mentionMissingPointers: true,
+  };
+
+  constructor(user: User, locale: string, pointers: DiabetesPointer[]) {
+    this.user = user;
+    this.locale = locale;
+    this.pointers = pointers;
+
+    // Did user explicitly ask for 'Everything'?
+    const userAskedEverything = pointers.includes(DiabetesPointer.Everything);
+
+    if (userAskedEverything) {
+      // When asking all pointers, unavailable pointers shouldn't be mentioned
+      // https://github.com/nielsmaerten/gluco-check/issues/20#issuecomment-711417430
+      this.metadata.mentionMissingPointers = false;
+
+      // Expand the 'Everything' pointer
+      const everyPointer = Object.values(DiabetesPointer);
+      this.pointers = everyPointer.filter(p => p !== DiabetesPointer.Everything);
     }
   }
 }

@@ -11,8 +11,8 @@ import stub_UserProfileClient from '../../../stubs/UserProfileClient';
 
 describe('Conversation Decoder', () => {
   const testConversations = {
-    custom: require('../../../http-examples/requests/custom_pointers').requestJson,
-    default: require('../../../http-examples/requests/default_pointers').requestJson,
+    custom: require('../../../fakes/http-requests/custom_pointers').requestJson,
+    default: require('../../../fakes/http-requests/default_pointers').requestJson,
   };
   let mainInvocationResult: DiabetesQuery;
   let deepInvocationResult: DiabetesQuery;
