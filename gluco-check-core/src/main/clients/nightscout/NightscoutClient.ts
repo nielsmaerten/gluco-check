@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */ /* HTTP responses are of type 'any' */
-// TODO: move this file into ./nightscout
 import axios, {AxiosRequestConfig} from 'axios';
-import NightscoutProps from '../../types/NightscoutProps';
+import NightscoutProps from '../../../types/NightscoutProps';
 import {URL} from 'url';
-import * as Queries from './nightscout/queries';
-import {DiabetesPointer} from '../../types/DiabetesPointer';
-import {ErrorTypes} from '../../types/ErrorTypes';
+import * as Queries from './queries';
+import {DiabetesPointer} from '../../../types/DiabetesPointer';
+import {ErrorTypes} from '../../../types/ErrorTypes';
 import {logger} from 'firebase-functions';
-import QueryConfig from './nightscout/queries/0.QueryConfig.base';
-import DiabetesSnapshot from '../../types/DiabetesSnapshot';
+import QueryConfig from './queries/0.QueryConfig.base';
+import DiabetesSnapshot from '../../../types/DiabetesSnapshot';
 
 /**
  * Provides methods for querying a Nightscout site
