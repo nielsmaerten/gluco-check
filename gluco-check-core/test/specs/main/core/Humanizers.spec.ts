@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 
-import {formatBloodSugar} from '../../../../src/main/i18n/Humanizers';
+import Humanizers from '../../../../src/main/i18n/humanizers';
 import DiabetesSnapshot from '../../../../src/types/DiabetesSnapshot';
 import {GlucoseTrend} from '../../../../src/types/GlucoseTrend';
 import {GlucoseUnit} from '../../../../src/types/GlucoseUnit';
@@ -36,39 +36,39 @@ describe('Humanizer', () => {
   });
 
   it('formats full BG with trend and time', async () => {
-    const result = await formatBloodSugar(params);
+    const result = await Humanizers.bloodSugar(params);
     expect(result).toEqual('Blood sugar is 120 and stable as of 5 minutes ago.');
   });
 
   it('formats full BG with time and no trend', async () => {
     params.snapshot.glucoseTrend = GlucoseTrend.Unknown;
-    const result = await formatBloodSugar(params);
+    const result = await Humanizers.bloodSugar(params);
     expect(result).toEqual('Blood sugar is 120 as of 5 minutes ago.');
   });
 
   it('formats full BG with trend and no time', async () => {
     params.sayTimeAgo = false;
-    const result = await formatBloodSugar(params);
+    const result = await Humanizers.bloodSugar(params);
     expect(result).toEqual('Blood sugar is 120 and stable.');
   });
 
   it('formats full BG with no trend and no time', async () => {
     params.sayTimeAgo = false;
     params.snapshot.glucoseTrend = GlucoseTrend.Unknown;
-    const result = await formatBloodSugar(params);
+    const result = await Humanizers.bloodSugar(params);
     expect(result).toEqual('Blood sugar is 120.');
   });
 
   it('formats short BG with time and no trend', async () => {
     params.snapshot.glucoseTrend = GlucoseTrend.Unknown;
     params.sayPointerName = false;
-    const result = await formatBloodSugar(params);
+    const result = await Humanizers.bloodSugar(params);
     expect(result).toEqual('120 as of 5 minutes ago.');
   });
 
   it('formats short BG with trend and time', async () => {
     params.sayPointerName = false;
-    const result = await formatBloodSugar(params);
+    const result = await Humanizers.bloodSugar(params);
     expect(result).toEqual('120 and stable as of 5 minutes ago.');
   });
 });

@@ -8,7 +8,7 @@ import FormatParams from '../../types/FormatParams';
 
 import {ErrorTypes} from '../../types/ErrorTypes';
 import {DiabetesPointer} from '../../types/DiabetesPointer';
-import * as Humanizer from '../i18n/Humanizers';
+import Humanizer from '../i18n/humanizers';
 
 @injectable()
 export default class ResponseFormatter {
@@ -25,7 +25,8 @@ export default class ResponseFormatter {
     let SSML = '<speak>';
 
     // Turn error into human text
-    SSML += Humanizer.formatError(errorType, query.locale);
+    // TODO
+    //SSML += Humanizer.formatError(errorType, query.locale);
 
     // Terminate SSML string
     SSML += '</speak>';
@@ -104,22 +105,22 @@ function getFormatParams(query: DiabetesQuery, snapshot: DiabetesSnapshot) {
 function humanizePointer(params: FormatParams): Promise<string> {
   switch (params.pointer) {
     case DiabetesPointer.BloodSugar:
-      return Humanizer.formatBloodSugar(params);
+      return Humanizer.bloodSugar(params);
 
     case DiabetesPointer.CannulaAge:
-      return Humanizer.formatCannulaAge(params);
+      return Humanizer.cannulaAge(params);
 
     case DiabetesPointer.CarbsOnBoard:
-      return Humanizer.formatCarbsOnBoard(params);
+      return Humanizer.carbsOnBoard(params);
 
     case DiabetesPointer.InsulinOnBoard:
-      return Humanizer.formatInsulinOnBoard(params);
+      return Humanizer.insulinOnBoard(params);
 
     case DiabetesPointer.SensorAge:
-      return Humanizer.formatSensorAge(params);
+      return Humanizer.sensorAge(params);
 
     case DiabetesPointer.PumpBattery:
-      return Humanizer.formatPumpBattery(params);
+      return Humanizer.pumpBattery(params);
 
     default:
       throw new Error('Unable to humanize pointer ' + params.pointer);
