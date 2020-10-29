@@ -33,5 +33,5 @@ describe('Response Formatter', () => {
 
   it('replies with an error if Nightscout is unauthorized', () => {
     // TODO
-  })
+  });
 });
