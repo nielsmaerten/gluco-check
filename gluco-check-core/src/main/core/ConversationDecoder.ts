@@ -4,7 +4,7 @@ import {injectable} from 'inversify';
 import {DiabetesPointer} from '../../types/DiabetesPointer';
 import AuthTokenDecoder from './AuthTokenDecoder';
 import UserProfileClient from '../clients/UserProfileClient';
-import {logger} from 'firebase-functions';
+import {logger, config} from 'firebase-functions';
 import User from '../../types/User';
 
 @injectable()
@@ -60,10 +60,22 @@ export default class ConversationDecoder {
    * - OR: The user settings specify the disclaimer should be said
    */
   shouldMentionDisclaimer(conv: ConversationV3, user: User): boolean {
-    const clientVersion = parseInt(conv.headers['gluco-check-version'] as string);
-    const backendVersion = require('../../../package.json').backendVersion;
-    const usingLatestAction = clientVersion >= backendVersion;
-    return user.mentionDisclaimer || usingLatestAction;
+    const raw_version_currentAction = conv.headers['gluco-check-version'];
+    const raw_version_lastKnown = config().google_actions_sdk.glucocheck_action_version;
+
+    const version_currentAction = parseInt(raw_version_currentAction as string);
+    const version_lastKnown = parseInt(raw_version_lastKnown);
+
+    if (!version_lastKnown) {
+      const errMsg =
+        'Before using this webhook, ' +
+        '[google_actions_sdk.glucocheck_action_version] must be set' +
+        'using the command: firebase functions:config:set';
+      logger.error(errMsg);
+      throw new Error(errMsg);
+    }
+    const usingNewerAction = version_currentAction > version_lastKnown;
+    return user.mentionDisclaimer || usingNewerAction;
   }
 
   /**
