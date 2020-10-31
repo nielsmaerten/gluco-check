@@ -59,6 +59,7 @@ export default class NightscoutClient {
     else {
       const request: AxiosRequestConfig = {
         url: String(url),
+        timeout: 4000,
         params: {
           now: Date.now(),
           token: this.nightscout.token,
