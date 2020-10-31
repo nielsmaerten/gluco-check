@@ -19,7 +19,7 @@ export default class DiabetesQuery {
   // Metadata to format the AssistantResponse
   // TODO: this doesn't belong here!
   public metadata = {
-    mentionHealthDisclaimer: true,
+    mentionDisclaimer: true,
     mentionMissingPointers: true,
   };
 

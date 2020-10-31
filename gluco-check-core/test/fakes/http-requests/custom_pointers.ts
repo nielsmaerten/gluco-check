@@ -44,6 +44,9 @@ module.exports = {
       packageEntitlements: [],
       lastSeenTime: '2020-08-24T13:26:22Z',
     },
+    headers: {
+      'gluco-check-version': '1',
+    },
     home: {
       params: {},
     },

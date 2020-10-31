@@ -10,8 +10,9 @@ jest.doMock('../../../../src/main/i18n/humanizers');
 import ResponseFormatter from '../../../../src/main/core/ResponseFormatter';
 import DiabetesSnapshot from '../../../../src/types/DiabetesSnapshot';
 import Humanizer from '../../../../src/main/i18n/humanizers';
-import fakeQuery from '../../../fakes/objects/fakeDiabetesQuery';
+import getFakeQuery from '../../../fakes/objects/fakeDiabetesQuery';
 
+const fakeQuery = getFakeQuery();
 const mockedHumanizer = Humanizer as any;
 mockedHumanizer.bloodSugar.mockReturnValue('BG');
 mockedHumanizer.cannulaAge.mockReturnValue('CAGE');

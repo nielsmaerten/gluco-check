@@ -50,7 +50,20 @@ export default class ConversationDecoder {
       `requested: ${diabetesQuery.pointers}`
     );
 
+    diabetesQuery.metadata.mentionDisclaimer = this.shouldMentionDisclaimer(conv, user);
     return diabetesQuery;
+  }
+
+  /**
+   * Disclaimer should be added to the response if:
+   * - GlucoCheck was invoked using the latest version of the Action
+   * - OR: The user settings specify the disclaimer should be said
+   */
+  shouldMentionDisclaimer(conv: ConversationV3, user: User): boolean {
+    const clientVersion = parseInt(conv.headers['gluco-check-version'] as string);
+    const backendVersion = require('../../../package.json').backendVersion;
+    const usingLatestAction = clientVersion >= backendVersion;
+    return user.mentionDisclaimer || usingLatestAction;
   }
 
   /**
