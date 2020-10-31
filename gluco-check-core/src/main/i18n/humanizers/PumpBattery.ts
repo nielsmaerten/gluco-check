@@ -10,7 +10,7 @@ export default async function (params: FormatParams): Promise<string> {
   };
 
   if (context.percent === undefined)
-    return pointerNotFound(DiabetesPointer.PumpBattery, params.locale);
+    return pointerNotFound(DiabetesPointer.PumpBattery, params);
 
   // Build translation key
   const key = 'assistant_responses.pump_battery';

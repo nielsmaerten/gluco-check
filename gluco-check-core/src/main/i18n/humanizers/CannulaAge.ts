@@ -10,7 +10,7 @@ export default async function (params: FormatParams): Promise<string> {
     time: await translateTimestamp(params.snapshot.cannulaInserted!, params.locale),
   };
 
-  if (!context.time) return pointerNotFound(DiabetesPointer.CannulaAge, params.locale);
+  if (!context.time) return pointerNotFound(DiabetesPointer.CannulaAge, params);
 
   // Build translation key
   const key = 'assistant_responses.cannula_age';

@@ -11,7 +11,7 @@ export default async function (params: FormatParams): Promise<string> {
   };
 
   if (context.time === undefined)
-    return pointerNotFound(DiabetesPointer.SensorAge, params.locale);
+    return pointerNotFound(DiabetesPointer.SensorAge, params);
 
   // Build translation key
   const key = 'assistant_responses.sensor_age';

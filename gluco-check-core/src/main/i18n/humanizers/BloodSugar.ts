@@ -14,7 +14,7 @@ export default async function (params: FormatParams): Promise<string> {
   };
 
   if (context.value === undefined) {
-    return pointerNotFound(DiabetesPointer.BloodSugar, params.locale);
+    return pointerNotFound(DiabetesPointer.BloodSugar, params);
   }
 
   // Build translation key

@@ -12,7 +12,7 @@ export default async function (params: FormatParams): Promise<string> {
   };
 
   if (context.value === undefined)
-    return pointerNotFound(DiabetesPointer.CarbsOnBoard, params.locale);
+    return pointerNotFound(DiabetesPointer.CarbsOnBoard, params);
 
   // Build translation key
   let key = 'assistant_responses.carbs_on_board.';

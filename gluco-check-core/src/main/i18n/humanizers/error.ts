@@ -1,6 +1,7 @@
 import {i18next} from '../Localizer';
 import {ErrorTypes} from '../../../types/ErrorTypes';
 import {DiabetesPointer} from '../../../types/DiabetesPointer';
+import FormatParams from '../../../types/FormatParams';
 
 export default async function humanizeError(
   errorType: ErrorTypes,
@@ -21,9 +22,10 @@ export default async function humanizeError(
 
 /**
  * Shortcut function for humanizing PointerNotFound errors
- * @param pointer
- * @param locale
  */
-export async function pointerNotFound(pointer: DiabetesPointer, locale: string) {
-  return humanizeError(ErrorTypes.QueryResponse_PointerNotFound, locale, pointer);
+export async function pointerNotFound(pointer: DiabetesPointer, params: FormatParams) {
+  const mentionError = params.snapshot.originalQuery.metadata.mentionMissingPointers;
+
+  if (!mentionError) return '';
+  return humanizeError(ErrorTypes.QueryResponse_PointerNotFound, params.locale, pointer);
 }
