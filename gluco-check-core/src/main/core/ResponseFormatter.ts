@@ -25,8 +25,7 @@ export default class ResponseFormatter {
     let SSML = '<speak>';
 
     // Turn error into human text
-    // TODO
-    //SSML += Humanizer.formatError(errorType, query.locale);
+    SSML += Humanizer.error(errorType, query.locale);
 
     // Terminate SSML string
     SSML += '</speak>';
@@ -75,7 +74,7 @@ function humanizePointers(
   const formatParams = getFormatParams(query, snapshot);
   return Promise.all(formatParams.map(humanizePointer));
 
-  // FIXME: Important: I really should review how things are named here,
+  // FIXME(architecture): Important: I really should review how things are named here,
   // because this is getting really confusing!
 }
 

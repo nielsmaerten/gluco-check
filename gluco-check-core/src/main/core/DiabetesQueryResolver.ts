@@ -13,7 +13,7 @@ import {performance} from 'perf_hooks';
  * It is responsible for getting the data for each Pointer in the Query by calling Clients
  */
 @injectable()
-// TODO: Split this class up.
+// TODO(architecture): Split this class up.
 // I'm thinking a queryFulfiller(?) that returns a DiabetesSnapshot, and then have the responseFormatter
 // handle everything that concerns turning that snapshot into something the assistant can say
 export default class DiabetesQueryResolver {
@@ -46,7 +46,7 @@ export default class DiabetesQueryResolver {
     // Add all partial snapshots into the main snapshot
     mainSnapshot.update(...snapshotParts);
 
-    // TODO: Split the class up around here
+    // TODO(architecture): Split the class up around here
 
     // Check for common failures
     const nightscoutUnauthorized = mainSnapshot.errors.some(

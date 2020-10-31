@@ -17,7 +17,7 @@ export default class DiabetesQuery {
   public pointers: DiabetesPointer[];
 
   // Metadata to format the AssistantResponse
-  // TODO: this doesn't belong here!
+  // TODO(architecture): does this belong here?
   public metadata = {
     mentionDisclaimer: true,
     mentionMissingPointers: true,

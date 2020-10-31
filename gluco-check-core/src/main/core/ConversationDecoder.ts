@@ -36,7 +36,7 @@ export default class ConversationDecoder {
         `[ConversationDecoder]: '${userId}'`,
         'invoked Gluco Check but does not exist in db'
       );
-      user.defaultPointers = [DiabetesPointer.BloodSugar]; // FIXME: this seems illogical?
+      user.defaultPointers = [DiabetesPointer.BloodSugar]; // FIXME(architecture): this seems illogical?
     }
 
     // Build DiabetesQuery object with all info required to respond to the user

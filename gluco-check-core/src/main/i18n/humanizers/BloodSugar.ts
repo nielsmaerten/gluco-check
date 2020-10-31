@@ -1,3 +1,5 @@
+import {pointerNotFound} from './error';
+import {DiabetesPointer} from '../../../types/DiabetesPointer';
 import FormatParams from '../../../types/FormatParams';
 import {GlucoseTrend} from '../../../types/GlucoseTrend';
 import {i18next} from '../Localizer';
@@ -10,6 +12,10 @@ export default async function (params: FormatParams): Promise<string> {
     trend: translateTrend(params.locale, params.snapshot.glucoseTrend),
     time: await translateTimestamp(params.snapshot.timestamp, params.locale),
   };
+
+  if (context.value === undefined) {
+    return pointerNotFound(DiabetesPointer.BloodSugar, params.locale);
+  }
 
   // Build translation key
   let key = 'assistant_responses.blood_sugar.';
