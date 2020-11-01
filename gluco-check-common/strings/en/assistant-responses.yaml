@@ -1,5 +1,6 @@
 # DO NOT TRANSLATE THIS FILE DIRECTLY
 # If you want to contribute translations, visit https://diabase.app/translate
+# TODO: These strings should be reviewed by someone with proper English skills... David? ;-)
 assistant_responses:
   blood_sugar:
     long;with_trend;with_time: >
@@ -50,14 +51,16 @@ assistant_responses:
     The pump's battery is at {{percent}}%.
 
   errors: 
-    TODO: Verify these translations
     User not found: >
-      Before I can read out your info, you'll need to connect your Nightscout site.
-      Visit https://diabase.app to continue. 
+      Hi! Thanks for trying out Gluco Check. 
+      Before I can read your info, you'll first need to link your Nightscout site.
+      To do this, visit our website: https://diabase.app
     Nightscout Unavailable: >
-      Sorry, I couldn't reach your Nightscout site
+      Sorry, it looks like there's a problem with your Nightscout site.
+      I wasn't able to get your info.
     Nightscout Unauthorized: >
-      Sorry, it looks like I'm not yet allowed to access your Nightscout site. 
-      Check our website for instructions.
+      Sorry, looks like I'm not allowed to read your Nightscout site.
+      To let me in, you should first create a token.
+      To do this, visit our website: https://diabase.app
     DiabetesPointer Not Found: >
-      I wasn't able to find your {{pointer}}
+      I couldn't find to find your {{pointer}}.

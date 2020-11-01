@@ -10,7 +10,7 @@ export default function humanizeError(
 ): string {
   // Collect translation context
   const context = {
-    affectedPointer,
+    pointer: affectedPointer,
   };
 
   // Build translation key
