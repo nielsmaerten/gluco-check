@@ -3,11 +3,11 @@ import {ErrorTypes} from '../../../types/ErrorTypes';
 import {DiabetesPointer} from '../../../types/DiabetesPointer';
 import FormatParams from '../../../types/FormatParams';
 
-export default async function humanizeError(
+export default function humanizeError(
   errorType: ErrorTypes,
   locale: string,
   affectedPointer?: DiabetesPointer
-): Promise<string> {
+): string {
   // Collect translation context
   const context = {
     affectedPointer,
@@ -23,7 +23,7 @@ export default async function humanizeError(
 /**
  * Shortcut function for humanizing PointerNotFound errors
  */
-export async function pointerNotFound(pointer: DiabetesPointer, params: FormatParams) {
+export function pointerNotFound(pointer: DiabetesPointer, params: FormatParams) {
   const mentionError = params.snapshot.originalQuery.metadata.mentionMissingPointers;
 
   if (!mentionError) return '';

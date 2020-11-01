@@ -49,12 +49,15 @@ assistant_responses:
   pump_battery: >
     The pump's battery is at {{percent}}%.
 
-  errors:
-    no_user_profile: >
-      TODO: No user user profile
-    nightscout_unavailable: >
-      TODO: Nightscout unavailable
-    nightscout_unauthorized: >
-      TODO: Nightscout unauthorized
-    pointer_not_found: >
+  errors: 
+    TODO: Verify these translations
+    User not found: >
+      Before I can read out your info, you'll need to connect your Nightscout site.
+      Visit https://diabase.app to continue. 
+    Nightscout Unavailable: >
+      Sorry, I couldn't reach your Nightscout site
+    Nightscout Unauthorized: >
+      Sorry, it looks like I'm not yet allowed to access your Nightscout site. 
+      Check our website for instructions.
+    DiabetesPointer Not Found: >
       I wasn't able to find your {{pointer}}

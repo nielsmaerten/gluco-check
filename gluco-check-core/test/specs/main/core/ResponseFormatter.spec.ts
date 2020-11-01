@@ -20,6 +20,7 @@ mockedHumanizer.insulinOnBoard.mockReturnValue('IOB');
 mockedHumanizer.sensorAge.mockReturnValue('SAGE');
 mockedHumanizer.carbsOnBoard.mockReturnValue('COB');
 mockedHumanizer.pumpBattery.mockReturnValue('PB');
+mockedHumanizer.error.mockReturnValue('ERROR');
 
 describe('Response Formatter', () => {
   const testSnapshot = new DiabetesSnapshot(Date.now(), fakeQuery);
@@ -32,7 +33,8 @@ describe('Response Formatter', () => {
     );
   });
 
-  it('replies with an error if Nightscout is unauthorized', () => {
-    // TODO
+  it('calls error Humanizer for error responses', async () => {
+    const response = await responseFormatter.buildErrorResponse(null as any, fakeQuery);
+    expect(response.SSML).toEqual('<speak>ERROR</speak>');
   });
 });

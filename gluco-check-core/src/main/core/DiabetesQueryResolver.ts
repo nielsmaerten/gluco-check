@@ -57,13 +57,11 @@ export default class DiabetesQueryResolver {
     );
 
     if (nightscoutUnauthorized) {
-      logger.warn('[DiabetesQueryResolver]: Nightscout error: Unauthorized');
       return this.responseFormatter.buildErrorResponse(
         ErrorTypes.Nightscout_Unauthorized,
         query
       );
     } else if (nightscoutUnavailable) {
-      logger.warn('[DiabetesQueryResolver]: Nightscout error: Unavailable');
       return this.responseFormatter.buildErrorResponse(
         ErrorTypes.Nightscout_Unavailable,
         query
