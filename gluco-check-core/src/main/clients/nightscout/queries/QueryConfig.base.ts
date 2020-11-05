@@ -14,5 +14,5 @@ export default class QueryConfig {
   public pointers!: DiabetesPointer[];
 
   // Unique key for caching. Ensures a query is only executed once
-  public key!: number;
+  public key!: string;
 }

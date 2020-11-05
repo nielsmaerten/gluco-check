@@ -1,8 +1,8 @@
 import {DiabetesPointer} from '../../../../types/DiabetesPointer';
-import QueryConfig from './0.QueryConfig.base';
+import QueryConfig from './QueryConfig.base';
 
 export const SensorAge: QueryConfig = {
-  key: 3,
+  key: 'SAGE',
   pointers: [DiabetesPointer.SensorAge],
   path: '/api/v3/treatments',
   params: {eventType: 'Sensor Change', sort$desc: 'created_at', limit: 1},

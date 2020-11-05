@@ -1,8 +1,8 @@
 import {DiabetesPointer} from '../../../../types/DiabetesPointer';
-import QueryConfig from './0.QueryConfig.base';
+import QueryConfig from './QueryConfig.base';
 
 export const DeviceStatus: QueryConfig = {
-  key: 4,
+  key: 'DS',
   pointers: [
     DiabetesPointer.CarbsOnBoard,
     DiabetesPointer.InsulinOnBoard,

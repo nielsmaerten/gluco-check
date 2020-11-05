@@ -1,9 +1,9 @@
 import {DiabetesPointer} from '../../../../types/DiabetesPointer';
 import {GlucoseTrend} from '../../../../types/GlucoseTrend';
-import QueryConfig from './0.QueryConfig.base';
+import QueryConfig from './QueryConfig.base';
 
 export const BloodSugar: QueryConfig = {
-  key: 1,
+  key: 'BG',
   pointers: [DiabetesPointer.BloodSugar],
   path: '/api/v1/entries/current',
   params: {},

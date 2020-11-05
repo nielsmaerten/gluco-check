@@ -6,7 +6,7 @@ import * as Queries from './queries';
 import {DiabetesPointer} from '../../../types/DiabetesPointer';
 import {ErrorTypes} from '../../../types/ErrorTypes';
 import {logger} from 'firebase-functions';
-import QueryConfig from './queries/0.QueryConfig.base';
+import QueryConfig from './queries/QueryConfig.base';
 import DiabetesSnapshot from '../../../types/DiabetesSnapshot';
 
 /**
