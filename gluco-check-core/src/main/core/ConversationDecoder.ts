@@ -19,23 +19,7 @@ export default class ConversationDecoder {
     private authTokenDecoder: AuthTokenDecoder,
     private userProfileClient: UserProfileClient
   ) {
-    // Parse the Action version number from config
-    // You must set this value using the Firebase CLI before deploying
-    // This value decides whether disclaimers are mentioned or not
-    const version = config().google_actions_sdk.glucocheck_action_version;
-    this.lastKnownActionVersion = parseInt(version);
-
-    // Abort if the Action version has not been set
-    if (!this.lastKnownActionVersion) {
-      const errMsg = 'Initialization failed: glucocheck_action_version must be set';
-      logger.error(errMsg);
-      throw new Error(errMsg);
-    } else
-      logger.debug(
-        'Assuming',
-        `v${this.lastKnownActionVersion}`,
-        'is the latest version of the Gluco Check Action being used.'
-      );
+    this.lastKnownActionVersion = this.getLastKnownActionVersion();
   }
 
   /**
@@ -51,25 +35,24 @@ export default class ConversationDecoder {
     const userId = conv.user.params.tokenPayload.email;
     const user = await this.userProfileClient.getUser(userId);
 
-    if (!user.exists) {
+    // Build DiabetesQuery object with all info required to respond to the user
+    const diabetesPointers = await this.extractPointers(conv, user);
+    const diabetesQuery = new DiabetesQuery(user, locale, diabetesPointers);
+    diabetesQuery.metadata.mentionDisclaimer = this.shouldMentionDisclaimer(conv, user);
+
+    // Log status
+    logger.info(
+      `[ConversationDecoder]: ${user.userId.substr(0, 4)}...`,
+      `requested: ${diabetesQuery.pointers}`
+    );
+    if (user.exists) {
+      logger.debug('[ConversationDecoder]: Processing query:', diabetesQuery);
+    } else {
       logger.warn(
         `[ConversationDecoder]: '${userId}'`,
         'invoked Gluco Check but does not exist in db'
       );
     }
-
-    // Build DiabetesQuery object with all info required to respond to the user
-    const diabetesPointers = await this.extractPointers(conv, user);
-    const diabetesQuery = new DiabetesQuery(user, locale, diabetesPointers);
-    if (user.exists) {
-      logger.debug('[ConversationDecoder]: Processing query:', diabetesQuery);
-    }
-    logger.info(
-      `[ConversationDecoder]: ${user.userId.substr(0, 4)}...`,
-      `requested: ${diabetesQuery.pointers}`
-    );
-
-    diabetesQuery.metadata.mentionDisclaimer = this.shouldMentionDisclaimer(conv, user);
     return diabetesQuery;
   }
 
@@ -78,7 +61,7 @@ export default class ConversationDecoder {
    * - GlucoCheck was invoked using the latest version of the Action
    * - OR: The user settings specify the disclaimer should be said
    */
-  shouldMentionDisclaimer(conv: ConversationV3, user: User): boolean {
+  private shouldMentionDisclaimer(conv: ConversationV3, user: User): boolean {
     const raw_version_currentAction = conv.headers['gluco-check-version'];
 
     const version_currentAction = parseInt(raw_version_currentAction as string);
@@ -92,9 +75,37 @@ export default class ConversationDecoder {
   }
 
   /**
+   * The last known version of the Google Action, is pulled from Firebase Config
+   * You must set this value using the Firebase CLI before deploying
+   *
+   * Disclaimers will always be mentioned in the latest known version
+   */
+  private getLastKnownActionVersion() {
+    const versionString = config().google_actions_sdk.glucocheck_action_version;
+    const version = parseInt(versionString);
+
+    // Abort if the Action version has not been set
+    if (!version) {
+      const errMsg = 'Initialization failed: glucocheck_action_version must be set';
+      logger.error(errMsg);
+      throw new Error(errMsg);
+    } else {
+      logger.debug(
+        'Assuming',
+        `v${this.lastKnownActionVersion}`,
+        'is the latest version of the Gluco Check Action being used.'
+      );
+      return version;
+    }
+  }
+
+  /**
    * Extracts which DiabetesPointers were asked for in the conversation
    */
-  async extractPointers(conv: ConversationV3, user: User): Promise<DiabetesPointer[]> {
+  private async extractPointers(
+    conv: ConversationV3,
+    user: User
+  ): Promise<DiabetesPointer[]> {
     const isDeepInvocation = conv.handler.name === 'custom_pointers';
 
     if (isDeepInvocation) {
