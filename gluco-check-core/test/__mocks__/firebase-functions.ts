@@ -1,6 +1,8 @@
+// Stubs: Logging
 const enableLoggingDuringTest = false;
-
 const stub = enableLoggingDuringTest ? console.log : jest.fn();
+
+// Firebase functions.config() mock
 const configMock = jest.fn(() => {
   return {
     google_actions_sdk: {

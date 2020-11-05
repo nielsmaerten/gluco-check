@@ -51,8 +51,8 @@ describe('Conversation Decoder', () => {
     expect(deepInvocationResult.pointers).toContain(DiabetesPointer.SensorAge);
     expect(deepInvocationResult.pointers).toContain(DiabetesPointer.InsulinOnBoard);
 
-    // In case of main invocation, the pointer should just be BloodSugar
-    expect(mainInvocationResult.pointers).toContain(DiabetesPointer.BloodSugar);
+    // In case of main invocation, pointers should be empty
+    expect(mainInvocationResult.pointers).toHaveLength(0);
   });
 });
 

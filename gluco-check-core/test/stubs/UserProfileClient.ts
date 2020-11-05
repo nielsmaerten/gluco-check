@@ -7,7 +7,7 @@ export default class UserProfileClient {
     return {
       exists: this.userExists,
       userId: 'test@example.com',
-      defaultPointers: [DiabetesPointer.BloodSugar],
+      defaultPointers: this.userExists ? [DiabetesPointer.BloodSugar] : undefined,
     };
   }
 }
