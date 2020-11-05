@@ -9,7 +9,7 @@ import {GlucoseUnit} from '../../../../src/types/GlucoseUnit';
 import DiabetesQuery from '../../../../src/types/DiabetesQuery';
 import {ErrorTypes} from '../../../../src/types/ErrorTypes';
 
-describe.only('NightscoutClient', () => {
+describe('NightscoutClient', () => {
   const testUser: User = {
     exists: true,
     userId: 'test@example.com',
