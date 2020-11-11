@@ -1,0 +1,68 @@
+# DO NOT TRANSLATE THIS FILE DIRECTLY
+# If you want to contribute translations, visit https://diabase.app/translate
+# TODO: These translations have not yet been tested on a live system
+assistant_responses:
+  blood_sugar:
+    long;with_trend;with_time: >
+      Suikerspiegel is {{value}} en {{trend}} sinds {{time}} geleden.
+    long;no_trend;with_time: >
+      Suikerspiegel is {{value}} sinds {{time}} geleden.
+    long;with_trend;no_time: >
+      Suikerspiegel is {{value}} en {{trend}}.
+    long;no_trend;no_time: >
+      Suikerspiegel is {{value}}.
+    short;no_trend;with_time: >
+      {{value}} sinds {{time}} geleden.
+    short;with_trend;with_time: >
+      {{value}} en {{trend}} sinds {{time}} geleden.
+
+    trends:
+      DoubleUp: "snel stijgend"
+      SingleUp: "stijgend"
+      SlightUp: "langzaam stijgend"
+      Stable: "stabiel"
+      SlightDown: "langzaam dalend"
+      SingleDown: "dalend"
+      DoubleDown: "snel dalend"
+
+  carbs_on_board:
+    long;with_time: >
+      Er zijn {{value}} koolhydraten aan boord sinds {{time}} geleden.
+    long;no_time: >
+      Er zijn {{value}} koolhydraten aan boord.
+    short;with_time: >
+      {{value}} koolhydraten aan boord sinds {{time}} geleden.
+
+  insulin_on_board:
+    long;with_time: >
+      Er zijn {{value}} insuline eenheden aan boord sinds {{time}} geleden.
+    long;no_time: >
+      Er zijn {{value}} insuline eenheden.
+    short;with_time: >
+      {{value}} insuline eenheden aan boord sinds {{time}} ago.
+
+  cannula_age: >
+    De canule is {{time}} oud.
+
+  sensor_age: >
+    De sensor is {{time}} oud.
+  
+  pump_battery: >
+    De pomp batterij staat op {{percent}}%.
+
+  errors: 
+    User not found: >
+      Hallo, bedankt voor het proberen Gluco Check.
+      Voordat ik je info kan ophalen, dien je eerst je Nightscout site te linken.
+      Dit kan je doen op onze site: https://diabase.app
+    Nightscout Unavailable: >
+      Sorry, het lijkt erop dat er een probleem is met je Nightscout site.
+      Ik kon je info niet ophalen.
+    Nightscout Unauthorized: >
+      Sorry, ik heb nog geen toegang tot je Nightscout site.
+      Om me binnen te laten moet je eerst een token aanmaken.
+      Dit kan je doen op onze site: https://diabase.app
+    DiabetesPointer Not Found: >
+      Ik heb je {{pointer}} niet kunnen vinden. 
+    # TODO: {{pointer}} needs to become a nested translation. 
+    # Otherwise English text will be inserted at this placeholder
