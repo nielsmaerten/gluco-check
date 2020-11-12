@@ -14,7 +14,7 @@ export default class AuthTokenDecoder {
 
   constructor() {
     logger.debug('[AuthTokenDecoder]: Initializing new instance');
-    this.clientId = config().auth.client_id;
+    this.clientId = config().google_actions_sdk.client_id;
 
     if (!this.clientId)
       throw '[AuthTokenDecoder]: Firebase Functions config must define an auth.client_id property';

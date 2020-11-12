@@ -2,10 +2,10 @@ import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
 // Mock data
-import stub_sensorAge from '../http-examples/responses/sensor-change';
-import stub_cannulaAge from '../http-examples/responses/cannula-change';
-import stub_currentEntry from '../http-examples/responses/current-entry';
-import stub_deviceStatus from '../http-examples/responses/devicestatus';
+import stub_sensorAge from '../fakes/http-responses/sensor-change';
+import stub_cannulaAge from '../fakes/http-responses/cannula-change';
+import stub_currentEntry from '../fakes/http-responses/current-entry';
+import stub_deviceStatus from '../fakes/http-responses/devicestatus';
 
 const mock = new MockAdapter(axios);
 const baseUrl = 'https://cgm.example.com/api';

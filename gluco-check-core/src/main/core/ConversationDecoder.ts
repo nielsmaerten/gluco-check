@@ -4,7 +4,7 @@ import {injectable} from 'inversify';
 import {DiabetesPointer} from '../../types/DiabetesPointer';
 import AuthTokenDecoder from './AuthTokenDecoder';
 import UserProfileClient from '../clients/UserProfileClient';
-import {logger} from 'firebase-functions';
+import {logger, config} from 'firebase-functions';
 import User from '../../types/User';
 
 @injectable()
@@ -13,10 +13,14 @@ import User from '../../types/User';
  * It takes in a 'conversation' object from Google Actions, and decodes it into a DiabetesQuery
  */
 export default class ConversationDecoder {
+  private lastKnownActionVersion = 0;
+
   constructor(
     private authTokenDecoder: AuthTokenDecoder,
     private userProfileClient: UserProfileClient
-  ) {}
+  ) {
+    this.lastKnownActionVersion = this.getLastKnownActionVersion();
+  }
 
   /**
    * Interprets an Assistant Conversation object and returns a DiabetesQuery
@@ -31,32 +35,77 @@ export default class ConversationDecoder {
     const userId = conv.user.params.tokenPayload.email;
     const user = await this.userProfileClient.getUser(userId);
 
-    if (!user.exists) {
-      logger.warn(
-        `[ConversationDecoder]: '${userId}'`,
-        'invoked Gluco Check but does not exist in db'
-      );
-      user.defaultPointers = [DiabetesPointer.BloodSugar];
-    }
-
     // Build DiabetesQuery object with all info required to respond to the user
-    const diabetesPointers = await this.getPointers(conv, user);
+    const diabetesPointers = await this.extractPointers(conv, user);
     const diabetesQuery = new DiabetesQuery(user, locale, diabetesPointers);
-    if (user.exists) {
-      logger.debug('[ConversationDecoder]: Processing query:', diabetesQuery);
-    }
+    diabetesQuery.metadata.mentionDisclaimer = this.shouldMentionDisclaimer(conv, user);
+
+    // Log status
     logger.info(
       `[ConversationDecoder]: ${user.userId.substr(0, 4)}...`,
       `requested: ${diabetesQuery.pointers}`
     );
-
+    if (user.exists) {
+      logger.debug('[ConversationDecoder]: Processing query:', diabetesQuery);
+    } else {
+      logger.warn(
+        `[ConversationDecoder]: '${userId}'`,
+        'invoked Gluco Check but does not exist in db'
+      );
+    }
     return diabetesQuery;
+  }
+
+  /**
+   * Disclaimer should be added to the response if:
+   * - GlucoCheck was invoked using the latest version of the Action
+   * - OR: The user settings specify the disclaimer should be said
+   */
+  private shouldMentionDisclaimer(conv: ConversationV3, user: User): boolean {
+    const raw_version_currentAction = conv.headers['gluco-check-version'];
+
+    const version_currentAction = parseInt(raw_version_currentAction as string);
+    const version_lastKnown = this.lastKnownActionVersion;
+
+    const usingNewerAction = version_currentAction > version_lastKnown;
+    if (usingNewerAction) {
+      logger.info('Force mentioning disclaimer bc of newer Action calling');
+    }
+    return user.mentionDisclaimer || usingNewerAction;
+  }
+
+  /**
+   * The last known version of the Google Action, is pulled from Firebase Config
+   * You must set this value using the Firebase CLI before deploying
+   *
+   * Disclaimers will always be mentioned in the latest known version
+   */
+  private getLastKnownActionVersion() {
+    const versionString = config().google_actions_sdk.glucocheck_action_version;
+    const version = parseInt(versionString);
+
+    // Abort if the Action version has not been set
+    if (!version) {
+      const errMsg = 'Initialization failed: glucocheck_action_version must be set';
+      logger.error(errMsg);
+      throw new Error(errMsg);
+    } else {
+      logger.debug(
+        'Assuming',
+        `v${this.lastKnownActionVersion}`,
+        'is the latest version of the Gluco Check Action being used.'
+      );
+      return version;
+    }
   }
 
   /**
    * Extracts which DiabetesPointers were asked for in the conversation
    */
-  async getPointers(conv: ConversationV3, user: User): Promise<DiabetesPointer[]> {
+  private async extractPointers(
+    conv: ConversationV3,
+    user: User
+  ): Promise<DiabetesPointer[]> {
     const isDeepInvocation = conv.handler.name === 'custom_pointers';
 
     if (isDeepInvocation) {
@@ -64,7 +113,7 @@ export default class ConversationDecoder {
       return conv.intent.params!.diabetesPointer!.resolved;
     } else {
       // Get requested pointers from user profile
-      return user.defaultPointers!;
+      return user.defaultPointers ?? [];
     }
   }
 }

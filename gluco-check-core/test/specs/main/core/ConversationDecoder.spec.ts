@@ -11,8 +11,8 @@ import stub_UserProfileClient from '../../../stubs/UserProfileClient';
 
 describe('Conversation Decoder', () => {
   const testConversations = {
-    custom: require('../../../http-examples/requests/custom_pointers').requestJson,
-    default: require('../../../http-examples/requests/default_pointers').requestJson,
+    custom: require('../../../fakes/http-requests/custom_pointers').requestJson,
+    default: require('../../../fakes/http-requests/default_pointers').requestJson,
   };
   let mainInvocationResult: DiabetesQuery;
   let deepInvocationResult: DiabetesQuery;
@@ -51,8 +51,8 @@ describe('Conversation Decoder', () => {
     expect(deepInvocationResult.pointers).toContain(DiabetesPointer.SensorAge);
     expect(deepInvocationResult.pointers).toContain(DiabetesPointer.InsulinOnBoard);
 
-    // In case of main invocation, the pointer should just be BloodSugar
-    expect(mainInvocationResult.pointers).toContain(DiabetesPointer.BloodSugar);
+    // In case of main invocation, pointers should be empty
+    expect(mainInvocationResult.pointers).toHaveLength(0);
   });
 });
 

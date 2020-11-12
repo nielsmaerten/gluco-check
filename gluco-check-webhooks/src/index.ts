@@ -7,6 +7,7 @@ export const validateNightscoutUrl = functions.https.onRequest(
 
 export const conversation = functions.https.onRequest((request, response) => {
   // Get the version of the Action calling the webhook
+  // Search 'actionVersion' in the 'core' package
   const actionVersion = request.query['v']?.toString();
   request.headers['gluco-check-version'] = actionVersion;
   functions.logger.info(

@@ -2,10 +2,12 @@ import User from '../../../../src/types/User';
 import AxiosMock from '../../../stubs/AxiosMockAdapter';
 import {DiabetesPointer} from '../../../../src/types/DiabetesPointer';
 import NightscoutProps from '../../../../src/types/NightscoutProps';
-import NightscoutClient from '../../../../src/main/clients/NightscoutClient';
+import NightscoutClient from '../../../../src/main/clients/nightscout/NightscoutClient';
 import DiabetesSnapshot from '../../../../src/types/DiabetesSnapshot';
 import {GlucoseTrend} from '../../../../src/types/GlucoseTrend';
 import {GlucoseUnit} from '../../../../src/types/GlucoseUnit';
+import DiabetesQuery from '../../../../src/types/DiabetesQuery';
+import {ErrorTypes} from '../../../../src/types/ErrorTypes';
 
 describe('NightscoutClient', () => {
   const testUser: User = {
@@ -14,8 +16,12 @@ describe('NightscoutClient', () => {
     defaultPointers: [DiabetesPointer.Everything],
     nightscout: new NightscoutProps('https://cgm.example.com'),
   };
+  const testQuery = new DiabetesQuery(testUser, 'en-US', testUser.defaultPointers!);
 
-  const expected = new DiabetesSnapshot(new Date('2020-01-21T10:10:00Z').getTime());
+  const expected = new DiabetesSnapshot(
+    new Date('2020-01-21T10:10:00Z').getTime(),
+    testQuery
+  );
   Object.assign(expected, {
     cannulaInserted: new Date('2020-08-18T09:47:48Z').getTime(),
     sensorInserted: new Date('2020-08-23T15:05:21Z').getTime(),
@@ -40,7 +46,6 @@ describe('NightscoutClient', () => {
       glucoseTrend: expected.glucoseTrend,
       glucoseValueMgDl: expected.glucoseValue(),
     });
-    expect(data.timestamp).toBeDefined();
   });
 
   it('does not repeat api calls', async () => {
@@ -65,18 +70,22 @@ describe('NightscoutClient', () => {
     expect(data.sensorInserted).toEqual(expected.sensorInserted);
   });
 
-  it('throws when Nightscout is unavailable', done => {
+  it('sets the error prop when Nightscout is unavailable', done => {
     AxiosMock.respondWithTimeout();
-    testClient.getPointer(DiabetesPointer.BloodSugar).catch(e => {
-      expect(e).toEqual('Nightscout Unavailable');
+    testClient.getPointer(DiabetesPointer.BloodSugar).then(e => {
+      expect(e.errors).toHaveLength(1);
+      expect(e.errors![0].type).toEqual(ErrorTypes.Nightscout_Unavailable);
+      expect(e.errors![0].affectedPointer).toEqual(DiabetesPointer.BloodSugar);
       done();
     });
   });
 
-  it('throws when unauthorized', done => {
+  it('sets the error prop when Nightscout is unauthorized', done => {
     AxiosMock.respondWith401Unauthorized();
-    testClient.getPointer(DiabetesPointer.BloodSugar).catch(e => {
-      expect(e).toEqual('Nightscout Unauthorized');
+    testClient.getPointer(DiabetesPointer.BloodSugar).then(e => {
+      expect(e.errors).toHaveLength(1);
+      expect(e.errors![0].type).toEqual(ErrorTypes.Nightscout_Unauthorized);
+      expect(e.errors![0].affectedPointer).toEqual(DiabetesPointer.BloodSugar);
       done();
     });
   });

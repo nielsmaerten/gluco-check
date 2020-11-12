@@ -5,41 +5,36 @@ const mock_i18n = {
   ensureLocale: jest.fn(),
 };
 
-jest.doMock('../../../../src/main/i18n/Humanizers');
+jest.doMock('../../../../src/main/i18n/humanizers');
 
 import ResponseFormatter from '../../../../src/main/core/ResponseFormatter';
 import DiabetesSnapshot from '../../../../src/types/DiabetesSnapshot';
-import DiabetesQuery from '../../../../src/types/DiabetesQuery';
-import {DiabetesPointer} from '../../../../src/types/DiabetesPointer';
-import User from '../../../../src/types/User';
-import * as Humanizer from '../../../../src/main/i18n/Humanizers';
+import Humanizer from '../../../../src/main/i18n/humanizers';
+import getFakeQuery from '../../../fakes/objects/fakeDiabetesQuery';
 
-(Humanizer as any).formatBloodSugar.mockReturnValue('BG');
-(Humanizer as any).formatCannulaAge.mockReturnValue('CAGE');
-(Humanizer as any).formatInsulinOnBoard.mockReturnValue('IOB');
-(Humanizer as any).formatSensorAge.mockReturnValue('SAGE');
-(Humanizer as any).formatCarbsOnBoard.mockReturnValue('COB');
+const fakeQuery = getFakeQuery();
+const mockedHumanizer = Humanizer as any;
+mockedHumanizer.bloodSugar.mockReturnValue('BG');
+mockedHumanizer.cannulaAge.mockReturnValue('CAGE');
+mockedHumanizer.insulinOnBoard.mockReturnValue('IOB');
+mockedHumanizer.sensorAge.mockReturnValue('SAGE');
+mockedHumanizer.carbsOnBoard.mockReturnValue('COB');
+mockedHumanizer.pumpBattery.mockReturnValue('PB');
+mockedHumanizer.error.mockReturnValue('ERROR');
 
 describe('Response Formatter', () => {
-  const testQuery: DiabetesQuery = {
-    locale: 'en-US',
-    pointers: [
-      DiabetesPointer.BloodSugar,
-      DiabetesPointer.CannulaAge,
-      DiabetesPointer.InsulinOnBoard,
-      DiabetesPointer.SensorAge,
-      DiabetesPointer.CarbsOnBoard,
-    ],
-    user: new User(),
-  };
-
-  const testSnapshot = new DiabetesSnapshot(Date.now());
+  const testSnapshot = new DiabetesSnapshot(Date.now(), fakeQuery);
   const responseFormatter = new ResponseFormatter(mock_i18n as any);
 
   it('combines formatted pointers into SSML', async () => {
-    const response = await responseFormatter.formatSnapshot(testSnapshot, testQuery);
+    const response = await responseFormatter.buildResponse(testSnapshot, fakeQuery);
     expect(response.SSML).toEqual(
-      '<speak><s>BG </s><s>CAGE </s><s>IOB </s><s>SAGE </s><s>COB </s></speak>'
+      '<speak><s>BG </s><s>CAGE </s><s>IOB </s><s>SAGE </s><s>COB </s><s>PB </s></speak>'
     );
+  });
+
+  it('calls error Humanizer for error responses', async () => {
+    const response = await responseFormatter.buildErrorResponse(null as any, fakeQuery);
+    expect(response.SSML).toEqual('<speak>ERROR</speak>');
   });
 });

@@ -2,15 +2,15 @@
  * A GlucoseTrend indicates how the blood sugar level has been changing over the last few minutes
  */
 export enum GlucoseTrend {
-  RisingRapidly = 'DoubleUp',
-  Rising = 'SingleUp',
-  RisingSlowly = 'SlightUp',
+  /* ⇈ */ RisingRapidly = 'DoubleUp',
+  /* ⇊ */ FallingRapidly = 'DoubleDown',
 
-  Stable = 'Stable',
+  /* ↑ */ Rising = 'SingleUp',
+  /* ↓ */ Falling = 'SingleDown',
 
-  FallingSlowly = 'SlightDown',
-  Falling = 'SingleDown',
-  FallingRapidly = 'DoubleDown',
+  /* ↗ */ RisingSlowly = 'SlightUp',
+  /* ↘ */ FallingSlowly = 'SlightDown',
 
-  Unknown = 'Unknown',
+  /* → */ Stable = 'Stable',
+  /* ? */ Unknown = 'Unknown',
 }
