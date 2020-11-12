@@ -1,11 +1,3 @@
 handler:
-  staticPrompt:
-    candidates:
-    - promptResponse:
-        firstSimple:
-          variants:
-          - speech: Sorry, I still didn't catch that. The app will now quit. Please
-              try the app again.
-            text: Sorry, I still didn't catch that. The app will now quit. Please
-              try the app again.
+  staticPromptName: static_prompt_7
 transitionToScene: actions.scene.END_CONVERSATION

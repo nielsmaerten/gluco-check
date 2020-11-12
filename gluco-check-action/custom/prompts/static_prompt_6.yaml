@@ -1,0 +1,6 @@
+candidates:
+- promptResponse:
+    firstSimple:
+      variants:
+      - speech: Sorry, I didn't catch that. Can you try again?
+        text: Sorry, I didn't catch that. Can you try again?

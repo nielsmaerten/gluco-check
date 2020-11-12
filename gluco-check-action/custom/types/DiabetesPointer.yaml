@@ -25,6 +25,8 @@ synonym:
       - all
       - all of it
       - every
+      - full report
+      - all values
     insulin on board:
       synonyms:
       - insulin on board
@@ -39,4 +41,3 @@ synonym:
       synonyms:
       - sensor age
       - sensor
-  matchType: EXACT_MATCH

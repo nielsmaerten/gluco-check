@@ -1,0 +1,6 @@
+candidates:
+- promptResponse:
+    firstSimple:
+      variants:
+      - speech: Sorry, ik heb je niet gehoord. Kan je het nog eens zeggen?
+        text: Sorry, ik heb je niet gehoord. Kan je het nog eens zeggen?
