@@ -63,4 +63,4 @@ assistant_responses:
       To let me in, you should first create a token.
       To do this, visit our website: https://diabase.app
     DiabetesPointer Not Found: >
-      I couldn't find to find your {{pointer}}.
+      I couldn't find your {{pointer}}.
