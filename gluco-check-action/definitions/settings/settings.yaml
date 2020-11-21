@@ -1,0 +1,20 @@
+accountLinking:
+  enableAccountCreation: true
+  linkingType: GOOGLE_SIGN_IN
+category: HEALTH_AND_FITNESS
+defaultLocale: en
+localizedSettings:
+  developerEmail: glucocheck@diabase.app
+  developerName: Niels Maerten
+  displayName: Gluco Nightly
+  fullDescription: TODO
+  privacyPolicyUrl: https://diabase.app/gluco-check/privacy
+  pronunciation: Gluco Nightly
+  sampleInvocations:
+  - Talk to Gluco Nightly
+  shortDescription: Ask Google about your blood sugar
+  smallLogoImage: https://lh3.googleusercontent.com/iByZN58udeU-Y00jiCeY5I5piOdBaxzPRutPS1DAO8rhTd2rJJvc55t6aUzkM7b0833W9tAeK4mvlA
+  termsOfServiceUrl: https://diabase.app/gluco-check/terms
+  voice: female_1
+projectId: gluco-check-nightly
+testingInstructions: TODO

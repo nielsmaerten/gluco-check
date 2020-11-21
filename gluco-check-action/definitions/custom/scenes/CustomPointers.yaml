@@ -13,12 +13,7 @@ slots:
   name: diabetesPointer
   promptSettings:
     initialPrompt:
-      staticPrompt:
-        candidates:
-        - promptResponse:
-            firstSimple:
-              variants:
-              - speech: What would you like to know?
+      staticPromptName: static_prompt_1
   required: true
   type:
     list: true
