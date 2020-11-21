@@ -1,4 +1,4 @@
-import {DiabetesPointer} from '../../src/types/DiabetesPointer';
+import {DmMetric} from '../../src/types/DmMetric';
 
 export default class UserProfileClient {
   constructor(private userExists = true) {}
@@ -7,7 +7,7 @@ export default class UserProfileClient {
     return {
       exists: this.userExists,
       userId: 'test@example.com',
-      defaultPointers: this.userExists ? [DiabetesPointer.BloodSugar] : undefined,
+      defaultPointers: this.userExists ? [DmMetric.BloodSugar] : undefined,
     };
   }
 }

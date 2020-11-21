@@ -2,7 +2,8 @@
   "extends": "./node_modules/gts/",
   "ignorePatterns": "build/**/*",
   "rules": {
-    "node/no-unpublished-import": "off"
+    "node/no-unpublished-import": "off",
+    "sort-imports": "off" // TODO: Turn this on
   },
   "globals": {
     "describe": "readonly",

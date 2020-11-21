@@ -1,10 +1,10 @@
-import {DiabetesPointer} from './DiabetesPointer';
-import DiabetesSnapshot from './DiabetesSnapshot';
+import {DmMetric} from './DmMetric';
+import DmSnapshot from './DmSnapshot';
 
 export default class FormatParams {
-  public pointer!: DiabetesPointer;
-  public snapshot!: DiabetesSnapshot;
+  public metric!: DmMetric;
+  public snapshot!: DmSnapshot;
   public locale!: string;
   public sayTimeAgo = true;
-  public sayPointerName = false;
+  public sayMetricName = false;
 }

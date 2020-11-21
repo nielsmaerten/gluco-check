@@ -1,13 +1,13 @@
 import {injectable} from 'inversify';
 
 import Localizer from '../i18n/Localizer';
-import DiabetesSnapshot from '../../types/DiabetesSnapshot';
+import DmSnapshot from '../../types/DmSnapshot';
 import AssistantResponse from '../../types/AssistantResponse';
-import DiabetesQuery from '../../types/DiabetesQuery';
+import DmQuery from '../../types/DmQuery';
 import FormatParams from '../../types/FormatParams';
 
-import {ErrorTypes} from '../../types/ErrorTypes';
-import {DiabetesPointer} from '../../types/DiabetesPointer';
+import {ErrorType} from '../../types/ErrorType';
+import {DmMetric} from '../../types/DmMetric';
 import Humanizer from '../i18n/humanizers';
 
 @injectable()
@@ -15,8 +15,8 @@ export default class ResponseFormatter {
   constructor(private localizer: Localizer) {}
 
   async buildErrorResponse(
-    errorType: ErrorTypes,
-    query: DiabetesQuery
+    errorType: ErrorType,
+    query: DmQuery
   ): Promise<AssistantResponse> {
     // Ensure the required language has been loaded
     await this.localizer.ensureLocale(query.locale);
@@ -34,21 +34,18 @@ export default class ResponseFormatter {
     return new AssistantResponse(SSML, query.locale);
   }
 
-  async buildResponse(
-    snapshot: DiabetesSnapshot,
-    query: DiabetesQuery
-  ): Promise<AssistantResponse> {
+  async buildResponse(snapshot: DmSnapshot, query: DmQuery): Promise<AssistantResponse> {
     // Ensure the required language has been loaded
     await this.localizer.ensureLocale(query.locale);
 
-    // Turn every requested pointer into human text
-    const humanizedPointers = await humanizePointers(query, snapshot);
+    // Turn every requested metric into human text
+    const humanizedMetrics = await humanizeMetrics(query, snapshot);
 
     // Start a new SSML string
     let SSML = '<speak>';
 
-    // Append human text for each pointer
-    SSML += humanizedPointers
+    // Append human text for each metric
+    SSML += humanizedMetrics
 
       // Wrap the human text in an SSML tag
       .map(
@@ -65,63 +62,57 @@ export default class ResponseFormatter {
   }
 }
 
-function humanizePointers(
-  query: DiabetesQuery,
-  snapshot: DiabetesSnapshot
-): Promise<string[]> {
-  // For each pointer, we need to decide how it will be formatted
-  // This is expressed as a FormatParams object for each pointer:
+function humanizeMetrics(query: DmQuery, snapshot: DmSnapshot): Promise<string[]> {
+  // For each metric, we need to decide how it will be formatted
+  // This is expressed as a FormatParams object for each metric:
   const formatParams = getFormatParams(query, snapshot);
-  return Promise.all(formatParams.map(humanizePointer));
+  return Promise.all(formatParams.map(humanizeMetric));
 
   // FIXME(architecture): Important: I really should review how things are named here,
   // because this is getting really confusing!
 }
 
-function getFormatParams(query: DiabetesQuery, snapshot: DiabetesSnapshot) {
-  const {locale, pointers} = query;
+function getFormatParams(query: DmQuery, snapshot: DmSnapshot) {
+  const {locale, metrics} = query;
 
-  return pointers.map<FormatParams>((pointer: DiabetesPointer, i: number) => {
+  return metrics.map<FormatParams>((metric: DmMetric, i: number) => {
     return {
-      pointer,
+      metric,
       snapshot,
       locale,
 
-      // The first pointer in the list will include the time:
+      // The first metric in the list will include the time:
       // eg: 'Foo bar as of 5 minutes ago'
       sayTimeAgo: i === 0,
 
-      // If the list has > 1 pointer, we read out each pointer's name:
+      // If the list has > 1 metric, we read the name of each one:
       // eg: 'Blood sugar is foo bar '
-      sayPointerName: query.pointers.length > 1,
+      sayMetricName: query.metrics.length > 1,
     };
-    //const humanPointer = await humanizePointer(pointer, params);
-    //logger.debug('[ResponseFormatter]:', humanPointer);
-    //return `<s>${humanPointer} </s>`; // Note the space at the end of each pointer!
   });
 }
 
-function humanizePointer(params: FormatParams): Promise<string> {
-  switch (params.pointer) {
-    case DiabetesPointer.BloodSugar:
+function humanizeMetric(params: FormatParams): Promise<string> {
+  switch (params.metric) {
+    case DmMetric.BloodSugar:
       return Humanizer.bloodSugar(params);
 
-    case DiabetesPointer.CannulaAge:
+    case DmMetric.CannulaAge:
       return Humanizer.cannulaAge(params);
 
-    case DiabetesPointer.CarbsOnBoard:
+    case DmMetric.CarbsOnBoard:
       return Humanizer.carbsOnBoard(params);
 
-    case DiabetesPointer.InsulinOnBoard:
+    case DmMetric.InsulinOnBoard:
       return Humanizer.insulinOnBoard(params);
 
-    case DiabetesPointer.SensorAge:
+    case DmMetric.SensorAge:
       return Humanizer.sensorAge(params);
 
-    case DiabetesPointer.PumpBattery:
+    case DmMetric.PumpBattery:
       return Humanizer.pumpBattery(params);
 
     default:
-      throw new Error('Unable to humanize pointer ' + params.pointer);
+      throw new Error('Unable to humanize metric ' + params.metric);
   }
 }

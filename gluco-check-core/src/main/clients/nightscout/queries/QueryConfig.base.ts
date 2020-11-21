@@ -1,4 +1,4 @@
-import {DiabetesPointer} from '../../../../types/DiabetesPointer';
+import {DmMetric} from '../../../../types/DmMetric';
 
 export default class QueryConfig {
   // Callback function that should extract required info from the HTTP response
@@ -10,8 +10,8 @@ export default class QueryConfig {
   // API path the HTTP request should be sent to
   public path!: string;
 
-  // DiabetesPointers that will be fulfilled by this query
-  public pointers!: DiabetesPointer[];
+  // DmMetrics that will be fulfilled by this query
+  public metrics!: DmMetric[];
 
   // Unique key for caching. Ensures a query is only executed once
   public key!: string;

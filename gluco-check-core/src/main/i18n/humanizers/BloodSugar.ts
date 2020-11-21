@@ -1,5 +1,5 @@
-import {pointerNotFound} from './error';
-import {DiabetesPointer} from '../../../types/DiabetesPointer';
+import {metricNotFound} from './error';
+import {DmMetric} from '../../../types/DmMetric';
 import FormatParams from '../../../types/FormatParams';
 import {GlucoseTrend} from '../../../types/GlucoseTrend';
 import {i18next} from '../Localizer';
@@ -14,12 +14,12 @@ export default async function (params: FormatParams): Promise<string> {
   };
 
   if (context.value === undefined) {
-    return pointerNotFound(DiabetesPointer.BloodSugar, params);
+    return metricNotFound(DmMetric.BloodSugar, params);
   }
 
   // Build translation key
   let key = 'assistant_responses.blood_sugar.';
-  key += params.sayPointerName ? 'long;' : 'short;';
+  key += params.sayMetricName ? 'long;' : 'short;';
   key += context.trend ? 'with_trend;' : 'no_trend;';
   key += params.sayTimeAgo ? 'with_time' : 'no_time';
 

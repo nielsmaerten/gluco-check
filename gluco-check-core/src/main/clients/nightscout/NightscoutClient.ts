@@ -3,11 +3,11 @@ import axios, {AxiosRequestConfig} from 'axios';
 import NightscoutProps from '../../../types/NightscoutProps';
 import {URL} from 'url';
 import * as Queries from './queries';
-import {DiabetesPointer} from '../../../types/DiabetesPointer';
-import {ErrorTypes} from '../../../types/ErrorTypes';
+import {DmMetric} from '../../../types/DmMetric';
+import {ErrorType} from '../../../types/ErrorType';
 import {logger} from 'firebase-functions';
 import QueryConfig from './queries/QueryConfig.base';
-import DiabetesSnapshot from '../../../types/DiabetesSnapshot';
+import DmSnapshot from '../../../types/DmSnapshot';
 
 /**
  * Provides methods for querying a Nightscout site
@@ -18,31 +18,31 @@ export default class NightscoutClient {
   }
   private cache: any = {};
 
-  async getPointer(pointer: DiabetesPointer): Promise<Partial<DiabetesSnapshot>> {
-    switch (pointer) {
-      case DiabetesPointer.BloodSugar:
+  async getMetric(metric: DmMetric): Promise<Partial<DmSnapshot>> {
+    switch (metric) {
+      case DmMetric.BloodSugar:
         return await this.runQuery(Queries.BloodSugar);
 
-      case DiabetesPointer.CarbsOnBoard:
-      case DiabetesPointer.InsulinOnBoard:
-      case DiabetesPointer.PumpBattery:
+      case DmMetric.CarbsOnBoard:
+      case DmMetric.InsulinOnBoard:
+      case DmMetric.PumpBattery:
         return await this.runQuery(Queries.DeviceStatus);
 
-      case DiabetesPointer.SensorAge:
+      case DmMetric.SensorAge:
         return await this.runQuery(Queries.SensorAge);
 
-      case DiabetesPointer.CannulaAge:
+      case DmMetric.CannulaAge:
         return await this.runQuery(Queries.CannulaAge);
 
       default:
         throw new Error(
-          `[NightscoutClient]: ${pointer} has no associated NightscoutQuery`
+          `[NightscoutClient]: ${metric} has no associated NightscoutQuery`
         );
     }
   }
 
-  private async runQuery(query: QueryConfig): Promise<Partial<DiabetesSnapshot>> {
-    const {params, path, callback, key, pointers} = query;
+  private async runQuery(query: QueryConfig): Promise<Partial<DmSnapshot>> {
+    const {params, path, callback, key, metrics} = query;
 
     // Build the URL for this Query
     const url = new URL(path, this.nightscout.url);
@@ -81,7 +81,7 @@ export default class NightscoutClient {
 
       // Handle HTTP errors
     } catch (error) {
-      return this.createSnapshotWithErrors(error, pointers);
+      return this.createSnapshotWithErrors(error, metrics);
     }
   }
 
@@ -92,7 +92,7 @@ export default class NightscoutClient {
 
       // Response must have exactly 1 item
       if (response.data?.length !== 1) {
-        throw {type: ErrorTypes.Nightscout_UnexpectedNrOfItems, request, response};
+        throw {type: ErrorType.Nightscout_UnexpectedNrOfItems, request, response};
       }
 
       // If we got here, everything's fine
@@ -107,8 +107,8 @@ export default class NightscoutClient {
       throw {
         type:
           error.response?.status === 401
-            ? ErrorTypes.Nightscout_Unauthorized
-            : ErrorTypes.Nightscout_Unavailable,
+            ? ErrorType.Nightscout_Unauthorized
+            : ErrorType.Nightscout_Unavailable,
         request,
         response: error.response,
       };
@@ -116,21 +116,21 @@ export default class NightscoutClient {
   }
 
   private createSnapshotWithErrors(
-    error: {type: ErrorTypes},
-    pointers: DiabetesPointer[]
-  ): Partial<DiabetesSnapshot> {
+    error: {type: ErrorType},
+    metrics: DmMetric[]
+  ): Partial<DmSnapshot> {
     switch (error.type) {
-      case ErrorTypes.Nightscout_Unauthorized:
+      case ErrorType.Nightscout_Unauthorized:
         logger.warn(
           '[NightscoutClient]: UNAUTHORIZED. Verify a valid token was provided.'
         );
         break;
 
-      case ErrorTypes.Nightscout_Unavailable:
+      case ErrorType.Nightscout_Unavailable:
         logger.warn('[NightscoutClient]: UNAVAILABLE. Verify the Nightscout URL');
         break;
 
-      case ErrorTypes.Nightscout_UnexpectedNrOfItems:
+      case ErrorType.Nightscout_UnexpectedNrOfItems:
         logger.error(
           "[NightscoutClient]: Unexpected nr of items. This shouldn't happen!"
         );
@@ -138,16 +138,16 @@ export default class NightscoutClient {
 
       default:
         logger.error(
-          `[NightscoutClient]: Query for ${pointers} resulted in unexpected ${error}`
+          `[NightscoutClient]: Query for ${metrics} resulted in unexpected ${error}`
         );
         break;
     }
 
     const snapshotWithErrors = {
-      errors: pointers.map(p => {
+      errors: metrics.map(p => {
         return {
           type: error.type,
-          affectedPointer: p,
+          affectedMetric: p,
         };
       }),
     };

@@ -1,16 +1,16 @@
 import {i18next} from '../Localizer';
-import {ErrorTypes} from '../../../types/ErrorTypes';
-import {DiabetesPointer} from '../../../types/DiabetesPointer';
+import {ErrorType} from '../../../types/ErrorType';
+import {DmMetric} from '../../../types/DmMetric';
 import FormatParams from '../../../types/FormatParams';
 
 export default function humanizeError(
-  errorType: ErrorTypes,
+  errorType: ErrorType,
   locale: string,
-  affectedPointer?: DiabetesPointer
+  affectedMetric?: DmMetric
 ): string {
   // Collect translation context
   const context = {
-    pointer: affectedPointer,
+    metric: affectedMetric,
   };
 
   // Build translation key
@@ -21,11 +21,11 @@ export default function humanizeError(
 }
 
 /**
- * Shortcut function for humanizing PointerNotFound errors
+ * Shortcut function for humanizing MetricNotFound errors
  */
-export function pointerNotFound(pointer: DiabetesPointer, params: FormatParams) {
-  const mentionError = params.snapshot.originalQuery.metadata.mentionMissingPointers;
+export function metricNotFound(metric: DmMetric, params: FormatParams) {
+  const mentionError = params.snapshot.query.metadata.mentionMissingMetrics;
 
   if (!mentionError) return '';
-  return humanizeError(ErrorTypes.QueryResponse_PointerNotFound, params.locale, pointer);
+  return humanizeError(ErrorType.QueryResponse_MetricNotFound, params.locale, metric);
 }

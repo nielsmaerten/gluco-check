@@ -1,27 +1,24 @@
 import User from '../../../../src/types/User';
 import AxiosMock from '../../../stubs/AxiosMockAdapter';
-import {DiabetesPointer} from '../../../../src/types/DiabetesPointer';
+import {DmMetric} from '../../../../src/types/DmMetric';
 import NightscoutProps from '../../../../src/types/NightscoutProps';
 import NightscoutClient from '../../../../src/main/clients/nightscout/NightscoutClient';
-import DiabetesSnapshot from '../../../../src/types/DiabetesSnapshot';
+import DmSnapshot from '../../../../src/types/DmSnapshot';
 import {GlucoseTrend} from '../../../../src/types/GlucoseTrend';
 import {GlucoseUnit} from '../../../../src/types/GlucoseUnit';
-import DiabetesQuery from '../../../../src/types/DiabetesQuery';
-import {ErrorTypes} from '../../../../src/types/ErrorTypes';
+import DmQuery from '../../../../src/types/DmQuery';
+import {ErrorType} from '../../../../src/types/ErrorType';
 
 describe('NightscoutClient', () => {
   const testUser: User = {
     exists: true,
     userId: 'test@example.com',
-    defaultPointers: [DiabetesPointer.Everything],
+    defaultPointers: [DmMetric.Everything],
     nightscout: new NightscoutProps('https://cgm.example.com'),
   };
-  const testQuery = new DiabetesQuery(testUser, 'en-US', testUser.defaultPointers!);
+  const testQuery = new DmQuery(testUser, 'en-US', testUser.defaultPointers!);
 
-  const expected = new DiabetesSnapshot(
-    new Date('2020-01-21T10:10:00Z').getTime(),
-    testQuery
-  );
+  const expected = new DmSnapshot(new Date('2020-01-21T10:10:00Z').getTime(), testQuery);
   Object.assign(expected, {
     cannulaInserted: new Date('2020-08-18T09:47:48Z').getTime(),
     sensorInserted: new Date('2020-08-23T15:05:21Z').getTime(),
@@ -41,7 +38,7 @@ describe('NightscoutClient', () => {
   });
 
   it('fetches Glucose', async () => {
-    const data = await testClient.getPointer(DiabetesPointer.BloodSugar);
+    const data = await testClient.getMetric(DmMetric.BloodSugar);
     expect(data).toMatchObject({
       glucoseTrend: expected.glucoseTrend,
       glucoseValueMgDl: expected.glucoseValue(),
@@ -53,39 +50,39 @@ describe('NightscoutClient', () => {
 
     // These 2 pointers can be retrieved from 1 call.
     // They should both return information, but the call should only be executed once
-    await testClient.getPointer(DiabetesPointer.CarbsOnBoard);
-    await testClient.getPointer(DiabetesPointer.InsulinOnBoard);
+    await testClient.getMetric(DmMetric.CarbsOnBoard);
+    await testClient.getMetric(DmMetric.InsulinOnBoard);
 
     expect(spy).toHaveBeenCalledTimes(1);
     spy.mockClear();
   });
 
   it('fetches Cannula info', async () => {
-    const data = await testClient.getPointer(DiabetesPointer.CannulaAge);
+    const data = await testClient.getMetric(DmMetric.CannulaAge);
     expect(data.cannulaInserted).toEqual(expected.cannulaInserted);
   });
 
   it('fetches Sensor info', async () => {
-    const data = await testClient.getPointer(DiabetesPointer.SensorAge);
+    const data = await testClient.getMetric(DmMetric.SensorAge);
     expect(data.sensorInserted).toEqual(expected.sensorInserted);
   });
 
   it('sets the error prop when Nightscout is unavailable', done => {
     AxiosMock.respondWithTimeout();
-    testClient.getPointer(DiabetesPointer.BloodSugar).then(e => {
+    testClient.getMetric(DmMetric.BloodSugar).then(e => {
       expect(e.errors).toHaveLength(1);
-      expect(e.errors![0].type).toEqual(ErrorTypes.Nightscout_Unavailable);
-      expect(e.errors![0].affectedPointer).toEqual(DiabetesPointer.BloodSugar);
+      expect(e.errors![0].type).toEqual(ErrorType.Nightscout_Unavailable);
+      expect(e.errors![0].affectedMetric).toEqual(DmMetric.BloodSugar);
       done();
     });
   });
 
   it('sets the error prop when Nightscout is unauthorized', done => {
     AxiosMock.respondWith401Unauthorized();
-    testClient.getPointer(DiabetesPointer.BloodSugar).then(e => {
+    testClient.getMetric(DmMetric.BloodSugar).then(e => {
       expect(e.errors).toHaveLength(1);
-      expect(e.errors![0].type).toEqual(ErrorTypes.Nightscout_Unauthorized);
-      expect(e.errors![0].affectedPointer).toEqual(DiabetesPointer.BloodSugar);
+      expect(e.errors![0].type).toEqual(ErrorType.Nightscout_Unauthorized);
+      expect(e.errors![0].affectedMetric).toEqual(DmMetric.BloodSugar);
       done();
     });
   });

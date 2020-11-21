@@ -1,18 +1,18 @@
-import DiabetesQuery from '../../../src/types/DiabetesQuery';
+import DmQuery from '../../../src/types/DmQuery';
 import User from '../../../src/types/User';
-import {DiabetesPointer} from '../../../src/types/DiabetesPointer';
+import {DmMetric} from '../../../src/types/DmMetric';
 
 describe('DiabetesQuery', () => {
   it("expands the 'Everything' type to all other types", () => {
-    const query = new DiabetesQuery(new User(), 'en-US', [DiabetesPointer.Everything]);
+    const query = new DmQuery(new User(), 'en-US', [DmMetric.Everything]);
 
-    expect(query.pointers).toContain(DiabetesPointer.BloodSugar);
-    expect(query.pointers).toContain(DiabetesPointer.CannulaAge);
-    expect(query.pointers).toContain(DiabetesPointer.CarbsOnBoard);
-    expect(query.pointers).toContain(DiabetesPointer.InsulinOnBoard);
-    expect(query.pointers).toContain(DiabetesPointer.SensorAge);
-    expect(query.pointers).toContain(DiabetesPointer.PumpBattery);
-    expect(query.pointers).not.toContain(DiabetesPointer.Everything);
-    expect(query.pointers).toHaveLength(6);
+    expect(query.metrics).toContain(DmMetric.BloodSugar);
+    expect(query.metrics).toContain(DmMetric.CannulaAge);
+    expect(query.metrics).toContain(DmMetric.CarbsOnBoard);
+    expect(query.metrics).toContain(DmMetric.InsulinOnBoard);
+    expect(query.metrics).toContain(DmMetric.SensorAge);
+    expect(query.metrics).toContain(DmMetric.PumpBattery);
+    expect(query.metrics).not.toContain(DmMetric.Everything);
+    expect(query.metrics).toHaveLength(6);
   });
 });

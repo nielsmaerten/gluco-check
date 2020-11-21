@@ -62,5 +62,5 @@ assistant_responses:
       Sorry, looks like I'm not allowed to read your Nightscout site.
       To let me in, you should first create a token.
       To do this, visit our website: https://diabase.app
-    DiabetesPointer Not Found: >
-      I couldn't find your {{pointer}}.
+    DmMetric Not Found: >
+      I couldn't find your {{metric}}.

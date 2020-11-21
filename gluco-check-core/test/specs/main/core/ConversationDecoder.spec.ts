@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import 'reflect-metadata';
 import ConversationDecoder from '../../../../src/main/core/ConversationDecoder';
-import {DiabetesPointer} from '../../../../src/types/DiabetesPointer';
-import DiabetesQuery from '../../../../src/types/DiabetesQuery';
+import {DmMetric} from '../../../../src/types/DmMetric';
+import DmQuery from '../../../../src/types/DmQuery';
 import {Container} from 'inversify';
 import UserProfileClient from '../../../../src/main/clients/UserProfileClient';
 import AuthTokenDecoder from '../../../../src/main/core/AuthTokenDecoder';
@@ -14,8 +14,8 @@ describe('Conversation Decoder', () => {
     custom: require('../../../fakes/http-requests/custom_pointers').requestJson,
     default: require('../../../fakes/http-requests/default_pointers').requestJson,
   };
-  let mainInvocationResult: DiabetesQuery;
-  let deepInvocationResult: DiabetesQuery;
+  let mainInvocationResult: DmQuery;
+  let deepInvocationResult: DmQuery;
 
   beforeAll(async () => {
     const conversationDecoder = getTestContainer().get(ConversationDecoder);
@@ -24,15 +24,15 @@ describe('Conversation Decoder', () => {
   });
 
   it("returns the user's default pointers when called through main intent", () => {
-    const pointers = mainInvocationResult.pointers;
-    expect(pointers).toContain(DiabetesPointer.BloodSugar);
+    const pointers = mainInvocationResult.metrics;
+    expect(pointers).toContain(DmMetric.BloodSugar);
   });
 
   it('extracts pointers from the intent params', () => {
-    const pointers = deepInvocationResult.pointers;
-    expect(pointers).toContain(DiabetesPointer.BloodSugar);
-    expect(pointers).toContain(DiabetesPointer.SensorAge);
-    expect(pointers).toContain(DiabetesPointer.InsulinOnBoard);
+    const pointers = deepInvocationResult.metrics;
+    expect(pointers).toContain(DmMetric.BloodSugar);
+    expect(pointers).toContain(DmMetric.SensorAge);
+    expect(pointers).toContain(DmMetric.InsulinOnBoard);
   });
 
   it('extracts the user locale', () => {
@@ -47,12 +47,12 @@ describe('Conversation Decoder', () => {
     const mainInvocationResult = await decoder.decode(testConversations.default);
 
     // In case of deep invocation, the pointers should be the ones asked for
-    expect(deepInvocationResult.pointers).toContain(DiabetesPointer.BloodSugar);
-    expect(deepInvocationResult.pointers).toContain(DiabetesPointer.SensorAge);
-    expect(deepInvocationResult.pointers).toContain(DiabetesPointer.InsulinOnBoard);
+    expect(deepInvocationResult.metrics).toContain(DmMetric.BloodSugar);
+    expect(deepInvocationResult.metrics).toContain(DmMetric.SensorAge);
+    expect(deepInvocationResult.metrics).toContain(DmMetric.InsulinOnBoard);
 
     // In case of main invocation, pointers should be empty
-    expect(mainInvocationResult.pointers).toHaveLength(0);
+    expect(mainInvocationResult.metrics).toHaveLength(0);
   });
 });
 

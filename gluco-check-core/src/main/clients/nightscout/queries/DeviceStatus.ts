@@ -1,13 +1,9 @@
-import {DiabetesPointer} from '../../../../types/DiabetesPointer';
+import {DmMetric} from '../../../../types/DmMetric';
 import QueryConfig from './QueryConfig.base';
 
 export const DeviceStatus: QueryConfig = {
   key: 'DS',
-  pointers: [
-    DiabetesPointer.CarbsOnBoard,
-    DiabetesPointer.InsulinOnBoard,
-    DiabetesPointer.PumpBattery,
-  ],
+  metrics: [DmMetric.CarbsOnBoard, DmMetric.InsulinOnBoard, DmMetric.PumpBattery],
   path: '/api/v3/devicestatus',
   params: {sort$desc: 'created_at', limit: 1, 'pump.clock$gte': ''},
   callback: (data: any) => { // eslint-disable-line

@@ -8,7 +8,7 @@ const mock_i18n = {
 jest.doMock('../../../../src/main/i18n/humanizers');
 
 import ResponseFormatter from '../../../../src/main/core/ResponseFormatter';
-import DiabetesSnapshot from '../../../../src/types/DiabetesSnapshot';
+import DmSnapshot from '../../../../src/types/DmSnapshot';
 import Humanizer from '../../../../src/main/i18n/humanizers';
 import getFakeQuery from '../../../fakes/objects/fakeDiabetesQuery';
 
@@ -23,7 +23,7 @@ mockedHumanizer.pumpBattery.mockReturnValue('PB');
 mockedHumanizer.error.mockReturnValue('ERROR');
 
 describe('Response Formatter', () => {
-  const testSnapshot = new DiabetesSnapshot(Date.now(), fakeQuery);
+  const testSnapshot = new DmSnapshot(Date.now(), fakeQuery);
   const responseFormatter = new ResponseFormatter(mock_i18n as any);
 
   it('combines formatted pointers into SSML', async () => {

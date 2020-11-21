@@ -1,7 +1,7 @@
 import {i18next} from '../Localizer';
 import FormatParams from '../../../types/FormatParams';
-import {pointerNotFound} from './error';
-import {DiabetesPointer} from '../../../types/DiabetesPointer';
+import {metricNotFound} from './error';
+import {DmMetric} from '../../../types/DmMetric';
 
 export default async function (params: FormatParams): Promise<string> {
   // Collect translation context
@@ -9,8 +9,7 @@ export default async function (params: FormatParams): Promise<string> {
     percent: params.snapshot.pumpBattery,
   };
 
-  if (context.percent === undefined)
-    return pointerNotFound(DiabetesPointer.PumpBattery, params);
+  if (context.percent === undefined) return metricNotFound(DmMetric.PumpBattery, params);
 
   // Build translation key
   const key = 'assistant_responses.pump_battery';
