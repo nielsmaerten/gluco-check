@@ -1,12 +1,12 @@
 # Contributing
 
-👍🎉 First off, thanks for taking the time to contribute! 🎉👍
+First off, thanks for taking the time to contribute! 🎉👍
 
 ### 🙋‍♀️ Who's this document for?
 
-- For you:
+- For _you_:  
   If you want to contribute, reading this document if the fastest way to understanding the codebase
-- For myself (the creator of Gluco Check):
+- For _myself_ (the creator of Gluco Check):  
   If I'm coming back to this project after working on something else for a while, this doc will quickly get me reacquainted
 
 ### 📖 What's in this document?
@@ -43,7 +43,7 @@ yarn # Link packages together and install dependencies
 
 Gluco Check is a monorepo managed by Yarn Workspaces. There are 5 separate packages, each with their own purpose:
 
-### gluco-check-action
+### [gluco-check-action](./gluco-check-action)
 
 Contains the Google Action definition that is deployed to Google Assistant.
 
@@ -60,7 +60,7 @@ When invoked, Google calls our webhook (see `gluco-check-webhooks`) to get a res
 [google actions builder]: https://console.actions.google.com
 [`gactions`]: https://developers.google.com/assistant/conversational/df-asdk/actions-sdk/gactions-cli
 
-### gluco-check-common
+### [gluco-check-common](./gluco-check-common)
 
 This is where we store translated strings. [Crowdin] automatically updates these YAML files with new translations.
 
@@ -68,7 +68,7 @@ This is where we store translated strings. [Crowdin] automatically updates these
 
 [Crowdin]: (https://crowdin.com)
 
-### gluco-check-webhook
+### [gluco-check-webhooks](./gluco-check-webhooks)
 
 There are two webhooks. They are deployed as [Firebase] HTTP functions.
 
@@ -82,7 +82,7 @@ There are two webhooks. They are deployed as [Firebase] HTTP functions.
 
 Run `yarn deploy` to deploy the webhooks to Firebase.
 
-### gluco-check-core
+### [gluco-check-core](./gluco-check-core)
 
 #### Glossary (aka: Types)
 
