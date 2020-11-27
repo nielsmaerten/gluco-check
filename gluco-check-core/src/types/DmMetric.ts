@@ -14,7 +14,6 @@ export enum DmMetric {
 }
 
 // Note:
-// TODO: Rename DiabetesPointer
-// The names of these enum values correspond to the type 'DiabetesPointer' in Google Actions:
-// https://console.actions.google.com/project/gluco-check-nightly/types/edit/DiabetesPointer
-// https://console.actions.google.com/project/gluco-check-prod/types/edit/DiabetesPointer
+// The names of these enum values correspond to the type 'DmMetric' in Google Actions:
+// https://console.actions.google.com/project/gluco-check-nightly/types/edit/DmMetric
+// https://console.actions.google.com/project/gluco-check-prod/types/edit/DmMetric

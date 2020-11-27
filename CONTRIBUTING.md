@@ -169,5 +169,5 @@ QueryResolver-->>Core: DmSnapshot
 
 ##### When `ResponseFormatter` receives a `DmSnapshot`:
  ```
- TODO
+ TODO: Update docs
  ```

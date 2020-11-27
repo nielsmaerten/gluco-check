@@ -9,7 +9,7 @@ export default container.get(GlucoCheckCore);
 
 /**
  * Code Cleanup / Refactoring
- * // TODO
+ * // TODO: Refactoring tasks
  * - Sort imports
  * - Split QueryResolver into QueryFulfiller and ResponseFormatter
  * - Turn DmMetric from an enum into a class???
