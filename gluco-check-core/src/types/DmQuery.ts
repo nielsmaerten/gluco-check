@@ -8,7 +8,7 @@ import User from './User';
  *
  * The expression "Hey Google, ask Gluco Check what my IOB is"
  * could be expressed as the following DmQuery:
- * {user: "email@domain.com", locale: "en-US", pointers: [DmMetric.IOB]}
+ * {user: "email@domain.com", locale: "en-US", metrics: [DmMetric.IOB]}
  */
 export default class DmQuery {
   // Basic data needed to fulfill the query

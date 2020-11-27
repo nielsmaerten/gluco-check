@@ -11,13 +11,11 @@ export default container.get(GlucoCheckCore);
  * Code Cleanup / Refactoring
  * // TODO
  * - Sort imports
- * - Rename 'pointers' to 'metrics' in the Action
  * - Split QueryResolver into QueryFulfiller and ResponseFormatter
  * - Turn DmMetric from an enum into a class???
  *   - Each class could have a humanizer function, extract function, ... ???
  *
  * - Rename:
- *   - DiabetesPointer --> DmMetric
  *   - DiabetesSnapshot --> DmSnapshot
  *   - DiabetesQuery --> DmQuery
  */

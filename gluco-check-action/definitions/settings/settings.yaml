@@ -6,10 +6,10 @@ defaultLocale: en
 localizedSettings:
   developerEmail: glucocheck@diabase.app
   developerName: Niels Maerten
-  displayName: Gluco Nightly
+  displayName: Gluco Tester
   fullDescription: TODO
   privacyPolicyUrl: https://diabase.app/gluco-check/privacy
-  pronunciation: Gluco Nightly
+  pronunciation: Gluco Tester
   sampleInvocations:
   - Talk to Gluco Nightly
   shortDescription: Ask Google about your blood sugar

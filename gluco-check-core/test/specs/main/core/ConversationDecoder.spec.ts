@@ -11,8 +11,8 @@ import stub_UserProfileClient from '../../../stubs/UserProfileClient';
 
 describe('Conversation Decoder', () => {
   const testConversations = {
-    custom: require('../../../fakes/http-requests/custom_pointers').requestJson,
-    default: require('../../../fakes/http-requests/default_pointers').requestJson,
+    custom: require('../../../fakes/http-requests/custom_metrics').requestJson,
+    default: require('../../../fakes/http-requests/default_metrics').requestJson,
   };
   let mainInvocationResult: DmQuery;
   let deepInvocationResult: DmQuery;
@@ -23,16 +23,16 @@ describe('Conversation Decoder', () => {
     mainInvocationResult = await conversationDecoder.decode(testConversations.default);
   });
 
-  it("returns the user's default pointers when called through main intent", () => {
-    const pointers = mainInvocationResult.metrics;
-    expect(pointers).toContain(DmMetric.BloodSugar);
+  it("returns the user's default metrics when called through main intent", () => {
+    const metrics = mainInvocationResult.metrics;
+    expect(metrics).toContain(DmMetric.BloodSugar);
   });
 
-  it('extracts pointers from the intent params', () => {
-    const pointers = deepInvocationResult.metrics;
-    expect(pointers).toContain(DmMetric.BloodSugar);
-    expect(pointers).toContain(DmMetric.SensorAge);
-    expect(pointers).toContain(DmMetric.InsulinOnBoard);
+  it('extracts metrics from the intent params', () => {
+    const metrics = deepInvocationResult.metrics;
+    expect(metrics).toContain(DmMetric.BloodSugar);
+    expect(metrics).toContain(DmMetric.SensorAge);
+    expect(metrics).toContain(DmMetric.InsulinOnBoard);
   });
 
   it('extracts the user locale', () => {
@@ -46,12 +46,12 @@ describe('Conversation Decoder', () => {
     const deepInvocationResult = await decoder.decode(testConversations.custom);
     const mainInvocationResult = await decoder.decode(testConversations.default);
 
-    // In case of deep invocation, the pointers should be the ones asked for
+    // In case of deep invocation, the metrics should be the ones asked for
     expect(deepInvocationResult.metrics).toContain(DmMetric.BloodSugar);
     expect(deepInvocationResult.metrics).toContain(DmMetric.SensorAge);
     expect(deepInvocationResult.metrics).toContain(DmMetric.InsulinOnBoard);
 
-    // In case of main invocation, pointers should be empty
+    // In case of main invocation, metrics should be empty
     expect(mainInvocationResult.metrics).toHaveLength(0);
   });
 });

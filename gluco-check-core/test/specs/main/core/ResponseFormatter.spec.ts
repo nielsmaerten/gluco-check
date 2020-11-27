@@ -26,7 +26,7 @@ describe('Response Formatter', () => {
   const testSnapshot = new DmSnapshot(Date.now(), fakeQuery);
   const responseFormatter = new ResponseFormatter(mock_i18n as any);
 
-  it('combines formatted pointers into SSML', async () => {
+  it('combines formatted metrics into SSML', async () => {
     const response = await responseFormatter.buildResponse(testSnapshot, fakeQuery);
     expect(response.SSML).toEqual(
       '<speak><s>BG </s><s>CAGE </s><s>IOB </s><s>SAGE </s><s>COB </s><s>PB </s></speak>'

@@ -104,14 +104,13 @@ export default class ConversationDecoder {
    * Extracts which DmMetrics were asked for in the conversation
    */
   private async extractMetrics(conv: ConversationV3, user: User): Promise<DmMetric[]> {
-    // TODO: Rename this
-    const isDeepInvocation = conv.handler.name === 'custom_pointers';
+    const isDeepInvocation = conv.handler.name === 'custom_metrics';
 
     if (isDeepInvocation) {
-      // Get requested pointers from intent params
+      // Get requested metrics from intent params
       return conv.intent.params!.diabetesPointer!.resolved;
     } else {
-      // Get requested pointers from user profile
+      // Get requested metrics from user profile
       return user.defaultPointers ?? [];
     }
   }

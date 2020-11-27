@@ -1,6 +1,6 @@
 handlers:
-- name: custom_pointers
-- name: default_pointers
+- name: default_metrics
+- name: custom_metrics
 httpsEndpoint:
   baseUrl: https://us-central1-gluco-check-nightly.cloudfunctions.net/conversation?v=1
   endpointApiVersion: 2

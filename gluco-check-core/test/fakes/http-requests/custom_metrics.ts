@@ -1,10 +1,10 @@
 module.exports = {
   requestJson: {
     handler: {
-      name: 'custom_pointers',
+      name: 'custom_metrics',
     },
     intent: {
-      name: 'READ_POINTERS',
+      name: 'READ_METRICS',
       params: {
         diabetesPointer: {
           original: '',
@@ -14,7 +14,7 @@ module.exports = {
       query: 'ask gluco nightly my iob, glucose and sensor',
     },
     scene: {
-      name: 'CustomPointers',
+      name: 'CustomMetrics',
       slotFillingStatus: 'FINAL',
       slots: {
         diabetesPointer: {

@@ -1,20 +1,20 @@
 conditionalEvents:
 - condition: user.accountLinkingStatus == "NOT_LINKED"
-  transitionToScene: CustomPointers_AccountLinking
+  transitionToScene: CustomMetrics_AccountLinking
 - condition: user.accountLinkingStatus == "LINKED"
   handler:
-    webhookHandler: custom_pointers
+    webhookHandler: custom_metrics
   transitionToScene: actions.scene.END_CONVERSATION
 slots:
 - commitBehavior:
-    writeSessionParam: diabetesPointer
+    writeSessionParam: DmMetric
   defaultValue:
-    sessionParam: diabetesPointer
-  name: diabetesPointer
+    sessionParam: DmMetric
+  name: DmMetric
   promptSettings:
     initialPrompt:
       staticPromptName: static_prompt_1
   required: true
   type:
     list: true
-    name: DiabetesPointer
+    name: DmMetric

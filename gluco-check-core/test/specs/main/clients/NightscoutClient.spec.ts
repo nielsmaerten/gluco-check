@@ -48,7 +48,7 @@ describe('NightscoutClient', () => {
   it('does not repeat api calls', async () => {
     const spy = jest.spyOn(AxiosMock.axios, 'request');
 
-    // These 2 pointers can be retrieved from 1 call.
+    // These 2 metrics can be retrieved from 1 call.
     // They should both return information, but the call should only be executed once
     await testClient.getMetric(DmMetric.CarbsOnBoard);
     await testClient.getMetric(DmMetric.InsulinOnBoard);

@@ -1,7 +1,7 @@
 module.exports = {
   requestJson: {
     handler: {
-      name: 'default_pointers',
+      name: 'default_metrics',
     },
     intent: {
       name: 'actions.intent.MAIN',

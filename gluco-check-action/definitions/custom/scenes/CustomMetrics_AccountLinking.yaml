@@ -1,6 +1,6 @@
 conditionalEvents:
 - condition: session.params.AccountLinkingSlot == "LINKED"
-  transitionToScene: CustomPointers
+  transitionToScene: CustomMetrics
 - condition: session.params.AccountLinkingSlot == "ERROR"
   transitionToScene: actions.scene.END_CONVERSATION
 - condition: session.params.AccountLinkingSlot == "REJECTED"

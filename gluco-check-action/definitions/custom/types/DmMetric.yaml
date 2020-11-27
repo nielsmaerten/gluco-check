@@ -41,3 +41,4 @@ synonym:
       synonyms:
       - sensor age
       - sensor
+  matchType: EXACT_MATCH
