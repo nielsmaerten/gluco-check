@@ -1,6 +1,5 @@
 # DO NOT TRANSLATE THIS FILE DIRECTLY
 # If you want to contribute translations, visit https://diabase.app/translate
-# TODO: These strings should be reviewed by someone with proper English skills... David? ;-)
 assistant_responses:
   blood_sugar:
     long;with_trend;with_time: >
