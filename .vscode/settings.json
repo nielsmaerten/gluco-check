@@ -6,5 +6,12 @@
         "devicestatus",
         "inversify",
         "mmol"
+    ],
+    "jest.rootPath": "gluco-check-core/",
+    "jest.showCoverageOnLoad": true,
+    "jest.debugCodeLens.showWhenTestStateIn": [
+    
+        "fail",
+        "unknown"
     ]
 }
