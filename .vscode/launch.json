@@ -5,13 +5,19 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug 'core' tests",
-      "cwd": "${workspaceFolder}/gluco-check-core",
-      "command": "yarn test",
+      "type": "node",
+      "name": "Debug 'core'",
       "request": "launch",
-      "type": "node-terminal",
+      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+      "args": [
+        "--runInBand"
+      ],
+      "cwd": "${workspaceFolder}/gluco-check-core",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
       "skipFiles": [
-        "<node_internals>/**",
+        "<node_internals>/**/*",
         "**/node_modules/**/*"
       ]
     }
