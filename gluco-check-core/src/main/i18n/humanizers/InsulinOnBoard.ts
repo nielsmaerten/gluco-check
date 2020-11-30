@@ -7,7 +7,7 @@ import {DmMetric} from '../../../types/DmMetric';
 export default async function (params: FormatParams): Promise<string> {
   // Collect translation context
   const context = {
-    value: round(params.snapshot.insulinOnBoard),
+    value: round(params.snapshot.insulinOnBoard)?.toLocaleString(params.locale),
     time: await translateTimestamp(params.snapshot.timestamp, params.locale),
   };
 
