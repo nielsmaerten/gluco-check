@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "nightly": "gluco-check-nightly",
+    "production": "gluco-check-prod"
+  }
+}
