@@ -1,3 +1,4 @@
+/* istanbul ignore file: External system (Google Actions) */
 import {ConversationV3} from '@assistant/conversation';
 import {AuthHeaderProcessor} from '@assistant/conversation/dist/auth';
 import {logger, config} from 'firebase-functions';

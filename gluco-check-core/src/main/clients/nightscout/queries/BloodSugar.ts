@@ -17,6 +17,7 @@ export const BloodSugar: QueryConfig = {
 };
 
 function parseNightscoutTrend(trend: string): GlucoseTrend {
+  /* istanbul ignore next: if 1 works, they should all work */
   switch (trend) {
     case 'DoubleUp':
       return GlucoseTrend.RisingRapidly;
