@@ -1,0 +1,6 @@
+candidates:
+- promptResponse:
+    firstSimple:
+      variants:
+      - speech: Sorry, ik heb het nog steeds niet begrepen. De app zal nu afsluiten.
+        text: Sorry, ik heb het nog steeds niet begrepen. De app zal nu afsluiten.

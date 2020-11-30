@@ -1,38 +1,42 @@
+import GlucoCheckCore from 'gluco-check-core';
+import * as functions from 'firebase-functions';
 import {
   conversation,
   ConversationV3App,
   ConversationV3,
   OmniHandler,
 } from '@assistant/conversation';
-import * as functions from 'firebase-functions';
 
-import GlucoCheckCore from 'gluco-check-core';
-
-enum HandlerNames {
-  DefaultPointers = 'default_pointers',
-  CustomPointers = 'custom_pointers',
+// Names of intents that can be received from the Action
+enum IntentHandlers {
+  DefaultMetrics = 'default_metrics',
+  CustomMetrics = 'custom_metrics',
 }
 
 export default class ConversationHandler {
+  // Singleton setup
   private static _instance: ConversationHandler;
-  private app: OmniHandler & ConversationV3App<ConversationV3>;
+  public static get Instance() {
+    if (!this._instance) this._instance = new this();
+    return this._instance.app;
+  }
 
+  // Actions SDK Setup
+  private app: OmniHandler & ConversationV3App<ConversationV3>;
   private constructor() {
     functions.logger.debug('[Webhook]: Initializing new ConversationHandler');
     this.app = conversation();
     this.registerHandlers();
   }
 
-  public static get Instance() {
-    if (!this._instance) this._instance = new this();
-    return this._instance.app;
-  }
+  // Global Handler just sends all intents to the CORE package
+  private globalHandler = async (conversation: ConversationV3) => {
+    return GlucoCheckCore.handler(conversation);
+  };
 
+  // Bind all intents to the Global Handler
   private registerHandlers() {
-    const globalHandler = async (conversation: ConversationV3) => {
-      return GlucoCheckCore.handler(conversation);
-    };
-    this.app.handle(HandlerNames.DefaultPointers, globalHandler);
-    this.app.handle(HandlerNames.CustomPointers, globalHandler);
+    this.app.handle(IntentHandlers.DefaultMetrics, this.globalHandler);
+    this.app.handle(IntentHandlers.CustomMetrics, this.globalHandler);
   }
 }

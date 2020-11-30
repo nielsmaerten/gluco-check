@@ -1,8 +1,8 @@
-import {i18next} from '../Localizer';
+import {i18next} from '..';
 import FormatParams from '../../../types/FormatParams';
-import {translateTimestamp} from './common';
-import {pointerNotFound} from './error';
-import {DiabetesPointer} from '../../../types/DiabetesPointer';
+import {translateTimestamp} from './_common';
+import {metricNotFound} from './_error';
+import {DmMetric} from '../../../types/DmMetric';
 
 export default async function (params: FormatParams): Promise<string> {
   // Collect translation context
@@ -10,7 +10,7 @@ export default async function (params: FormatParams): Promise<string> {
     time: await translateTimestamp(params.snapshot.cannulaInserted!, params.locale),
   };
 
-  if (!context.time) return pointerNotFound(DiabetesPointer.CannulaAge, params);
+  if (!context.time) return metricNotFound(DmMetric.CannulaAge, params);
 
   // Build translation key
   const key = 'assistant_responses.cannula_age';

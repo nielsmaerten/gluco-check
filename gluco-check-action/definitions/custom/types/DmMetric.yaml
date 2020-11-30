@@ -1,0 +1,44 @@
+synonym:
+  entities:
+    blood sugar:
+      synonyms:
+      - blood sugar
+      - glucose
+      - sugar
+      - BG
+    cannula age:
+      synonyms:
+      - catheter age
+      - infusion set age
+      - cannula age
+      - cannula
+    carbs on board:
+      synonyms:
+      - carbs on board
+      - carbohydrates
+      - carbs
+      - carbohydrates on board
+      - COB
+    everything:
+      synonyms:
+      - everything
+      - all
+      - all of it
+      - every
+      - full report
+      - all values
+    insulin on board:
+      synonyms:
+      - insulin on board
+      - IOB
+      - insulin
+    pump battery:
+      synonyms:
+      - pump battery
+      - battery
+      - pump
+    sensor age:
+      synonyms:
+      - sensor age
+      - sensor
+  matchType: EXACT_MATCH

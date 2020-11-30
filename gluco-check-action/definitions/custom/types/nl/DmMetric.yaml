@@ -1,0 +1,34 @@
+synonym:
+  entities:
+    blood sugar:
+      synonyms:
+      - bloedsuiker
+      - suiker
+      - glucose
+    cannula age:
+      synonyms:
+      - canule
+      - infusie set
+    carbs on board:
+      synonyms:
+      - koolhydraten
+      - koolhydraten aan boord
+      - carbs
+      - carbs aan boord
+    everything:
+      synonyms:
+      - alles
+      - alle waarden
+      - volledig rapport
+    insulin on board:
+      synonyms:
+      - insuline
+      - insuline aan boord
+    pump battery:
+      synonyms:
+      - batterij
+      - pomp batterij
+      - pomp
+    sensor age:
+      synonyms:
+      - sensor

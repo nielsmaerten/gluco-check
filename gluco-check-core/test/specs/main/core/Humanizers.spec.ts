@@ -1,13 +1,13 @@
 import 'reflect-metadata';
 
 import Humanizers from '../../../../src/main/i18n/humanizers';
-import DiabetesSnapshot from '../../../../src/types/DiabetesSnapshot';
+import DmSnapshot from '../../../../src/types/DmSnapshot';
 import {GlucoseTrend} from '../../../../src/types/GlucoseTrend';
 import {GlucoseUnit} from '../../../../src/types/GlucoseUnit';
-import Localizer from '../../../../src/main/i18n/Localizer';
+import I18nHelper from '../../../../src/main/i18n';
 import FormatParams from '../../../../src/types/FormatParams';
 import getFakeQuery from '../../../fakes/objects/fakeDiabetesQuery';
-import {DiabetesPointer} from '../../../../src/types/DiabetesPointer';
+import {DmMetric} from '../../../../src/types/DmMetric';
 
 let params: FormatParams;
 
@@ -15,11 +15,14 @@ describe('Humanizer', () => {
   // Prepare a full snapshot and formatParams object to test against
   beforeEach(async () => {
     params = {
-      pointer: DiabetesPointer.BloodSugar,
+      metric: DmMetric.BloodSugar,
       locale: 'en-US',
-      sayPointerName: true,
+      sayMetricName: true,
       sayTimeAgo: true,
-      snapshot: new DiabetesSnapshot(Date.now() - 300000, getFakeQuery()), // 5 minutes ago
+      snapshot: new DmSnapshot({
+        query: getFakeQuery(),
+        timestamp: Date.now() - 300000, // 5 minutes ago
+      }),
     };
 
     Object.assign(params.snapshot, {
@@ -30,9 +33,9 @@ describe('Humanizer', () => {
       glucoseValueMgDl: 120,
       insulinOnBoard: 11,
       sensorInserted: Date.now() - 85000000, // 23 hours ago
-    } as DiabetesSnapshot);
+    } as DmSnapshot);
 
-    await new Localizer().ensureLocale(params.locale);
+    await new I18nHelper().ensureLocale(params.locale);
   });
 
   it('formats full BG with trend and time', async () => {
@@ -61,13 +64,13 @@ describe('Humanizer', () => {
 
   it('formats short BG with time and no trend', async () => {
     params.snapshot.glucoseTrend = GlucoseTrend.Unknown;
-    params.sayPointerName = false;
+    params.sayMetricName = false;
     const result = await Humanizers.bloodSugar(params);
     expect(result).toEqual('120 as of 5 minutes ago.');
   });
 
   it('formats short BG with trend and time', async () => {
-    params.sayPointerName = false;
+    params.sayMetricName = false;
     const result = await Humanizers.bloodSugar(params);
     expect(result).toEqual('120 and stable as of 5 minutes ago.');
   });

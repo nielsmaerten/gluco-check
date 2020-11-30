@@ -1,0 +1,6 @@
+candidates:
+- promptResponse:
+    firstSimple:
+      variants:
+      - speech: Sorry, ik heb je niet begrepen. Kan je het op een andere manier zeggen?
+        text: Sorry, ik heb je niet begrepen. Kan je het op een andere manier zeggen?

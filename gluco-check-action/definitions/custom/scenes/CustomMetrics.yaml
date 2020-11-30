@@ -1,0 +1,20 @@
+conditionalEvents:
+- condition: user.accountLinkingStatus == "NOT_LINKED"
+  transitionToScene: CustomMetrics_AccountLinking
+- condition: user.accountLinkingStatus == "LINKED"
+  handler:
+    webhookHandler: custom_metrics
+  transitionToScene: actions.scene.END_CONVERSATION
+slots:
+- commitBehavior:
+    writeSessionParam: DmMetric
+  defaultValue:
+    sessionParam: DmMetric
+  name: DmMetric
+  promptSettings:
+    initialPrompt:
+      staticPromptName: static_prompt_1
+  required: true
+  type:
+    list: true
+    name: DmMetric

@@ -1,3 +1,4 @@
+/* istanbul ignore file: External system (Firebase) */
 import {injectable} from 'inversify';
 import {logger} from 'firebase-functions';
 import FirebaseClient from './FirebaseClient';

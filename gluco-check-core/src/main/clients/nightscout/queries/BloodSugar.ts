@@ -1,10 +1,10 @@
-import {DiabetesPointer} from '../../../../types/DiabetesPointer';
+import {DmMetric} from '../../../../types/DmMetric';
 import {GlucoseTrend} from '../../../../types/GlucoseTrend';
 import QueryConfig from './QueryConfig.base';
 
 export const BloodSugar: QueryConfig = {
   key: 'BG',
-  pointers: [DiabetesPointer.BloodSugar],
+  metrics: [DmMetric.BloodSugar],
   path: '/api/v1/entries/current',
   params: {},
   callback: (data: any) => { // eslint-disable-line
@@ -17,6 +17,7 @@ export const BloodSugar: QueryConfig = {
 };
 
 function parseNightscoutTrend(trend: string): GlucoseTrend {
+  /* istanbul ignore next: if 1 works, they should all work */
   switch (trend) {
     case 'DoubleUp':
       return GlucoseTrend.RisingRapidly;

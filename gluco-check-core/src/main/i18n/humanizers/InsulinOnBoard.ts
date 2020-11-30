@@ -1,8 +1,8 @@
-import {i18next} from '../Localizer';
+import {i18next} from '..';
 import FormatParams from '../../../types/FormatParams';
-import {round, translateTimestamp} from './common';
-import {pointerNotFound} from './error';
-import {DiabetesPointer} from '../../../types/DiabetesPointer';
+import {round, translateTimestamp} from './_common';
+import {metricNotFound} from './_error';
+import {DmMetric} from '../../../types/DmMetric';
 
 export default async function (params: FormatParams): Promise<string> {
   // Collect translation context
@@ -11,12 +11,11 @@ export default async function (params: FormatParams): Promise<string> {
     time: await translateTimestamp(params.snapshot.timestamp, params.locale),
   };
 
-  if (context.value === undefined)
-    return pointerNotFound(DiabetesPointer.InsulinOnBoard, params);
+  if (context.value === undefined) return metricNotFound(DmMetric.InsulinOnBoard, params);
 
   // Build translation key
   let key = 'assistant_responses.insulin_on_board.';
-  key += params.sayPointerName ? 'long;' : 'short;';
+  key += params.sayMetricName ? 'long;' : 'short;';
   key += params.sayTimeAgo ? 'with_time' : 'no_time';
 
   // Return localized string

@@ -1,0 +1,7 @@
+conditionalEvents:
+- condition: user.accountLinkingStatus == "NOT_LINKED"
+  transitionToScene: DefaultMetrics_AccountLinking
+- condition: user.accountLinkingStatus == "LINKED"
+  handler:
+    webhookHandler: default_metrics
+  transitionToScene: actions.scene.END_CONVERSATION

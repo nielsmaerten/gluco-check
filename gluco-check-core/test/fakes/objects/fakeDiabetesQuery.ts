@@ -1,13 +1,13 @@
-import {DiabetesPointer} from '../../../src/types/DiabetesPointer';
-import DiabetesQuery from '../../../src/types/DiabetesQuery';
+import {DmMetric} from '../../../src/types/DmMetric';
+import DmQuery from '../../../src/types/DmQuery';
 import getFakeUser from './fakeUser';
 
 export default () =>
-  new DiabetesQuery(getFakeUser(), 'en-US', [
-    DiabetesPointer.BloodSugar,
-    DiabetesPointer.CannulaAge,
-    DiabetesPointer.InsulinOnBoard,
-    DiabetesPointer.SensorAge,
-    DiabetesPointer.CarbsOnBoard,
-    DiabetesPointer.PumpBattery,
+  new DmQuery(getFakeUser(), 'en-US', [
+    DmMetric.BloodSugar,
+    DmMetric.CannulaAge,
+    DmMetric.InsulinOnBoard,
+    DmMetric.SensorAge,
+    DmMetric.CarbsOnBoard,
+    DmMetric.PumpBattery,
   ]);
