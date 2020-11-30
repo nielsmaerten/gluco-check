@@ -1,0 +1,65 @@
+# DO NOT TRANSLATE THIS FILE DIRECTLY
+# If you want to contribute translations, visit https://diabase.app/translate
+assistant_responses:
+  blood_sugar:
+    long;with_trend;with_time: >
+      Blood sugar is {{value}} and {{trend}} as of {{time}} ago.
+    long;no_trend;with_time: >
+      Blood sugar is {{value}} as of {{time}} ago.
+    long;with_trend;no_time: >
+      Blood sugar is {{value}} and {{trend}}.
+    long;no_trend;no_time: >
+      Blood sugar is {{value}}.
+    short;no_trend;with_time: >
+      {{value}} as of {{time}} ago.
+    short;with_trend;with_time: >
+      {{value}} and {{trend}} as of {{time}} ago.
+
+    trends:
+      DoubleUp: "rising rapidly"
+      SingleUp: "rising"
+      SlightUp: "rising slowly"
+      Stable: "stable"
+      SlightDown: "falling slowly"
+      SingleDown: "falling"
+      DoubleDown: "falling rapidly"
+
+  carbs_on_board:
+    long;with_time: >
+      There's {{value}} carbs on board as of {{time}} ago.
+    long;no_time: >
+      There are {{value}} carbs on board.
+    short;with_time: >
+      {{value}} carbs on board as of {{time}} ago.
+
+  insulin_on_board:
+    long;with_time: >
+      There's {{value}} insulin units as of {{time}} ago.
+    long;no_time: >
+      There are {{value}} insulin units on board.
+    short;with_time: >
+      {{value}} insulin units on board as of {{time}} ago.
+
+  cannula_age: >
+    The cannula was inserted {{time}} ago.
+
+  sensor_age: >
+    The sensor was inserted {{time}} ago.
+  
+  pump_battery: >
+    The pump's battery is at {{percent}}%.
+
+  errors: 
+    User not found: >
+      Hi! Thanks for trying out Gluco Check. 
+      Before I can read your info, you'll first need to link your Nightscout site.
+      To do this, visit our website: https://diabase.app
+    Nightscout Unavailable: >
+      Sorry, it looks like there's a problem with your Nightscout site.
+      I wasn't able to get your info.
+    Nightscout Unauthorized: >
+      Sorry, looks like I'm not allowed to read your Nightscout site.
+      To let me in, you should first create a token.
+      To do this, visit our website: https://diabase.app
+    DmMetric Not Found: >
+      I couldn't find your {{metric}}.
