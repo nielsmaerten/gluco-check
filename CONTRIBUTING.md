@@ -142,15 +142,15 @@ Google Assistant-->>User: '103 and stable as of a minute ago'
 2. `ConversationDecoder` returns a `DmQuery` with the requested `DmMetrics`
 3. `DmQuery` is passed through `DmQueryFulfiller` to get the requested info from Nightscout
 4. `QueryFulfiller` returns a `DmSnapsot`: the requested `DmMetrics` and their corresponding values
-5. `DmSnapshot` is passed through `ResponseFormatter`, which returns a string the Assistant can say back
+5. `DmSnapshot` is passed through `ResponseBuilder`, which returns a string the Assistant can say back
 ```mermaid
 sequenceDiagram
 Core->>ConversationDecoder: Conversation
 ConversationDecoder-->>Core: DmQuery
 Core->>QueryFulfiller: DmQuery
 QueryFulfiller-->>Core: DmSnapshot
-Core->>ResponseFormatter: DmSnapshot
-ResponseFormatter-->>Core: AssistantResponse
+Core->>ResponseBuilder: DmSnapshot
+ResponseBuilder-->>Core: AssistantResponse
 ```
 
 ##### When `QueryResolver` receives a `DmQuery`:
@@ -167,7 +167,8 @@ Nightscout-->>QueryResolver: Nightscout Data
 QueryResolver-->>Core: DmSnapshot
 ```
 
-##### When `ResponseFormatter` receives a `DmSnapshot`:
- ```
- TODO: Update docs
- ```
+##### When `ResponseBuilder` receives a `DmSnapshot`:
+1. The `DmSnapshot` is passed through a `Humanizer`  
+2. There's a `Humanizer` for each `DmMetric` type  
+   They turn the object representation of a `DmMetric` into a pronounceable string
+3. `ResponseBuilder` combines all these strings into a complete `AssistantResponse`
