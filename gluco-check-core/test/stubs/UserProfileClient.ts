@@ -7,7 +7,7 @@ export default class UserProfileClient {
     return {
       exists: this.userExists,
       userId: 'test@example.com',
-      defaultPointers: this.userExists ? [DmMetric.BloodSugar] : undefined,
+      defaultMetrics: this.userExists ? [DmMetric.BloodSugar] : undefined,
     };
   }
 }

@@ -6,18 +6,18 @@ module.exports = {
     intent: {
       name: 'READ_METRICS',
       params: {
-        diabetesPointer: {
+        DmMetric: {
           original: '',
           resolved: ['insulin on board', 'blood sugar', 'sensor age'],
         },
       },
-      query: 'ask gluco nightly my iob, glucose and sensor',
+      query: 'ask gluco tester my iob, glucose and sensor',
     },
     scene: {
       name: 'CustomMetrics',
       slotFillingStatus: 'FINAL',
       slots: {
-        diabetesPointer: {
+        DmMetric: {
           mode: 'REQUIRED',
           status: 'SLOT_UNSPECIFIED',
           updated: true,

@@ -6,10 +6,10 @@ module.exports = {
     intent: {
       name: 'actions.intent.MAIN',
       params: {},
-      query: 'Talk to Gluco Nightly',
+      query: 'Talk to Gluco Tester',
     },
     scene: {
-      name: 'DefaultPointers',
+      name: 'DefaultMetrics',
       slotFillingStatus: 'UNSPECIFIED',
       slots: {},
       next: {

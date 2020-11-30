@@ -13,10 +13,10 @@ describe('NightscoutClient', () => {
   const testUser: User = {
     exists: true,
     userId: 'test@example.com',
-    defaultPointers: [DmMetric.Everything],
+    defaultMetrics: [DmMetric.Everything],
     nightscout: new NightscoutProps('https://cgm.example.com'),
   };
-  const testQuery = new DmQuery(testUser, 'en-US', testUser.defaultPointers!);
+  const testQuery = new DmQuery(testUser, 'en-US', testUser.defaultMetrics!);
 
   const expected = new DmSnapshot({
     timestamp: new Date('2020-01-21T10:10:00Z').getTime(),

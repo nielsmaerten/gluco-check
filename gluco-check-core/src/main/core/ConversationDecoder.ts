@@ -108,10 +108,10 @@ export default class ConversationDecoder {
 
     if (isDeepInvocation) {
       // Get requested metrics from intent params
-      return conv.intent.params!.diabetesPointer!.resolved;
+      return conv.intent.params!.DmMetric!.resolved;
     } else {
       // Get requested metrics from user profile
-      return user.defaultPointers ?? [];
+      return user.defaultMetrics ?? [];
     }
   }
 }
