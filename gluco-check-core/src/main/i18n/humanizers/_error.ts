@@ -11,7 +11,7 @@ export default function humanizeError(
 ): string {
   // Collect translation context
   const context = {
-    metric: affectedMetric,
+    metric: i18next.getFixedT(locale)('common.metrics.' + affectedMetric),
     gc_url,
   };
 

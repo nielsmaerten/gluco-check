@@ -79,6 +79,6 @@ describe('Humanizer', () => {
     const newParams = Object.assign({}, params);
     newParams.snapshot.carbsOnBoard = undefined;
     const result = await Humanizers.carbsOnBoard(params);
-    fail();
-  })
+    expect(result).toEqual("I couldn't find your carbs on board.");
+  });
 });

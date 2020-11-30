@@ -1,65 +1,71 @@
 # DO NOT TRANSLATE THIS FILE DIRECTLY
 # If you want to contribute translations, visit https://diabase.app/translate
+# TODO: These translations have not yet been tested on a live system
 assistant_responses:
   blood_sugar:
     long;with_trend;with_time: >
-      Blood sugar is {{value}} and {{trend}} as of {{time}} ago.
+      Glucose is {{value}} en {{trend}} sinds {{time}} geleden.
     long;no_trend;with_time: >
-      Blood sugar is {{value}} as of {{time}} ago.
+      Glucose is {{value}} sinds {{time}} geleden.
     long;with_trend;no_time: >
-      Blood sugar is {{value}} and {{trend}}.
+      Glucose is {{value}} en {{trend}}.
     long;no_trend;no_time: >
-      Blood sugar is {{value}}.
+      Glucose is {{value}}.
     short;no_trend;with_time: >
-      {{value}} as of {{time}} ago.
+      {{value}} sinds {{time}} geleden.
     short;with_trend;with_time: >
-      {{value}} and {{trend}} as of {{time}} ago.
-
+      {{value}} en {{trend}} sinds {{time}} geleden.
     trends:
-      DoubleUp: "rising rapidly"
-      SingleUp: "rising"
-      SlightUp: "rising slowly"
-      Stable: "stable"
-      SlightDown: "falling slowly"
-      SingleDown: "falling"
-      DoubleDown: "falling rapidly"
+      DoubleUp: "snel stijgend"
+      SingleUp: "stijgend"
+      SlightUp: "langzaam stijgend"
+      Stable: "stabiel"
+      SlightDown: "langzaam dalend"
+      SingleDown: "dalend"
+      DoubleDown: "snel dalend"
 
   carbs_on_board:
     long;with_time: >
-      There's {{value}} carbs on board as of {{time}} ago.
+      Er zijn {{value}} koolhydraten aan boord sinds {{time}} geleden.
     long;no_time: >
-      There are {{value}} carbs on board.
+      Er zijn {{value}} koolhydraten aan boord.
     short;with_time: >
-      {{value}} carbs on board as of {{time}} ago.
-
+      {{value}} koolhydraten aan boord sinds {{time}} geleden.
   insulin_on_board:
     long;with_time: >
-      There's {{value}} insulin units as of {{time}} ago.
+      Er zijn {{value}} insuline eenheden aan boord sinds {{time}} geleden.
     long;no_time: >
-      There are {{value}} insulin units on board.
+      Er zijn {{value}} insuline eenheden.
     short;with_time: >
-      {{value}} insulin units on board as of {{time}} ago.
-
+      {{value}} insuline eenheden aan boord sinds {{time}} ago.
   cannula_age: >
-    The cannula was inserted {{time}} ago.
-
+    De canule is {{time}} oud.
   sensor_age: >
-    The sensor was inserted {{time}} ago.
+    De sensor is {{time}} oud.
   
   pump_battery: >
-    The pump's battery is at {{percent}}%.
-
+    De pomp batterij staat op {{percent}}%.
   errors: 
     User not found: >
-      Hi! Thanks for trying out Gluco Check. 
-      Before I can read your info, you'll first need to link your Nightscout site.
-      To do this, visit our website: https://diabase.app
+      Hallo, bedankt voor het uitproberen Gluco Check.
+      Voordat ik je kan helpen, moet je nog even je Nightscout site linken.
+      Check onze website om te zien hoe je dit doet: {{gc_url}}
     Nightscout Unavailable: >
-      Sorry, it looks like there's a problem with your Nightscout site.
-      I wasn't able to get your info.
+      Sorry, ik heb de gevraagde info niet kunnen vinden.
+      Het lijkt erop dat er een probleem is met je Nightscout site.
     Nightscout Unauthorized: >
-      Sorry, looks like I'm not allowed to read your Nightscout site.
-      To let me in, you should first create a token.
-      To do this, visit our website: https://diabase.app
+      Sorry, het lijkt erop dat ik geen toegang tot je Nightscout site heb.
+      Je kan dit oplossen door een token aan te maken.
+      Check onze website om te zien hoe je dit doet: {{gc_url}}
     DmMetric Not Found: >
-      I couldn't find your {{metric}}.
+      Ik heb je {{metric}} niet kunnen vinden. 
+
+
+common:
+  metrics:
+    blood sugar: glucose
+    insulin on board: insuline aan boord
+    carbs on board: koolhydraten aan boord
+    sensor age: sensor leeftijd
+    cannula age: canule leeftijd
+    pump battery: pump batterijniveau
