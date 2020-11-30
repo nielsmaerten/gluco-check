@@ -26,7 +26,7 @@ export default class ResponseBuilder {
 
 async function normalResponse(snapshot: DmSnapshot): Promise<AssistantResponse> {
   // Humanize every metric in the Snapshot
-  const humanizedMetrics: string[] = await Humanizer.snapshot(snapshot);
+  const humanizedMetrics: string[] = await Humanizer.dmSnapshot(snapshot);
 
   // Wrap every humanized string in an <s>-tag
   // Note the space at the end for readability --------▽

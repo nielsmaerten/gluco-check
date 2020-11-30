@@ -1,7 +1,7 @@
 import dayjs = require('dayjs');
 import relativeTime = require('dayjs/plugin/relativeTime');
 dayjs.extend(relativeTime);
-import {loadDayJsLocale} from '../Localizer';
+import loadDayJsLocale from '../loadDayJsLocale';
 
 /**
  * Translates a timestamp to 'a few seconds', 'a minute', '3 minutes', etc.

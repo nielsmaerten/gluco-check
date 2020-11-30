@@ -4,10 +4,11 @@ import sensorAge from './SensorAge';
 import pumpBattery from './PumpBattery';
 import carbsOnBoard from './CarbsOnBoard';
 import insulinOnBoard from './InsulinOnBoard';
-import error from './error';
+import dmSnapshot from './DmSnapshot';
+import error from './_error';
 
 /**
- * Humanizers turn an internal concept such as a DiabetesPointer, into human text
+ * Humanizers turn internal concepts (DmMetric/DmSnapshot/Errors) into human text
  */
 export default {
   bloodSugar,
@@ -17,4 +18,5 @@ export default {
   carbsOnBoard,
   insulinOnBoard,
   error,
+  dmSnapshot,
 };

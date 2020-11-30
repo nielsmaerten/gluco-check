@@ -1,7 +1,7 @@
-import {i18next} from '../Localizer';
+import {i18next} from '..';
 import FormatParams from '../../../types/FormatParams';
-import {translateTimestamp} from './common';
-import {metricNotFound} from './error';
+import {translateTimestamp} from './_common';
+import {metricNotFound} from './_error';
 import {DmMetric} from '../../../types/DmMetric';
 
 export default async function (params: FormatParams): Promise<string> {

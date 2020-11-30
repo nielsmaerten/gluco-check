@@ -1,4 +1,4 @@
-import {i18next} from '../Localizer';
+import {i18next} from '..';
 import {ErrorType} from '../../../types/ErrorType';
 import {DmMetric} from '../../../types/DmMetric';
 import FormatParams from '../../../types/FormatParams';
@@ -25,7 +25,11 @@ export default function humanizeError(
  */
 export function metricNotFound(metric: DmMetric, params: FormatParams) {
   const mentionError = params.snapshot.query.metadata.mentionMissingMetrics;
-
   if (!mentionError) return '';
-  return humanizeError(ErrorType.QueryResponse_MetricNotFound, params.locale, metric);
+
+  return humanizeError(
+    ErrorType.QueryResponse_MetricNotFound,
+    params.snapshot.query.locale,
+    metric
+  );
 }

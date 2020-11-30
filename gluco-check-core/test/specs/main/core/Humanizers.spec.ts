@@ -4,7 +4,7 @@ import Humanizers from '../../../../src/main/i18n/humanizers';
 import DmSnapshot from '../../../../src/types/DmSnapshot';
 import {GlucoseTrend} from '../../../../src/types/GlucoseTrend';
 import {GlucoseUnit} from '../../../../src/types/GlucoseUnit';
-import Localizer from '../../../../src/main/i18n/Localizer';
+import I18nHelper from '../../../../src/main/i18n';
 import FormatParams from '../../../../src/types/FormatParams';
 import getFakeQuery from '../../../fakes/objects/fakeDiabetesQuery';
 import {DmMetric} from '../../../../src/types/DmMetric';
@@ -19,7 +19,10 @@ describe('Humanizer', () => {
       locale: 'en-US',
       sayMetricName: true,
       sayTimeAgo: true,
-      snapshot: new DmSnapshot(Date.now() - 300000, getFakeQuery()), // 5 minutes ago
+      snapshot: new DmSnapshot({
+        query: getFakeQuery(),
+        timestamp: Date.now() - 300000, // 5 minutes ago
+      }),
     };
 
     Object.assign(params.snapshot, {
@@ -32,7 +35,7 @@ describe('Humanizer', () => {
       sensorInserted: Date.now() - 85000000, // 23 hours ago
     } as DmSnapshot);
 
-    await new Localizer().ensureLocale(params.locale);
+    await new I18nHelper().ensureLocale(params.locale);
   });
 
   it('formats full BG with trend and time', async () => {

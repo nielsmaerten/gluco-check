@@ -23,9 +23,11 @@ export default class DmSnapshot {
   /**
    * @param query The DmQuery this DmSnapshot is trying to answer
    */
-  constructor(timestamp: number, query: DmQuery) {
-    this.timestamp = timestamp;
-    this.query = query;
+  constructor(props: Partial<DmSnapshot>) {
+    Object.assign(this, props);
+    if (!this.timestamp)
+      throw new Error('Timestamp is a required property on DmSnapshot');
+    if (!this.query) throw new Error('Query is a required property on DmSnapshot');
   }
 
   /**

@@ -18,7 +18,10 @@ describe('NightscoutClient', () => {
   };
   const testQuery = new DmQuery(testUser, 'en-US', testUser.defaultPointers!);
 
-  const expected = new DmSnapshot(new Date('2020-01-21T10:10:00Z').getTime(), testQuery);
+  const expected = new DmSnapshot({
+    timestamp: new Date('2020-01-21T10:10:00Z').getTime(),
+    query: testQuery,
+  });
   Object.assign(expected, {
     cannulaInserted: new Date('2020-08-18T09:47:48Z').getTime(),
     sensorInserted: new Date('2020-08-23T15:05:21Z').getTime(),

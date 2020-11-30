@@ -8,10 +8,10 @@ const i18next: i18n = require('i18next');
 export {i18next};
 
 /**
- * Localizer sets up i18next and manages loading translations
+ * Sets up i18next and manages loading translations
  */
 @injectable()
-export default class Localizer {
+export default class I18nHelper {
   private i18nextInitialized: Promise<TFunction>;
   private loadedLocales = new Set<string>();
 
@@ -58,33 +58,3 @@ export default class Localizer {
     return require(`gluco-check-common/strings/${locale}/${resourceName}`);
   }
 }
-
-/**
- * Extends DayJs with translations so that it can
- * convert timestamps to human form in the specified locale.
- * 300000 ==> '5 minutes'
- * @returns The id of the locale that was loaded. Pass this id to dayjs(foo).locale(id)
- */
-export async function loadDayJsLocale(_locale: string): Promise<string> {
-  // DayJs uses lowercase to identify its locales
-  const locale = _locale.toLowerCase();
-  const fallback = locale.substr(0, 2);
-
-  // Bail if locale (or its fallback) was loaded previously
-  if (loadedDayJsLocales.has(locale)) return locale;
-  if (loadedDayJsLocales.has(fallback)) return fallback;
-
-  logger.debug(`[Localizer.DayJS]: Importing locale: ${locale}`);
-  try {
-    // Attempt loading the exact locale
-    loadedDayJsLocales.add(locale);
-    await import(`dayjs/locale/${locale}`);
-    return locale;
-  } catch (error) {
-    // Attempt loading the fallback
-    loadedDayJsLocales.add(fallback);
-    await import(`dayjs/locale/${fallback}`);
-    return fallback;
-  }
-}
-const loadedDayJsLocales = new Set<string>();

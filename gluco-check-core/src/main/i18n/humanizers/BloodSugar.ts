@@ -1,9 +1,9 @@
-import {metricNotFound} from './error';
+import {metricNotFound} from './_error';
 import {DmMetric} from '../../../types/DmMetric';
 import FormatParams from '../../../types/FormatParams';
 import {GlucoseTrend} from '../../../types/GlucoseTrend';
-import {i18next} from '../Localizer';
-import {translateTimestamp} from './common';
+import {i18next} from '..';
+import {translateTimestamp} from './_common';
 
 export default async function (params: FormatParams): Promise<string> {
   // Collect translation context
