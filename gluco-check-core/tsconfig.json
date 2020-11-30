@@ -3,7 +3,7 @@
   "compilerOptions": {
     // FIXME(low): forceConsistentCasingInFileNames this may be removed again if this gets fixed:
     // https://github.com/microsoft/TypeScript/issues/25460 
-    "forceConsistentCasingInFileNames": false, 
+    // "forceConsistentCasingInFileNames": false, 
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "rootDir": ".",
