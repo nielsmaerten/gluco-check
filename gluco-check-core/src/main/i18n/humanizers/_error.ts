@@ -2,6 +2,7 @@ import {i18next} from '..';
 import {ErrorType} from '../../../types/ErrorType';
 import {DmMetric} from '../../../types/DmMetric';
 import FormatParams from '../../../types/FormatParams';
+import {gc_url} from '../../constants';
 
 export default function humanizeError(
   errorType: ErrorType,
@@ -11,6 +12,7 @@ export default function humanizeError(
   // Collect translation context
   const context = {
     metric: affectedMetric,
+    gc_url,
   };
 
   // Build translation key

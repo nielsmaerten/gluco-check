@@ -74,4 +74,11 @@ describe('Humanizer', () => {
     const result = await Humanizers.bloodSugar(params);
     expect(result).toEqual('120 and stable as of 5 minutes ago.');
   });
+
+  it('formats missing metric errors', async () => {
+    const newParams = Object.assign({}, params);
+    newParams.snapshot.carbsOnBoard = undefined;
+    const result = await Humanizers.carbsOnBoard(params);
+    fail();
+  })
 });
