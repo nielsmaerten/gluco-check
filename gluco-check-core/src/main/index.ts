@@ -4,6 +4,8 @@ import ResponseBuilder from './core/ResponseBuilder';
 
 import {injectable} from 'inversify';
 import {ConversationV3} from '@assistant/conversation';
+import NightscoutProps from '../types/NightscoutProps';
+import NightscoutClient from './clients/nightscout/NightscoutClient';
 
 @injectable()
 export default class GlucoCheckCore {
@@ -30,5 +32,14 @@ export default class GlucoCheckCore {
 
     // Have the assistant say the response back
     conversation.add(response.SSML);
+  }
+
+  /**
+   * Checks if GlucoCheck can read data from a provided Nightscout site
+   * @param nightscoutSite Object containing a url and token for a Nightscout site
+   */
+  async validate(nightscoutSite: NightscoutProps) {
+    const nightscoutClient = new NightscoutClient(nightscoutSite);
+    return await nightscoutClient.validate();
   }
 }

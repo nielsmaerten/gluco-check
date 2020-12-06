@@ -8,13 +8,14 @@ import {ErrorType} from '../../../types/ErrorType';
 import {logger} from 'firebase-functions';
 import QueryConfig from './queries/QueryConfig.base';
 import DmSnapshot from '../../../types/DmSnapshot';
+import NightscoutValidator from './NightscoutValidator';
 
 /**
  * Provides methods for querying a Nightscout site
  */
 export default class NightscoutClient {
-  constructor(private nightscout: NightscoutProps) {
-    logger.debug('[NightscoutClient]: Initializing for:', nightscout.url);
+  constructor(private nightscoutProps: NightscoutProps) {
+    logger.debug('[NightscoutClient]: Initializing for:', nightscoutProps.url);
   }
   private cache: any = {};
 
@@ -45,7 +46,7 @@ export default class NightscoutClient {
     const {params, path, callback, key, metrics} = query;
 
     // Build the URL for this Query
-    const url = new URL(path, this.nightscout.url);
+    const url = new URL(path, this.nightscoutProps.url);
 
     // Have we seen this query before?
     const inCache = !!this.cache[key];
@@ -62,7 +63,7 @@ export default class NightscoutClient {
         timeout: 4000,
         params: {
           now: Date.now(),
-          token: this.nightscout.token,
+          token: this.nightscoutProps.token,
           ...params,
         },
       };
@@ -153,5 +154,13 @@ export default class NightscoutClient {
     };
 
     return snapshotWithErrors;
+  }
+
+  public getNightscoutProps() {
+    return this.nightscoutProps;
+  }
+
+  public async validate() {
+    return NightscoutValidator.validate(this);
   }
 }
