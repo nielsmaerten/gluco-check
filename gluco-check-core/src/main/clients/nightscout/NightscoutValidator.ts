@@ -93,9 +93,11 @@ export default class NightscoutValidator {
     const results = await Promise.all(promises);
 
     // Return all metrics that succeeded, and if any returned a token error
+    const readableMetrics = results.filter(r => r.isReadable).map(r => r.metric);
+    const tokenIsValid = readableMetrics.length > 0 && results.every(r => r.tokenIsValid);
     return {
-      readableMetrics: results.filter(r => r.isReadable).map(r => r.metric),
-      tokenIsValid: results.every(r => r.tokenIsValid),
+      readableMetrics,
+      tokenIsValid,
     };
   }
 
