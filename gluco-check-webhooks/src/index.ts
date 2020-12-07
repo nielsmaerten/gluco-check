@@ -1,9 +1,10 @@
 import * as functions from 'firebase-functions';
 import conversationHandler from './conversation';
+import validationHandler from './url-validation';
 
-export const validateNightscoutUrl = functions.https.onRequest(
-  require('./url-validation')
-);
+export const validateNightscoutUrl = functions.https.onRequest((req, res) => {
+  return validationHandler(req, res);
+});
 
 export const conversation = functions.https.onRequest((request, response) => {
   // Get the version of the Action calling the webhook

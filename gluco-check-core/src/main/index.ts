@@ -36,10 +36,11 @@ export default class GlucoCheckCore {
 
   /**
    * Checks if GlucoCheck can read data from a provided Nightscout site
-   * @param nightscoutSite Object containing a url and token for a Nightscout site
+   * @param props Object containing a url and token for a Nightscout site
    */
-  async validate(nightscoutSite: NightscoutProps) {
-    const nightscoutClient = new NightscoutClient(nightscoutSite);
+  async validate(props: {url: string; token: string}) {
+    const nightscoutProps = new NightscoutProps(props.url, props.token);
+    const nightscoutClient = new NightscoutClient(nightscoutProps);
     return await nightscoutClient.validate();
   }
 }
