@@ -49,7 +49,4 @@ export const formatNumber = (
   });
 
   return formatter.format(n);
-
-  // precision = Math.pow(10, precision);
-  // return Math.round(v * precision) / precision;
 };
