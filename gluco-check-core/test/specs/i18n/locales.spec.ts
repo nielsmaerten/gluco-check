@@ -18,6 +18,7 @@ describe('Locale', () => {
     it('IOB', () => runTest(locale, 'Er zijn 10,1 insuline eenheden.'));
     it('BG', () =>
       runTest(locale, 'Suikerspiegel is 120 en stabiel sinds 5 minuten geleden.'));
+    it('PB', () => runTest(locale, 'De pomp batterij staat op 10%.'));
   });
 
   describe('English (en-US)', () => {

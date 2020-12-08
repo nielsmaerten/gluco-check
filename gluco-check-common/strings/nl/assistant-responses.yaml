@@ -44,7 +44,7 @@ assistant_responses:
     De sensor is {{time}} oud.
   
   pump_battery: >
-    De pomp batterij staat op {{percent}}%.
+    De pomp batterij staat op {{percent}}.
   errors: 
     User not found: >
       Hallo, bedankt voor het uitproberen Gluco Check.
