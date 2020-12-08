@@ -77,6 +77,9 @@ export default class NightscoutClient {
       // Wait for the http call to resolve
       const response = await this.cache[key];
 
+      // Abort if no data
+      if (!response) throw {type: ErrorType.QueryResponse_MetricNotFound};
+
       // Use the query's callback fn to extract the data we want
       return callback(response);
 
@@ -90,11 +93,7 @@ export default class NightscoutClient {
     try {
       // Send request, await response
       const response = await axios.request(request);
-
-      // Response must have exactly 1 item
-      if (response.data?.length !== 1) {
-        throw {type: ErrorType.Nightscout_UnexpectedNrOfItems, request, response};
-      }
+      if (!response.data?.length) return null;
 
       // If we got here, everything's fine
       return response.data[0];
@@ -105,13 +104,13 @@ export default class NightscoutClient {
       if (!error.isAxiosError) throw error;
 
       // Axios error (401, timeout, network failure, ...)
+      const is401error = error.response?.status === 401;
       throw {
-        type:
-          error.response?.status === 401
-            ? ErrorType.Nightscout_Unauthorized
-            : ErrorType.Nightscout_Unavailable,
         request,
         response: error.response,
+        type: is401error
+          ? ErrorType.Nightscout_Unauthorized
+          : ErrorType.Nightscout_Unavailable,
       };
     }
   }
@@ -131,10 +130,8 @@ export default class NightscoutClient {
         logger.warn('[NightscoutClient]: UNAVAILABLE. Verify the Nightscout URL');
         break;
 
-      case ErrorType.Nightscout_UnexpectedNrOfItems:
-        logger.error(
-          "[NightscoutClient]: Unexpected nr of items. This shouldn't happen!"
-        );
+      case ErrorType.QueryResponse_MetricNotFound:
+        logger.warn('[NightscoutClient]: 1 or more requested Metrics were not found');
         break;
 
       default:
