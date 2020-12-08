@@ -6,7 +6,7 @@ import {GlucoseTrend} from '../../../../src/types/GlucoseTrend';
 import {GlucoseUnit} from '../../../../src/types/GlucoseUnit';
 import I18nHelper from '../../../../src/main/i18n';
 import FormatParams from '../../../../src/types/FormatParams';
-import getFakeQuery from '../../../fakes/objects/fakeDiabetesQuery';
+import getFakeQuery from '../../../fakes/objects/fakeDmQuery';
 import {DmMetric} from '../../../../src/types/DmMetric';
 
 let params: FormatParams;

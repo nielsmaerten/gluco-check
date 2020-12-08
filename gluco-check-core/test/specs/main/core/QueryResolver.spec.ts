@@ -3,7 +3,7 @@ import 'reflect-metadata';
 
 import QueryResolver from '../../../../src/main/core/QueryResolver';
 import AxiosMockAdapter from '../../../stubs/AxiosMockAdapter';
-import getFakeQuery from '../../../fakes/objects/fakeDiabetesQuery';
+import getFakeQuery from '../../../fakes/objects/fakeDmQuery';
 import {ErrorType} from '../../../../src/types/ErrorType';
 
 describe('QueryResolver', () => {

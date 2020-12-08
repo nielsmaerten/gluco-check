@@ -1,5 +1,5 @@
 import DmSnapshot from '../../../src/types/DmSnapshot';
-import getFakeQuery from '../../fakes/objects/fakeDiabetesQuery';
+import getFakeQuery from '../../fakes/objects/fakeDmQuery';
 
 describe('DiabetesSnapshot', () => {
   it('always has a timestamp', () => {
