@@ -18,8 +18,22 @@ export const translateTimestamp = async (timestamp: number, _locale: string) => 
 /**
  * Rounds number to the desired precision (.1 by default)
  */
-export const round = (v?: number, precision = 1) => {
-  if (v === undefined) return undefined;
-  precision = Math.pow(10, precision);
-  return Math.round(v * precision) / precision;
+export const formatNumber = (
+  value: number | undefined,
+  locale: string,
+  precision = 1,
+  style = 'decimal'
+) => {
+  if (value === undefined) return undefined;
+
+  const formatter = new Intl.NumberFormat(locale, {
+    maximumFractionDigits: precision,
+    style: style,
+    useGrouping: false,
+  });
+
+  return formatter.format(value);
+
+  // precision = Math.pow(10, precision);
+  // return Math.round(v * precision) / precision;
 };

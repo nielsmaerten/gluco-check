@@ -33,9 +33,9 @@ const rawSnapshot: Partial<DmSnapshot> = {
   glucoseTrend: GlucoseTrend.Stable,
   glucoseValueMgDl: 120,
   cannulaInserted: 1597744068000,
-  carbsOnBoard: 38.537266649214054,
-  insulinOnBoard: 8.978,
-  pumpBattery: 100,
+  carbsOnBoard: 10.123456,
+  insulinOnBoard: 10.123456,
+  pumpBattery: 10.123456,
   sensorInserted: 1598195121000,
 };
 

@@ -1,13 +1,13 @@
 import {i18next} from '..';
 import FormatParams from '../../../types/FormatParams';
-import {round, translateTimestamp} from './_common';
+import {formatNumber, translateTimestamp} from './_common';
 import {metricNotFound} from './_error';
 import {DmMetric} from '../../../types/DmMetric';
 
 export default async function (params: FormatParams): Promise<string> {
   // Collect translation context
   const context = {
-    value: round(params.snapshot.carbsOnBoard)?.toLocaleString(params.locale),
+    value: formatNumber(params.snapshot.carbsOnBoard, params.locale),
     time: await translateTimestamp(params.snapshot.timestamp, params.locale),
   };
 
