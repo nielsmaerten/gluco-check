@@ -30,11 +30,13 @@ export default class QueryResolver {
     const nsClient = new NightscoutClient(query.user.nightscout);
 
     // Query Nightscout for each requested metric
-    const queryStart = performance.now();
+    const start = performance.now();
     const promises = query.metrics.map(p => nsClient.getMetric(p) as Partial<DmSnapshot>);
     const partialSnapshots = await Promise.all(promises);
-    const totalQueryTime = Math.floor(performance.now() - queryStart);
-    logger.info(`[DiabetesQueryResolver]: Nightscout queries took ${totalQueryTime} ms.`);
+    const stop = performance.now();
+
+    const elapsed = Math.floor(stop - start);
+    logger.info(`[DiabetesQueryResolver]: Nightscout queries took ${elapsed} ms.`);
 
     // Add all partial snapshots into the main snapshot
     newSnapshot.update(...partialSnapshots);

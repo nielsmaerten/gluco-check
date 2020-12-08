@@ -1,5 +1,7 @@
 import dayjs = require('dayjs');
 import relativeTime = require('dayjs/plugin/relativeTime');
+import {logger} from 'firebase-functions';
+import {performance} from 'perf_hooks';
 dayjs.extend(relativeTime);
 import loadDayJsLocale from '../loadDayJsLocale';
 
@@ -25,6 +27,20 @@ export const formatNumber = (
   style = 'decimal'
 ) => {
   if (value === undefined) return undefined;
+  const n = style === 'percent' ? value / 100 : value;
+
+  if (locale !== 'en-US') {
+    const start = performance.now();
+    Intl.NumberFormat = require('intl').NumberFormat;
+    const stop = performance.now();
+
+    const elapsed = Math.floor(stop - start);
+    logger.info(
+      'Query is using a non-default locale',
+      'Intl got extended with the full ICU in',
+      `${elapsed} ms.`
+    );
+  }
 
   const formatter = new Intl.NumberFormat(locale, {
     maximumFractionDigits: precision,
@@ -32,7 +48,7 @@ export const formatNumber = (
     useGrouping: false,
   });
 
-  return formatter.format(value);
+  return formatter.format(n);
 
   // precision = Math.pow(10, precision);
   // return Math.round(v * precision) / precision;

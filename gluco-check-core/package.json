@@ -37,6 +37,7 @@
     "firebase-admin": "^9.2.0",
     "firebase-functions": "^3.11.0",
     "i18next": "^19.7.0",
+    "intl": "^1.2.5",
     "inversify": "^5.0.1",
     "reflect-metadata": "^0.1.13"
   }
