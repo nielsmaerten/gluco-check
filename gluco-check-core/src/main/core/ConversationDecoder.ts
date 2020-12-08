@@ -42,7 +42,7 @@ export default class ConversationDecoder {
 
     // Log status
     logger.info(
-      `[ConversationDecoder]: ${user.userId.substr(0, 4)}...`,
+      `[ConversationDecoder]: ${user.userId.substr(0, 7)}...`,
       `requested: ${dmQuery.metrics}`
     );
     if (user.exists) {
