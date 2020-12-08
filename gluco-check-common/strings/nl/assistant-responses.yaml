@@ -4,13 +4,13 @@
 assistant_responses:
   blood_sugar:
     long;with_trend;with_time: >
-      Glucose is {{value}} en {{trend}} sinds {{time}} geleden.
+      Suikerspiegel is {{value}} en {{trend}} sinds {{time}} geleden.
     long;no_trend;with_time: >
-      Glucose is {{value}} sinds {{time}} geleden.
+      Suikerspiegel is {{value}} sinds {{time}} geleden.
     long;with_trend;no_time: >
-      Glucose is {{value}} en {{trend}}.
+      Suikerspiegel is {{value}} en {{trend}}.
     long;no_trend;no_time: >
-      Glucose is {{value}}.
+      Suikerspiegel is {{value}}.
     short;no_trend;with_time: >
       {{value}} sinds {{time}} geleden.
     short;with_trend;with_time: >

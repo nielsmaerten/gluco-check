@@ -6,10 +6,10 @@ import loadDayJsLocale from '../loadDayJsLocale';
 /**
  * Translates a timestamp to 'a few seconds', 'a minute', '3 minutes', etc.
  */
-export const translateTimestamp = async (timestamp: number, locale: string) => {
+export const translateTimestamp = async (timestamp: number, _locale: string) => {
   // Ensure DayJs has the required locale loaded
   // The locale identifier may be changed to its generic version
-  locale = await loadDayJsLocale(locale);
+  const locale = await loadDayJsLocale(_locale);
 
   // Turn the timestamp into a human expression
   return dayjs(timestamp).locale(locale).fromNow(true);
