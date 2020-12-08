@@ -7,14 +7,22 @@ localizedSettings:
   developerEmail: glucocheck@diabase.app
   developerName: Niels Maerten
   displayName: Gluco Tester
-  fullDescription: TODO
-  privacyPolicyUrl: https://diabase.app/gluco-check/privacy
+  fullDescription: |-
+    Gluco Check brings Nightscout to your Google Assistant. Ask for your current blood sugar level, how many insulin you've got on board, when you last changed your sensor, and more.
+
+    Note: Before you can use GlucoCheck, connect your Nightscout site here: https://gluco-check-nightly.web.app
+  privacyPolicyUrl: https://nielsmaerten.github.io/nightscout-assistant/#/en/terms
   pronunciation: Gluco Tester
   sampleInvocations:
-  - Talk to Gluco Nightly
+  - Talk to Gluco Tester
+  - Ask Gluco Tester when I changed my sensor
+  - Ask Gluco Tester how much insulin i have on board
+  - Ask Gluco Tester my COB
+  - Ask Gluco Tester about my canula
   shortDescription: Ask Google about your blood sugar
   smallLogoImage: https://lh3.googleusercontent.com/iByZN58udeU-Y00jiCeY5I5piOdBaxzPRutPS1DAO8rhTd2rJJvc55t6aUzkM7b0833W9tAeK4mvlA
-  termsOfServiceUrl: https://diabase.app/gluco-check/terms
+  termsOfServiceUrl: https://nielsmaerten.github.io/nightscout-assistant/#/en/terms
   voice: female_1
 projectId: gluco-check-nightly
-testingInstructions: TODO
+testingInstructions: If you're reading this... then this action was submitted by mistake,
+  sorry!

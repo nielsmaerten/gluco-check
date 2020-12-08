@@ -6,6 +6,7 @@ import stub_sensorAge from '../fakes/http-responses/sensor-change';
 import stub_cannulaAge from '../fakes/http-responses/cannula-change';
 import stub_currentEntry from '../fakes/http-responses/current-entry';
 import stub_deviceStatus from '../fakes/http-responses/devicestatus';
+import stub_nightscoutStatus from '../fakes/http-responses/nightscout-status';
 
 const mock = new MockAdapter(axios);
 const baseUrl = 'https://cgm.example.com/api';
@@ -14,6 +15,9 @@ const respondWithMockData = () => {
   mock.reset();
 
   mock.onGet(`${baseUrl}/v1/entries/current`).reply(() => [200, stub_currentEntry]);
+  mock
+    .onGet(new RegExp(`${baseUrl}/v1/status*`))
+    .reply(() => [200, stub_nightscoutStatus]);
   mock.onGet(`${baseUrl}/v3/devicestatus`).reply(() => [200, stub_deviceStatus]);
 
   mock.onGet(`${baseUrl}/v3/treatments`).reply(config => {

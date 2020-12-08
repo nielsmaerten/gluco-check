@@ -10,6 +10,7 @@ https://console.actions.google.com
 
 ## Getting the latest version
 ```sh
+cd ./definitions
 gactions pull --clean --force
 # --clean removes all extraneous files
 # --force overwrites existing files
@@ -17,6 +18,8 @@ gactions pull --clean --force
 
 ## Deploying to Google Assistant
 ```sh
+cd ./definitions
+gactions push [-v]
 gactions deploy preview
 # From here, you can submit the action for approval to get it in Production
 ```
