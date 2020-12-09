@@ -5,10 +5,15 @@ synonym:
       - bloedsuiker
       - suiker
       - glucose
+      - suikerspiegel
+      - bloedsuikerspiegel
+      - glycemie
+      - glykemie
     cannula age:
       synonyms:
       - canule
       - infusie set
+      - cannule
     carbs on board:
       synonyms:
       - koolhydraten
@@ -20,6 +25,7 @@ synonym:
       - alles
       - alle waarden
       - volledig rapport
+      - compleet rapport
     insulin on board:
       synonyms:
       - insuline
@@ -32,3 +38,5 @@ synonym:
     sensor age:
       synonyms:
       - sensor
+      - dexcom
+      - libre

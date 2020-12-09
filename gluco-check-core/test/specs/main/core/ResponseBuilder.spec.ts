@@ -8,7 +8,7 @@ const mockedHumanizer = Humanizer as any;
 mockedHumanizer.dmSnapshot.mockReturnValue(['TEST']);
 mockedHumanizer.error.mockReturnValue('ERROR');
 
-import getFakeQuery from '../../../fakes/objects/fakeDiabetesQuery';
+import getFakeQuery from '../../../fakes/objects/fakeDmQuery';
 import ResponseBuilder from '../../../../src/main/core/ResponseBuilder';
 import DmSnapshot from '../../../../src/types/DmSnapshot';
 import {ErrorType} from '../../../../src/types/ErrorType';

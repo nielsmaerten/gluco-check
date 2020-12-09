@@ -6,7 +6,7 @@ import {GlucoseTrend} from '../../../../src/types/GlucoseTrend';
 import {GlucoseUnit} from '../../../../src/types/GlucoseUnit';
 import I18nHelper from '../../../../src/main/i18n';
 import FormatParams from '../../../../src/types/FormatParams';
-import getFakeQuery from '../../../fakes/objects/fakeDiabetesQuery';
+import getFakeQuery from '../../../fakes/objects/fakeDmQuery';
 import {DmMetric} from '../../../../src/types/DmMetric';
 
 let params: FormatParams;
@@ -73,5 +73,12 @@ describe('Humanizer', () => {
     params.sayMetricName = false;
     const result = await Humanizers.bloodSugar(params);
     expect(result).toEqual('120 and stable as of 5 minutes ago.');
+  });
+
+  it('formats missing metric errors', async () => {
+    const newParams = Object.assign({}, params);
+    newParams.snapshot.carbsOnBoard = undefined;
+    const result = await Humanizers.carbsOnBoard(params);
+    expect(result).toEqual("I couldn't find your carbs on board.");
   });
 });

@@ -47,19 +47,28 @@ assistant_responses:
     The sensor was inserted {{time}} ago.
   
   pump_battery: >
-    The pump's battery is at {{percent}}%.
+    The pump's battery is at {{percent}}.
 
   errors: 
     User not found: >
       Hi! Thanks for trying out Gluco Check. 
       Before I can read your info, you'll first need to link your Nightscout site.
-      To do this, visit our website: https://diabase.app
+      To do this, visit our website: {{gc_url}}
     Nightscout Unavailable: >
       Sorry, it looks like there's a problem with your Nightscout site.
       I wasn't able to get your info.
     Nightscout Unauthorized: >
       Sorry, looks like I'm not allowed to read your Nightscout site.
       To let me in, you should first create a token.
-      To do this, visit our website: https://diabase.app
+      To do this, visit our website: {{gc_url}}
     DmMetric Not Found: >
       I couldn't find your {{metric}}.
+
+common:
+  metrics:
+    blood sugar: blood sugar
+    insulin on board: insulin on board
+    carbs on board: carbs on board
+    sensor age: sensor age
+    cannula age: cannula age
+    pump battery: pump battery

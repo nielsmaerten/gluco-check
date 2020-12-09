@@ -1,9 +1,10 @@
 trainingPhrases:
-- Koolhydraten aan boord
-- Check mijn glucose
-- Wat is mijn glucose
-- Wat is mijn glucose, insuline en koolhydraten aan boord
-- Hoeveel koolhydraten heb ik aan boord
-- Hoeveel insuline heb ik
-- Hoeveel is mijn bloedsuiker
-- Hoe zijn mijn carbs
+- ($DmMetric 'Koolhydraten aan boord' auto=false)
+- Check mijn ($DmMetric 'glucose' auto=false)
+- Wat is mijn ($DmMetric 'glucose' auto=false)
+- Wat is mijn ($DmMetric 'glucose' auto=false), ($DmMetric 'insuline' auto=false) en
+  ($DmMetric 'koolhydraten aan boord' auto=false)
+- Hoeveel ($DmMetric 'koolhydraten' auto=false) heb ik aan boord
+- Hoeveel ($DmMetric 'insuline' auto=false) heb ik
+- Hoeveel is mijn ($DmMetric 'bloedsuiker' auto=false)
+- Hoe zijn mijn ($DmMetric 'carbs' auto=false)

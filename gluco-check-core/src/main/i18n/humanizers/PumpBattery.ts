@@ -2,11 +2,12 @@ import {i18next} from '..';
 import FormatParams from '../../../types/FormatParams';
 import {metricNotFound} from './_error';
 import {DmMetric} from '../../../types/DmMetric';
+import {formatNumber} from './_common';
 
 export default async function (params: FormatParams): Promise<string> {
   // Collect translation context
   const context = {
-    percent: params.snapshot.pumpBattery,
+    percent: formatNumber(params.snapshot.pumpBattery, params.locale, 0, 'percent'),
   };
 
   if (context.percent === undefined) return metricNotFound(DmMetric.PumpBattery, params);

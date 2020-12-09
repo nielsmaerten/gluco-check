@@ -3,12 +3,12 @@ import {DmMetric} from '../../../types/DmMetric';
 import FormatParams from '../../../types/FormatParams';
 import {GlucoseTrend} from '../../../types/GlucoseTrend';
 import {i18next} from '..';
-import {translateTimestamp} from './_common';
+import {formatNumber, translateTimestamp} from './_common';
 
 export default async function (params: FormatParams): Promise<string> {
   // Collect translation context
   const context = {
-    value: params.snapshot.glucoseValue(),
+    value: formatNumber(params.snapshot.glucoseValue(), params.locale),
     trend: translateTrend(params.locale, params.snapshot.glucoseTrend),
     time: await translateTimestamp(params.snapshot.timestamp, params.locale),
   };

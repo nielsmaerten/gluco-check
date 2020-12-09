@@ -19,13 +19,13 @@ export default async function loadDayJsLocale(_locale: string): Promise<string> 
   logger.debug(`[Localizer.DayJS]: Importing locale: ${locale}`);
   try {
     // Attempt loading the exact locale
-    availableDayJsLocales.add(locale);
     await import(`dayjs/locale/${locale}`);
+    availableDayJsLocales.add(locale);
     return locale;
   } catch (error) {
     // Attempt loading the fallback
-    availableDayJsLocales.add(fallback);
     await import(`dayjs/locale/${fallback}`);
+    availableDayJsLocales.add(fallback);
     return fallback;
   }
 }
