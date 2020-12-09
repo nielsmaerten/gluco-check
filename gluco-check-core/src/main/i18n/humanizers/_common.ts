@@ -16,7 +16,7 @@ export const translateTimestamp = async (timestamp: number, _locale: string) => 
 };
 
 /**
- * Rounds number to the desired precision (.1 by default)
+ * Reformats a number with new locale, percent/decimal and precision
  */
 export const formatNumber = (
   value: number | undefined,
@@ -24,6 +24,7 @@ export const formatNumber = (
   precision = 1,
   style = 'decimal'
 ) => {
+  // For undefined, bail. For percentages, first divide by 100
   if (value === undefined) return undefined;
   const n = style === 'percent' ? value / 100 : value;
 
