@@ -7,6 +7,7 @@ import Humanizer from '../../../../src/main/i18n/humanizers';
 const mockedHumanizer = Humanizer as any;
 mockedHumanizer.dmSnapshot.mockReturnValue(['TEST']);
 mockedHumanizer.error.mockReturnValue('ERROR');
+mockedHumanizer.disclaimer.mockReturnValue('_IANAD');
 
 import getFakeQuery from '../../../fakes/objects/fakeDmQuery';
 import ResponseBuilder from '../../../../src/main/core/ResponseBuilder';
@@ -39,13 +40,13 @@ describe('Response Builder', () => {
         {type: possibleGeneralErrors[i], affectedMetric: DmMetric.Everything},
       ];
       const result = await responseFormatter.build(snapshot);
-      expect(result.SSML).toEqual('<speak>ERROR</speak>');
+      expect(result.SSML).toEqual('<speak>ERROR_IANAD</speak>');
     }
   });
 
   it('builds a snapshot', async () => {
     const snapshot = Object.assign({}, fakeSnapshot);
     const result = await responseFormatter.build(snapshot);
-    expect(result.SSML).toEqual('<speak><s>TEST </s></speak>');
+    expect(result.SSML).toEqual('<speak><s>TEST </s>_IANAD</speak>');
   });
 });

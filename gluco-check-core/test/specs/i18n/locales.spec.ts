@@ -30,6 +30,19 @@ describe('Locale', () => {
   });
 });
 
+describe('Disclaimer', () => {
+  it('is translated to English (en-US)', async () => {
+    const locale = 'en-US';
+    const expectedDisclaimer =
+      'Just a reminder: I am not a doctor. ' +
+      'If you need medical advice, consult your physician.';
+    await new I18nHelper().ensureLocale(locale);
+    testSnapshot.query.locale = locale;
+    const actualDisclaimer = Humanizer.disclaimer(locale);
+    expect(actualDisclaimer).toEqual(expectedDisclaimer);
+  });
+});
+
 async function runTest(locale: string, expectedString: string) {
   await new I18nHelper().ensureLocale(locale);
   testSnapshot.query.locale = locale;

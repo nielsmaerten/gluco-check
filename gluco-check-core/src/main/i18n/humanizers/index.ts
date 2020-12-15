@@ -5,6 +5,7 @@ import pumpBattery from './PumpBattery';
 import carbsOnBoard from './CarbsOnBoard';
 import insulinOnBoard from './InsulinOnBoard';
 import dmSnapshot from './DmSnapshot';
+import disclaimer from './_disclaimer';
 import error from './_error';
 
 /**
@@ -19,4 +20,5 @@ export default {
   insulinOnBoard,
   error,
   dmSnapshot,
+  disclaimer,
 };

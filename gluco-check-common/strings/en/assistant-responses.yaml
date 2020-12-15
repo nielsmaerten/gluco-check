@@ -65,6 +65,10 @@ assistant_responses:
       I couldn't find your {{metric}}.
 
 common:
+  disclaimer:
+    assistant_IANAD: >
+      Just a reminder: I am not a doctor.
+      If you need medical advice, consult your physician.
   metrics:
     blood sugar: blood sugar
     insulin on board: insulin on board

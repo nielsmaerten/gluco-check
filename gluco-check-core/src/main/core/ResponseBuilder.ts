@@ -7,6 +7,7 @@ import AssistantResponse from '../../types/AssistantResponse';
 import {ErrorType} from '../../types/ErrorType';
 import {DmMetric} from '../../types/DmMetric';
 import Humanizer from '../i18n/humanizers';
+import DmQuery from '../../types/DmQuery';
 
 @injectable()
 export default class ResponseBuilder {
@@ -34,7 +35,8 @@ async function normalResponse(snapshot: DmSnapshot): Promise<AssistantResponse> 
 
   // Join all tags together to create the SSML string
   const output = s_tags.join('');
-  const SSML = `<speak>${output}</speak>`;
+  const disclaimer = medicalDisclaimer(snapshot.query);
+  const SSML = `<speak>${output + disclaimer}</speak>`;
 
   return new AssistantResponse(SSML, snapshot.query.locale);
 }
@@ -44,7 +46,8 @@ function errorResponse(
   error: {type: ErrorType; affectedMetric: DmMetric}
 ) {
   const errorTxt = Humanizer.error(error.type, snapshot.query.locale);
-  const SSML = `<speak>${errorTxt}</speak>`;
+  const disclaimer = medicalDisclaimer(snapshot.query);
+  const SSML = `<speak>${errorTxt + disclaimer}</speak>`;
   return new AssistantResponse(SSML, snapshot.query.locale);
 }
 
@@ -59,4 +62,12 @@ function findGeneralErrors(snapshot: DmSnapshot) {
     ErrorType.Firebase_UserNotFound,
   ];
   return snapshot.errors.find(e => generalErrors.includes(e.type));
+}
+
+function medicalDisclaimer(query: DmQuery) {
+  if (!query.metadata.mentionDisclaimer) {
+    return '';
+  } else {
+    return Humanizer.disclaimer(query.locale);
+  }
 }
