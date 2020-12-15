@@ -71,7 +71,7 @@ export default class ConversationDecoder {
     if (usingNewerAction) {
       logger.info('Force mentioning disclaimer bc of newer Action calling');
     }
-    return user.mentionDisclaimer || usingNewerAction;
+    return user.heardDisclaimer || usingNewerAction;
   }
 
   /**

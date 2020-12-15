@@ -8,7 +8,7 @@ import {GlucoseUnit} from './GlucoseUnit';
 export default class User {
   public userId!: string;
   public exists!: boolean;
-  public mentionDisclaimer?: boolean;
+  public heardDisclaimer?: boolean;
   public defaultMetrics?: DmMetric[];
   public nightscout?: NightscoutProps;
   public glucoseUnit?: GlucoseUnit;
