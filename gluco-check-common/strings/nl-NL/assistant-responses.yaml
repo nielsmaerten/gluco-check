@@ -1,71 +1,65 @@
-# DO NOT TRANSLATE THIS FILE DIRECTLY
-# If you want to contribute translations, visit https://diabase.app/translate
-# TODO: These translations have not yet been tested on a live system
+---
+#DO NOT TRANSLATE THIS FILE DIRECTLY
+#If you want to contribute translations, visit https://diabase.app/translate
 assistant_responses:
   blood_sugar:
     long;with_trend;with_time: >
-      Suikerspiegel is {{value}} en {{trend}} sinds {{time}} geleden.
+      Blood sugar is {{value}} and {{trend}} as of {{time}} ago.
     long;no_trend;with_time: >
-      Suikerspiegel is {{value}} sinds {{time}} geleden.
+      Blood sugar is {{value}} as of {{time}} ago.
     long;with_trend;no_time: >
-      Suikerspiegel is {{value}} en {{trend}}.
+      Blood sugar is {{value}} and {{trend}}.
     long;no_trend;no_time: >
-      Suikerspiegel is {{value}}.
+      Blood sugar is {{value}}.
     short;no_trend;with_time: >
-      {{value}} sinds {{time}} geleden.
+      {{value}} as of {{time}} ago.
     short;with_trend;with_time: >
-      {{value}} en {{trend}} sinds {{time}} geleden.
+      {{value}} and {{trend}} as of {{time}} ago.
     trends:
-      DoubleUp: "snel stijgend"
-      SingleUp: "stijgend"
-      SlightUp: "langzaam stijgend"
-      Stable: "stabiel"
-      SlightDown: "langzaam dalend"
-      SingleDown: "dalend"
-      DoubleDown: "snel dalend"
-
+      DoubleUp: "rising rapidly"
+      SingleUp: "rising"
+      SlightUp: "rising slowly"
+      Stable: "stable"
+      SlightDown: "falling slowly"
+      SingleDown: "falling"
+      DoubleDown: "falling rapidly"
   carbs_on_board:
     long;with_time: >
-      Er zijn {{value}} koolhydraten aan boord sinds {{time}} geleden.
+      There's {{value}} carbs on board as of {{time}} ago.
     long;no_time: >
-      Er zijn {{value}} koolhydraten aan boord.
+      There are {{value}} carbs on board.
     short;with_time: >
-      {{value}} koolhydraten aan boord sinds {{time}} geleden.
+      {{value}} carbs on board as of {{time}} ago.
   insulin_on_board:
     long;with_time: >
-      Er zijn {{value}} insuline eenheden aan boord sinds {{time}} geleden.
+      There's {{value}} insulin units as of {{time}} ago.
     long;no_time: >
-      Er zijn {{value}} insuline eenheden.
+      There are {{value}} insulin units on board.
     short;with_time: >
-      {{value}} insuline eenheden aan boord sinds {{time}} ago.
+      {{value}} insulin units on board as of {{time}} ago.
   cannula_age: >
-    De canule is {{time}} oud.
+    The cannula was inserted {{time}} ago.
   sensor_age: >
-    De sensor is {{time}} oud.
-  
+    The sensor was inserted {{time}} ago.
   pump_battery: >
-    De pomp batterij staat op {{percent}}.
-  errors: 
+    The pump's battery is at {{percent}}.
+  errors:
     User not found: >
-      Hallo, bedankt voor het uitproberen Gluco Check.
-      Voordat ik je kan helpen, moet je nog even je Nightscout site linken.
-      Check onze website om te zien hoe je dit doet: {{gc_url}}
+      Hi! Thanks for trying out Gluco Check. Before I can read your info, you'll first need to link your Nightscout site. To do this, visit our website: {{gc_url}}
     Nightscout Unavailable: >
-      Sorry, ik heb de gevraagde info niet kunnen vinden.
-      Het lijkt erop dat er een probleem is met je Nightscout site.
+      Sorry, it looks like there's a problem with your Nightscout site. I wasn't able to get your info.
     Nightscout Unauthorized: >
-      Sorry, het lijkt erop dat ik geen toegang tot je Nightscout site heb.
-      Je kan dit oplossen door een token aan te maken.
-      Check onze website om te zien hoe je dit doet: {{gc_url}}
+      Sorry, looks like I'm not allowed to read your Nightscout site. To let me in, you should first create a token. To do this, visit our website: {{gc_url}}
     DmMetric Not Found: >
-      Ik heb je {{metric}} niet kunnen vinden. 
-
-
+      I couldn't find your {{metric}}.
 common:
+  disclaimer:
+    assistant_IANAD: >
+      Just a reminder: I am not a doctor. If you need medical advice, consult your physician.
   metrics:
-    blood sugar: glucose
-    insulin on board: insuline aan boord
-    carbs on board: koolhydraten aan boord
-    sensor age: sensor leeftijd
-    cannula age: canule leeftijd
-    pump battery: pump batterijniveau
+    blood sugar: blood sugar
+    insulin on board: insulin on board
+    carbs on board: carbs on board
+    sensor age: sensor age
+    cannula age: cannula age
+    pump battery: pump battery
