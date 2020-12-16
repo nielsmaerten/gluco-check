@@ -1,0 +1,3 @@
+files:
+  - source: /gluco-check-common/strings/en-US/*.yaml
+    translation: /gluco-check-common/strings/%locale%/%original_file_name%
