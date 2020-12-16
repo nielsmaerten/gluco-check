@@ -44,7 +44,7 @@ export default class ResponseBuilder {
     // If disclaimer will be mentioned, mark it as heard
     const userHeardDisclaimer = disclaimer !== '';
     const user = snapshot.query.user;
-    await this.userClient.flagDisclaimer(user, userHeardDisclaimer);
+    await this.userClient.flagDisclaimer(user, userHeardDisclaimer, false);
 
     return new AssistantResponse(SSML, snapshot.query.locale);
   }
