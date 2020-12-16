@@ -71,7 +71,7 @@ export default class ConversationDecoder {
     if (usingNewerAction) {
       logger.info('Force mentioning disclaimer bc of newer Action calling');
     }
-    return user.mentionDisclaimer || usingNewerAction;
+    return !user.heardDisclaimer || usingNewerAction;
   }
 
   /**
@@ -93,7 +93,7 @@ export default class ConversationDecoder {
     } else {
       logger.debug(
         '[ConversationDecoder]: Assuming',
-        `v${this.lastKnownActionVersion}`,
+        `v${version}`,
         'is the latest version of the Gluco Check Action being used.'
       );
       return version;
