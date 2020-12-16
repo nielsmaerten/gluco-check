@@ -10,4 +10,6 @@ export default class UserProfileClient {
       defaultMetrics: this.userExists ? [DmMetric.BloodSugar] : undefined,
     };
   }
+
+  public flagDisclaimer = jest.fn;
 }

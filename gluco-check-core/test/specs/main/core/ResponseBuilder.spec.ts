@@ -14,6 +14,7 @@ import ResponseBuilder from '../../../../src/main/core/ResponseBuilder';
 import DmSnapshot from '../../../../src/types/DmSnapshot';
 import {ErrorType} from '../../../../src/types/ErrorType';
 import {DmMetric} from '../../../../src/types/DmMetric';
+import UserProfileClient from '../../../stubs/UserProfileClient';
 
 const mock_i18n = {
   ensureLocale: jest.fn(),
@@ -24,8 +25,10 @@ const fakeSnapshot = new DmSnapshot({
   query: getFakeQuery(),
 });
 
+const mock_userClient = new UserProfileClient();
+
 describe('Response Builder', () => {
-  const responseFormatter = new ResponseBuilder(mock_i18n as any);
+  const responseFormatter = new ResponseBuilder(mock_i18n as any, mock_userClient as any);
 
   it('detects general errors', async () => {
     const possibleGeneralErrors = [
