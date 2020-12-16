@@ -1,6 +1,5 @@
 # DO NOT TRANSLATE THIS FILE DIRECTLY
-# If you want to contribute translations, visit https://diabase.app/translate
-# TODO: These translations have not yet been tested on a live system
+# If you want to contribute translations, visit https://translate.diabase.app
 assistant_responses:
   blood_sugar:
     long;with_trend;with_time: >
