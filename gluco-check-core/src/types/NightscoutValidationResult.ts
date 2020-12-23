@@ -6,40 +6,47 @@ export default class NightscoutValidationResult {
   constructor() {}
   public url = {
     /**
-     * BaseURL: '  https://cgm.example.com/foo?bar=xyz  ' -> 'https://cgm.example.com'
-     * This value must be stored in UserProfile
+     * Extracted BaseUrl
+     * eg: '  https://cgm.example.com/foo?bar=xyz  ' -> 'https://cgm.example.com'
+     * This value MUST be stored in UserProfile
      */
     parsed: '',
 
-    // TRUE if input was successfully parsed as a URL
+    // TRUE: input was successfully parsed as a URL
+    // FALSE: user MUST fix their URL
     isValid: false,
 
-    // TRUE if we found a Nightscout site at this URL
+    // TRUE: we found a Nightscout site at this URL
+    // FALSE: the user MUST fix their URL
     pointsToNightscout: false,
   };
 
   public token = {
     // Whitespace-trimmed token
-    // This value must be stored in UserProfile
+    // This value MUST be stored in UserProfile
     parsed: '',
 
-    // TRUE if the token has the required permissions
+    // TRUE: the token has the required permissions
+    // FALSE: not all features MAY be available. User SHOULD fix their token
     isValid: false,
   };
 
   public nightscout = {
-    // Version of Nightscout. Empty if no Nightscout site was detected OR the token is invalid
+    // Version of Nightscout
+    // EMPTY: no Nightscout site was detected, OR (token is invalid AND site is read protected)
     version: '',
 
     // mg/dl or mmol/l
-    // Should be stored in UserProfile. User can override
+    // SHOULD be stored in UserProfile. User CAN override
     glucoseUnit: '' as GlucoseUnit,
 
     // if (version < minSupportedVersion): not all features will be available
+    // User SHOULD be warned when they use an unsupported version
     minSupportedVersion: nightscoutMinVersion,
   };
 
-  // All metrics we could find. Note that if a metric is missing here,
+  // All metrics we could find. If a metric is missing here,
   // it doesn't necessarily mean it won't be available in the future
+  // User MAY be warned about unavailable metrics, but SHOULD NOT be prevented from selecting them
   public discoveredMetrics: DmMetric[] = [];
 }
