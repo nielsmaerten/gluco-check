@@ -62,15 +62,15 @@ export default class NightscoutValidator {
 
       // Check if 'api:*:read' is listed
       const hasReadPermission = permissionGroups.some(g => g.includes('api:*:read'));
-      if (hasReadPermission)
-        return {
-          token: {isValid: true, parsed: token},
-          nightscout: {
-            minSupportedVersion: nightscoutMinVersion,
-            glucoseUnit: settings.units,
-            version: version,
-          },
-        };
+
+      return {
+        token: {isValid: hasReadPermission, parsed: token},
+        nightscout: {
+          minSupportedVersion: nightscoutMinVersion,
+          glucoseUnit: settings.units,
+          version: version,
+        },
+      };
     } catch {
       logger.warn(this.logTag, 'Unable to access API using token @', url);
     }
