@@ -69,6 +69,13 @@ describe('Nightscout Validator', () => {
     expect(results.token.parsed).toBe('test-token');
     expect(results.url.parsed).toBe('https://cgm.example.com');
   });
+
+  it('rejects a non-nightscout site', async () => {
+    const testUrl = 'https://example.com';
+    const testToken = 'abc-123';
+    const results = await runTestValidation(testUrl, testToken);
+    expect(results.url.pointsToNightscout).toBeFalsy();
+  });
 });
 
 const runTestValidation = (url: string, token?: string) => {
