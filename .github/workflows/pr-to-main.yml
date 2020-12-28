@@ -1,8 +1,6 @@
-name: Build, Test and Lint
+name: Build, Test, Lint
 
 on:
-  push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -24,12 +22,3 @@ jobs:
     - run: yarn # Includes Typescript build
     - run: yarn test # Linting will happen posttest
     - run: bash <(curl -s https://codecov.io/bash)
-   
-    - name: Deploy webhooks to Nightly
-      uses: w9jds/firebase-action@master
-      with:
-        args: deploy --only functions
-      env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        PROJECT_PATH: ./gluco-check-webhooks
-        PROJECT_ID: nightly
