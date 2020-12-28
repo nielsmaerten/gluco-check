@@ -14,20 +14,24 @@ jobs:
         node-version: [14.x]
 
     steps:
-    - uses: actions/checkout@v2
-      name: Cloning repository
+    - name: Cloning repository
+      uses: actions/checkout@v2
+
     - name: Using Node.js v${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: yarn # Includes Typescript build
-      name: Installing components
-    - run: yarn test # Linting will happen posttest
-      name: Running tests
-    - run: bash <(curl -s https://codecov.io/bash)
-      name: Reporting coverage
-   
-    - name: Deploying webhooks
+
+    - name: Installing dependencies
+      run: yarn # Includes Typescript build
+
+    - name: Running tests
+      run: yarn test # Includes linting (post tests)
+      
+    - name: Reporting coverage
+      run: bash <(curl -s https://codecov.io/bash)
+  
+    - name: Deploying webhooks to nightly
       uses: w9jds/firebase-action@master
       with:
         args: deploy --only functions
