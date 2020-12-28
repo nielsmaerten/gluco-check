@@ -15,10 +15,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
+      name: Cloning repository
+    - name: Using Node.js v${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
     - run: yarn # Includes Typescript build
+      name: Installing dependencies
     - run: yarn test # Linting will happen posttest
+      name: Running tests
     - run: bash <(curl -s https://codecov.io/bash)
+      name: Reporting coverage
