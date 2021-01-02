@@ -8,27 +8,27 @@ describe('Nightscout Validator', () => {
   it('accepts a valid url', async () => {
     AxiosMock.respondWithMockData();
     const testUrl = 'https://cgm.example.com';
-    const {urlIsValid, parsedUrl} = await runTestValidation(testUrl);
+    const result = await runTestValidation(testUrl);
 
-    expect(parsedUrl).toBe(testUrl);
-    expect(urlIsValid).toBeTruthy();
+    expect(result.url.parsed).toBe(testUrl);
+    expect(result.url.isValid).toBeTruthy();
   });
 
   it('rejects an invalid url', async () => {
     const testUrl = 'this-is-no-url';
-    const {urlIsValid} = await runTestValidation(testUrl);
+    const result = await runTestValidation(testUrl);
 
-    expect(urlIsValid).toBeFalsy();
+    expect(result.url.isValid).toBeFalsy();
   });
 
   it('extracts baseUrl', async () => {
     AxiosMock.respondWithMockData();
     const testUrl = 'https://cgm.example.com/api/v3?token=abc1234';
     const expectedBaseUrl = 'https://cgm.example.com';
-    const {parsedUrl, urlIsValid} = await runTestValidation(testUrl);
+    const result = await runTestValidation(testUrl);
 
-    expect(parsedUrl).toBe(expectedBaseUrl);
-    expect(urlIsValid).toBeTruthy();
+    expect(result.url.parsed).toBe(expectedBaseUrl);
+    expect(result.url.isValid).toBeTruthy();
   });
 
   it('accepts a valid token', async () => {
@@ -37,7 +37,7 @@ describe('Nightscout Validator', () => {
     const testToken = 'test-token';
     const results = await runTestValidation(testUrl, testToken);
 
-    expect(results.tokenIsValid).toBeTruthy();
+    expect(results.token.isValid).toBeTruthy();
   });
 
   it('rejects an invalid token', async () => {
@@ -45,7 +45,7 @@ describe('Nightscout Validator', () => {
     const testUrl = 'https://cgm.example.com';
     const testToken = 'test-token';
     const results = await runTestValidation(testUrl, testToken);
-    expect(results.tokenIsValid).toBeFalsy();
+    expect(results.token.isValid).toBeFalsy();
   });
 
   it('reads settings and metrics', async () => {
@@ -54,19 +54,27 @@ describe('Nightscout Validator', () => {
     const testToken = 'test-token';
     const results = await runTestValidation(testUrl, testToken);
 
-    expect(results.canReadStatus).toBeTruthy();
-    expect(results.glucoseUnit).toBe('mg/dl');
-    expect(results.version).toBe('14.0.7');
-    expect(results.readableMetrics.length).toBeGreaterThan(0);
+    expect(results.nightscout.version).toBeTruthy();
+    expect(results.nightscout.glucoseUnit).toBe('mg/dl');
+    expect(results.nightscout.version).toBe('14.0.7');
+    expect(results.discoveredMetrics.length).toBeGreaterThan(0);
   });
 
   it('trims url and token', async () => {
+    AxiosMock.respondWithMockData();
     const testUrl = '    https://cgm.example.com   ';
     const testToken = '   test-token  ';
     const results = await runTestValidation(testUrl, testToken);
 
-    expect(results.parsedToken).toBe('test-token');
-    expect(results.parsedUrl).toBe('https://cgm.example.com');
+    expect(results.token.parsed).toBe('test-token');
+    expect(results.url.parsed).toBe('https://cgm.example.com');
+  });
+
+  it('rejects a non-nightscout site', async () => {
+    const testUrl = 'https://example.com';
+    const testToken = 'abc-123';
+    const results = await runTestValidation(testUrl, testToken);
+    expect(results.url.pointsToNightscout).toBeFalsy();
   });
 });
 
