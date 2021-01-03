@@ -2,6 +2,7 @@ import bloodSugar from './BloodSugar';
 import cannulaAge from './CannulaAge';
 import sensorAge from './SensorAge';
 import pumpBattery from './PumpBattery';
+import pumpReservoir from './PumpReservoir';
 import carbsOnBoard from './CarbsOnBoard';
 import insulinOnBoard from './InsulinOnBoard';
 import dmSnapshot from './DmSnapshot';
@@ -16,6 +17,7 @@ export default {
   cannulaAge,
   sensorAge,
   pumpBattery,
+  pumpReservoir,
   carbsOnBoard,
   insulinOnBoard,
   error,

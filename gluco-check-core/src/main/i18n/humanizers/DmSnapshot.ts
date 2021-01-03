@@ -48,6 +48,9 @@ function humanize(params: FormatParams): Promise<string> {
     case DmMetric.PumpBattery:
       return Humanizer.pumpBattery(params);
 
+    case DmMetric.PumpReservoir:
+      return Humanizer.pumpReservoir(params);
+
     default:
       throw new Error('Unable to humanize metric ' + params.metric);
   }

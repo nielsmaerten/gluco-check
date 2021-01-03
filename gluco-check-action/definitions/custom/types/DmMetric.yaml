@@ -37,8 +37,13 @@ synonym:
       - pump battery
       - battery
       - pump
+    pump reservoir:
+      synonyms:
+      - pump reservoir
+      - pump level
+      - insulin remaining
+      - pump units
     sensor age:
       synonyms:
       - sensor age
       - sensor
-  matchType: EXACT_MATCH

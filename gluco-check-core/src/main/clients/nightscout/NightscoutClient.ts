@@ -27,6 +27,7 @@ export default class NightscoutClient {
       case DmMetric.CarbsOnBoard:
       case DmMetric.InsulinOnBoard:
       case DmMetric.PumpBattery:
+      case DmMetric.PumpReservoir:
         return await this.runQuery(Queries.DeviceStatus);
 
       case DmMetric.SensorAge:
