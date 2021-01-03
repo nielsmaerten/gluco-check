@@ -120,6 +120,12 @@ export default {
       days: 1,
     },
   },
-  authorized: null,
+  authorized: {
+    token: 'abcxyz',
+    sub: 'gluco-check',
+    permissionGroups: [['api:*:read'], ['*:*:read']],
+    iat: 1608753230,
+    exp: 1608756830,
+  },
   runtimeState: 'loaded',
 };

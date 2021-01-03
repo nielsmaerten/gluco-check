@@ -1,6 +1,7 @@
 import {TFunction, i18n} from 'i18next';
 import {logger} from 'firebase-functions';
 import {injectable} from 'inversify';
+import selectFallbackLocale from './selectFallbackLocale';
 
 // i18next won't work unless we import it using 'require'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -38,8 +39,7 @@ export default class I18nHelper {
     try {
       resourceBundle = this.importResources(locale);
     } catch {
-      // Fallback to generic language bundle if not found
-      const fallback = locale.substr(0, 2);
+      const fallback = selectFallbackLocale(locale);
       logger.debug(
         `[Localizer.I18Next]: No exact translation for ${locale}.`,
         `Attempting fallback to ${fallback}`

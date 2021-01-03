@@ -3,50 +3,142 @@ import axios from 'axios';
 import NightscoutClient from './NightscoutClient';
 import NightscoutValidationResult from '../../../types/NightscoutValidationResult';
 import {DmMetric} from '../../../types/DmMetric';
+import {logger} from 'firebase-functions';
 import NightscoutProps from '../../../types/NightscoutProps';
-import {ErrorType} from '../../../types/ErrorType';
+import {nightscoutMinVersion} from '../../constants';
 
 export default class NightscoutValidator {
+  private static logTag = '[NightscoutValidator]:';
+
   public static async validate(client: NightscoutClient) {
-    // New result with default values. We'll update this as we're validating
-    const {url, token} = client.getNightscoutProps();
-    const globalResult: NightscoutValidationResult = {
-      glucoseUnit: 'N/A',
-      version: 'N/A',
-      readableMetrics: [],
-      canReadStatus: false,
-      tokenIsValid: false,
-      urlIsValid: false,
-      parsedUrl: 'N/A',
-      parsedToken: token?.trim() || 'N/A',
-    };
+    const result = new NightscoutValidationResult();
+    const input = client.getNightscoutProps();
 
-    // Try parsing the URL
-    const urlValidationResult = this.getBaseUrl(url);
+    // VALIDATION 1: Is URL pointing to a Nightscout instance?
+    const partialResult1 = await this.validateUrl(input.url);
+    Object.assign(result, partialResult1);
 
-    // Update globalResult with parsed URL, bail if invalid
-    Object.assign(globalResult, urlValidationResult);
-    if (!globalResult.urlIsValid) return globalResult;
+    if (result.url.pointsToNightscout) {
+      // VALIDATION 2: Does TOKEN have the required permissions?
+      const partialResult2 = await this.validateToken(input.token, result.url.parsed);
+      Object.assign(result, partialResult2);
 
-    // From the parsed url, build a new NightscoutClient
-    const newProps = new NightscoutProps(globalResult.parsedUrl, token?.trim());
-    const newClient = new NightscoutClient(newProps);
+      // VALIDATION 3: Which METRICS are available?
+      const url = result.url.parsed;
+      const token = result.token.parsed;
+      const partialResult3 = await this.validateAPIs(url, token);
+      Object.assign(result, partialResult3);
+    }
 
-    // Try reading status endpoint
-    const statusValidationResult = await this.querySiteStatus(
-      newProps.url,
-      newProps.token
-    );
-    Object.assign(globalResult, statusValidationResult);
-
-    // Try reading all metrics
-    const metricsValidationResult = await this.getReadableMetrics(newClient);
-    Object.assign(globalResult, metricsValidationResult);
-
-    return globalResult;
+    return result;
   }
 
-  private static getBaseUrl(_url: string): {parsedUrl: string; urlIsValid: boolean} {
+  private static async validateAPIs(url: string, token: string) {
+    const client = new NightscoutClient(new NightscoutProps(url, token));
+    return {
+      discoveredMetrics: await this.getReadableMetrics(client),
+    };
+  }
+
+  private static async validateToken(_token: string | undefined, url: string) {
+    if (!_token) return {token: {isValid: false, parsed: ''}};
+    const token = _token.trim();
+
+    logger.info(this.logTag, 'Attempting to access v1 API using token @', url);
+    try {
+      // Fetch STATUS object
+      const api = `${url}/api/v1/status`;
+      const req = {
+        url: api,
+        params: {
+          token: token,
+        },
+      };
+      const response = await axios.request(req);
+
+      // Extract permissions from STATUS object
+      const {authorized, settings, version} = response.data;
+      const permissionGroups: string[][] = authorized ? authorized.permissionGroups : [];
+
+      // Check if 'api:*:read' is listed
+      const hasReadPermission = permissionGroups.some(g => g.includes('api:*:read'));
+
+      return {
+        token: {isValid: hasReadPermission, parsed: token},
+        nightscout: {
+          minSupportedVersion: nightscoutMinVersion,
+          glucoseUnit: settings.units,
+          version: version,
+        },
+      };
+    } catch {
+      logger.warn(this.logTag, 'Unable to access API using token @', url);
+    }
+
+    return {
+      token: {isValid: false, parsed: token},
+    };
+  }
+
+  private static async validateUrl(input: string) {
+    const {parsed, isValid} = this.getBaseUrl(input);
+    const pointsToNightscout = await this.pointsToNightscout(parsed);
+    return {
+      url: {
+        parsed,
+        isValid,
+        pointsToNightscout,
+      },
+    };
+  }
+
+  private static isSemanticVersion(input: string) {
+    // Source: https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
+    const regex = /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/gm;
+    return regex.test(input);
+  }
+
+  private static async pointsToNightscout(url: string): Promise<boolean> {
+    // Attempt 1/3: v3 API
+    // This test does not require a token: /version is public
+    // It may fail if the Nightscout version is outdated
+    logger.info(this.logTag, 'Attempting to detect v3 API @', url);
+    try {
+      const response = await axios.get(`${url}/api/v3/version`);
+      const data = response.data;
+      const hasVersion = data.version && this.isSemanticVersion(data.version);
+      if (hasVersion) return true;
+    } catch (e) {
+      logger.info(this.logTag, url, 'did not support v3 Nightscout API', e);
+    }
+
+    // Attempt 2/3: v1 API
+    // May fail if AUTH_DEFAULT_ROLES is set to 'denied'
+    logger.info(this.logTag, 'Attempting to detect v1 API @', url);
+    try {
+      const response = await axios.get(`${url}/api/v1/status`);
+      const data = response.data;
+      const hasVersion = data.version && this.isSemanticVersion(data.version);
+      if (hasVersion) return true;
+    } catch (e) {
+      logger.info(this.logTag, url, 'did not support v1 Nightscout API', e);
+    }
+
+    // Attempt 3/3: Index page
+    logger.info(this.logTag, 'Attempting to detect a Nightscout page @', url);
+    try {
+      const response = await axios.get(url);
+      const html = String(response.data);
+      if (html.includes('<title>Nightscout</title>')) return true;
+    } catch (e) {
+      logger.info(this.logTag, 'HTTP GET failed @', url, e);
+    }
+
+    logger.info(this.logTag, 'all attempts to detect Nightscout failed @', url);
+    return false;
+  }
+
+  private static getBaseUrl(_url: string): {parsed: string; isValid: boolean} {
     try {
       const url = _url.toLowerCase().trim();
 
@@ -58,34 +150,19 @@ export default class NightscoutValidator {
       if (!hasTld) throw 'Url must include a dot (.)';
 
       return {
-        parsedUrl: parsedUrl.origin,
-        urlIsValid: true,
+        parsed: parsedUrl.origin,
+        isValid: true,
       };
     } catch (error) {
       return {
-        parsedUrl: error,
-        urlIsValid: false,
+        parsed: error,
+        isValid: false,
       };
-    }
-  }
-
-  private static async querySiteStatus(baseUrl: string, token?: string) {
-    const queryString = token ? `?token=${token}` : '';
-    const endpoint = `${baseUrl}/api/v1/status.json${queryString}`;
-    try {
-      const axiosResponse = (await axios.get(endpoint)).data;
-      return {
-        canReadStatus: String(axiosResponse.status).toLowerCase() === 'ok',
-        version: axiosResponse.version,
-        glucoseUnit: axiosResponse.settings?.units,
-      };
-    } catch (error) {
-      return {canReadStatus: false};
     }
   }
 
   private static async getReadableMetrics(client: NightscoutClient) {
-    // Test all metrics except "everything"
+    // Get all metrics except "everything"
     const allMetrics = Object.values(DmMetric).filter(m => m !== DmMetric.Everything);
 
     // For each metric, check if we can read it
@@ -93,20 +170,12 @@ export default class NightscoutValidator {
     const results = await Promise.all(promises);
 
     // Return all metrics that succeeded, and if any returned a token error
-    const readableMetrics = results.filter(r => r.isReadable).map(r => r.metric);
-    const tokenIsValid = readableMetrics.length > 0 && results.every(r => r.tokenIsValid);
-    return {
-      readableMetrics,
-      tokenIsValid,
-    };
+    return results.filter(r => r.isReadable).map(r => r.metric);
   }
 
   private static async isMetricReadable(client: NightscoutClient, metric: DmMetric) {
     const result = await client.getMetric(metric);
     const isReadable = !result.errors || result.errors.length === 0;
-    const tokenIsValid =
-      !result.errors ||
-      !result.errors.some(e => e.type === ErrorType.Nightscout_Unauthorized);
-    return {metric, isReadable, tokenIsValid};
+    return {metric, isReadable};
   }
 }
