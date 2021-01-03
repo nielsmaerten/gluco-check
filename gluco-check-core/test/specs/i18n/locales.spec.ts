@@ -41,6 +41,27 @@ describe('Disclaimer', () => {
     const actualDisclaimer = Humanizer.disclaimer(locale);
     expect(actualDisclaimer).toEqual(expectedDisclaimer);
   });
+
+  it('falls back to generic language', async () => {
+    try {
+      await new I18nHelper().ensureLocale('nl-BE');
+    } catch (error) {
+      fail(error);
+    }
+  });
+
+  it('throws an error when no resource bundle found', done => {
+    const promise = new I18nHelper().ensureLocale('123-NO-REAL-LOCALE');
+    promise
+      .then(() => {
+        // This promise should not succeed
+        fail();
+      })
+      .catch(() => {
+        // Error is expected
+        done();
+      });
+  });
 });
 
 async function runTest(locale: string, expectedString: string) {
