@@ -36,7 +36,7 @@ const rawSnapshot: Partial<DmSnapshot> = {
   cannulaInserted: 1597744068000,
   carbsOnBoard: 10.123456,
   insulinOnBoard: 10.123456,
-  pumpBattery: 10.123456,
+  pumpBattery: 85.123456,
   pumpReservoir: 50.12345,
   sensorInserted: 1598195121000,
 };

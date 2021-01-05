@@ -15,10 +15,10 @@ describe('Locale', () => {
     const locale = 'nl-NL';
     beforeAll(async () => new I18nHelper().ensureLocale(locale));
     it('COB', () => runTest(locale, 'Er zijn 10,1 koolhydraten aan boord.'));
-    it('IOB', () => runTest(locale, 'Er zijn 10,1 insuline eenheden.'));
+    it('IOB', () => runTest(locale, 'Er zijn 10,1 insuline eenheden aan boord.'));
     it('BG', () =>
       runTest(locale, 'Suikerspiegel is 120 en stabiel sinds 5 minuten geleden.'));
-    it('PB', () => runTest(locale, 'De pomp batterij staat op 10%.'));
+    it('PB', () => runTest(locale, 'De pompbatterij heeft nog 85%.'));
   });
 
   describe('English (en-US)', () => {
