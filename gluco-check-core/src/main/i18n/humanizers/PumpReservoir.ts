@@ -7,7 +7,7 @@ import FormatParams from '../../../types/FormatParams';
 export default async function (params: FormatParams): Promise<string> {
   // Collect translation context
   const context = {
-    reservoir: formatNumber(params.snapshot.pumpReservoir, params.locale),
+    reservoir: formatNumber(params.snapshot.pumpReservoir, params.locale, 0),
   };
 
   if (context.reservoir === undefined)
