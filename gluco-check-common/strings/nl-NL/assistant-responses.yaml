@@ -61,6 +61,10 @@ assistant_responses:
 
 
 common:
+  disclaimer:
+    assistant_IANAD: >
+      Nog even dit: ik ben geen dokter.
+      Als je medisch advies nodig hebt, praat dan met je arts.
   metrics:
     blood sugar: glucose
     insulin on board: insuline aan boord
