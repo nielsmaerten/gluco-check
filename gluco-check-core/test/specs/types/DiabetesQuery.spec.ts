@@ -12,7 +12,8 @@ describe('DiabetesQuery', () => {
     expect(query.metrics).toContain(DmMetric.InsulinOnBoard);
     expect(query.metrics).toContain(DmMetric.SensorAge);
     expect(query.metrics).toContain(DmMetric.PumpBattery);
+    expect(query.metrics).toContain(DmMetric.PumpReservoir);
     expect(query.metrics).not.toContain(DmMetric.Everything);
-    expect(query.metrics).toHaveLength(6);
+    expect(query.metrics).toHaveLength(7);
   });
 });
