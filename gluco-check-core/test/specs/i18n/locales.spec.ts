@@ -27,6 +27,7 @@ describe('Locale', () => {
     it('COB', () => runTest(locale, 'There are 10.1 carbs on board.'));
     it('IOB', () => runTest(locale, 'There are 10.1 insulin units on board.'));
     it('BG', () => runTest(locale, 'Blood sugar is 120 and stable as of 5 minutes ago.'));
+    it('PR', () => runTest(locale, 'The pump has 50 units remaining.'));
   });
 });
 

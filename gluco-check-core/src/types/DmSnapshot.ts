@@ -63,4 +63,5 @@ export default class DmSnapshot {
   sensorInserted?: number;
   cannulaInserted?: number;
   pumpBattery?: number;
+  pumpReservoir?: number;
 }

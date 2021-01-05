@@ -25,6 +25,7 @@ const rawSnapshot: Partial<DmSnapshot> = {
       DmMetric.CarbsOnBoard,
       DmMetric.InsulinOnBoard,
       DmMetric.PumpBattery,
+      DmMetric.PumpReservoir,
       DmMetric.SensorAge,
     ],
   },
@@ -36,6 +37,7 @@ const rawSnapshot: Partial<DmSnapshot> = {
   carbsOnBoard: 10.123456,
   insulinOnBoard: 10.123456,
   pumpBattery: 10.123456,
+  pumpReservoir: 50.12345,
   sensorInserted: 1598195121000,
 };
 

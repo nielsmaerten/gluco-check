@@ -11,6 +11,7 @@ export const DeviceStatus: QueryConfig = {
       carbsOnBoard: data.openaps?.suggested?.COB || data.loop?.cob.cob,
       insulinOnBoard: data.openaps?.iob.iob || data.loop?.iob.iob,
       pumpBattery: data.pump.battery?.percent,
+      pumpReservoir: data.pump.reservoir,
       timestamp: new Date(data.created_at).getTime(),
     };
   },

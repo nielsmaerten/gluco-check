@@ -35,6 +35,13 @@ synonym:
       - batterij
       - pomp batterij
       - pomp
+    pump reservoir:
+      synonyms:
+      - pomp reservoir
+      - pompniveau
+      - resterende insuline
+      - insuline resterend
+      - pomp eenheden
     sensor age:
       synonyms:
       - sensor
