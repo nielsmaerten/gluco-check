@@ -49,6 +49,9 @@ assistant_responses:
   pump_battery: >
     The pump's battery is at {{percent}}.
 
+  pump_reservoir: >
+    The pump has {{reservoir}} units remaining.
+
   errors: 
     User not found: >
       Hi! Thanks for trying out Gluco Check. 
