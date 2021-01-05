@@ -1,5 +1,6 @@
-# DO NOT TRANSLATE THIS FILE DIRECTLY
-# If you want to contribute translations, visit https://translate.diabase.app
+---
+#DO NOT TRANSLATE THIS FILE DIRECTLY
+#If you want to contribute translations, visit https://translate.diabase.app
 assistant_responses:
   blood_sugar:
     long;with_trend;with_time: >
@@ -22,53 +23,45 @@ assistant_responses:
       SlightDown: "langzaam dalend"
       SingleDown: "dalend"
       DoubleDown: "snel dalend"
-
   carbs_on_board:
     long;with_time: >
       Er zijn {{value}} koolhydraten aan boord sinds {{time}} geleden.
     long;no_time: >
       Er zijn {{value}} koolhydraten aan boord.
     short;with_time: >
-      {{value}} koolhydraten aan boord sinds {{time}} geleden.
+      Er zijn {{value}} koolhydraten aan boord sinds {{time}} geleden.
   insulin_on_board:
     long;with_time: >
       Er zijn {{value}} insuline eenheden aan boord sinds {{time}} geleden.
     long;no_time: >
-      Er zijn {{value}} insuline eenheden.
+      Er zijn {{value}} insuline eenheden aan boord.
     short;with_time: >
-      {{value}} insuline eenheden aan boord sinds {{time}} ago.
+      Er zijn {{value}} insuline eenheden aan boord sinds {{time}} ago.
   cannula_age: >
-    De canule is {{time}} oud.
+    Je infusie set is {{time}} oud.
   sensor_age: >
-    De sensor is {{time}} oud.
-  
+    Je sensor is {{time}} oud.
   pump_battery: >
-    De pomp batterij staat op {{percent}}.
-  errors: 
+    De pompbatterij heeft nog {{percent}}.
+  pump_reservoir: >
+    De pomp heeft nog {{reservoir}} eenheden.
+  errors:
     User not found: >
-      Hallo, bedankt voor het uitproberen Gluco Check.
-      Voordat ik je kan helpen, moet je nog even je Nightscout site linken.
-      Check onze website om te zien hoe je dit doet: {{gc_url}}
+      Hallo, bedankt voor het uitproberen Gluco Check. Voordat ik je kan helpen, moet je nog even je Nightscout site linken. Check onze website om te zien hoe je dit doet: {{gc_url}}
     Nightscout Unavailable: >
-      Sorry, ik heb de gevraagde info niet kunnen vinden.
-      Het lijkt erop dat er een probleem is met je Nightscout site.
+      Sorry, er lijkt een probleem te zijn met je Nightscout site. Ik heb de gevraagde gegevens niet kunnen vinden.
     Nightscout Unauthorized: >
-      Sorry, het lijkt erop dat ik geen toegang tot je Nightscout site heb.
-      Je kan dit oplossen door een token aan te maken.
-      Check onze website om te zien hoe je dit doet: {{gc_url}}
+      Sorry, het lijkt erop dat ik geen toegang tot je Nightscout site heb. Je kan dit oplossen door een token aan te maken. Check onze website om te zien hoe je dit doet: {{gc_url}}
     DmMetric Not Found: >
-      Ik heb je {{metric}} niet kunnen vinden. 
-
-
+      Ik heb je {{metric}} niet kunnen vinden.
 common:
   disclaimer:
     assistant_IANAD: >
-      Nog even dit: ik ben geen dokter.
-      Als je medisch advies nodig hebt, praat dan met je arts.
+      Nog even dit: ik ben geen dokter. Als je medisch advies nodig hebt, praat dan met je arts.
   metrics:
-    blood sugar: glucose
+    blood sugar: suikerspiegel
     insulin on board: insuline aan boord
     carbs on board: koolhydraten aan boord
     sensor age: sensor leeftijd
     cannula age: canule leeftijd
-    pump battery: pump batterijniveau
+    pump battery: pompbatterij
