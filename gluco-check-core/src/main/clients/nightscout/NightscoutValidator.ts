@@ -40,9 +40,7 @@ export default class NightscoutValidator {
     };
   }
 
-  private static async validateToken(_token: string | undefined, url: string) {
-    // FIXME: Even when token is empty, we should still check ns version and units
-    if (!_token) return {token: {isValid: false, parsed: ''}};
+  private static async validateToken(_token = '', url: string) {
     const token = _token.trim();
 
     logger.info(this.logTag, 'Attempting to access v1 API using token @', url);
