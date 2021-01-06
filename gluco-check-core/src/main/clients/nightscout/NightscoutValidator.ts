@@ -41,6 +41,7 @@ export default class NightscoutValidator {
   }
 
   private static async validateToken(_token: string | undefined, url: string) {
+    // FIXME: Even when token is empty, we should still check ns version and units
     if (!_token) return {token: {isValid: false, parsed: ''}};
     const token = _token.trim();
 
@@ -165,17 +166,21 @@ export default class NightscoutValidator {
     // Get all metrics except "everything"
     const allMetrics = Object.values(DmMetric).filter(m => m !== DmMetric.Everything);
 
-    // For each metric, check if we can read it
-    const promises = allMetrics.map(async m => this.isMetricReadable(client, m));
-    const results = await Promise.all(promises);
+    // Run queries for every metric
+    const promises = allMetrics.map(async metric => client.getMetric(metric));
+    const partialSnapshots = await Promise.all(promises);
+    const snapshot = Object.assign({}, ...partialSnapshots);
 
-    // Return all metrics that succeeded, and if any returned a token error
-    return results.filter(r => r.isReadable).map(r => r.metric);
-  }
+    // A metric is readable if its corresponding property is defined
+    const readableMetrics = [];
+    if (snapshot.cannulaInserted) readableMetrics.push(DmMetric.CannulaAge);
+    if (snapshot.carbsOnBoard) readableMetrics.push(DmMetric.CarbsOnBoard);
+    if (snapshot.glucoseValueMgDl) readableMetrics.push(DmMetric.BloodSugar);
+    if (snapshot.insulinOnBoard) readableMetrics.push(DmMetric.InsulinOnBoard);
+    if (snapshot.pumpBattery) readableMetrics.push(DmMetric.PumpBattery);
+    if (snapshot.pumpReservoir) readableMetrics.push(DmMetric.PumpReservoir);
+    if (snapshot.sensorInserted) readableMetrics.push(DmMetric.SensorAge);
 
-  private static async isMetricReadable(client: NightscoutClient, metric: DmMetric) {
-    const result = await client.getMetric(metric);
-    const isReadable = !result.errors || result.errors.length === 0;
-    return {metric, isReadable};
+    return readableMetrics;
   }
 }
