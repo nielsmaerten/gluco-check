@@ -105,8 +105,9 @@ export default class ConversationDecoder {
    */
   private async extractMetrics(conv: ConversationV3, user: User): Promise<DmMetric[]> {
     const isDeepInvocation = conv.handler.name === 'custom_metrics';
+    const hasDmMetrics = conv.intent.params?.DmMetric !== undefined;
 
-    if (isDeepInvocation) {
+    if (isDeepInvocation && hasDmMetrics) {
       // Get requested metrics from intent params
       return conv.intent.params!.DmMetric!.resolved;
     } else {

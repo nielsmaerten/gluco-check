@@ -13,14 +13,19 @@ describe('Conversation Decoder', () => {
   const testConversations = {
     custom: require('../../../fakes/http-requests/custom_metrics').requestJson,
     default: require('../../../fakes/http-requests/default_metrics').requestJson,
+    noMetrics: require('../../../fakes/http-requests/no_resolved_metrics').requestJson,
   };
   let mainInvocationResult: DmQuery;
   let deepInvocationResult: DmQuery;
+  let noMetricsInvocationResult: DmQuery;
 
   beforeAll(async () => {
     const conversationDecoder = getTestContainer().get(ConversationDecoder);
     deepInvocationResult = await conversationDecoder.decode(testConversations.custom);
     mainInvocationResult = await conversationDecoder.decode(testConversations.default);
+    noMetricsInvocationResult = await conversationDecoder.decode(
+      testConversations.noMetrics
+    );
   });
 
   it("returns the user's default metrics when called through main intent", () => {
@@ -53,6 +58,11 @@ describe('Conversation Decoder', () => {
 
     // In case of main invocation, metrics should be empty
     expect(mainInvocationResult.metrics).toHaveLength(0);
+  });
+
+  it('falls back when no resolved metrics exist', async () => {
+    const metrics = noMetricsInvocationResult.metrics;
+    expect(metrics).toEqual([DmMetric.BloodSugar]);
   });
 });
 
