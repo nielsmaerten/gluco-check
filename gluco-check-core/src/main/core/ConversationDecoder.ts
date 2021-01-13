@@ -13,7 +13,7 @@ import User from '../../types/User';
  * It takes in a 'conversation' object from Google Actions, and decodes it into a DmQuery
  */
 export default class ConversationDecoder {
-  private lastKnownActionVersion = 0;
+  private lastKnownActionVersion: number;
 
   constructor(
     private authTokenDecoder: AuthTokenDecoder,
