@@ -1,6 +1,7 @@
 import {BloodSugar} from './BloodSugar';
 import {CannulaAge} from './CannulaAge';
 import {SensorAge} from './SensorAge';
-import {DeviceStatus} from './DeviceStatus';
+import {PumpStatus} from './PumpStatus';
+import {CarbsInsulinOnBoard} from './CarbsInsulinOnBoard';
 
-export {BloodSugar, CannulaAge, SensorAge, DeviceStatus};
+export {BloodSugar, CannulaAge, SensorAge, PumpStatus, CarbsInsulinOnBoard};
