@@ -38,8 +38,10 @@ export default class ConversationDecoder {
     // Build DmQuery object with all info required to respond to the user
     const dmMetrics = await this.extractMetrics(conv, user);
     const dmQuery = new DmQuery(user, locale, dmMetrics);
-    dmQuery.metadata.mentionDisclaimer = this.shouldMentionDisclaimer(conv, user);
-    dmQuery.metadata.mentionMissingMetrics = this.isDeepInvocation(conv);
+    dmQuery.metadata = {
+      mentionDisclaimer: this.shouldMentionDisclaimer(conv, user),
+      mentionMissingMetrics: this.shouldMentionMissingMetrics(conv, dmMetrics),
+    };
 
     // Log status
     logger.info(
@@ -117,6 +119,16 @@ export default class ConversationDecoder {
       // Get requested metrics from user profile
       return user.defaultMetrics ?? [];
     }
+  }
+
+  /**
+   * Missing metrics are only mentioned if the user explicitly asked for them
+   * https://github.com/nielsmaerten/gluco-check/issues/20#issuecomment-711417430
+   */
+  private shouldMentionMissingMetrics(conv: ConversationV3, metrics: DmMetric[]) {
+    const userAskedEverything = metrics.includes(DmMetric.Everything);
+    const isDeepInvocation = this.isDeepInvocation(conv);
+    return isDeepInvocation && !userAskedEverything;
   }
 
   private isDeepInvocation(conv: ConversationV3) {
