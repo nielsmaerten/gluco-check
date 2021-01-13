@@ -39,6 +39,7 @@ export default class ConversationDecoder {
     const dmMetrics = await this.extractMetrics(conv, user);
     const dmQuery = new DmQuery(user, locale, dmMetrics);
     dmQuery.metadata.mentionDisclaimer = this.shouldMentionDisclaimer(conv, user);
+    dmQuery.metadata.mentionMissingMetrics = this.isDeepInvocation(conv);
 
     // Log status
     logger.info(
@@ -104,7 +105,7 @@ export default class ConversationDecoder {
    * Extracts which DmMetrics were asked for in the conversation
    */
   private async extractMetrics(conv: ConversationV3, user: User): Promise<DmMetric[]> {
-    const isDeepInvocation = conv.handler.name === 'custom_metrics';
+    const isDeepInvocation = this.isDeepInvocation(conv);
     const hasDmMetrics = conv.intent.params?.DmMetric !== undefined;
 
     if (isDeepInvocation && hasDmMetrics) {
@@ -114,5 +115,9 @@ export default class ConversationDecoder {
       // Get requested metrics from user profile
       return user.defaultMetrics ?? [];
     }
+  }
+
+  private isDeepInvocation(conv: ConversationV3) {
+    return conv.handler.name === 'custom_metrics';
   }
 }
