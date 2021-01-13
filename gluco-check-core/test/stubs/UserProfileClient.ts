@@ -11,5 +11,5 @@ export default class UserProfileClient {
     };
   }
 
-  public flagDisclaimer = jest.fn;
+  public flagDisclaimerAsHeard = jest.fn;
 }
