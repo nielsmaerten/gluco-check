@@ -13,7 +13,7 @@ import User from '../../types/User';
  * It takes in a 'conversation' object from Google Actions, and decodes it into a DmQuery
  */
 export default class ConversationDecoder {
-  private lastKnownActionVersion = 0;
+  private lastKnownActionVersion: number;
 
   constructor(
     private authTokenDecoder: AuthTokenDecoder,
@@ -38,7 +38,10 @@ export default class ConversationDecoder {
     // Build DmQuery object with all info required to respond to the user
     const dmMetrics = await this.extractMetrics(conv, user);
     const dmQuery = new DmQuery(user, locale, dmMetrics);
-    dmQuery.metadata.mentionDisclaimer = this.shouldMentionDisclaimer(conv, user);
+    dmQuery.metadata = {
+      mentionDisclaimer: this.shouldMentionDisclaimer(conv, user),
+      mentionMissingMetrics: this.shouldMentionMissingMetrics(conv, dmMetrics),
+    };
 
     // Log status
     logger.info(
@@ -58,20 +61,22 @@ export default class ConversationDecoder {
 
   /**
    * Disclaimer should be added to the response if:
-   * - GlucoCheck was invoked using the latest version of the Action
-   * - OR: The user settings specify the disclaimer should be said
+   * - The user has not already heard it
+   * - OR: Invoked using a newer version of the Action
    */
   private shouldMentionDisclaimer(conv: ConversationV3, user: User): boolean {
-    const raw_version_currentAction = conv.headers['gluco-check-version'];
+    // User hasn't heard disclaimer before
+    if (!user.heardDisclaimer) return true;
 
-    const version_currentAction = parseInt(raw_version_currentAction as string);
-    const version_lastKnown = this.lastKnownActionVersion;
+    // Invoked using latest version of the Action
+    const invokingActionVersion_raw = conv.headers['gluco-check-version'];
+    const invokingActionVersion = parseInt(invokingActionVersion_raw as string);
 
-    const usingNewerAction = version_currentAction > version_lastKnown;
+    const usingNewerAction = invokingActionVersion > this.lastKnownActionVersion;
     if (usingNewerAction) {
       logger.info('Force mentioning disclaimer bc of newer Action calling');
     }
-    return !user.heardDisclaimer || usingNewerAction;
+    return usingNewerAction;
   }
 
   /**
@@ -104,7 +109,7 @@ export default class ConversationDecoder {
    * Extracts which DmMetrics were asked for in the conversation
    */
   private async extractMetrics(conv: ConversationV3, user: User): Promise<DmMetric[]> {
-    const isDeepInvocation = conv.handler.name === 'custom_metrics';
+    const isDeepInvocation = this.isDeepInvocation(conv);
     const hasDmMetrics = conv.intent.params?.DmMetric !== undefined;
 
     if (isDeepInvocation && hasDmMetrics) {
@@ -114,5 +119,19 @@ export default class ConversationDecoder {
       // Get requested metrics from user profile
       return user.defaultMetrics ?? [];
     }
+  }
+
+  /**
+   * Missing metrics are only mentioned if the user explicitly asked for them
+   * https://github.com/nielsmaerten/gluco-check/issues/20#issuecomment-711417430
+   */
+  private shouldMentionMissingMetrics(conv: ConversationV3, metrics: DmMetric[]) {
+    const userAskedEverything = metrics.includes(DmMetric.Everything);
+    const isDeepInvocation = this.isDeepInvocation(conv);
+    return isDeepInvocation && !userAskedEverything;
+  }
+
+  private isDeepInvocation(conv: ConversationV3) {
+    return conv.handler.name === 'custom_metrics';
   }
 }

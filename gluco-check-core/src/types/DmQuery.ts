@@ -31,10 +31,6 @@ export default class DmQuery {
     const userAskedEverything = metrics.includes(DmMetric.Everything);
 
     if (userAskedEverything) {
-      // When asking all metrics, unavailable metrics shouldn't be mentioned
-      // https://github.com/nielsmaerten/gluco-check/issues/20#issuecomment-711417430
-      this.metadata.mentionMissingMetrics = false;
-
       // Expand the 'Everything' metric
       const everyMetric = Object.values(DmMetric);
       this.metrics = everyMetric.filter(p => p !== DmMetric.Everything);
