@@ -16,11 +16,11 @@ const baseUrl = 'https://cgm.example.com';
 const respondWithMockData = () => {
   mock.reset();
 
+  mock.onGet(`${baseUrl}/pebble`).reply(() => [200, stub_pebble]);
+  mock.onGet(`${baseUrl}/api/v3/version`).reply(() => [200, stub_v3_version]);
+  mock.onGet(`${baseUrl}/api/v3/devicestatus`).reply(() => [200, stub_deviceStatus]);
   mock.onGet(`${baseUrl}/api/v1/entries/current`).reply(() => [200, stub_currentEntry]);
   mock.onGet(new RegExp(`${baseUrl}/api/v1/status*`)).reply(() => [200, stub_v1_status]);
-  mock.onGet(`${baseUrl}/api/v3/devicestatus`).reply(() => [200, stub_deviceStatus]);
-  mock.onGet(`${baseUrl}/pebble`).reply(() => [200, stub_pebble]);
-
   mock.onGet(`${baseUrl}/api/v3/treatments`).reply(config => {
     // Depending on requested treatment, respond w/ different mock data
     const eventType = config.params.eventType;
@@ -33,8 +33,6 @@ const respondWithMockData = () => {
         throw 'No mock data available to for this request';
     }
   });
-
-  mock.onGet(`${baseUrl}/api/v3/version`).reply(() => [200, stub_v3_version]);
 
   return mock;
 };
