@@ -50,6 +50,6 @@ describe('Response Builder', () => {
   it('builds a snapshot', async () => {
     const snapshot = Object.assign({}, fakeSnapshot);
     const result = await responseFormatter.build(snapshot);
-    expect(result.SSML).toEqual('<speak><s>TEST </s> <s>IANAD</s></speak>');
+    expect(result.SSML).toEqual('<speak><s>TEST</s> <s>IANAD</s></speak>');
   });
 });

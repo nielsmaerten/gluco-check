@@ -30,22 +30,18 @@ export default class ResponseBuilder {
 
   private async normalResponse(snapshot: DmSnapshot): Promise<AssistantResponse> {
     // Humanize every metric in the Snapshot
-    const humanizedMetrics: string[] = await Humanizer.dmSnapshot(snapshot);
+    const metrics: string[] = await Humanizer.dmSnapshot(snapshot);
+    const response = metrics.join(' ');
 
-    // Wrap every humanized string in an <s>-tag
-    // Note the space at the end for readability --------▽
-    const s_tags = humanizedMetrics.map(txt => `<s>${txt} </s>`);
+    // If the response will include a disclaimer, flag disclaimer as heard
+    const disclaimer = medicalDisclaimer(snapshot.query);
+    if (disclaimer) {
+      const user = snapshot.query.user;
+      await this.userClient.flagDisclaimerAsHeard(user, false);
+    }
 
-    // Join all tags together to create the SSML string
-    const output = s_tags.join('');
-    const disclaimer = `<s>${medicalDisclaimer(snapshot.query)} </s>`;
-    const SSML = `<speak>${output + disclaimer}</speak>`;
-
-    // If disclaimer will be mentioned, mark it as heard
-    const userHeardDisclaimer = disclaimer !== '';
-    const user = snapshot.query.user;
-    await this.userClient.flagDisclaimer(user, userHeardDisclaimer, false);
-
+    // Construct response SSML
+    const SSML = `<speak><s>${response}</s> <s>${disclaimer}</s></speak>`;
     return new AssistantResponse(SSML, snapshot.query.locale);
   }
 
@@ -53,9 +49,11 @@ export default class ResponseBuilder {
     snapshot: DmSnapshot,
     error: {type: ErrorType; affectedMetric: DmMetric}
   ) {
-    const errorTxt = `<s>${Humanizer.error(error.type, snapshot.query.locale)} </s>`;
-    const disclaimer = `<s>${medicalDisclaimer(snapshot.query)} </s>`;
-    const SSML = `<speak>${errorTxt + disclaimer}</speak>`;
+    const response = Humanizer.error(error.type, snapshot.query.locale);
+    const disclaimer = medicalDisclaimer(snapshot.query);
+
+    // Construct response SSML
+    const SSML = `<speak><s>${response}</s> <s>${disclaimer}</s></speak>`;
     return new AssistantResponse(SSML, snapshot.query.locale);
   }
 }

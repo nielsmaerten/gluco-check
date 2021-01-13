@@ -28,16 +28,7 @@ export default class UserProfileClient {
     }
   }
 
-  async flagDisclaimer(user: User, userHeardDisclaimer: boolean, awaitFirestore = true) {
-    // We only need to set heardDisclaimer to TRUE if:
-    // - the user hasn't heard the disclaimer before
-    // - AND they heard it just now
-    const heardDisclaimerBefore = user.heardDisclaimer === true;
-    const heardDisclaimerNow = userHeardDisclaimer;
-
-    const shouldUpdate = !heardDisclaimerBefore && heardDisclaimerNow;
-    if (!shouldUpdate) return;
-
+  async flagDisclaimerAsHeard(user: User, awaitFirestore = true) {
     const userRef = this.users.doc(user.userId);
     const userDoc: Partial<User> = {heardDisclaimer: true};
     const promise = userRef.set(userDoc, {merge: true});
