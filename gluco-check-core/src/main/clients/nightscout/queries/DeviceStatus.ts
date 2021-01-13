@@ -3,7 +3,12 @@ import QueryConfig from './QueryConfig.base';
 
 export const DeviceStatus: QueryConfig = {
   key: 'DS',
-  metrics: [DmMetric.CarbsOnBoard, DmMetric.InsulinOnBoard, DmMetric.PumpBattery],
+  metrics: [
+    DmMetric.CarbsOnBoard,
+    DmMetric.InsulinOnBoard,
+    DmMetric.PumpBattery,
+    DmMetric.PumpReservoir,
+  ],
   path: '/api/v3/devicestatus',
   params: {sort$desc: 'created_at', limit: 1, 'pump.clock$gte': ''},
   callback: (data: any) => { // eslint-disable-line

@@ -2,7 +2,7 @@
 import axios, {AxiosRequestConfig} from 'axios';
 import NightscoutProps from '../../../types/NightscoutProps';
 import {URL} from 'url';
-import * as Queries from './queries';
+import * as QueryConfigs from './queries';
 import {DmMetric} from '../../../types/DmMetric';
 import {ErrorType} from '../../../types/ErrorType';
 import {logger} from 'firebase-functions';
@@ -20,27 +20,23 @@ export default class NightscoutClient {
   private cache: any = {};
 
   async getMetric(metric: DmMetric): Promise<Partial<DmSnapshot>> {
-    switch (metric) {
-      case DmMetric.BloodSugar:
-        return await this.runQuery(Queries.BloodSugar);
+    const queryConfig = this.findQueryConfigFor(metric);
+    return await this.runQuery(queryConfig);
+  }
 
-      case DmMetric.CarbsOnBoard:
-      case DmMetric.InsulinOnBoard:
-      case DmMetric.PumpBattery:
-      case DmMetric.PumpReservoir:
-        return await this.runQuery(Queries.DeviceStatus);
-
-      case DmMetric.SensorAge:
-        return await this.runQuery(Queries.SensorAge);
-
-      case DmMetric.CannulaAge:
-        return await this.runQuery(Queries.CannulaAge);
-
-      default:
-        throw new Error(
-          `[NightscoutClient]: ${metric} has no associated NightscoutQuery`
-        );
+  /**
+   * Finds a QueryConfig that can be used to fetch the requestedMetric
+   * @param requestedMetric The metric you'd like to get from Nightscout
+   */
+  private findQueryConfigFor(requestedMetric: DmMetric) {
+    for (const [, queryConfig] of Object.entries(QueryConfigs)) {
+      const canFetchMetric = queryConfig.metrics.includes(requestedMetric);
+      if (canFetchMetric) return queryConfig;
     }
+    /* istanbul ignore next */
+    throw new Error(
+      `[NightscoutClient]: Unable to find a NightscoutQuery that can fetch ${requestedMetric}`
+    );
   }
 
   private async runQuery(query: QueryConfig): Promise<Partial<DmSnapshot>> {
