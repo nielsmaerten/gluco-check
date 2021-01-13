@@ -38,8 +38,8 @@ export default class ResponseBuilder {
 
     // Join all tags together to create the SSML string
     const output = s_tags.join('');
-    const disclaimer = medicalDisclaimer(snapshot.query);
-    const SSML = `<speak>${output} ${disclaimer}</speak>`;
+    const disclaimer = `<s>${medicalDisclaimer(snapshot.query)} </s>`;
+    const SSML = `<speak>${output + disclaimer}</speak>`;
 
     // If disclaimer will be mentioned, mark it as heard
     const userHeardDisclaimer = disclaimer !== '';
@@ -53,9 +53,9 @@ export default class ResponseBuilder {
     snapshot: DmSnapshot,
     error: {type: ErrorType; affectedMetric: DmMetric}
   ) {
-    const errorTxt = Humanizer.error(error.type, snapshot.query.locale);
-    const disclaimer = medicalDisclaimer(snapshot.query);
-    const SSML = `<speak>${errorTxt} ${disclaimer}</speak>`;
+    const errorTxt = `<s>${Humanizer.error(error.type, snapshot.query.locale)} </s>`;
+    const disclaimer = `<s>${medicalDisclaimer(snapshot.query)} </s>`;
+    const SSML = `<speak>${errorTxt + disclaimer}</speak>`;
     return new AssistantResponse(SSML, snapshot.query.locale);
   }
 }
