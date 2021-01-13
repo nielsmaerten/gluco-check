@@ -1,7 +1,7 @@
 import {DmMetric} from '../../../types/DmMetric';
 import DmSnapshot from '../../../types/DmSnapshot';
 import FormatParams from '../../../types/FormatParams';
-import Humanizer from '.';
+import {findHumanizerFor} from '.';
 
 export default function (snapshot: DmSnapshot): Promise<string[]> {
   // For each requested metric:
@@ -10,7 +10,7 @@ export default function (snapshot: DmSnapshot): Promise<string[]> {
     // 1. add sayTimeAgo and sayMetricName
     .map((metric, index) => addMetadata(snapshot, metric, index))
 
-    // 2. turn into a humanize string
+    // 2. turn into a human string
     .map(humanize);
 
   return Promise.all(promises);
@@ -29,29 +29,6 @@ function addMetadata(snapshot: DmSnapshot, metric: DmMetric, index: number) {
 }
 
 function humanize(params: FormatParams): Promise<string> {
-  switch (params.metric) {
-    case DmMetric.BloodSugar:
-      return Humanizer.bloodSugar(params);
-
-    case DmMetric.CannulaAge:
-      return Humanizer.cannulaAge(params);
-
-    case DmMetric.CarbsOnBoard:
-      return Humanizer.carbsOnBoard(params);
-
-    case DmMetric.InsulinOnBoard:
-      return Humanizer.insulinOnBoard(params);
-
-    case DmMetric.SensorAge:
-      return Humanizer.sensorAge(params);
-
-    case DmMetric.PumpBattery:
-      return Humanizer.pumpBattery(params);
-
-    case DmMetric.PumpReservoir:
-      return Humanizer.pumpReservoir(params);
-
-    default:
-      throw new Error('Unable to humanize metric ' + params.metric);
-  }
+  const humanizeFn = findHumanizerFor(params.metric);
+  return humanizeFn(params);
 }
