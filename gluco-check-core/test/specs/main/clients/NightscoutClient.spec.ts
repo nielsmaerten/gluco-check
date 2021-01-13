@@ -70,6 +70,11 @@ describe('NightscoutClient', () => {
     expect(data.sensorInserted).toEqual(expected.sensorInserted);
   });
 
+  it('fetches Carbs on Board', async () => {
+    const data = await testClient.getMetric(DmMetric.CarbsOnBoard);
+    expect(data.carbsOnBoard).toEqual(expected.carbsOnBoard);
+  });
+
   it('sets the error prop when Nightscout is unavailable', done => {
     AxiosMock.respondWithTimeout();
     testClient.getMetric(DmMetric.BloodSugar).then(e => {
