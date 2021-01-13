@@ -90,10 +90,10 @@ export default class NightscoutClient {
     try {
       // Send request, await response
       const response = await axios.request(request);
-      if (!response.data?.length) return null;
 
-      // If we got here, everything's fine
-      return response.data[0];
+      if (response.data?.length) return response.data[0];
+      else if (response.data) return response.data;
+      else return null;
 
       // Handle errors
     } catch (error) {
