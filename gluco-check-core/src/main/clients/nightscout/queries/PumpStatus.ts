@@ -8,8 +8,8 @@ export const PumpStatus: QueryConfig = {
   params: {sort$desc: 'created_at', limit: 1, 'pump.clock$gte': ''},
   callback: (data: any) => { // eslint-disable-line
     return {
-      pumpBattery: data.pump.battery?.percent,
-      pumpReservoir: data.pump.reservoir,
+      pumpBattery: data.pump?.battery?.percent,
+      pumpReservoir: data.pump?.reservoir,
       timestamp: new Date(data.created_at).getTime(),
     };
   },
