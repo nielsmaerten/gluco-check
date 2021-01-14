@@ -37,9 +37,12 @@ export default class DmSnapshot {
     parts.forEach(source => {
       // If the source snapshot contains errors, add them to our own errors array
       source.errors && this.errors.push(...source.errors);
-
-      // Assign all remaining properties
       delete source.errors;
+
+      // Ensure timestamp is not overwritten by 0/NaN/null/undefined
+      if (!source.timestamp) delete source.timestamp;
+
+      // Assign remaining props
       Object.assign(this, source);
     });
   }
