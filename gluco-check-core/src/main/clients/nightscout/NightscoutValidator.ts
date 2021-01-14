@@ -169,15 +169,17 @@ export default class NightscoutValidator {
     const partialSnapshots = await Promise.all(promises);
     const snapshot = Object.assign({}, ...partialSnapshots);
 
-    // A metric is readable if its corresponding property is defined
+    // A metric is readable if its property != null/undefined
+    const canRead = (v: any) => v != undefined; // eslint-disable-line
     const readableMetrics = [];
-    if (snapshot.cannulaInserted) readableMetrics.push(DmMetric.CannulaAge);
-    if (snapshot.carbsOnBoard) readableMetrics.push(DmMetric.CarbsOnBoard);
-    if (snapshot.glucoseValueMgDl) readableMetrics.push(DmMetric.BloodSugar);
-    if (snapshot.insulinOnBoard) readableMetrics.push(DmMetric.InsulinOnBoard);
-    if (snapshot.pumpBattery) readableMetrics.push(DmMetric.PumpBattery);
-    if (snapshot.pumpReservoir) readableMetrics.push(DmMetric.PumpReservoir);
-    if (snapshot.sensorInserted) readableMetrics.push(DmMetric.SensorAge);
+
+    if (canRead(snapshot.cannulaInserted)) readableMetrics.push(DmMetric.CannulaAge);
+    if (canRead(snapshot.carbsOnBoard)) readableMetrics.push(DmMetric.CarbsOnBoard);
+    if (canRead(snapshot.glucoseValueMgDl)) readableMetrics.push(DmMetric.BloodSugar);
+    if (canRead(snapshot.insulinOnBoard)) readableMetrics.push(DmMetric.InsulinOnBoard);
+    if (canRead(snapshot.pumpBattery)) readableMetrics.push(DmMetric.PumpBattery);
+    if (canRead(snapshot.pumpReservoir)) readableMetrics.push(DmMetric.PumpReservoir);
+    if (canRead(snapshot.sensorInserted)) readableMetrics.push(DmMetric.SensorAge);
 
     return readableMetrics;
   }
