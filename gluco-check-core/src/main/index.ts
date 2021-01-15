@@ -41,6 +41,6 @@ export default class GlucoCheckCore {
   async validate(props: {url: string; token: string}) {
     const nightscoutProps = new NightscoutProps(props.url, props.token);
     const nightscoutClient = new NightscoutClient(nightscoutProps);
-    return await nightscoutClient.validate();
+    return nightscoutClient.validate();
   }
 }

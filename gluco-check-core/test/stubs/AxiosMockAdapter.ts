@@ -30,7 +30,7 @@ const respondWithMockData = () => {
       case 'Site Change':
         return [200, stub_cannulaAge];
       default:
-        throw 'No mock data available to for this request';
+        throw new Error('No mock data available to for this request');
     }
   });
 

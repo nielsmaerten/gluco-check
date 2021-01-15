@@ -21,7 +21,7 @@ export default class NightscoutClient {
 
   async getMetric(metric: DmMetric): Promise<Partial<DmSnapshot>> {
     const queryConfig = this.findQueryConfigFor(metric);
-    return await this.runQuery(queryConfig);
+    return this.runQuery(queryConfig);
   }
 
   /**

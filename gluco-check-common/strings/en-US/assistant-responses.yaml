@@ -45,16 +45,16 @@ assistant_responses:
 
   sensor_age: >
     The sensor was inserted {{time}} ago.
-  
+
   pump_battery: >
     The pump's battery is at {{percent}}.
 
   pump_reservoir: >
     The pump has {{reservoir}} units remaining.
 
-  errors: 
+  errors:
     User not found: >
-      Hi! Thanks for trying out Gluco Check. 
+      Hi! Thanks for trying out Gluco Check.
       Before I can read your info, you'll first need to link your Nightscout site.
       To do this, visit our website: {{gc_url}}
     Nightscout Unavailable: >
