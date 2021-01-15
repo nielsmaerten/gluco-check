@@ -18,7 +18,7 @@ export default class AuthTokenDecoder {
     this.clientId = config().google_actions_sdk.client_id;
 
     if (!this.clientId)
-      throw '[AuthTokenDecoder]: Firebase Functions config must define an auth.client_id property';
+      throw new Error('[AuthTokenDecoder]: Firebase Functions config must define an auth.client_id property');
   }
 
   async decodeGoogleUserToken(conversation: ConversationV3) {

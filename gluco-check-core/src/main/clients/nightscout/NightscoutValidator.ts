@@ -143,11 +143,11 @@ export default class NightscoutValidator {
       const url = _url.toLowerCase().trim();
 
       const hasProtocol = url.startsWith('http://') || url.startsWith('https://');
-      if (!hasProtocol) throw 'Url must start with http:// or https://';
+      if (!hasProtocol) throw new Error('Url must start with http:// or https://');
 
       const parsedUrl = new URL(url);
       const hasTld = parsedUrl.hostname.includes('.');
-      if (!hasTld) throw 'Url must include a dot (.)';
+      if (!hasTld) throw new Error('Url must include a dot (.)');
 
       return {
         parsed: parsedUrl.origin,
