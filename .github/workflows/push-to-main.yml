@@ -30,7 +30,7 @@ jobs:
       
     - name: Reporting coverage
       run: bash <(curl -s https://codecov.io/bash)
-  
+
     - name: Deploying webhooks to nightly
       uses: w9jds/firebase-action@master
       with:

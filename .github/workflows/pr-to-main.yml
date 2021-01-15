@@ -27,7 +27,6 @@ jobs:
 
     - name: Running tests
       run: yarn test # Includes linting (post tests)
-      
+
     - name: Reporting coverage
       run: bash <(curl -s https://codecov.io/bash)
-      
