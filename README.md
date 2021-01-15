@@ -45,7 +45,7 @@ Hey Google, ask Gluco Check my glucose and carbs on board
 
 Hey Google, ask Gluco Check for everything
 
-## Bèta testing is now open
+## We're looking for testers!
 
 Are you comfortable trying out new and (possibly) unstable features?  
 Message me on [Gitter](https://gitter.im/nielsmaerten)!
