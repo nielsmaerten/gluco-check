@@ -50,10 +50,10 @@ Hey Google, ask Gluco Check for everything
 Are you comfortable trying out new and (possibly) unstable features?  
 Message me on [Gitter](https://gitter.im/nielsmaerten)!
 
-## Use a shorter invocation
+## TIP: Using a shorter invocation
 
 Use [Routines](https://support.google.com/googlenest/answer/7029585?co=GENIE.Platform%3DAndroid&hl=en) to turn "Hey Google, ask Gluco Check my blood sugar" into  
-"Hey Google, check my blood sugar".
+"Hey Google, check my sugar".
 
 Note: Routines are not supported in all languages.
 
