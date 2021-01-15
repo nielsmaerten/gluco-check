@@ -45,11 +45,17 @@ Hey Google, ask Gluco Check my glucose and carbs on board
 
 Hey Google, ask Gluco Check for everything
 
-
 ## Bèta testing is now open
 
 Are you comfortable trying out new and (possibly) unstable features?  
 Message me on [Gitter](https://gitter.im/nielsmaerten)!
+
+## Use a shorter invocation
+
+Use [Routines](https://support.google.com/googlenest/answer/7029585?co=GENIE.Platform%3DAndroid&hl=en) to turn "Hey Google, ask Gluco Check my blood sugar" into  
+"Hey Google, check my blood sugar".
+
+Note: Routines are not supported in all languages.
 
 ---
 
