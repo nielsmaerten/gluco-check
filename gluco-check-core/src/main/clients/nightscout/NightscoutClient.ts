@@ -128,7 +128,7 @@ export default class NightscoutClient {
         break;
 
       case ErrorType.QueryResponse_MetricNotFound:
-        logger.warn('[NightscoutClient]: 1 or more requested Metrics were not found');
+        logger.warn(`[NightscoutClient]: Query for [${metrics}] returned no data`);
         break;
 
       default:

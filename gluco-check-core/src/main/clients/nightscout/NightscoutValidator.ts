@@ -6,6 +6,7 @@ import {DmMetric} from '../../../types/DmMetric';
 import {logger} from 'firebase-functions';
 import NightscoutProps from '../../../types/NightscoutProps';
 import {nightscoutMinVersion} from '../../constants';
+import DmSnapshot from '../../../types/DmSnapshot';
 
 export default class NightscoutValidator {
   private static logTag = '[NightscoutValidator]:';
@@ -167,18 +168,24 @@ export default class NightscoutValidator {
     // Run queries for every metric
     const promises = allMetrics.map(async metric => client.getMetric(metric));
     const partialSnapshots = await Promise.all(promises);
-    const snapshot = Object.assign({}, ...partialSnapshots);
+    const snapshot: DmSnapshot = Object.assign({}, ...partialSnapshots);
 
-    // A metric is readable if its corresponding property is defined
-    const readableMetrics = [];
-    if (snapshot.cannulaInserted) readableMetrics.push(DmMetric.CannulaAge);
-    if (snapshot.carbsOnBoard) readableMetrics.push(DmMetric.CarbsOnBoard);
-    if (snapshot.glucoseValueMgDl) readableMetrics.push(DmMetric.BloodSugar);
-    if (snapshot.insulinOnBoard) readableMetrics.push(DmMetric.InsulinOnBoard);
-    if (snapshot.pumpBattery) readableMetrics.push(DmMetric.PumpBattery);
-    if (snapshot.pumpReservoir) readableMetrics.push(DmMetric.PumpReservoir);
-    if (snapshot.sensorInserted) readableMetrics.push(DmMetric.SensorAge);
+    // A metric is readable if its property is truthy or 0
+    type metricTuple = [DmMetric, number?];
+    const isReadable = (tuple: metricTuple) => tuple[1] || tuple[1] === 0;
 
+    const tuples: metricTuple[] = [
+      [DmMetric.PumpBattery, snapshot.pumpBattery],
+      [DmMetric.SensorAge, snapshot.sensorInserted],
+      [DmMetric.CarbsOnBoard, snapshot.carbsOnBoard],
+      [DmMetric.CannulaAge, snapshot.cannulaInserted],
+      [DmMetric.BloodSugar, snapshot.glucoseValueMgDl],
+      [DmMetric.PumpReservoir, snapshot.pumpReservoir],
+      [DmMetric.InsulinOnBoard, snapshot.insulinOnBoard],
+    ];
+
+    // Return all metrics that have a readable property
+    const readableMetrics = tuples.filter(isReadable).map(tuple => tuple[0]);
     return readableMetrics;
   }
 }
