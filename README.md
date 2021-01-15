@@ -1,8 +1,10 @@
 # Welcome to Gluco Check
 
-#### formerly [Nightscout Status](https://github.com/nielsmaerten/nightscout-assistant)
+#### formerly [Nightscout Status](https://github.com/nielsmaerten/nightscout-assistant) 
+![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/nielsmaerten/gluco-check/main?style=flat-square) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/nielsmaerten/gluco-check/Build,%20Test,%20Lint,%20Deploy?style=flat-square) ![Codecov](https://img.shields.io/codecov/c/github/nielsmaerten/gluco-check?style=flat-square)
 
 ## Getting started
+
 <!-- TODO: Update URL to Production version -->
 1. [Link your Nightscout site](https://nightly.diabase.app)
 2. [Ask for beta access](https://gitter.im/nielsmaerten)
