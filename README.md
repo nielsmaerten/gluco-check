@@ -63,13 +63,16 @@ Note: Routines are not supported in all languages.
 
 ---
 
-### Contributing
+## Contributing
 
 Pull requests are welcome.  
 For detailed tech docs, check [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 
-### License: [MIT](./LICENSE)
+## License & Privacy Policy
 
+Gluco Check is licensed under the [MIT License](./LICENSE)  
 Copyright (c) 2021 
 Niels Maerten & David D'Amico
+
+[Privacy Policy](./gluco-check-common/strings/en-US/terms.md)
