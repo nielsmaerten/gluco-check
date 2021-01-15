@@ -2,7 +2,7 @@
   "name": "gluco-check-core",
   "version": "0.0.1",
   "description": "Core functionality of Gluco Check",
-  "repository": "https://github.com/nielsmaerten/nightscout-assistant",
+  "repository": "https://github.com/nielsmaerten/gluco-check",
   "author": "Niels Maerten",
   "main": "build/src/index.js",
   "license": "MIT",

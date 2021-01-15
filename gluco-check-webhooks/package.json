@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Webhooks called by Google Assistant",
   "main": "build/src/index.js",
-  "repository": "https://github.com/nielsmaerten/nightscout-assistant",
+  "repository": "https://github.com/nielsmaerten/gluco-check",
   "author": "Niels Maerten",
   "license": "MIT",
   "private": true,
