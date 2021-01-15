@@ -6,6 +6,7 @@ import {DmMetric} from '../../../types/DmMetric';
 import {logger} from 'firebase-functions';
 import NightscoutProps from '../../../types/NightscoutProps';
 import {nightscoutMinVersion} from '../../constants';
+import DmSnapshot from '../../../types/DmSnapshot';
 
 export default class NightscoutValidator {
   private static logTag = '[NightscoutValidator]:';
@@ -167,20 +168,24 @@ export default class NightscoutValidator {
     // Run queries for every metric
     const promises = allMetrics.map(async metric => client.getMetric(metric));
     const partialSnapshots = await Promise.all(promises);
-    const snapshot = Object.assign({}, ...partialSnapshots);
+    const snapshot: DmSnapshot = Object.assign({}, ...partialSnapshots);
 
-    // A metric is readable if its property != null/undefined
-    const canRead = (v: any) => v != undefined; // eslint-disable-line
-    const readableMetrics = [];
+    // A metric is readable if its property is truthy or 0
+    type metricTuple = [DmMetric, number?];
+    const isReadable = (tuple: metricTuple) => tuple[1] || tuple[1] === 0;
 
-    if (canRead(snapshot.cannulaInserted)) readableMetrics.push(DmMetric.CannulaAge);
-    if (canRead(snapshot.carbsOnBoard)) readableMetrics.push(DmMetric.CarbsOnBoard);
-    if (canRead(snapshot.glucoseValueMgDl)) readableMetrics.push(DmMetric.BloodSugar);
-    if (canRead(snapshot.insulinOnBoard)) readableMetrics.push(DmMetric.InsulinOnBoard);
-    if (canRead(snapshot.pumpBattery)) readableMetrics.push(DmMetric.PumpBattery);
-    if (canRead(snapshot.pumpReservoir)) readableMetrics.push(DmMetric.PumpReservoir);
-    if (canRead(snapshot.sensorInserted)) readableMetrics.push(DmMetric.SensorAge);
+    const tuples: metricTuple[] = [
+      [DmMetric.PumpBattery, snapshot.pumpBattery],
+      [DmMetric.SensorAge, snapshot.sensorInserted],
+      [DmMetric.CarbsOnBoard, snapshot.carbsOnBoard],
+      [DmMetric.CannulaAge, snapshot.cannulaInserted],
+      [DmMetric.BloodSugar, snapshot.glucoseValueMgDl],
+      [DmMetric.PumpReservoir, snapshot.pumpReservoir],
+      [DmMetric.InsulinOnBoard, snapshot.insulinOnBoard],
+    ];
 
+    // Return all metrics that have a readable property
+    const readableMetrics = tuples.filter(isReadable).map(tuple => tuple[0]);
     return readableMetrics;
   }
 }
