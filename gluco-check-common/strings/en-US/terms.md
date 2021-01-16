@@ -1,12 +1,12 @@
 # Gluco Check
 
-### Health information disclaimer
+## _Health information disclaimer_
 Gluco Check can only provide you with general info to help you monitor your activities.
 While we hope this information will be useful to you, remember that it can never 
 replace advice from a medical professional. Talk to your doctor if you have questions 
 about treatment!
 
-### Privacy Policy
+## _Privacy Policy_
 This document describes the information being collected by  
 Gluco Check, https://github.com/nielsmaerten/gluco-check (the "Service" or the "Software") and how we use this information.
 
@@ -29,7 +29,11 @@ We don't share your information with third parties.
 Only the 2 administrators of Gluco Check (Niels Maerten & David D'Amico) have access.
 
 #### Cookies
- We use Google Analytics to collect anonymous information about visitors to our website.
+We use Google Analytics to collect anonymous information about visitors to our website.
 This only applies to our website, not the Assistant Action itself.
 If you prefer, you can opt-out of the Google Analytics cookie by visiting:
 https://tools.google.com/dlpage/gaoptout/
+
+## _License Terms_
+Gluco Check is licensed under the [MIT License](https://github.com/nielsmaerten/gluco-check/blob/main/LICENSE)  
+Copyright (c) 2021 Niels Maerten & David D'Amico
