@@ -27,7 +27,7 @@ export default function humanizeError(
  * Shortcut function for humanizing MetricNotFound errors
  */
 export function metricNotFound(metric: DmMetric, params: FormatParams) {
-  logger.info(`[Humanizer]: Query requested '${metric}' but it wasn't found`);
+  logger.warn(`[Humanizer]: Query requested '${metric}' but it wasn't found`);
   const mentionError = params.snapshot.query.metadata.mentionMissingMetrics;
   if (!mentionError) return '';
 

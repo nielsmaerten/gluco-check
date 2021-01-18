@@ -10,6 +10,7 @@ const rawSnapshot: Partial<DmSnapshot> = {
     metadata: {
       mentionDisclaimer: true,
       mentionMissingMetrics: true,
+      invocation: '',
     },
     user: {
       defaultMetrics: [DmMetric.Everything],

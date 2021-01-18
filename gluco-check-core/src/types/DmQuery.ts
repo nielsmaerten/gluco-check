@@ -20,6 +20,7 @@ export default class DmQuery {
   public metadata = {
     mentionDisclaimer: true,
     mentionMissingMetrics: true,
+    invocation: '',
   };
 
   constructor(user: User, locale: string, metrics: DmMetric[]) {

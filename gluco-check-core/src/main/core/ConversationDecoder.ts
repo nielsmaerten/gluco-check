@@ -39,6 +39,7 @@ export default class ConversationDecoder {
     const dmMetrics = await this.extractMetrics(conv, user);
     const dmQuery = new DmQuery(user, locale, dmMetrics);
     dmQuery.metadata = {
+      invocation: conv.intent.query || '',
       mentionDisclaimer: this.shouldMentionDisclaimer(conv, user),
       mentionMissingMetrics: this.shouldMentionMissingMetrics(conv, dmMetrics),
     };
@@ -99,7 +100,7 @@ export default class ConversationDecoder {
       logger.debug(
         '[ConversationDecoder]: Assuming',
         `v${version}`,
-        'is the latest version of the Gluco Check Action being used.'
+        'is the latest version of the Gluco Check Action being used'
       );
       return version;
     }
