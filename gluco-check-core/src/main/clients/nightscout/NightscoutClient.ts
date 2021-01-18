@@ -9,13 +9,14 @@ import {logger} from 'firebase-functions';
 import QueryConfig from './queries/QueryConfig.base';
 import DmSnapshot from '../../../types/DmSnapshot';
 import NightscoutValidator from './NightscoutValidator';
+const logTag = '[NightscoutClient]';
 
 /**
  * Provides methods for querying a Nightscout site
  */
 export default class NightscoutClient {
   constructor(private nightscoutProps: NightscoutProps) {
-    logger.debug('[NightscoutClient]: Initializing for:', nightscoutProps.url);
+    logger.debug(logTag, 'Initializing for:', nightscoutProps.url);
   }
   private cache: any = {};
 
@@ -35,7 +36,7 @@ export default class NightscoutClient {
     }
     /* istanbul ignore next */
     throw new Error(
-      `[NightscoutClient]: Unable to find a NightscoutQuery that can fetch ${requestedMetric}`
+      `${logTag} Unable to find a NightscoutQuery that can fetch ${requestedMetric}`
     );
   }
 
@@ -50,11 +51,12 @@ export default class NightscoutClient {
 
     // ...Yes: skip the HTTP request
     if (inCache) {
-      logger.debug(`[NightscoutClient]: Using cached ${path}`);
+      logger.debug(logTag, `HTTP request: ${path} (cached)`);
     }
 
     // ...No: send HTTP request
     else {
+      logger.debug(logTag, 'HTTP request:', path);
       const request: AxiosRequestConfig = {
         url: String(url),
         timeout: 4000,
@@ -118,23 +120,19 @@ export default class NightscoutClient {
   ): Partial<DmSnapshot> {
     switch (error.type) {
       case ErrorType.Nightscout_Unauthorized:
-        logger.warn(
-          '[NightscoutClient]: UNAUTHORIZED. Verify a valid token was provided.'
-        );
+        logger.warn(logTag, 'UNAUTHORIZED. Verify a valid token was provided.');
         break;
 
       case ErrorType.Nightscout_Unavailable:
-        logger.warn('[NightscoutClient]: UNAVAILABLE. Verify the Nightscout URL');
+        logger.warn(logTag, 'UNAVAILABLE. Verify the Nightscout URL');
         break;
 
       case ErrorType.QueryResponse_MetricNotFound:
-        logger.warn(`[NightscoutClient]: Query for [${metrics}] returned no data`);
+        logger.warn(logTag, `Query for [${metrics}] returned no data`);
         break;
 
       default:
-        logger.error(
-          `[NightscoutClient]: Query for ${metrics} resulted in unexpected ${error}`
-        );
+        logger.error(logTag, `Query for ${metrics} resulted in unexpected ${error}`);
         break;
     }
 

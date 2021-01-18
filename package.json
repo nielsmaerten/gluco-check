@@ -16,6 +16,7 @@
     }
   },
   "scripts": {
+    "deploy": "yarn workspace gluco-check-webhooks deploy",
     "purge": "yarn workspaces run purge && rimraf node_modules/ && echo Run yarn to reinstall dependencies.",
     "build": "yarn workspaces run build",
     "test": "yarn build && yarn workspaces run test"

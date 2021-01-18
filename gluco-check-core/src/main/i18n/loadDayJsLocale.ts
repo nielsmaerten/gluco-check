@@ -1,4 +1,3 @@
-import {logger} from 'firebase-functions';
 const availableDayJsLocales = new Set<string>();
 
 /**
@@ -16,7 +15,6 @@ export default async function loadDayJsLocale(_locale: string): Promise<string> 
   if (availableDayJsLocales.has(locale)) return locale;
   if (availableDayJsLocales.has(fallback)) return fallback;
 
-  logger.debug(`[Localizer.DayJS]: Importing locale: ${locale}`);
   try {
     // Attempt loading the exact locale
     await import(`dayjs/locale/${locale}`);

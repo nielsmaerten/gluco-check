@@ -6,6 +6,7 @@ import {injectable} from 'inversify';
 import {logger} from 'firebase-functions';
 import {performance} from 'perf_hooks';
 import {DmMetric} from '../../types/DmMetric';
+const logTag = '[QueryResolver]';
 
 @injectable()
 export default class QueryResolver {
@@ -27,6 +28,7 @@ export default class QueryResolver {
     });
 
     // Create a Nightscout Client we can use for querying
+    logger.info(logTag, `Fetching ${query.metrics}`);
     const nsClient = new NightscoutClient(query.user.nightscout);
 
     // Query Nightscout for each requested metric
@@ -36,7 +38,7 @@ export default class QueryResolver {
     const stop = performance.now();
 
     const elapsed = Math.floor(stop - start);
-    logger.info(`[DiabetesQueryResolver]: Nightscout queries took ${elapsed} ms.`);
+    logger.info(`${logTag} Nightscout queries took ${elapsed} ms.`);
 
     // Add all partial snapshots into the main snapshot
     newSnapshot.update(...partialSnapshots);

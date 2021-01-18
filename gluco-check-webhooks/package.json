@@ -34,7 +34,7 @@
     "watch:test": "jest --watch",
     "watch:compile": "tsc --watch",
     "purge": "rimraf node_modules/",
-    "test": "yarn build && jest && yarn lint",
+    "test": "yarn build && echo Package webhooks has no tests. && yarn lint",
     "serve": "echo !! Start 'watch:compile' in a separate process && firebase emulators:start --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
