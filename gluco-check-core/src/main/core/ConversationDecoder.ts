@@ -67,7 +67,7 @@ export default class ConversationDecoder {
 
     // Invoked using latest version of the Action
     const invokingActionVersion_raw = conv.headers['gluco-check-version'];
-    const invokingActionVersion = parseInt(invokingActionVersion_raw as string);
+    const invokingActionVersion = parseInt(invokingActionVersion_raw as string, 10);
 
     const usingNewerAction = invokingActionVersion > this.lastKnownActionVersion;
     if (usingNewerAction) {
@@ -84,7 +84,7 @@ export default class ConversationDecoder {
    */
   private getLastKnownActionVersion() {
     const versionString = config().google_actions_sdk.glucocheck_action_version;
-    const version = parseInt(versionString);
+    const version = parseInt(versionString, 10);
 
     // Abort if the Action version has not been set
     if (!version) {
