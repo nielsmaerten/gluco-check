@@ -7,10 +7,9 @@ import {logger} from 'firebase-functions';
 import NightscoutProps from '../../../types/NightscoutProps';
 import {nightscoutMinVersion} from '../../constants';
 import DmSnapshot from '../../../types/DmSnapshot';
+const logTag = '[NightscoutValidator]';
 
 export default class NightscoutValidator {
-  private static logTag = '[NightscoutValidator]:';
-
   public static async validate(client: NightscoutClient) {
     const result = new NightscoutValidationResult();
     const input = client.getNightscoutProps();
@@ -44,7 +43,7 @@ export default class NightscoutValidator {
   private static async validateToken(_token = '', url: string) {
     const token = _token.trim();
 
-    logger.info(this.logTag, 'Attempting to access v1 API using token @', url);
+    logger.info(logTag, 'Attempting to access v1 API using token @', url);
     try {
       // Fetch STATUS object
       const api = `${url}/api/v1/status`;
@@ -72,7 +71,7 @@ export default class NightscoutValidator {
         },
       };
     } catch {
-      logger.warn(this.logTag, 'Unable to access API using token @', url);
+      logger.warn(logTag, 'Unable to access API using token @', url);
     }
 
     return {
@@ -102,39 +101,39 @@ export default class NightscoutValidator {
     // Attempt 1/3: v3 API
     // This test does not require a token: /version is public
     // It may fail if the Nightscout version is outdated
-    logger.info(this.logTag, 'Attempting to detect v3 API @', url);
+    logger.info(logTag, 'Attempting to detect v3 API @', url);
     try {
       const response = await axios.get(`${url}/api/v3/version`);
       const data = response.data;
       const hasVersion = data.version && this.isSemanticVersion(data.version);
       if (hasVersion) return true;
     } catch (e) {
-      logger.info(this.logTag, url, 'did not support v3 Nightscout API', e);
+      logger.info(logTag, url, 'did not support v3 Nightscout API', e);
     }
 
     // Attempt 2/3: v1 API
     // May fail if AUTH_DEFAULT_ROLES is set to 'denied'
-    logger.info(this.logTag, 'Attempting to detect v1 API @', url);
+    logger.info(logTag, 'Attempting to detect v1 API @', url);
     try {
       const response = await axios.get(`${url}/api/v1/status`);
       const data = response.data;
       const hasVersion = data.version && this.isSemanticVersion(data.version);
       if (hasVersion) return true;
     } catch (e) {
-      logger.info(this.logTag, url, 'did not support v1 Nightscout API', e);
+      logger.info(logTag, url, 'did not support v1 Nightscout API', e);
     }
 
     // Attempt 3/3: Index page
-    logger.info(this.logTag, 'Attempting to detect a Nightscout page @', url);
+    logger.info(logTag, 'Attempting to detect a Nightscout page @', url);
     try {
       const response = await axios.get(url);
       const html = String(response.data);
       if (html.includes('<title>Nightscout</title>')) return true;
     } catch (e) {
-      logger.info(this.logTag, 'HTTP GET failed @', url, e);
+      logger.info(logTag, 'HTTP GET failed @', url, e);
     }
 
-    logger.info(this.logTag, 'all attempts to detect Nightscout failed @', url);
+    logger.info(logTag, 'All attempts to detect Nightscout failed @', url);
     return false;
   }
 

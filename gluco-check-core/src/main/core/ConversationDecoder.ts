@@ -47,14 +47,11 @@ export default class ConversationDecoder {
     };
 
     // Log status
-    logger.info(`${logTag}: ${censoredUserId}`, `said: "${dmQuery.metadata.invocation}"`);
-    if (user.exists) {
-      const censoredQuery = {...dmQuery};
-      delete censoredQuery.user.nightscout;
-      censoredQuery.user.userId = censoredUserId;
-      logger.debug(`${logTag}: Processing query:`, censoredQuery);
-    } else {
-      logger.warn(`${logTag}: '${userId}' invoked Gluco Check but does not exist in db`);
+    logger.info(`${logTag} ${censoredUserId} said: '${dmQuery.metadata.invocation}'`);
+    if (!user.exists) {
+      logger.warn(
+        `${logTag} '${censoredUserId}' invoked Gluco Check but does not exist in db`
+      );
     }
     return dmQuery;
   }
@@ -95,9 +92,7 @@ export default class ConversationDecoder {
       logger.error(errMsg);
       throw new Error(errMsg);
     } else {
-      logger.debug(
-        `${logTag} Assuming v${version} is the latest version of the Gluco Check Action being used`
-      );
+      logger.debug(`${logTag} Assuming latest version of the Action is v${version}`);
       return version;
     }
   }

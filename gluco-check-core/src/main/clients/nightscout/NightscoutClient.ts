@@ -51,12 +51,12 @@ export default class NightscoutClient {
 
     // ...Yes: skip the HTTP request
     if (inCache) {
-      logger.debug(logTag, `Using cached ${path}`);
+      logger.debug(logTag, `HTTP request: ${path} (cached)`);
     }
 
     // ...No: send HTTP request
     else {
-      logger.debug(logTag, 'Querying', path);
+      logger.debug(logTag, 'HTTP request:', path);
       const request: AxiosRequestConfig = {
         url: String(url),
         timeout: 4000,

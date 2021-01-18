@@ -4,6 +4,7 @@ import {DmMetric} from '../../../types/DmMetric';
 import FormatParams from '../../../types/FormatParams';
 import {gc_url} from '../../constants';
 import {logger} from 'firebase-functions';
+const logTag = '[Humanizer]';
 
 export default function humanizeError(
   errorType: ErrorType,
@@ -27,7 +28,7 @@ export default function humanizeError(
  * Shortcut function for humanizing MetricNotFound errors
  */
 export function metricNotFound(metric: DmMetric, params: FormatParams) {
-  logger.warn(`[Humanizer]: Query requested '${metric}' but it wasn't found`);
+  logger.warn(`${logTag} Query requested '${metric}' but it wasn't found`);
   const mentionError = params.snapshot.query.metadata.mentionMissingMetrics;
   if (!mentionError) return '';
 

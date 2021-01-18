@@ -2,6 +2,7 @@ import {TFunction, i18n} from 'i18next';
 import {logger} from 'firebase-functions';
 import {injectable} from 'inversify';
 import selectFallbackLocale from './selectFallbackLocale';
+const logTag = '[Localizer.I18Next]';
 
 // i18next won't work unless we import it using 'require'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -17,7 +18,7 @@ export default class I18nHelper {
   private loadedLocales = new Set<string>();
 
   constructor() {
-    logger.debug('[Localizer]: Initializing new instance');
+    logger.debug(logTag, 'Initializing');
     const debug = false;
     //const debug = process.env.NODE_ENV === 'test';
 
@@ -38,19 +39,20 @@ export default class I18nHelper {
     let resourceBundle;
     try {
       resourceBundle = this.importResources(locale);
+      logger.debug(logTag, 'Resource bundle loaded:', locale);
     } catch {
       const fallback = selectFallbackLocale(locale);
       logger.debug(
-        `[Localizer.I18Next]: No exact translation for ${locale}.`,
-        `Attempting fallback to ${fallback}`
+        logTag,
+        `No resource bundle for ${locale}. Attempting fallback to ${fallback}`
       );
       resourceBundle = this.importResources(fallback);
+      logger.debug(logTag, 'Fallback resource bundle loaded:', fallback);
     }
 
     // Add the bundle to i18next (using default namespace 'translation')
     this.loadedLocales.add(locale);
     i18next.addResourceBundle(locale, 'translation', resourceBundle);
-    logger.debug(`[Localizer.I18Next]: Translations for ${locale} have been loaded`);
   }
 
   private importResources(locale: string) {
