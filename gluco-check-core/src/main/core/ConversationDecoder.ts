@@ -6,6 +6,7 @@ import AuthTokenDecoder from './AuthTokenDecoder';
 import UserProfileClient from '../clients/UserProfileClient';
 import {logger, config} from 'firebase-functions';
 import User from '../../types/User';
+const logTag = '[ConversationDecoder]';
 
 @injectable()
 /**
@@ -34,6 +35,7 @@ export default class ConversationDecoder {
     const locale = conv.user.locale;
     const userId = conv.user.params.tokenPayload.email;
     const user = await this.userProfileClient.getUser(userId);
+    const censoredUserId = `${user.userId.substr(0, 7)}***`;
 
     // Build DmQuery object with all info required to respond to the user
     const dmMetrics = await this.extractMetrics(conv, user);
@@ -45,17 +47,14 @@ export default class ConversationDecoder {
     };
 
     // Log status
-    logger.info(
-      `[ConversationDecoder]: ${user.userId.substr(0, 7)}...`,
-      `requested: ${dmQuery.metrics}`
-    );
+    logger.info(`${logTag}: ${censoredUserId}`, `said: "${dmQuery.metadata.invocation}"`);
     if (user.exists) {
-      logger.debug('[ConversationDecoder]: Processing query:', dmQuery);
+      const censoredQuery = {...dmQuery};
+      delete censoredQuery.user.nightscout;
+      censoredQuery.user.userId = censoredUserId;
+      logger.debug(`${logTag}: Processing query:`, censoredQuery);
     } else {
-      logger.warn(
-        `[ConversationDecoder]: '${userId}'`,
-        'invoked Gluco Check but does not exist in db'
-      );
+      logger.warn(`${logTag}: '${userId}' invoked Gluco Check but does not exist in db`);
     }
     return dmQuery;
   }
@@ -75,7 +74,7 @@ export default class ConversationDecoder {
 
     const usingNewerAction = invokingActionVersion > this.lastKnownActionVersion;
     if (usingNewerAction) {
-      logger.info('Force mentioning disclaimer bc of newer Action calling');
+      logger.info(logTag, 'Force mentioning disclaimer bc of newer Action calling');
     }
     return usingNewerAction;
   }
@@ -92,15 +91,12 @@ export default class ConversationDecoder {
 
     // Abort if the Action version has not been set
     if (!version) {
-      const errMsg =
-        '[ConversationDecoder]: Initialization failed: glucocheck_action_version must be set';
+      const errMsg = `${logTag} Initialization failed: glucocheck_action_version must be set`;
       logger.error(errMsg);
       throw new Error(errMsg);
     } else {
       logger.debug(
-        '[ConversationDecoder]: Assuming',
-        `v${version}`,
-        'is the latest version of the Gluco Check Action being used'
+        `${logTag} Assuming v${version} is the latest version of the Gluco Check Action being used`
       );
       return version;
     }
