@@ -3,6 +3,7 @@ import {injectable} from 'inversify';
 import {logger} from 'firebase-functions';
 import FirebaseClient from './FirebaseClient';
 import User from '../../types/User';
+const logTag = '[UserProfileClient]';
 
 @injectable()
 /**
@@ -12,7 +13,7 @@ export default class UserProfileClient {
   private users = this.firebaseClient.firestore().collection('users');
 
   constructor(private firebaseClient: FirebaseClient) {
-    logger.info('[UserProfileClient]: Initializing new instance');
+    logger.info(logTag, 'Initializing');
   }
 
   async getUser(userId: string): Promise<User> {

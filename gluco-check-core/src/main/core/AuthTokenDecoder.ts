@@ -3,6 +3,7 @@ import {ConversationV3} from '@assistant/conversation';
 import {AuthHeaderProcessor} from '@assistant/conversation/dist/auth';
 import {logger, config} from 'firebase-functions';
 import {injectable} from 'inversify';
+const logTag = '[AuthTokenDecoder]';
 
 @injectable()
 /**
@@ -14,12 +15,12 @@ export default class AuthTokenDecoder {
   private authHeaderProcessor = new AuthHeaderProcessor();
 
   constructor() {
-    logger.debug('[AuthTokenDecoder]: Initializing new instance');
+    logger.debug(logTag, 'Initializing');
     this.clientId = config().google_actions_sdk.client_id;
 
     if (!this.clientId)
       throw new Error(
-        '[AuthTokenDecoder]: Firebase Functions config must define an auth.client_id property'
+        `${logTag} Firebase Functions config must define an auth.client_id property`
       );
   }
 

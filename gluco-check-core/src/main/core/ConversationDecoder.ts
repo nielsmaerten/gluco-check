@@ -6,6 +6,7 @@ import AuthTokenDecoder from './AuthTokenDecoder';
 import UserProfileClient from '../clients/UserProfileClient';
 import {logger, config} from 'firebase-functions';
 import User from '../../types/User';
+const logTag = '[ConversationDecoder]';
 
 @injectable()
 /**
@@ -34,26 +35,22 @@ export default class ConversationDecoder {
     const locale = conv.user.locale;
     const userId = conv.user.params.tokenPayload.email;
     const user = await this.userProfileClient.getUser(userId);
+    const censoredUserId = `${user.userId.substr(0, 7)}***`;
 
     // Build DmQuery object with all info required to respond to the user
     const dmMetrics = await this.extractMetrics(conv, user);
     const dmQuery = new DmQuery(user, locale, dmMetrics);
     dmQuery.metadata = {
+      invocation: conv.intent.query || '',
       mentionDisclaimer: this.shouldMentionDisclaimer(conv, user),
       mentionMissingMetrics: this.shouldMentionMissingMetrics(conv, dmMetrics),
     };
 
     // Log status
-    logger.info(
-      `[ConversationDecoder]: ${user.userId.substr(0, 7)}...`,
-      `requested: ${dmQuery.metrics}`
-    );
-    if (user.exists) {
-      logger.debug('[ConversationDecoder]: Processing query:', dmQuery);
-    } else {
+    logger.info(`${logTag} ${censoredUserId} said: '${dmQuery.metadata.invocation}'`);
+    if (!user.exists) {
       logger.warn(
-        `[ConversationDecoder]: '${userId}'`,
-        'invoked Gluco Check but does not exist in db'
+        `${logTag} '${censoredUserId}' invoked Gluco Check but does not exist in db`
       );
     }
     return dmQuery;
@@ -70,11 +67,11 @@ export default class ConversationDecoder {
 
     // Invoked using latest version of the Action
     const invokingActionVersion_raw = conv.headers['gluco-check-version'];
-    const invokingActionVersion = parseInt(invokingActionVersion_raw as string);
+    const invokingActionVersion = parseInt(invokingActionVersion_raw as string, 10);
 
     const usingNewerAction = invokingActionVersion > this.lastKnownActionVersion;
     if (usingNewerAction) {
-      logger.info('Force mentioning disclaimer bc of newer Action calling');
+      logger.info(logTag, 'Force mentioning disclaimer bc of newer Action calling');
     }
     return usingNewerAction;
   }
@@ -87,20 +84,15 @@ export default class ConversationDecoder {
    */
   private getLastKnownActionVersion() {
     const versionString = config().google_actions_sdk.glucocheck_action_version;
-    const version = parseInt(versionString);
+    const version = parseInt(versionString, 10);
 
     // Abort if the Action version has not been set
     if (!version) {
-      const errMsg =
-        '[ConversationDecoder]: Initialization failed: glucocheck_action_version must be set';
+      const errMsg = `${logTag} Initialization failed: glucocheck_action_version must be set`;
       logger.error(errMsg);
       throw new Error(errMsg);
     } else {
-      logger.debug(
-        '[ConversationDecoder]: Assuming',
-        `v${version}`,
-        'is the latest version of the Gluco Check Action being used.'
-      );
+      logger.debug(`${logTag} Assuming latest version of the Action is v${version}`);
       return version;
     }
   }

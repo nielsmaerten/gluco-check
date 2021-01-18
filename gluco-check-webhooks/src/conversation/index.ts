@@ -6,6 +6,7 @@ import {
   ConversationV3,
   OmniHandler,
 } from '@assistant/conversation';
+const logTag = '[Webhook.ConversationHandler]';
 
 // Names of intents that can be received from the Action
 enum IntentHandlers {
@@ -24,7 +25,7 @@ export default class ConversationHandler {
   // Actions SDK Setup
   private app: OmniHandler & ConversationV3App<ConversationV3>;
   private constructor() {
-    functions.logger.debug('[Webhook]: Initializing new ConversationHandler');
+    functions.logger.debug(logTag, 'Initializing');
     this.app = conversation();
     this.registerHandlers();
   }
