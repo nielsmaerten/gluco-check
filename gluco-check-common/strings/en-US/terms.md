@@ -18,7 +18,7 @@ Now when you ask Gluco Check a question, we know whose site to check.
 
 #### How is this information used?
 When you invoke Gluco Check through Google Assistant,
-we check if there's a Nightscout site associated with your Google Account.
+we check if there's a Nightscout associated with your Google Account.
 If so, we gather the information you requested from your Nightscout and read it out to you.
 We do not store the information we collect from your Nightscout. Not even in logs.
 Our logs do include the question you asked Gluco Check and when.
