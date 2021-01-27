@@ -140,15 +140,15 @@ Google Assistant-->>User: '103 and stable as of a minute ago'
 ##### When `gluco-check-core` receives a `Conversation` object:
 1. It is passed to `ConversationDecoder` to find out what exactly the user is asking for
 2. `ConversationDecoder` returns a `DmQuery` with the requested `DmMetrics`
-3. `DmQuery` is passed through `DmQueryFulfiller` to get the requested info from Nightscout
-4. `QueryFulfiller` returns a `DmSnapsot`: the requested `DmMetrics` and their corresponding values
+3. `DmQuery` is passed through `DmQueryResolver` to get the requested info from Nightscout
+4. `QueryResolver` returns a `DmSnapsot`: the requested `DmMetrics` and their corresponding values
 5. `DmSnapshot` is passed through `ResponseBuilder`, which returns a string the Assistant can say back
 ```mermaid
 sequenceDiagram
 Core->>ConversationDecoder: Conversation
 ConversationDecoder-->>Core: DmQuery
-Core->>QueryFulfiller: DmQuery
-QueryFulfiller-->>Core: DmSnapshot
+Core->>QueryResolver: DmQuery
+QueryResolver-->>Core: DmSnapshot
 Core->>ResponseBuilder: DmSnapshot
 ResponseBuilder-->>Core: AssistantResponse
 ```

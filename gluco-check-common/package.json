@@ -1,7 +1,7 @@
 {
   "name": "gluco-check-common",
   "version": "0.0.1",
-  "repository": "https://github.com/nielsmaerten/nightscout-assistant",
+  "repository": "https://github.com/nielsmaerten/gluco-check",
   "author": {
     "name": "Niels Maerten",
     "url": "https://github.com/nielsmaerten"
