@@ -17,7 +17,10 @@ export default class QueryResolver {
   async buildSnapshot(query: DmQuery): Promise<DmSnapshot> {
     // Ensure user exists and has a Nightscout Site
     if (!query.user.exists || !query.user.nightscout) {
-      return this.userNotFoundError(query);
+      return this.errorResponse(query, ErrorType.Firebase_UserNotFound);
+    }
+    if (!query.user.nightscout.hasValidUrl) {
+      return this.errorResponse(query, ErrorType.Nightscout_Unavailable);
     }
 
     // Create an empty snapshot. We'll add requested Metrics in here
@@ -45,13 +48,13 @@ export default class QueryResolver {
     return newSnapshot;
   }
 
-  private userNotFoundError(query: DmQuery) {
+  private errorResponse(query: DmQuery, errorType: ErrorType) {
     return new DmSnapshot({
       timestamp: Date.now(),
       query,
       errors: [
         {
-          type: ErrorType.Firebase_UserNotFound,
+          type: errorType,
           affectedMetric: DmMetric.Everything,
         },
       ],
