@@ -41,7 +41,11 @@ export default class NightscoutValidator {
   }
 
   private static async validateToken(_token = '', url: string) {
-    const token = _token.trim();
+    let token = _token.trim();
+    if (token.startsWith(url)) {
+      // Token was copied from Nightscout as a URL
+      token = new URL(token).searchParams.get('token') || token;
+    }
 
     logger.info(logTag, 'Attempting to access v1 API using token @', url);
     try {
