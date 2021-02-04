@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { URL } from "url";
 
 export const flattenDeep = function (arr: any): any[] {
   return Array.isArray(arr)
@@ -8,3 +9,13 @@ export const flattenDeep = function (arr: any): any[] {
 
 export const intersection = (arr: any[], ...args: any[]) =>
   arr.filter((item: any) => args.every(arr => arr.includes(item)));
+
+
+export const isValidUrl = (url: string) => {
+  try {
+    new URL(url);
+    return true;
+  } catch {
+    return false;
+  }
+}

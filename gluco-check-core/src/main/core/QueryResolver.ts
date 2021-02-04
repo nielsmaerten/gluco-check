@@ -6,6 +6,7 @@ import {injectable} from 'inversify';
 import {logger} from 'firebase-functions';
 import {performance} from 'perf_hooks';
 import {DmMetric} from '../../types/DmMetric';
+import {isValidUrl} from '../utils';
 const logTag = '[QueryResolver]';
 
 @injectable()
@@ -19,7 +20,8 @@ export default class QueryResolver {
     if (!query.user.exists || !query.user.nightscout) {
       return this.errorResponse(query, ErrorType.Firebase_UserNotFound);
     }
-    if (!query.user.nightscout.hasValidUrl) {
+    if (!isValidUrl(query.user.nightscout.url)) {
+      logger.warn(query.user.nightscout.url, 'is not a valid url');
       return this.errorResponse(query, ErrorType.Nightscout_Unavailable);
     }
 
