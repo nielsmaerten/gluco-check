@@ -20,7 +20,7 @@ export default class AuthTokenDecoder {
 
     if (!this.clientId)
       throw new Error(
-        `${logTag} Firebase Functions config must define an auth.client_id property`
+        `${logTag} Firebase Functions config must define client_id property`
       );
   }
 
