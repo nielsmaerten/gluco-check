@@ -40,6 +40,16 @@ describe('Nightscout Validator', () => {
     expect(results.token.isValid).toBeTruthy();
   });
 
+  it('extracts token from url', async () => {
+    AxiosMock.respondWithMockData();
+    const testUrl = 'https://cgm.example.com';
+    const testToken = 'test-token';
+    const urlFormattedToken = `${testUrl}?token=${testToken}`;
+    const results = await runTestValidation(testUrl, urlFormattedToken);
+
+    expect(results.token.parsed).toBe(testToken);
+  });
+
   it('rejects an invalid token', async () => {
     AxiosMock.respondWith401Unauthorized();
     const testUrl = 'https://cgm.example.com';

@@ -6,6 +6,7 @@ import {DmMetric} from '../../../types/DmMetric';
 import {logger} from 'firebase-functions';
 import NightscoutProps from '../../../types/NightscoutProps';
 import {nightscoutMinVersion} from '../../constants';
+import {flattenDeep, intersection} from '../../utils';
 import DmSnapshot from '../../../types/DmSnapshot';
 const logTag = '[NightscoutValidator]';
 
@@ -41,7 +42,11 @@ export default class NightscoutValidator {
   }
 
   private static async validateToken(_token = '', url: string) {
-    const token = _token.trim();
+    let token = _token.trim();
+    if (token.startsWith(url)) {
+      // Token was copied from Nightscout as a URL
+      token = new URL(token).searchParams.get('token') || token;
+    }
 
     logger.info(logTag, 'Attempting to access v1 API using token @', url);
     try {
@@ -57,10 +62,14 @@ export default class NightscoutValidator {
 
       // Extract permissions from STATUS object
       const {authorized, settings, version} = response.data;
-      const permissionGroups: string[][] = authorized ? authorized.permissionGroups : [];
 
-      // Check if 'api:*:read' is listed
-      const hasReadPermission = permissionGroups.some(g => g.includes('api:*:read'));
+      const permissionGroups = authorized ? authorized.permissionGroups : [];
+      const permissions: string[] = flattenDeep(permissionGroups);
+      const acceptedPermissions = ['api:*:read', '*:*:read', '*', '*:*', '*:*:*'];
+      const hasReadPermission = intersection(acceptedPermissions, permissions).length > 0;
+
+      // const permissionGroups: string[][] = authorized ? authorized.permissionGroups : [];
+      // const hasReadPermission = permissionGroups.some(g => g.includes('api:*:read'));
 
       return {
         token: {isValid: hasReadPermission, parsed: token},
