@@ -148,10 +148,10 @@ export default class NightscoutValidator {
 
   private static getBaseUrl(_url: string): {parsed: string; isValid: boolean} {
     try {
-      const url = _url.toLowerCase().trim();
+      let url = _url.toLowerCase().trim();
 
       const hasProtocol = url.startsWith('http://') || url.startsWith('https://');
-      if (!hasProtocol) throw new Error('Url must start with http:// or https://');
+      if (!hasProtocol) url = `http://${url}`;
 
       const parsedUrl = new URL(url);
       const hasTld = parsedUrl.hostname.includes('.');
