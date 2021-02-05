@@ -1,4 +1,6 @@
-# Gluco Check
+# Frequently Asked Questions
+
+If you can't find an answer here, post your question in [Discussions](https://github.com/nielsmaerten/gluco-check/discussions)
 
 ###  Why is Nightscout not accepting my API secret / token?
 
