@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Action definitions for Google Assistant",
   "scripts": {
-    "lint": "echo No linter for gluco-check-action",
+    "lint": "echo N/A",
+    "build": "echo N/A",
+    "test": "echo N/A",
     "pull": "cd definitions && gactions pull --clean --force",
     "push": "cd definitions && gactions push -v",
     "use:production": "yarn node set-env.js production",

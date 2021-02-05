@@ -24,14 +24,14 @@ localizedSettings:
   voice: female_1
 projectId: {{projectId}}
 testingInstructions: |-
-  Hi! 
-  
+  Hi!
+
   Context: "Nightscout" is a webapp used to collect data such as glucose levels, amount of carbs eaten, etc.
   "Gluco Check" (this Action) allows accessing this info using the Assistant.
 
   Testing instructions: Before you can test, you'll need to connect a Nightscout site.
   1. Visit https://diabase.app and sign in. Any Google account will do.
-  Note: If you're using an 'aog.platform.***@gmail.com' account, we will automatically populate it with test data. 
+  Note: If you're using an 'aog.platform.***@gmail.com' account, we will automatically populate it with test data.
   Using another account? Follow these steps:
   2. Click the 'Link your Nightscout' button
   3. In the field "Nightscout URL", enter: "{{nightscoutTestUrl}}"
