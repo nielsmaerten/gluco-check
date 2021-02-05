@@ -2,5 +2,5 @@ handlers:
 - name: default_metrics
 - name: custom_metrics
 httpsEndpoint:
-  baseUrl: https://us-central1-gluco-check-nightly.cloudfunctions.net/conversation?v=1
+  baseUrl: {{webhookUrl}}
   endpointApiVersion: 2
