@@ -31,7 +31,7 @@ Followed by:
 
 ## Can I use my own invocation?
 
-Yes! If the Google Assistant supports Routines for your language, you can follow [these instructions](https://nightly.diabase.app/assets/routines-setup.mp4) to add your own invocations.  
+Yes! If the Google Assistant supports Routines for your language, you can follow [these instructions](https://diabase.app/assets/routines-setup.mp4) to add your own invocations.  
 
 For example, you can shorten *"Hey Google, ask Gluco Check to read my sugar"*  
 to: *"Hey Google, check my sugar"*
