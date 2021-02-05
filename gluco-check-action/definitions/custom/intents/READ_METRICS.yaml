@@ -4,13 +4,13 @@ parameters:
     list: true
     name: DmMetric
 trainingPhrases:
+- How old is my ($DmMetric 'sensor' auto=true)
+- Read my ($DmMetric 'blood sugar' auto=true)
 - ($DmMetric 'Carbs on board' auto=true)
 - Check my ($DmMetric 'blood sugar' auto=true)
 - What's my ($DmMetric 'BG' auto=true)
 - What's my ($DmMetric 'BG' auto=true), ($DmMetric 'IOB' auto=false) and ($DmMetric
   'carbs on board' auto=false)
-- How many ($DmMetric 'carbs' auto=true) to I have
+- How many ($DmMetric 'carbs' auto=true) do I have
 - How much ($DmMetric 'insulin' auto=true) do I have
-- How much is my ($DmMetric 'blood sugar' auto=true)
 - How's my ($DmMetric 'IOB' auto=true)
-- What's my ($DmMetric 'glucose' auto=true)

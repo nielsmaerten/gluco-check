@@ -8,10 +8,10 @@ synonym:
       - BG
     cannula age:
       synonyms:
-      - catheter age
-      - infusion set age
-      - cannula age
       - cannula
+      - pod
+      - infusion set
+      - catheter
     carbs on board:
       synonyms:
       - carbs on board
@@ -36,14 +36,17 @@ synonym:
       synonyms:
       - pump battery
       - battery
-      - pump
     pump reservoir:
       synonyms:
       - pump reservoir
-      - pump level
       - insulin remaining
       - pump units
+      - pump
+      - reservoir
+      - insulin left
+      - pump level
     sensor age:
       synonyms:
       - sensor age
       - sensor
+  matchType: FUZZY_MATCH
