@@ -6,18 +6,18 @@ defaultLocale: en
 localizedSettings:
   developerEmail: glucocheck@diabase.app
   developerName: Niels Maerten
-  displayName: Gluco Tester
+  displayName: {{actionName}}
   fullDescription: |-
     Gluco Check brings Nightscout to your Google Assistant. Ask for your current blood sugar level, how many insulin you've got on board, when you last changed your sensor, and more.
 
     Before you can use Gluco Check you must link your Nightscout site on: https://diabase.app
   privacyPolicyUrl: https://diabase.app/terms
-  pronunciation: Gluco Tester
+  pronunciation: {{actionName}}
   sampleInvocations:
-  - Talk to Gluco Check
-  - Ask Gluco Check how old my sensor is
-  - Ask Gluco Check to read my glucose
-  - Ask Gluco Check to read my carbs on board
+  - Talk to {{actionName}}
+  - Ask {{actionName}} how old my sensor is
+  - Ask {{actionName}} to read my glucose
+  - Ask {{actionName}} to read my carbs on board
   shortDescription: Ask Google to read your blood sugar from Nightscout
   smallLogoImage: https://lh3.googleusercontent.com/iByZN58udeU-Y00jiCeY5I5piOdBaxzPRutPS1DAO8rhTd2rJJvc55t6aUzkM7b0833W9tAeK4mvlA
   termsOfServiceUrl: https://diabase.app/terms

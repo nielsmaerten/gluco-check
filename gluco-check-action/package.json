@@ -1,0 +1,21 @@
+{
+  "name": "gluco-check-action",
+  "version": "1.0.0",
+  "description": "Action definitions for Google Assistant",
+  "scripts": {
+    "lint": "echo No linter for gluco-check-action",
+    "pull": "cd definitions && gactions pull --clean --force",
+    "push": "cd definitions && gactions push -v",
+    "use:production": "yarn node set-env.js production",
+    "use:nightly": "yarn node set-env.js nightly"
+  },
+  "repository": "https://github.com/nielsmaerten/gluco-check",
+  "author": {
+    "name": "Niels Maerten",
+    "url": "https://github.com/nielsmaerten"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
