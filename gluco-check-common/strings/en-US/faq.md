@@ -1,10 +1,8 @@
 # Frequently Asked Questions
 
-[TOC]
-
 ## How do I ask Gluco Check for... ?
 
-###  - a specific metric:
+###  a specific metric
 
 Say: **Hey Google, ask Gluco Check to read my [blank]**.  
 Substitute **[blank]** with the name of any metric, OR a synonym:
@@ -20,16 +18,16 @@ Substitute **[blank]** with the name of any metric, OR a synonym:
 | Pump reservoir   | insulin remaining, reservoir         |
 | *Everything*     | *all values, all of it*              |
 
-### - my personal selection:
+### my personal selection
 
 Say: **Hey Google, talk to Gluco Check** without specifying a metric.  
 Assistant will now read the values you selected on https://diabase.app.
 
-### - multiple metrics:
+### multiple metrics
 
 Say: **Hey Google, ask Gluco Check to read my *[blood sugar]* and *[sensor age]***  
 
-### Other questions you can try (experimental)
+## Other questions you can try (experimental)
 
 * How old is my sensor? How old is my pod?
 * How many carbs do I have?
