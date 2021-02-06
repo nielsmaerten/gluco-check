@@ -1,11 +1,13 @@
 # Frequently Asked Questions
 
+[TOC]
+
 ## How do I ask Gluco Check for... ?
 
 ###  - a specific metric:
 
-Say: **Hey Google, ask Gluco Check to read my _[___]_**.  
-Substitute ***[___]*** with the name of any metric, OR a synonym:
+Say: **Hey Google, ask Gluco Check to read my [blank]**.  
+Substitute **[blank]** with the name of any metric, OR a synonym:
 
 | Metric           | Synonyms                             |
 | ---------------- | ------------------------------------ |
@@ -21,7 +23,7 @@ Substitute ***[___]*** with the name of any metric, OR a synonym:
 ### - my personal selection:
 
 Say: **Hey Google, talk to Gluco Check** without specifying a metric.  
-Assistant will read just the values you selected on https://diabase.app.
+Assistant will now read the values you selected on https://diabase.app.
 
 ### - multiple metrics:
 
@@ -35,7 +37,9 @@ Say: **Hey Google, ask Gluco Check to read my *[blood sugar]* and *[sensor age]*
 
 ## Can I use a custom invocation?
 
-Yes! If Google Assistant supports [Routines](https://support.google.com/googlenest/answer/7029585?co=GENIE.Platform%3DAndroid&hl=en) for your language, you can follow [these instructions](https://diabase.app/assets/routines-setup.mp4) to create your own invocations. For example:
+Yes!  
+If Google Assistant supports [Routines](https://support.google.com/googlenest/answer/7029585?co=GENIE.Platform%3DAndroid&hl=en) for your language,  
+follow [these instructions](https://diabase.app/assets/routines-setup.mp4) to create your own invocations. For example:
 
 | Instead of...                                      | say:                       |
 | -------------------------------------------------- | -------------------------- |
@@ -44,9 +48,9 @@ Yes! If Google Assistant supports [Routines](https://support.google.com/googlene
 ##  Why is Nightscout not accepting my API secret / token?
 
 *API Secrets* and *Tokens* are not the same thing.  
-To use Gluco Check, you'll need a *token*. A token looks like this: ``glucocheck-1d2a6bc59`.  
-Need help? Visit https://diabase.app, click 'Not sure how to create a token? Read on!'
+To use Gluco Check, you'll need a *token*. A token looks like this: `glucocheck-1d2a6bc59`.  
+Need help? Visit https://diabase.app, click '*Not sure how to create a token? Read on!*'
 
 ## I have a different question!
 
-Couldn't find an answer here? Post your question in [Discussions](https://github.com/nielsmaerten/gluco-check/discussions)
+Couldn't find an answer here? Post your question in [Discussions](https://github.com/nielsmaerten/gluco-check/discussions). We're happy to help!
