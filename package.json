@@ -6,7 +6,8 @@
     ],
     "nohoist": [
       "**/gts",
-      "**/gts/**"
+      "**/gts/**",
+      "doctoc"
     ]
   },
   "husky": {
