@@ -13,9 +13,12 @@
 ## Things you can ask Gluco Check
 
 * Blood sugar
-* Insulin on Board / Carbs on Board
-* Sensor age / Infusion set age
-* Pump battery level / Pump reservoir level
+* Insulin on Board
+* Carbs on Board
+* Sensor age
+* Infusion set age
+* Pump battery level
+* Pump reservoir level
 * [And more](https://diabase.app/faq)
 
 ## Protip: Using a shorter invocation
