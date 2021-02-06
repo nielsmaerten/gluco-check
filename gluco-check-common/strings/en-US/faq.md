@@ -1,4 +1,19 @@
 # Frequently Asked Questions
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [How do I ask Gluco Check for... ?](#how-do-i-ask-gluco-check-for-)
+  - [a specific metric](#a-specific-metric)
+  - [my personal selection](#my-personal-selection)
+  - [multiple metrics](#multiple-metrics)
+- [Other questions you can try (experimental)](#other-questions-you-can-try-experimental)
+- [Can I use a custom invocation?](#can-i-use-a-custom-invocation)
+- [Why is Nightscout not accepting my API secret / token?](#why-is-nightscout-not-accepting-my-api-secret--token)
+- [I have a different question!](#i-have-a-different-question)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+---
 
 ## How do I ask Gluco Check for... ?
 
