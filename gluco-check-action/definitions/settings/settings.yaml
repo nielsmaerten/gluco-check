@@ -6,23 +6,36 @@ defaultLocale: en
 localizedSettings:
   developerEmail: glucocheck@diabase.app
   developerName: Niels Maerten
-  displayName: Gluco Tester
+  displayName: {{actionName}}
   fullDescription: |-
     Gluco Check brings Nightscout to your Google Assistant. Ask for your current blood sugar level, how many insulin you've got on board, when you last changed your sensor, and more.
 
-    Note: Before you can use GlucoCheck, connect your Nightscout site here: https://gluco-check-nightly.web.app
-  privacyPolicyUrl: https://nielsmaerten.github.io/nightscout-assistant/#/en/terms
-  pronunciation: Gluco Tester
+    Before you can use Gluco Check you must link your Nightscout site on: https://diabase.app
+  privacyPolicyUrl: https://diabase.app/terms
+  pronunciation: {{actionName}}
   sampleInvocations:
-  - Talk to Gluco Tester
-  - Ask Gluco Tester when I changed my sensor
-  - Ask Gluco Tester how much insulin i have on board
-  - Ask Gluco Tester my COB
-  - Ask Gluco Tester about my canula
-  shortDescription: Ask Google about your blood sugar
+  - Talk to {{actionName}}
+  - Ask {{actionName}} how old my sensor is
+  - Ask {{actionName}} to read my glucose
+  - Ask {{actionName}} to read my carbs on board
+  shortDescription: Ask Google to read your blood sugar from Nightscout
   smallLogoImage: https://lh3.googleusercontent.com/iByZN58udeU-Y00jiCeY5I5piOdBaxzPRutPS1DAO8rhTd2rJJvc55t6aUzkM7b0833W9tAeK4mvlA
-  termsOfServiceUrl: https://nielsmaerten.github.io/nightscout-assistant/#/en/terms
+  termsOfServiceUrl: https://diabase.app/terms
   voice: female_1
-projectId: gluco-check-nightly
-testingInstructions: If you're reading this... then this action was submitted by mistake,
-  sorry!
+projectId: {{projectId}}
+testingInstructions: |-
+  Hi!
+
+  Context: "Nightscout" is a webapp used to collect data such as glucose levels, amount of carbs eaten, etc.
+  "Gluco Check" (this Action) allows accessing this info using the Assistant.
+
+  Testing instructions: Before you can test, you'll need to connect a Nightscout site.
+  1. Visit https://diabase.app and sign in. Any Google account will do.
+  Note: If you're using an 'aog.platform.***@gmail.com' account, we will automatically populate it with test data.
+  Using another account? Follow these steps:
+  2. Click the 'Link your Nightscout' button
+  3. In the field "Nightscout URL", enter: "{{nightscoutTestUrl}}"
+  4. In the field "Token", enter: "{{nightscoutTestToken}}"
+  5. Click Save
+
+  Done! You can now invoke the action.
