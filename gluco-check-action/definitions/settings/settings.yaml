@@ -8,7 +8,7 @@ localizedSettings:
   developerName: Niels Maerten
   displayName: {{actionName}}
   fullDescription: |-
-    Gluco Check brings Nightscout to your Google Assistant. Ask for your current blood sugar level, how many carbs you've got on board, when you last changed your sensor, and more.
+    Gluco Check brings Nightscout to your Google Assistant. Ask for your current blood sugar level, how many insulin you've got on board, when you last changed your sensor, and more.
 
     Before you can use Gluco Check you must link your Nightscout site on: https://diabase.app
   privacyPolicyUrl: https://diabase.app/terms

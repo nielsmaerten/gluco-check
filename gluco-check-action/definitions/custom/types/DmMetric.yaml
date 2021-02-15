@@ -6,7 +6,6 @@ synonym:
       - glucose
       - sugar
       - BG
-      - B.G.
     cannula age:
       synonyms:
       - cannula
@@ -20,7 +19,6 @@ synonym:
       - carbs
       - carbohydrates on board
       - COB
-      - C.O.B.
     everything:
       synonyms:
       - everything
@@ -34,7 +32,6 @@ synonym:
       - insulin on board
       - IOB
       - insulin
-      - I.O.B.
     pump battery:
       synonyms:
       - pump battery
