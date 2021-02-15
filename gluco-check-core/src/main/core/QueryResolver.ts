@@ -7,10 +7,12 @@ import {logger} from 'firebase-functions';
 import {performance} from 'perf_hooks';
 import {DmMetric} from '../../types/DmMetric';
 import {isValidUrl} from '../utils';
+import AogReviewHelper from './AogReviewHelper';
 const logTag = '[QueryResolver]';
 
 @injectable()
 export default class QueryResolver {
+  constructor(private aog: AogReviewHelper) {}
   /**
    * Resolves a DmQuery by fetching all requested metrics from Nightscout.
    * Returns a DmSnapshot with all of the fetched values
@@ -18,10 +20,14 @@ export default class QueryResolver {
   async buildSnapshot(query: DmQuery): Promise<DmSnapshot> {
     // Ensure user exists and has a Nightscout Site
     if (!query.user.exists || !query.user.nightscout) {
-      return this.errorResponse(query, ErrorType.Firebase_UserNotFound);
+      if (this.aog.isReviewer(query.user)) {
+        await this.aog.addSampleData(query.user);
+      } else {
+        return this.errorResponse(query, ErrorType.Firebase_UserNotFound);
+      }
     }
-    if (!isValidUrl(query.user.nightscout.url)) {
-      logger.warn(query.user.nightscout.url, 'is not a valid url');
+    if (!isValidUrl(query.user.nightscout!.url)) {
+      logger.warn(query.user.nightscout!.url, 'is not a valid url');
       return this.errorResponse(query, ErrorType.Nightscout_Unavailable);
     }
 
@@ -34,7 +40,7 @@ export default class QueryResolver {
 
     // Create a Nightscout Client we can use for querying
     logger.info(logTag, `Fetching ${query.metrics}`);
-    const nsClient = new NightscoutClient(query.user.nightscout);
+    const nsClient = new NightscoutClient(query.user.nightscout!);
 
     // Query Nightscout for each requested metric
     const start = performance.now();
