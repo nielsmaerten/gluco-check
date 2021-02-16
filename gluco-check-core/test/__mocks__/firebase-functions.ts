@@ -8,6 +8,10 @@ const configMock = jest.fn(() => {
     google_actions_sdk: {
       glucocheck_action_version: '1',
     },
+    nightscout_for_testers: {
+      url: 'https://cgm.example.com',
+      token: 'test-token',
+    },
   };
 });
 
