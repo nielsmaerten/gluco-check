@@ -12,7 +12,7 @@ export const conversation = functions.https.onRequest((request, response) => {
   // Search 'actionVersion' in the 'core' package
   const actionVersion = request.query['v']?.toString();
   request.headers['gluco-check-version'] = actionVersion;
-  functions.logger.info(`${logTag} Invoked using Action v1`);
+  functions.logger.info(`${logTag} Invoked using Action v${actionVersion}`);
 
   // Pass request and response objects to the Assistant App.
   conversationHandler.Instance(request, response);
