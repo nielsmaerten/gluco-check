@@ -17,6 +17,14 @@ const logTag = '[NightscoutClient]';
 export default class NightscoutClient {
   constructor(private nightscoutProps: NightscoutProps) {
     logger.debug(logTag, 'Initializing for:', nightscoutProps.url);
+    axios.interceptors.response.use(response => {
+      const {result, status} = response.data;
+      if (result !== undefined && status !== undefined) {
+        // Nightscout v14.2.x
+        response.data = result;
+      }
+      return response;
+    });
   }
   private cache: any = {};
 
