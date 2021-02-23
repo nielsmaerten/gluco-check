@@ -6,9 +6,9 @@ export default {
   ],
   bgs: [
     {
-      sgv: '133',
+      sgv: '120',
       trend: 4,
-      direction: 'Flat',
+      direction: 'SingleUp',
       datetime: 1610563200090,
       bgdelta: 2,
       battery: '74',

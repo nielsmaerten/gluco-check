@@ -78,9 +78,10 @@ describe('NightscoutClient', () => {
   it('sets the error prop when Nightscout is unavailable', done => {
     AxiosMock.respondWithTimeout();
     testClient.getMetric(DmMetric.BloodSugar).then(e => {
-      expect(e.errors).toHaveLength(1);
-      expect(e.errors![0].type).toEqual(ErrorType.Nightscout_Unavailable);
-      expect(e.errors![0].affectedMetric).toEqual(DmMetric.BloodSugar);
+      expect(e.errors).toContainEqual({
+        type: ErrorType.Nightscout_Unavailable,
+        affectedMetric: DmMetric.BloodSugar,
+      });
       done();
     });
   });
@@ -88,9 +89,10 @@ describe('NightscoutClient', () => {
   it('sets the error prop when Nightscout is unauthorized', done => {
     AxiosMock.respondWith401Unauthorized();
     testClient.getMetric(DmMetric.BloodSugar).then(e => {
-      expect(e.errors).toHaveLength(1);
-      expect(e.errors![0].type).toEqual(ErrorType.Nightscout_Unauthorized);
-      expect(e.errors![0].affectedMetric).toEqual(DmMetric.BloodSugar);
+      expect(e.errors).toContainEqual({
+        type: ErrorType.Nightscout_Unauthorized,
+        affectedMetric: DmMetric.BloodSugar,
+      });
       done();
     });
   });
