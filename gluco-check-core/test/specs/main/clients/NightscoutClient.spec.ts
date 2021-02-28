@@ -30,6 +30,7 @@ describe('NightscoutClient', () => {
     glucoseValueMgDl: 120,
     insulinOnBoard: 12.3,
     carbsOnBoard: 15,
+    pumpReservoir: 82.75,
   });
 
   let testClient: NightscoutClient;
@@ -93,5 +94,11 @@ describe('NightscoutClient', () => {
       expect(e.errors![0].affectedMetric).toEqual(DmMetric.BloodSugar);
       done();
     });
+  });
+
+  it('unwraps v3 API responses', async () => {
+    AxiosMock.respondWithNightscoutV14_2();
+    const result = await testClient.getMetric(DmMetric.PumpBattery);
+    expect(result.pumpReservoir).toEqual(expected.pumpReservoir);
   });
 });
