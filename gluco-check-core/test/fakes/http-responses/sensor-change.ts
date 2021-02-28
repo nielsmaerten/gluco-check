@@ -1,4 +1,3 @@
-// This is a Nightscout <=14.1.* type response:
 export default [
   {
     created_at: '2020-08-23T15:05:21Z',

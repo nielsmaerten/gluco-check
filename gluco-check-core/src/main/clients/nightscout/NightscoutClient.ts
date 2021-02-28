@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */ /* HTTP responses are of type 'any' */
-import axios, {AxiosRequestConfig} from 'axios';
+import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
 import NightscoutProps from '../../../types/NightscoutProps';
 import {URL} from 'url';
 import * as QueryConfigs from './queries';
@@ -17,16 +17,9 @@ const logTag = '[NightscoutClient]';
 export default class NightscoutClient {
   constructor(private nightscoutProps: NightscoutProps) {
     logger.debug(logTag, 'Initializing for:', nightscoutProps.url);
-    axios.interceptors.response.use(response => {
-      const {result, status} = response.data;
-      if (result !== undefined && status !== undefined) {
-        // Nightscout v14.2.x
-        response.data = result;
-      }
-      return response;
-    });
+    axios.interceptors.response.use(this.unwrap);
   }
-  private cache: any = {};
+  private cache: Record<string, Promise<any>> = {};
 
   async getMetric(metric: DmMetric): Promise<Partial<DmSnapshot>> {
     const queryConfig = this.findQueryConfigFor(metric);
@@ -154,6 +147,27 @@ export default class NightscoutClient {
     };
 
     return snapshotWithErrors;
+  }
+
+  private unwrap(response: AxiosResponse<any>) {
+    // Check if using v3 of Nightscout API
+    const isUsingApiV3 = response.config.url?.includes('/api/v3');
+    if (!isUsingApiV3) return response;
+
+    // Check if using Nightscout >= v14.2
+    const {result, status} = response.data;
+    const hasResultProp = result !== undefined;
+    const hasStatusProp = status !== undefined;
+    const usingNightscout_14_2_orHigher = hasResultProp && hasStatusProp;
+
+    // Nightscout < 14.2: Continue normally
+    if (!usingNightscout_14_2_orHigher) return response;
+
+    // Nightscout >= 14.2: Unwrap the response so it matches 14.1 format
+    return {
+      ...response,
+      data: result,
+    };
   }
 
   public getNightscoutProps() {
