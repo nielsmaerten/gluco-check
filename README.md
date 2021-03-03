@@ -8,7 +8,8 @@
 ## Getting started
 
 1. [Link your Nightscout site](https://glucocheck.app)
-2. Say: **"Hey Google, talk to Gluco Check"**  
+2. On your phone, visit: https://glucocheck.app/beta/invite
+3. Say: **"Hey Google, talk to Gluco Check"**  
 
 ## Things you can ask Gluco Check
 
