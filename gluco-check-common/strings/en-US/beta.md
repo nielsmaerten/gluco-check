@@ -21,9 +21,11 @@ In addition to your blood sugar, _Gluco Check_ can also read your:
 
 ## "There's a problem! 😕"
 
-If you run into trouble, head over to our [Frequently Asked Questions](https://glucocheck.app/faq) or [Discussion Forum](https://github.com/nielsmaerten/gluco-check/discussions).  
+If you run into trouble, head over to our 
+[Frequently Asked Questions](https://glucocheck.app/faq) 
+or [Discussion Forum](https://github.com/nielsmaerten/gluco-check/discussions).  
 We're happy to help!
 
-## "I love it! 😍"
-Thank you! Please consider starring this project on [GitHub](https://github.com/nielsmaerten/gluco-check) :)
-
+## "I like this! 👍"
+If you found Gluco Check useful, 
+please consider giving us a [Star on GitHub](https://github.com/nielsmaerten/gluco-check)
