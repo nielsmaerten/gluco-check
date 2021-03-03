@@ -1,0 +1,29 @@
+# Gluco Check :: Bèta
+
+Gluco Check, the successor to [Nightscout Status](https://git.io/nightscoutstatus), is now in Bèta
+
+## Getting Started 🚀
+
+1. Visit https://glucocheck.app and link your Nightscout Site
+2. On your phone, visit: https://glucocheck.app/beta/invite
+3. Say: "Hey Google, talk to Gluco Check"
+
+## What's new? 🎁
+
+In addition to your blood sugar, _Gluco Check_ can also read your:
+
+* Carbs on board, Insulin on board
+* Sensor age, Infusion set age
+* Insulin units left in the pump *
+* Pump's battery level *
+
+\* Not yet available for Loop users
+
+## "There's a problem! 😕"
+
+If you run into trouble, head over to our [Frequently Asked Questions](https://glucocheck.app/faq) or [Discussion Forum](https://github.com/nielsmaerten/gluco-check/discussions).  
+We're happy to help!
+
+## "I love it! 😍"
+Thank you! Please consider starring this project on [GitHub](https://github.com/nielsmaerten/gluco-check) :)
+
