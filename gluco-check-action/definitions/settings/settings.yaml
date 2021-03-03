@@ -4,16 +4,16 @@ accountLinking:
 category: HEALTH_AND_FITNESS
 defaultLocale: en
 localizedSettings:
-  developerEmail: glucocheck@diabase.app
+  developerEmail: niels@glucocheck.app
   developerName: Niels Maerten
   displayName: {{actionName}}
   fullDescription: |-
     Gluco Check brings Nightscout to your Google Assistant. Ask for your current blood sugar level, how many carbs you've got on board, when you last changed your sensor, and more.
 
-    Before you can use Gluco Check you must link your Nightscout site on: https://diabase.app
+    Before you can use Gluco Check you must link your Nightscout site on: https://glucocheck.app
 
     Note: The information provided by Gluco Check is not a substitute for advice from a medical professional.
-  privacyPolicyUrl: https://diabase.app/terms
+  privacyPolicyUrl: https://glucocheck.app/terms
   pronunciation: {{actionName}}
   sampleInvocations:
   - Talk to {{actionName}}
@@ -22,7 +22,7 @@ localizedSettings:
   - Ask {{actionName}} to read my carbs on board
   shortDescription: Ask Google to read your blood sugar from Nightscout
   smallLogoImage: https://lh3.googleusercontent.com/iByZN58udeU-Y00jiCeY5I5piOdBaxzPRutPS1DAO8rhTd2rJJvc55t6aUzkM7b0833W9tAeK4mvlA
-  termsOfServiceUrl: https://diabase.app/terms
+  termsOfServiceUrl: https://glucocheck.app/terms
   voice: female_1
 projectId: {{projectId}}
 testingInstructions: |-
@@ -32,7 +32,7 @@ testingInstructions: |-
   "Gluco Check" (this Action) allows accessing this info using the Assistant.
 
   Testing instructions: Before you can test, you'll need to connect a Nightscout site.
-  1. Visit https://diabase.app and sign in. Any Google account will do.
+  1. Visit https://glucocheck.app and sign in. Any Google account will do.
   Note: If you're using an 'aog.platform.***@gmail.com' account, we will automatically populate it with test data.
   Using another account? Follow these steps:
   2. Click the 'Link your Nightscout' button

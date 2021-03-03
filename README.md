@@ -7,8 +7,8 @@
 
 ## Getting started
 
-1. [Link your Nightscout site](https://nightly.diabase.app)
-2. [Ask for beta access](https://gitter.im/nielsmaerten)
+1. [Link your Nightscout site](https://glucocheck.app)
+2. On your phone, visit: https://glucocheck.app/beta/invite
 3. Say: **"Hey Google, talk to Gluco Check"**  
 
 ## Things you can ask Gluco Check
@@ -20,11 +20,11 @@
 * Infusion set age
 * Pump battery level
 * Pump reservoir level
-* [And more](https://nightly.diabase.app/faq)
+* [And more](https://glucocheck.app/faq)
 
 ## Protip: Using a shorter invocation
 
-Use [Routines](https://nightly.diabase.app/assets/routines-setup.mp4) to turn "Hey Google, ask Gluco Check my blood sugar" into  
+Use [Routines](https://glucocheck.app/assets/routines-setup.mp4) to turn "Hey Google, ask Gluco Check my blood sugar" into  
 "Hey Google, check my sugar".
 
 Note: Routines are not supported in all languages.
