@@ -37,6 +37,30 @@ const respondWithMockData = () => {
   return mock;
 };
 
+const respondWithNightscoutV14_2 = () => {
+  // Start with the 'normal' Nightscout v14.1 type responses
+  const mock = respondWithMockData();
+
+  // Override api/v3/version and api/v3/devicestatus responses with new format
+  mock.onGet(`${baseUrl}/api/v3/version`).reply(() => [
+    200,
+    {
+      status: 200,
+      result: stub_v3_version,
+    },
+  ]);
+
+  mock.onGet(`${baseUrl}/api/v3/devicestatus`).reply(() => [
+    200,
+    {
+      status: 200,
+      result: stub_deviceStatus,
+    },
+  ]);
+
+  return mock;
+};
+
 const respondWith401Unauthorized = () => {
   mock.reset();
   mock.onAny().reply(401, 'Unauthorized.');
@@ -52,6 +76,7 @@ const resetMock = () => {
 };
 
 export default {
+  respondWithNightscoutV14_2,
   respondWith401Unauthorized,
   respondWithTimeout,
   respondWithMockData,

@@ -1,7 +1,6 @@
 import * as functions from 'firebase-functions';
 import conversationHandler from './conversation';
 import validationHandler from './url-validation';
-import newUserHandler from './new-user';
 const logTag = '[Webhook.Main]';
 
 export const validateNightscoutUrl = functions.https.onRequest((req, res) => {
@@ -13,12 +12,8 @@ export const conversation = functions.https.onRequest((request, response) => {
   // Search 'actionVersion' in the 'core' package
   const actionVersion = request.query['v']?.toString();
   request.headers['gluco-check-version'] = actionVersion;
-  functions.logger.info(`${logTag} Invoked using Action v1`);
+  functions.logger.info(`${logTag} Invoked using Action v${actionVersion}`);
 
   // Pass request and response objects to the Assistant App.
   conversationHandler.Instance(request, response);
-});
-
-export const populateTestAccounts = functions.auth.user().onCreate(user => {
-  return newUserHandler(user);
 });
