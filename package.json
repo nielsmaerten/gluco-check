@@ -7,8 +7,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "yarn workspaces run lint",
-      "post-merge": "yarn workspace gluco-check-common build"
+      "pre-push": "yarn workspaces foreach run lint",
+      "post-merge": "yarn workspace gluco-check-common run build"
     }
   },
   "scripts": {
