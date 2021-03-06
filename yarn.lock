@@ -3840,7 +3840,7 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"glob@npm:^7.0.5, glob@npm:^7.1.1, glob@npm:^7.1.2, glob@npm:^7.1.3, glob@npm:^7.1.4":
+"glob@npm:^7.0.5, glob@npm:^7.1.1, glob@npm:^7.1.2, glob@npm:^7.1.3, glob@npm:^7.1.4, glob@npm:^7.1.6":
   version: 7.1.6
   resolution: "glob@npm:7.1.6"
   dependencies:
@@ -3905,6 +3905,7 @@ fsevents@^2.1.2:
   version: 0.0.0-use.local
   resolution: "gluco-check-common@workspace:gluco-check-common"
   dependencies:
+    glob: ^7.1.6
     yamljs: ^0.3.0
   languageName: unknown
   linkType: soft
