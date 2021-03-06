@@ -3,10 +3,6 @@
   "workspaces": {
     "packages": [
       "gluco-check-*"
-    ],
-    "nohoist": [
-      "**/gts",
-      "**/gts/**"
     ]
   },
   "husky": {
