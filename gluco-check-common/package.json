@@ -16,7 +16,7 @@
     "postinstall": "yarn build",
     "lint": "echo N/A"
   },
-  "devDependencies": {
+  "dependencies": {
     "doctoc": "2.0.0",
     "glob": "^7.1.6",
     "yamljs": "^0.3.0"

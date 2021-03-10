@@ -27,8 +27,8 @@
     "@assistant/conversation": "^3.2.0",
     "firebase-admin": "^9.4.2",
     "firebase-functions": "^3.13.2",
-    "gluco-check-common": "*",
-    "gluco-check-core": "*"
+    "gluco-check-common": "workspace:gluco-check-common",
+    "gluco-check-core": "workspace:gluco-check-core"
   },
   "engines": {
     "node": ">=10"
