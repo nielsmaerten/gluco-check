@@ -5,7 +5,8 @@ Gluco Check, the successor to [Nightscout Status](https://git.io/nightscoutstatu
 ## Getting Started 🚀
 
 1. Visit https://glucocheck.app and link your Nightscout Site
-2. On your phone, visit: https://glucocheck.app/beta/invite
+2. During bèta, we have to manually activate your account.  
+   You'll get an email as soon as your account is ready. (Usually within 24 hours)
 3. Say: "Hey Google, talk to Gluco Check"
 
 ## What's new? 🎁
