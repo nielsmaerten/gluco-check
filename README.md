@@ -1,4 +1,4 @@
-# Welcome to Gluco Check
+# Welcome to Gluco Check (open bèta)
 
 #### formerly [Nightscout Status](https://github.com/nielsmaerten/nightscout-assistant) 
 [![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/nielsmaerten/gluco-check/main?style=flat-square)](https://www.codefactor.io/repository/github/nielsmaerten/gluco-check/)
@@ -8,8 +8,9 @@
 ## Getting started
 
 1. [Link your Nightscout site](https://glucocheck.app)
-2. On your phone, visit: https://glucocheck.app/beta/invite
-3. Say: **"Hey Google, talk to Gluco Check"**  
+1. During bèta, we have to manually activate your account.  
+   You'll get an email as soon as your account is ready. (Usually within 24 hours)
+1. Say: **"Hey Google, talk to Gluco Check"**  
 
 ## Things you can ask Gluco Check
 
