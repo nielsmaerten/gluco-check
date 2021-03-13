@@ -13,8 +13,7 @@
     "test": "yarn build && echo Package gluco-check-common has no tests.",
     "build": "yarn node compile-yaml.js && yarn toc",
     "toc": "doctoc . --update-only",
-    "postinstall": "yarn build",
-    "lint": "echo N/A"
+    "postinstall": "yarn build"
   },
   "dependencies": {
     "doctoc": "2.0.0",
