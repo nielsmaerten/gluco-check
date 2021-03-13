@@ -7,14 +7,15 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "yarn workspaces foreach run lint",
+      "pre-push": "yarn lint",
       "post-merge": "yarn workspace gluco-check-common run build"
     }
   },
   "scripts": {
     "purge": "yarn workspaces foreach run purge && rimraf node_modules/ && echo Run yarn to reinstall dependencies.",
     "build": "yarn workspaces foreach run build",
-    "test": "yarn build && yarn workspaces foreach run test"
+    "test": "yarn build && yarn workspaces foreach run test",
+    "lint": "yarn workspaces foreach run lint"
   },
   "devDependencies": {
     "husky": "^4.3.6",
