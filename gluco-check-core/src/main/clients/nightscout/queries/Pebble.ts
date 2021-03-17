@@ -1,17 +1,23 @@
-//import {DmMetric} from '../../../../types/DmMetric';
+import {DmMetric} from '../../../../types/DmMetric';
 import {GlucoseTrend} from '../../../../types/GlucoseTrend';
 import QueryConfig from './QueryConfig.base';
 
-export const BloodSugar: QueryConfig = {
-  key: 'BG',
-  metrics: [],
-  path: '/api/v1/entries/current',
+export const Pebble: QueryConfig = {
+  key: 'BG+COB+IOB',
+  metrics: [DmMetric.BloodSugar, DmMetric.CarbsOnBoard, DmMetric.InsulinOnBoard],
+  path: '/pebble',
   params: {},
   callback: (data: any) => { // eslint-disable-line
+    const bgs = data.bgs[0];
+    const {sgv, mbg, cal, etc} = bgs;
+    const {iob, cob} = bgs;
+    const {datetime} = bgs;
     return {
-      glucoseTrend: parseNightscoutTrend(data.direction),
-      glucoseValueMgDl: data.sgv || data.mbg || data.cal || data.etc,
-      timestamp: data.date,
+      glucoseTrend: parseNightscoutTrend(bgs.direction),
+      glucoseValueMgDl: parseFloat(sgv || mbg || cal || etc),
+      carbsOnBoard: cob,
+      insulinOnBoard: iob,
+      timestamp: new Date(datetime).getTime(),
     };
   },
 };
