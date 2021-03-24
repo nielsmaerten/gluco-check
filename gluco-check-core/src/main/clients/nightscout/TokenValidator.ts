@@ -1,11 +1,11 @@
 import axios, {AxiosRequestConfig} from 'axios';
-import {createHash} from 'crypto';
 import {logger} from 'firebase-functions';
 import {URL} from 'url';
 import {GlucoseUnit} from '../../../types/GlucoseUnit';
 import NightscoutValidationResult from '../../../types/NightscoutValidationResult';
 import {nightscoutMinVersion} from '../../constants';
 import {flattenDeep, intersection} from '../../utils';
+import {createNewToken} from './TokenCreator';
 const logTag = '[TokenValidator]';
 
 type StatusResponse = {
@@ -18,28 +18,34 @@ type StatusResponse = {
   version: string;
 };
 
-enum TokenType {
-  token = 'token',
-  secret = 'apiSecret',
+export async function validateToken(token: string | undefined, url: string) {
+  try {
+    logger.info(logTag, `Trying to access ${url} using provided token`);
+    return runTokenValidation(token, url);
+  } catch {
+    logger.info(logTag, 'Validation failed: unknown error');
+    return {isValid: false, parsed: token} as Partial<NightscoutValidationResult>;
+  }
 }
 
-export async function validateToken(token = '', url: string) {
-  // These values will be updated as we run validations
-  let candidate = '';
+async function runTokenValidation(token = '', url: string) {
+  // Trim whitespace from token
   let statusResponse: StatusResponse;
+  let candidate = token.trim();
 
-  // Trim whitespace
-  candidate = token.trim();
+  // If token was entered as a URL, strip the url part
+  candidate = stripUrl(candidate, url);
 
-  // Extract url-type token
-  candidate = tryParseUrl(candidate, url);
+  // Check token's authorization status
+  statusResponse = await tryFetchStatus(candidate, url);
 
-  // Validate as a normal token
-  statusResponse = await tryFetchStatus(candidate, url, TokenType.token);
-
-  // If validation fails, validate as an API secret
-  if (statusResponse.authorized === null)
-    statusResponse = await tryFetchStatus(candidate, url, TokenType.secret);
+  // If validation fails, this 'token' may still be an api secret
+  if (statusResponse.authorized === null) {
+    const newToken = await createNewToken(candidate, url);
+    if (newToken) {
+      statusResponse = await tryFetchStatus(newToken, url);
+    }
+  }
 
   // Parse response and return result
   return parseResponse(statusResponse, candidate);
@@ -50,9 +56,9 @@ export async function validateToken(token = '', url: string) {
  * This functions checks this and extracts the token if that's the case.
  * Otherwise, the normal token is returned
  */
-function tryParseUrl(token: string, url: string) {
+function stripUrl(token: string, url: string) {
   if (token.startsWith(url)) {
-    logger.info(logTag, 'Token formatted as url. Extracting token value');
+    logger.info(logTag, 'Provided value is a url. Extracting token');
     return new URL(token).searchParams.get('token') || token;
   } else return token;
 }
@@ -60,31 +66,26 @@ function tryParseUrl(token: string, url: string) {
 /**
  * Attempts to fetch /api/v1/status with authorization
  */
-async function tryFetchStatus(candidate: string, url: string, tokenType: TokenType) {
-  // Build basic request
+async function tryFetchStatus(candidate: string, url: string) {
+  // Build request
   const api = `${url}/api/v1/status`;
-  const req: AxiosRequestConfig = {url: api};
-
-  // Configure Auth depending on whether to use apiSecret or Token
-  if (tokenType === TokenType.token) req.params = {token: candidate};
-  if (tokenType === TokenType.secret) req.headers = {'api-key': sha1(candidate)};
+  const req: AxiosRequestConfig = {
+    url: api,
+    params: {
+      token: candidate,
+    },
+  };
 
   // Extract response
-  const response = await axios.request(req);
-  return response.data as StatusResponse;
+  const response = await axios.request<StatusResponse>(req);
+  return response.data;
 }
 
-function sha1(input: string) {
-  const hash = createHash('sha1');
-  hash.update(input);
-  return hash.digest('hex');
-}
-
-function parseResponse(statusResponse: StatusResponse, candidate: string) {
+function parseResponse(statusResponse: StatusResponse, token: string) {
   return {
     token: {
       isValid: hasReadPermission(statusResponse),
-      parsed: candidate,
+      parsed: token,
     },
     nightscout: {
       version: statusResponse.version,
@@ -96,11 +97,15 @@ function parseResponse(statusResponse: StatusResponse, candidate: string) {
 
 function hasReadPermission(status: StatusResponse): boolean {
   const {authorized} = status;
-  if (authorized === null) return false;
+  if (authorized === null) {
+    logger.info(logTag, 'Token validation failed.');
+    return false;
+  }
 
   const permissionGroups = authorized.permissionGroups || [];
   const permissions: string[] = flattenDeep(permissionGroups);
   const acceptedPermissions = ['api:*:read', '*:*:read', '*', '*:*', '*:*:*'];
   const hasReadPermission = intersection(acceptedPermissions, permissions).length > 0;
+  logger.info(logTag, 'Token accepted. Has required permissions:', hasReadPermission);
   return hasReadPermission;
 }

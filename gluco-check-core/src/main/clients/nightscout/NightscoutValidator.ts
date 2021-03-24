@@ -5,9 +5,8 @@ import NightscoutValidationResult from '../../../types/NightscoutValidationResul
 import {DmMetric} from '../../../types/DmMetric';
 import {logger} from 'firebase-functions';
 import NightscoutProps from '../../../types/NightscoutProps';
-import {nightscoutMinVersion} from '../../constants';
-import {flattenDeep, intersection} from '../../utils';
 import DmSnapshot from '../../../types/DmSnapshot';
+import {validateToken} from './TokenValidator';
 const logTag = '[NightscoutValidator]';
 
 export default class NightscoutValidator {
@@ -21,7 +20,7 @@ export default class NightscoutValidator {
 
     if (result.url.pointsToNightscout) {
       // VALIDATION 2: Does TOKEN have the required permissions?
-      const partialResult2 = await this.validateToken(input.token, result.url.parsed);
+      const partialResult2 = await validateToken(input.token, result.url.parsed);
       Object.assign(result, partialResult2);
 
       // VALIDATION 3: Which METRICS are available?
@@ -38,53 +37,6 @@ export default class NightscoutValidator {
     const client = new NightscoutClient(new NightscoutProps(url, token));
     return {
       discoveredMetrics: await this.getReadableMetrics(client),
-    };
-  }
-
-  private static async validateToken(_token = '', url: string) {
-    let token = _token.trim();
-    if (token.startsWith(url)) {
-      // Token was copied from Nightscout as a URL
-      token = new URL(token).searchParams.get('token') || token;
-    }
-
-    logger.info(logTag, 'Attempting to access v1 API using token @', url);
-    try {
-      // Fetch STATUS object
-      const api = `${url}/api/v1/status`;
-      const req = {
-        url: api,
-        params: {
-          token: token,
-        },
-      };
-      const response = await axios.request(req);
-
-      // Extract permissions from STATUS object
-      const {authorized, settings, version} = response.data;
-
-      const permissionGroups = authorized ? authorized.permissionGroups : [];
-      const permissions: string[] = flattenDeep(permissionGroups);
-      const acceptedPermissions = ['api:*:read', '*:*:read', '*', '*:*', '*:*:*'];
-      const hasReadPermission = intersection(acceptedPermissions, permissions).length > 0;
-
-      // const permissionGroups: string[][] = authorized ? authorized.permissionGroups : [];
-      // const hasReadPermission = permissionGroups.some(g => g.includes('api:*:read'));
-
-      return {
-        token: {isValid: hasReadPermission, parsed: token},
-        nightscout: {
-          minSupportedVersion: nightscoutMinVersion,
-          glucoseUnit: settings.units,
-          version: version,
-        },
-      };
-    } catch {
-      logger.warn(logTag, 'Unable to access API using token @', url);
-    }
-
-    return {
-      token: {isValid: false, parsed: token},
     };
   }
 
