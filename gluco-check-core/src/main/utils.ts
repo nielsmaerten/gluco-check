@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { createHash } from "crypto";
 import { URL } from "url";
 
 export const flattenDeep = function (arr: any): any[] {
@@ -18,4 +19,10 @@ export const isValidUrl = (url: string) => {
   } catch {
     return false;
   }
+}
+
+export const sha1 = (input: string) => {
+  const hash = createHash('sha1');
+  hash.update(input);
+  return hash.digest('hex');
 }

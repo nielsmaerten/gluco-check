@@ -1,7 +1,7 @@
-import {createHash} from 'crypto';
 import axios, {AxiosRequestConfig} from 'axios';
 import {gc_url} from '../../constants';
 import {URL} from 'url';
+import {sha1} from '../../utils';
 
 const NEW_TOKEN = {
   permissions: '*:*:read',
@@ -119,10 +119,4 @@ async function createNightscoutSubject(hash: string, url: string) {
   const subjects = await axios.request<Subject[]>(reqConfig);
   const token = subjects.data.find(s => s._id === subjectId)?.accessToken;
   return token;
-}
-
-function sha1(input: string) {
-  const hash = createHash('sha1');
-  hash.update(input);
-  return hash.digest('hex');
 }
