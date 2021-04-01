@@ -5,7 +5,7 @@ import {GlucoseUnit} from '../../../types/GlucoseUnit';
 import NightscoutValidationResult from '../../../types/NightscoutValidationResult';
 import {nightscoutMinVersion} from '../../constants';
 import {flattenDeep, intersection} from '../../utils';
-import {createNewToken} from './TokenCreator';
+import TokenCreator from './TokenCreator';
 const logTag = '[TokenValidator]';
 
 type StatusResponse = {
@@ -18,84 +18,103 @@ type StatusResponse = {
   version: string;
 };
 
-export async function validateToken(token: string | undefined, url: string) {
-  try {
-    logger.info(logTag, `Trying to access ${url} using provided token`);
-    return runTokenValidation(token, url);
-  } catch {
-    logger.info(logTag, 'Validation failed: unknown error');
-    return {isValid: false, parsed: token} as Partial<NightscoutValidationResult>;
+export default class TokenValidator {
+  constructor(private token: string = '', private url: string) {
+    // Trim whitespace from token
+    this.token = this.token.trim();
+
+    // In case token was entered as url, strip url part
+    this.token = this.stripUrlToken();
   }
-}
 
-async function runTokenValidation(token = '', url: string) {
-  // Trim whitespace from token
-  let statusResponse: StatusResponse;
-  let candidate = token.trim();
-
-  // If token was entered as a URL, strip the url part
-  candidate = stripUrl(candidate, url);
-
-  // Check token's authorization status
-  statusResponse = await tryFetchStatus(candidate, url);
-
-  // If validation fails, this 'token' may still be an api secret
-  if (statusResponse.authorized === null) {
-    const newToken = await createNewToken(candidate, url);
-    if (newToken) {
-      statusResponse = await tryFetchStatus(newToken, url);
+  /**
+   * Checks whether the token has the required permissions.
+   * If provided token is actually an api secret,
+   * it will be converted to a token
+   */
+  public async validate() {
+    try {
+      logger.info(logTag, `Trying to access ${this.url} using provided token`);
+      return this.validateToken();
+    } catch {
+      logger.info(logTag, 'Validation failed: unknown error');
+      return {isValid: false, parsed: this.token} as Partial<NightscoutValidationResult>;
     }
   }
 
-  // Parse response and return result
-  return parseResponse(statusResponse, candidate);
+  /**
+   * Internal validation function for tokens/api secrets
+   */
+  private async validateToken() {
+    let statusResponse: StatusResponse;
+
+    // Get the status of the current token
+    statusResponse = await this.fetchStatusObject();
+    const noValidToken = statusResponse.authorized === null;
+
+    // If not a valid token, try using it as an api secret to create a new token
+    if (noValidToken) {
+      const tokenCreator = new TokenCreator(this.token, this.url);
+      const newToken = await tokenCreator.create();
+      if (newToken) {
+        this.token = newToken;
+        statusResponse = await this.fetchStatusObject();
+      }
+    }
+
+    // Parse response and return result
+    return this.buildValidationResult(statusResponse);
+  }
+
+  /**
+   * Fetches /api/v1/status using the current token
+   */
+  private async fetchStatusObject() {
+    // Build request
+    const api = `${this.url}/api/v1/status`;
+    const req: AxiosRequestConfig = {
+      url: api,
+      params: {
+        token: this.token,
+      },
+    };
+
+    // Extract response
+    const response = await axios.request<StatusResponse>(req);
+    return response.data;
+  }
+
+  private buildValidationResult(statusResponse: StatusResponse) {
+    return {
+      token: {
+        isValid: checkPermissions(statusResponse),
+        parsed: this.token,
+      },
+      nightscout: {
+        version: statusResponse.version,
+        glucoseUnit: statusResponse.settings?.units,
+        minSupportedVersion: nightscoutMinVersion,
+      },
+    } as Partial<NightscoutValidationResult>;
+  }
+
+  /**
+   * Extracts the token from a url.
+   * This is for when a token gets entered in full-url form, like this:
+   * https://cgm.example.com?token=glucocheck-abc123
+   */
+  private stripUrlToken() {
+    if (this.token.startsWith(this.url)) {
+      logger.info(logTag, 'Provided value is a url. Extracting token');
+      return new URL(this.token).searchParams.get('token') || this.token;
+    } else return this.token;
+  }
 }
 
 /**
- * Tokens may be copied from Nightscout as a URL
- * This functions checks this and extracts the token if that's the case.
- * Otherwise, the normal token is returned
+ * Validates if a StatusObject mentions the correct permissions
  */
-function stripUrl(token: string, url: string) {
-  if (token.startsWith(url)) {
-    logger.info(logTag, 'Provided value is a url. Extracting token');
-    return new URL(token).searchParams.get('token') || token;
-  } else return token;
-}
-
-/**
- * Attempts to fetch /api/v1/status with authorization
- */
-async function tryFetchStatus(candidate: string, url: string) {
-  // Build request
-  const api = `${url}/api/v1/status`;
-  const req: AxiosRequestConfig = {
-    url: api,
-    params: {
-      token: candidate,
-    },
-  };
-
-  // Extract response
-  const response = await axios.request<StatusResponse>(req);
-  return response.data;
-}
-
-function parseResponse(statusResponse: StatusResponse, token: string) {
-  return {
-    token: {
-      isValid: hasReadPermission(statusResponse),
-      parsed: token,
-    },
-    nightscout: {
-      version: statusResponse.version,
-      glucoseUnit: statusResponse.settings?.units,
-      minSupportedVersion: nightscoutMinVersion,
-    },
-  } as Partial<NightscoutValidationResult>;
-}
-
-function hasReadPermission(status: StatusResponse): boolean {
+function checkPermissions(status: StatusResponse): boolean {
   const {authorized} = status;
   if (authorized === null) {
     logger.info(logTag, 'Token validation failed.');

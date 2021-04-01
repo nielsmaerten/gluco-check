@@ -6,34 +6,35 @@ import {DmMetric} from '../../../types/DmMetric';
 import {logger} from 'firebase-functions';
 import NightscoutProps from '../../../types/NightscoutProps';
 import DmSnapshot from '../../../types/DmSnapshot';
-import {validateToken} from './TokenValidator';
+import TokenValidator from './TokenValidator';
+import {isSemanticVersion} from '../../utils';
 const logTag = '[NightscoutValidator]';
 
 export default class NightscoutValidator {
   public static async validate(client: NightscoutClient) {
     const result = new NightscoutValidationResult();
-    const input = client.getNightscoutProps();
+    const {token, url} = client.getNightscoutProps();
 
     // VALIDATION 1: Is URL pointing to a Nightscout instance?
-    const partialResult1 = await this.validateUrl(input.url);
-    Object.assign(result, partialResult1);
+    const urlValidationResult = await this.validateUrl(url);
+    const parsedUrl = urlValidationResult.url.parsed;
+    Object.assign(result, urlValidationResult);
+    if (!result.url.pointsToNightscout) return result;
 
-    if (result.url.pointsToNightscout) {
-      // VALIDATION 2: Does TOKEN have the required permissions?
-      const partialResult2 = await validateToken(input.token, result.url.parsed);
-      Object.assign(result, partialResult2);
+    // VALIDATION 2: If Nightscout detected: verify token's permissions
+    const tokenValidator = new TokenValidator(token, parsedUrl);
+    const tokenValidationResult = await tokenValidator.validate();
+    const parsedToken = tokenValidationResult.token?.parsed;
+    Object.assign(result, tokenValidationResult);
 
-      // VALIDATION 3: Which METRICS are available?
-      const url = result.url.parsed;
-      const token = result.token.parsed;
-      const partialResult3 = await this.validateAPIs(url, token);
-      Object.assign(result, partialResult3);
-    }
+    // VALIDATION 3: Which METRICS are available?
+    const metricsValidationResult = await this.validateMetrics(parsedUrl, parsedToken);
+    Object.assign(result, metricsValidationResult);
 
     return result;
   }
 
-  private static async validateAPIs(url: string, token: string) {
+  private static async validateMetrics(url: string, token?: string) {
     const client = new NightscoutClient(new NightscoutProps(url, token));
     return {
       discoveredMetrics: await this.getReadableMetrics(client),
@@ -52,12 +53,6 @@ export default class NightscoutValidator {
     };
   }
 
-  private static isSemanticVersion(input: string) {
-    // Source: https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
-    const regex = /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/gm;
-    return regex.test(input);
-  }
-
   private static async pointsToNightscout(url: string): Promise<boolean> {
     // Attempt 1/3: v3 API
     // This test does not require a token: /version is public
@@ -66,7 +61,7 @@ export default class NightscoutValidator {
     try {
       const response = await axios.get(`${url}/api/v3/version`);
       const data = response.data;
-      const hasVersion = data.version && this.isSemanticVersion(data.version);
+      const hasVersion = data.version && isSemanticVersion(data.version);
       if (hasVersion) return true;
     } catch (e) {
       logger.info(logTag, url, 'did not support v3 Nightscout API', e);
@@ -78,7 +73,7 @@ export default class NightscoutValidator {
     try {
       const response = await axios.get(`${url}/api/v1/status`);
       const data = response.data;
-      const hasVersion = data.version && this.isSemanticVersion(data.version);
+      const hasVersion = data.version && isSemanticVersion(data.version);
       if (hasVersion) return true;
     } catch (e) {
       logger.info(logTag, url, 'did not support v1 Nightscout API', e);

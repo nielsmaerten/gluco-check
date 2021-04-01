@@ -28,95 +28,107 @@ type Subject = {
   accessToken?: string;
 };
 
-/**
- * Uses an API secret to create a new token (and role) in Nightscout.
- * Returns null on failure
- */
-export async function createNewToken(apiSecret: string, url: string) {
-  // Nightscout expects the apiSecret to be SHA1-hashed
-  const hash = sha1(apiSecret);
+export default class TokenCreator {
+  private secretHash: string;
+  private endpointRoles: string;
+  private endpointSubjects: string;
 
-  try {
-    // Try creating a role (or reuse existing)
-    const success = await createNightscoutRole(hash, url);
-    if (!success) return undefined;
-
-    // Try adding a subject to the role (or reuse existing)
-    const token = await createNightscoutSubject(hash, url);
-    return token;
-
-    // In case of error, return undefined
-  } catch {
-    return undefined;
+  constructor(apiSecret: string, private url: string) {
+    this.secretHash = sha1(apiSecret);
+    this.endpointRoles = new URL(ENDPOINT.roles, url) + '';
+    this.endpointSubjects = new URL(ENDPOINT.subjects, url) + '';
   }
-}
 
-/**
- * Checks Nightscout for a suitable role, and creates it if none is found.
- */
-async function createNightscoutRole(hash: string, url: string) {
-  // Specs for the (new) role
-  const role: Role = {
-    notes: NEW_TOKEN.notes,
-    name: NEW_TOKEN.name,
-    permissions: [NEW_TOKEN.permissions],
-  };
+  /**
+   * Attempts to create role/subject set for GlucoCheck using
+   * the provided apiSecret
+   */
+  public async create() {
+    try {
+      // Try creating a role (or reuse existing)
+      const success = await this.createNightscoutRole();
+      if (!success) return undefined;
 
-  // Basic Axios request to /authorization/roles
-  const request: AxiosRequestConfig = {
-    data: role,
-    headers: {'api-secret': hash},
-    url: String(new URL(ENDPOINT.roles, url)),
-  };
+      // Try adding a subject to the role (or reuse existing)
+      const token = await this.createNightscoutSubject();
+      return token;
 
-  // Find existing roles
-  const currentRoles = await axios.request<Role[]>(request);
+      // In case of error, return undefined
+    } catch {
+      return undefined;
+    }
+  }
 
-  // Does a role with our specs exist?
-  const exists = currentRoles.data.find(_role => {
-    return _role.name === role.name && _role.permissions.includes(NEW_TOKEN.permissions);
-  });
-  if (exists) return true;
+  /**
+   * Verifies GlucoCheck exists in Nightscout.
+   * Will attempt to create if it doesn't exist.
+   */
+  private async createNightscoutRole() {
+    // Specs for the (new) role
+    const role: Role = {
+      notes: NEW_TOKEN.notes,
+      name: NEW_TOKEN.name,
+      permissions: [NEW_TOKEN.permissions],
+    };
 
-  // Add our role
-  const res = await axios.request({...request, method: 'POST'});
-  return res.status === 200;
-}
+    // Build Axios request to /authorization/roles
+    const request: AxiosRequestConfig = {
+      data: role,
+      headers: {'api-secret': this.secretHash},
+      url: this.endpointRoles,
+    };
 
-/**
- * Checks Nightscout for our Subject (=token).
- * Creates a new subject if not found.
- */
-async function createNightscoutSubject(hash: string, url: string) {
-  // Specs for our Subject
-  const subject: Subject = {
-    notes: NEW_TOKEN.notes,
-    name: NEW_TOKEN.name,
-    roles: [NEW_TOKEN.name],
-  };
+    // Find existing roles
+    const currentRoles = await axios.request<Role[]>(request);
 
-  // Basic Axios request to /authorization/subjects
-  const reqConfig: AxiosRequestConfig = {
-    data: subject,
-    headers: {'api-secret': hash},
-    url: String(new URL(ENDPOINT.subjects, url)),
-  };
+    // Does a role with our specs exist?
+    const exists = currentRoles.data.find(_role => {
+      return (
+        _role.name === role.name && _role.permissions.includes(NEW_TOKEN.permissions)
+      );
+    });
+    if (exists) return true;
 
-  // Find existing subjects
-  const currentSubjects = await axios.request<Subject[]>(reqConfig);
+    // If not, try adding the role
+    const res = await axios.request({...request, method: 'POST'});
+    return res.status === 200;
+  }
 
-  // Does a subject with our specs exist?
-  const exists = currentSubjects.data.find(_subject => {
-    return _subject.name === subject.name && _subject.roles.includes(NEW_TOKEN.name);
-  });
-  if (exists) return exists.accessToken!;
+  /**
+   * Verifies GlucoCheck subject exists in Nightscout.
+   * Will attempt to create if it doesn't exist
+   */
+  private async createNightscoutSubject() {
+    // Specs for our Subject
+    const subject: Subject = {
+      notes: NEW_TOKEN.notes,
+      name: NEW_TOKEN.name,
+      roles: [NEW_TOKEN.name],
+    };
 
-  // Create our new subject
-  const created = await axios.request<Subject[]>({...reqConfig, method: 'POST'});
-  const subjectId = created.data[0]?._id;
+    // Basic Axios request to /authorization/subjects
+    const reqConfig: AxiosRequestConfig = {
+      data: subject,
+      headers: {'api-secret': this.secretHash},
+      url: this.endpointSubjects,
+    };
 
-  // Get the accessToken of the newly created subject
-  const subjects = await axios.request<Subject[]>(reqConfig);
-  const token = subjects.data.find(s => s._id === subjectId)?.accessToken;
-  return token;
+    // Find existing subjects
+    const currentSubjects = await axios.request<Subject[]>(reqConfig);
+
+    // Does a subject with our specs exist?
+    const exists = currentSubjects.data.find(_subject => {
+      return _subject.name === subject.name && _subject.roles.includes(NEW_TOKEN.name);
+    });
+    if (exists) return exists.accessToken!;
+
+    // Create our new subject
+    const created = await axios.request<Subject[]>({...reqConfig, method: 'POST'});
+    const subjectId = created.data[0]?._id;
+
+    // Get the accessToken of the newly created subject
+    const subjects = await axios.request<Subject[]>(reqConfig);
+    const token = subjects.data.find(s => s._id === subjectId)?.accessToken;
+    return token;
+  }
 }
