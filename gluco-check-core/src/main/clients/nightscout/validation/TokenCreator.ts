@@ -1,7 +1,7 @@
 import axios, {AxiosRequestConfig} from 'axios';
-import {gc_url} from '../../constants';
+import {gc_url} from '../../../constants';
 import {URL} from 'url';
-import {sha1} from '../../utils';
+import {sha1} from '../../../utils';
 
 const NEW_TOKEN = {
   permissions: '*:*:read',
@@ -33,7 +33,7 @@ export default class TokenCreator {
   private endpointRoles: string;
   private endpointSubjects: string;
 
-  constructor(apiSecret: string, private url: string) {
+  constructor(apiSecret: string, url: string) {
     this.secretHash = sha1(apiSecret);
     this.endpointRoles = new URL(ENDPOINT.roles, url) + '';
     this.endpointSubjects = new URL(ENDPOINT.subjects, url) + '';

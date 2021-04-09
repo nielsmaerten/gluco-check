@@ -1,10 +1,10 @@
 import axios, {AxiosRequestConfig} from 'axios';
 import {logger} from 'firebase-functions';
 import {URL} from 'url';
-import {GlucoseUnit} from '../../../types/GlucoseUnit';
-import NightscoutValidationResult from '../../../types/NightscoutValidationResult';
-import {nightscoutMinVersion} from '../../constants';
-import {flattenDeep, intersection} from '../../utils';
+import {GlucoseUnit} from '../../../../types/GlucoseUnit';
+import NightscoutValidationResult from '../../../../types/NightscoutValidationResult';
+import {nightscoutMinVersion} from '../../../constants';
+import {flattenDeep, intersection} from '../../../utils';
 import TokenCreator from './TokenCreator';
 const logTag = '[TokenValidator]';
 

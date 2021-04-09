@@ -1,13 +1,13 @@
 import {URL} from 'url';
 import axios from 'axios';
-import NightscoutClient from './NightscoutClient';
-import NightscoutValidationResult from '../../../types/NightscoutValidationResult';
-import {DmMetric} from '../../../types/DmMetric';
+import NightscoutClient from '../NightscoutClient';
+import NightscoutValidationResult from '../../../../types/NightscoutValidationResult';
+import {DmMetric} from '../../../../types/DmMetric';
 import {logger} from 'firebase-functions';
-import NightscoutProps from '../../../types/NightscoutProps';
-import DmSnapshot from '../../../types/DmSnapshot';
+import NightscoutProps from '../../../../types/NightscoutProps';
+import DmSnapshot from '../../../../types/DmSnapshot';
 import TokenValidator from './TokenValidator';
-import {isSemanticVersion} from '../../utils';
+import {isSemanticVersion} from '../../../utils';
 const logTag = '[NightscoutValidator]';
 
 export default class NightscoutValidator {
