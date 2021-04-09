@@ -73,13 +73,12 @@ export default class TokenCreator {
 
     // Build Axios request to /authorization/roles
     const request: AxiosRequestConfig = {
-      data: role,
       headers: {'api-secret': this.secretHash},
       url: this.endpointRoles,
     };
 
     // Find existing roles
-    const currentRoles = await axios.request<Role[]>(request);
+    const currentRoles = await axios.request<Role[]>({...request, data: role});
 
     // Does a role with our specs exist?
     const exists = currentRoles.data.find(_role => {
@@ -90,7 +89,7 @@ export default class TokenCreator {
     if (exists) return true;
 
     // If not, try adding the role
-    const res = await axios.request({...request, method: 'POST'});
+    const res = await axios.request({...request, method: 'POST', data: role});
     return res.status === 200;
   }
 
