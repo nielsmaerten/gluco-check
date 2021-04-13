@@ -4,6 +4,10 @@ parameters:
     list: true
     name: DmMetric
 trainingPhrases:
+- Ask how old my ($DmMetric 'pod' auto=true) is
+- Get a ($DmMetric 'full report' auto=true)
+- Ask to read ($DmMetric 'everything' auto=true)
+- Ask for a ($DmMetric 'full report' auto=true)
 - How old is my ($DmMetric 'sensor' auto=true)
 - Read my ($DmMetric 'blood sugar' auto=true)
 - ($DmMetric 'Carbs on board' auto=true)
