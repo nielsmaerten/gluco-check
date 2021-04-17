@@ -10,7 +10,7 @@ The package got merged into this repo in e67d36ec. If you're looking for commits
 - [ ] Update the docs
 - [ ] Can we move firebase.json and .firebaserc to the root ?
 - [ ] Explore: maybe use `git-crypt` for .env files ?
-- [ ] Merge GitHub workflows (/.github)
+- [ ] [NEXT] Merge GitHub workflows (/.github)
 - [ ] Issue: vscode-jest support? (Workaround: open frontend in its own window)
 - [ ] Explore: how to deploy to Firebase now?
 - [ ] Merge husky and lint-staged config into main repo, remove from this repo
@@ -18,8 +18,8 @@ The package got merged into this repo in e67d36ec. If you're looking for commits
 
 - [x] git clone gluco-check-frontend into this folder
 - [x] delete .gitignore, .git/, and yarn.lock
-- [ ] run yarn install in the root
-- [ ] verify build, test and serve are working
+- [x] run yarn install in the root
+- [x] verify build, test and serve are working
 - [ ] delete this section
 
 ## Intro
