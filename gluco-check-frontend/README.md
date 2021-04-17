@@ -1,5 +1,29 @@
 # Gluco Check Frontend Client
 
+## This is a merged repository
+Prior to **2021-04-17**, gluco-check-frontend was being developed in a [separate repository](https://github.com/ddamico/gluco-check-frontend). 
+
+The package got merged into this repo in e67d36ec. If you're looking for commits prior to **2021-04-17**, check out: https://github.com/ddamico/gluco-check-frontend
+
+### Remaining TODOs:
+- [x] Remove .gitignore
+- [ ] Update the docs
+- [ ] Can we move firebase.json and .firebaserc to the root ?
+- [ ] Explore: maybe use `git-crypt` for .env files ?
+- [ ] Merge GitHub workflows (/.github)
+- [ ] Issue: vscode-jest support? (Workaround: open frontend in its own window)
+- [ ] Explore: how to deploy to Firebase now?
+- [ ] Merge husky and lint-staged config into main repo, remove from this repo
+- [ ] ...
+
+- [x] git clone gluco-check-frontend into this folder
+- [x] delete .gitignore, .git/, and yarn.lock
+- [ ] run yarn install in the root
+- [ ] verify build, test and serve are working
+- [ ] delete this section
+
+## Intro
+
 This repo contains the frontend app for user-management of Gluco Check settings. It is a plain old Create React App app, built in [Typescript](http://typescriptlang.org).
 
 We've used [i18n](https://www.i18next.com) for supporting multiple languages in the frontend. The translation files are hosted directly in the project for now, but should be moving out to crowdin soon enough.
