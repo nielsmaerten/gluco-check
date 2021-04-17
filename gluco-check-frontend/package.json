@@ -2,7 +2,10 @@
   "name": "gluco-check-frontend",
   "version": "0.1.0",
   "license": "MIT",
-  "contributors": ["David D'Amico <human@ddamico.org>", "Niels Maerten"],
+  "contributors": [
+    "David D'Amico <human@ddamico.org>",
+    "Niels Maerten"
+  ],
   "repository": "https://github.com/nielsmaerten/gluco-check",
   "private": true,
   "dependencies": {
