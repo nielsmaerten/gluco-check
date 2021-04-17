@@ -1,0 +1,193 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Onboarding questionAndAnswer renders the subcomponent 1`] = `
+<WithStyles(ForwardRef(Card))
+  className="innerClass"
+>
+  <WithStyles(ForwardRef(Grid))
+    className="outerClass"
+    container={true}
+    direction="column"
+    wrap="nowrap"
+  >
+    <WithStyles(ForwardRef(Grid))
+      className="assistantBubble assistantBubble-question"
+      item={true}
+    >
+      <WithStyles(ForwardRef(Typography))
+        component="p"
+        variant="body1"
+      >
+        What it is
+      </WithStyles(ForwardRef(Typography))>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      className="assistantBubble assistantBubble-response"
+      item={true}
+    >
+      <img
+        alt=""
+        src="icon-assistant.svg"
+      />
+      <WithStyles(ForwardRef(Typography))
+        component="p"
+        variant="body1"
+      >
+        It is good
+      </WithStyles(ForwardRef(Typography))>
+    </WithStyles(ForwardRef(Grid))>
+  </WithStyles(ForwardRef(Grid))>
+</WithStyles(ForwardRef(Card))>
+`;
+
+exports[`Onboarding questionAndAnswer renders the subcomponent with a long answer string 1`] = `
+<WithStyles(ForwardRef(Card))
+  className="innerClass"
+>
+  <WithStyles(ForwardRef(Grid))
+    className="outerClass"
+    container={true}
+    direction="column"
+    wrap="nowrap"
+  >
+    <WithStyles(ForwardRef(Grid))
+      className="assistantBubble assistantBubble-question"
+      item={true}
+    >
+      <WithStyles(ForwardRef(Typography))
+        component="p"
+        variant="body1"
+      >
+        What it is
+      </WithStyles(ForwardRef(Typography))>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      className="assistantBubble assistantBubble-response"
+      item={true}
+    >
+      <img
+        alt=""
+        src="icon-assistant.svg"
+      />
+      <WithStyles(ForwardRef(Typography))
+        component="p"
+        variant="body1"
+      >
+        It is really really really really really good
+      </WithStyles(ForwardRef(Typography))>
+    </WithStyles(ForwardRef(Grid))>
+  </WithStyles(ForwardRef(Grid))>
+</WithStyles(ForwardRef(Card))>
+`;
+
+exports[`Onboarding renders the component 1`] = `
+<div
+  class="MuiContainer-root makeStyles-gridContainer-1"
+>
+  <div
+    class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column MuiGrid-align-items-xs-center MuiGrid-justify-xs-center"
+  >
+    <div
+      class="MuiGrid-root makeStyles-carouselSliderContainer-5 MuiGrid-item"
+    >
+      <div
+        class="MuiPaper-root MuiCard-root makeStyles-slideContainer-2 MuiPaper-elevation1 MuiPaper-rounded"
+      >
+        <div
+          class="MuiGrid-root makeStyles-callResponseContainer-3 MuiGrid-container MuiGrid-direction-xs-column MuiGrid-wrap-xs-nowrap"
+        >
+          <div
+            class="MuiGrid-root assistantBubble assistantBubble-question MuiGrid-item"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1"
+            >
+              onboarding.q1
+            </p>
+          </div>
+          <div
+            class="MuiGrid-root assistantBubble assistantBubble-response MuiGrid-item"
+          >
+            <img
+              alt=""
+              src="icon-assistant.svg"
+            />
+            <p
+              class="MuiTypography-root MuiTypography-body1"
+            >
+              onboarding.a1
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="MuiPaper-root MuiCard-root makeStyles-slideContainer-2 MuiPaper-elevation1 MuiPaper-rounded"
+      >
+        <div
+          class="MuiGrid-root makeStyles-callResponseContainer-3 MuiGrid-container MuiGrid-direction-xs-column MuiGrid-wrap-xs-nowrap"
+        >
+          <div
+            class="MuiGrid-root assistantBubble assistantBubble-question MuiGrid-item"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1"
+            >
+              onboarding.q2
+            </p>
+          </div>
+          <div
+            class="MuiGrid-root assistantBubble assistantBubble-response MuiGrid-item"
+          >
+            <img
+              alt=""
+              src="icon-assistant.svg"
+            />
+            <p
+              class="MuiTypography-root MuiTypography-body1"
+            >
+              onboarding.a2
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="MuiPaper-root MuiCard-root makeStyles-slideContainer-2 MuiPaper-elevation1 MuiPaper-rounded"
+      >
+        <div
+          class="MuiGrid-root makeStyles-callResponseContainer-3 MuiGrid-container MuiGrid-direction-xs-column MuiGrid-wrap-xs-nowrap"
+        >
+          <div
+            class="MuiGrid-root assistantBubble assistantBubble-question MuiGrid-item"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1"
+            >
+              onboarding.q3
+            </p>
+          </div>
+          <div
+            class="MuiGrid-root assistantBubble assistantBubble-response MuiGrid-item"
+          >
+            <img
+              alt=""
+              src="icon-assistant.svg"
+            />
+            <p
+              class="MuiTypography-root MuiTypography-body1"
+            >
+              onboarding.a3
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiGrid-root makeStyles-carouselDotContainer-7 MuiGrid-item"
+    >
+      onboarding.l1
+      onboarding.l2
+      onboarding.l3
+    </div>
+  </div>
+</div>
+`;

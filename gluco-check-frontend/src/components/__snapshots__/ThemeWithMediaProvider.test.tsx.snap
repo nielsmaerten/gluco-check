@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ThemeWithMediaProvider renders the appropriate theme when user prefers dark 1`] = `
+Object {
+  "type": "dark",
+}
+`;
+
+exports[`ThemeWithMediaProvider renders the appropriate theme when user prefers light 1`] = `
+Object {
+  "type": "light",
+}
+`;
+
+exports[`ThemeWithMediaProvider renders the wrapped children 1`] = `
+<div>
+  <div>
+    <div>
+      Some Content
+    </div>
+  </div>
+</div>
+`;

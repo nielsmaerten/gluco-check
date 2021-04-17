@@ -1,0 +1,104 @@
+{
+  "name": "gluco-check-frontend",
+  "version": "0.1.0",
+  "license": "MIT",
+  "contributors": ["David D'Amico <human@ddamico.org>", "Niels Maerten"],
+  "repository": "https://github.com/nielsmaerten/gluco-check",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "class-transformer": "^0.3.1",
+    "class-validator": "^0.12.2",
+    "debounce": "^1.2.0",
+    "firebase": "^7.21.1",
+    "firebaseui": "^4.8.0",
+    "i18next": "^19.8.2",
+    "i18next-browser-languagedetector": "^6.0.1",
+    "i18next-http-backend": "^1.0.21",
+    "pure-react-carousel": "^1.27.6",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-firebase-hooks": "^2.2.0",
+    "react-firebaseui": "^4.1.0",
+    "react-hook-form": "^6.8.6",
+    "react-i18next": "^11.7.3",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.3",
+    "reflect-metadata": "^0.1.13",
+    "semver": "^7.3.4",
+    "typescript": "~4.0.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --watchAll=false",
+    "test:watch": "react-scripts test",
+    "purge": "rimraf node_modules/",
+    "test:cov": "npm test a -- --coverage",
+    "test:ci": "CI=true npm run test -- --coverage",
+    "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
+    "eject": "react-scripts eject",
+    "deploy": "react-scripts build && firebase deploy --only hosting"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^7.24.5",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^10.4.7",
+    "@testing-library/user-event": "^12.1.7",
+    "@types/debounce": "^1.2.0",
+    "@types/jest": "^24.0.0",
+    "@types/jest-axe": "^3.5.0",
+    "@types/node": "^12.0.0",
+    "@types/ramda": "^0.27.32",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/reflect-metadata": "^0.1.0",
+    "@types/semver": "^7.3.4",
+    "@typescript-eslint/parser": "^4.17.0",
+    "eslint-config-react-app": "^6.0.0",
+    "firestore-jest-mock": "^0.6.0",
+    "husky": "^4.3.0",
+    "jest-axe": "^4.0.0",
+    "jest-fetch-mock": "^3.0.3",
+    "lint-staged": "^10.4.0",
+    "mutationobserver-shim": "^0.3.7",
+    "prettier": "^2.1.2",
+    "ramda": "^0.27.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/*.{js,jsx,ts,tsx}",
+      "src/components/*.{js,jsx,ts,tsx}",
+      "src/pages/*.{js,jsx,ts,tsx}",
+      "!src/index.{js,jsx,ts,tsx}"
+    ]
+  }
+}

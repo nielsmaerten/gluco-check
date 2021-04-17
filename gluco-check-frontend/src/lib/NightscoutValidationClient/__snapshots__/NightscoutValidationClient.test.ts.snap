@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NightscoutValidationClient Fetches validation status from endpoint 1`] = `
+Array [
+  "http://example.com/api/v1/validate-nightscout",
+  Object {
+    "body": "{\\"url\\":\\"http://example.com/ns\\",\\"token\\":\\"token123\\"}",
+    "headers": Headers {
+      Symbol(map): Object {
+        "Content-Type": Array [
+          "application/json; charset=utf-8",
+        ],
+      },
+    },
+    "method": "POST",
+    "redirect": "follow",
+    "signal": AbortSignal {},
+  },
+]
+`;
+
+exports[`NightscoutValidationClient Fetches validation status from endpoint 2`] = `
+NightscoutValidationEndpointResponseDto {
+  "discoveredMetrics": Array [
+    "blood sugar",
+    "insulin on board",
+    "carbs on board",
+    "sensor age",
+    "cannula age",
+    "pump battery",
+  ],
+  "nightscout": NightscoutValidationEndpointResponseNightscout {
+    "glucoseUnit": "mmol",
+    "minSupportedVersion": "13.0.0",
+    "version": "14.0.7",
+  },
+  "token": NightscoutValidationEndpointResponseToken {
+    "isValid": true,
+    "parsed": "token123",
+  },
+  "url": NightscoutValidationEndpointResponseUrl {
+    "isValid": true,
+    "parsed": "https://example.com",
+    "pointsToNightscout": true,
+  },
+}
+`;
+
+exports[`NightscoutValidationClient Fetches validation status from endpoint when units are mgdl 1`] = `
+Array [
+  "http://example.com/api/v1/validate-nightscout",
+  Object {
+    "body": "{\\"url\\":\\"http://example.com/ns\\",\\"token\\":\\"token123\\"}",
+    "headers": Headers {
+      Symbol(map): Object {
+        "Content-Type": Array [
+          "application/json; charset=utf-8",
+        ],
+      },
+    },
+    "method": "POST",
+    "redirect": "follow",
+    "signal": AbortSignal {},
+  },
+]
+`;
+
+exports[`NightscoutValidationClient Fetches validation status from endpoint when units are mgdl 2`] = `
+NightscoutValidationEndpointResponseDto {
+  "discoveredMetrics": Array [
+    "blood sugar",
+    "insulin on board",
+    "carbs on board",
+    "sensor age",
+    "cannula age",
+    "pump battery",
+  ],
+  "nightscout": NightscoutValidationEndpointResponseNightscout {
+    "glucoseUnit": "mg/dl",
+    "minSupportedVersion": "13.0.0",
+    "version": "14.0.7",
+  },
+  "token": NightscoutValidationEndpointResponseToken {
+    "isValid": true,
+    "parsed": "token123",
+  },
+  "url": NightscoutValidationEndpointResponseUrl {
+    "isValid": true,
+    "parsed": "https://example.com",
+    "pointsToNightscout": true,
+  },
+}
+`;
