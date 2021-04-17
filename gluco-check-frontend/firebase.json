@@ -1,0 +1,52 @@
+{
+  "hosting": {
+    "public": "build",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "/api/v1/validate-nightscout",
+        "function": "validateNightscoutUrl"
+      },
+      {
+        "source": "/api/v1/handle-conversation",
+        "function": "conversation"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "redirects": [
+      {
+        "source": "/terms",
+        "destination": "/terms/en-US",
+        "type": 307
+      },
+      {
+        "source": "/faq",
+        "destination": "/faq/en-US",
+        "type": 307
+      },
+      {
+        "source": "/beta/invite",
+        "destination": "https://assistant.google.com/services/a/uid/0000008351d3e7c0?hl=en",
+        "type": 307
+      },
+      {
+        "source": "/beta",
+        "destination": "https://github.com/nielsmaerten/gluco-check/blob/main/gluco-check-common/strings/en-US/beta.md#gluco-check--b%C3%A8ta",
+        "type": 307
+      },
+      {
+        "source": "/terms/:locale",
+        "destination": "https://github.com/nielsmaerten/gluco-check/blob/main/gluco-check-common/strings/:locale/terms.md#gluco-check",
+        "type": 307
+      },
+      {
+        "source": "/faq/:locale",
+        "destination": "https://github.com/nielsmaerten/gluco-check/blob/main/gluco-check-common/strings/:locale/faq.md#frequently-asked-questions",
+        "type": 307
+      }
+    ]
+  }
+}

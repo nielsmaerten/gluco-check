@@ -4,7 +4,7 @@
     "source": ".",
     "predeploy": [
       "yarn lint",
-      "yarn workspaces run build",
+      "cd .. && yarn workspaces foreach run build",
       "yarn node deploy-hooks.js --pre"
     ],
     "postdeploy": [

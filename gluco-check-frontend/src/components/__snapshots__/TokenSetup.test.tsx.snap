@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TokenSetup component renders the component 1`] = `
+<div
+  class="makeStyles-root-1"
+>
+  <p
+    class="MuiTypography-root MuiTypography-body1"
+  >
+    tokenDialog.preamble
+  </p>
+  <dl
+    class="makeStyles-definitionList-2"
+  >
+    <dt
+      class="MuiTypography-root MuiTypography-h5"
+    >
+      tokenDialog.step1.label
+    </dt>
+    <dd>
+      <span>
+        tokenDialog.step1.description
+      </span>
+      <img
+        alt=""
+        src="/images/token-instructions/tokenDialog.step1.image"
+      />
+    </dd>
+    <dt
+      class="MuiTypography-root MuiTypography-h5"
+    >
+      tokenDialog.step2.label
+    </dt>
+    <dd>
+      <span>
+        tokenDialog.step2.description
+      </span>
+    </dd>
+    <dt
+      class="MuiTypography-root MuiTypography-h5"
+    >
+      tokenDialog.step3.label
+    </dt>
+    <dd>
+      <p>
+        tokenDialog.step3.description
+      </p>
+      <p>
+        tokenDialog.step4.description
+      </p>
+      <div
+        class="MuiBox-root MuiBox-root-6"
+      >
+        <img
+          alt="tokenDialog.step4.image_alt"
+          src="/images/token-instructions/tokenDialog.step4.image"
+        />
+      </div>
+      <p>
+        tokenDialog.step5.description
+      </p>
+      <img
+        alt="tokenDialog.step5.image_alt"
+        src="/images/token-instructions/tokenDialog.step5.image"
+      />
+      <p>
+        <span>
+          tokenDialog.step6.description
+        </span>
+      </p>
+      <img
+        alt="tokenDialog.step6.image_alt"
+        src="/images/token-instructions/tokenDialog.step6.image"
+      />
+    </dd>
+  </dl>
+</div>
+`;

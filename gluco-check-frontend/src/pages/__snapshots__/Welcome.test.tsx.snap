@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Welcome page renders the component 1`] = `
+<div
+  class="MuiGrid-root makeStyles-contentGrid-4 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column MuiGrid-wrap-xs-nowrap MuiGrid-align-items-xs-center MuiGrid-justify-xs-center"
+>
+  <div
+    class="MuiGrid-root makeStyles-subtitle-2 MuiGrid-item"
+  >
+    <div
+      class="MuiContainer-root MuiContainer-maxWidthSm"
+    >
+      <h2
+        class="MuiTypography-root MuiTypography-h5"
+      >
+        welcome.subtitle
+      </h2>
+    </div>
+  </div>
+  <div
+    class="MuiGrid-root MuiGrid-item"
+  >
+    Onboarding
+  </div>
+  <div
+    class="MuiGrid-root MuiGrid-item"
+  >
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+      href="/settings"
+      tabindex="0"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        welcome.cta
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+  </div>
+  <div
+    class="MuiGrid-root makeStyles-boilerplate-5 MuiGrid-item"
+  >
+    Boilerplate
+  </div>
+</div>
+`;

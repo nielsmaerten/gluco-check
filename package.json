@@ -3,23 +3,19 @@
   "workspaces": {
     "packages": [
       "gluco-check-*"
-    ],
-    "nohoist": [
-      "**/gts",
-      "**/gts/**"
     ]
   },
   "husky": {
     "hooks": {
-      "pre-push": "yarn workspaces run lint",
-      "post-merge": "yarn workspace gluco-check-common build"
+      "pre-push": "yarn lint",
+      "post-merge": "yarn workspace gluco-check-common run build"
     }
   },
   "scripts": {
-    "deploy": "yarn workspace gluco-check-webhooks deploy",
-    "purge": "yarn workspaces run purge && rimraf node_modules/ && echo Run yarn to reinstall dependencies.",
-    "build": "yarn workspaces run build",
-    "test": "yarn build && yarn workspaces run test"
+    "purge": "yarn workspaces foreach run purge && rimraf node_modules/ && echo Run yarn to reinstall dependencies.",
+    "build": "yarn workspaces foreach run build",
+    "test": "yarn build && yarn workspaces foreach run test",
+    "lint": "yarn workspaces foreach run lint"
   },
   "devDependencies": {
     "husky": "^4.3.6",

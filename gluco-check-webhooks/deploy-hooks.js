@@ -38,7 +38,7 @@ const preDeploy = () => {
   localPackages.forEach(async pkgName => {
     const pkgDir = resolve('../', pkgName);
     package.dependencies[pkgName] = `file:./${pkgName}.tar.gz`;
-    await shell(`yarn pack . --filename ${currentDir}/${pkgName}.tar.gz`, {
+    await shell(`yarn pack --filename ${currentDir}/${pkgName}.tar.gz`, {
       cwd: pkgDir,
     });
   });

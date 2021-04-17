@@ -1,0 +1,137 @@
+{
+  "title": "Gluco Check",
+  "status": {
+    "general": {
+      "loading": "Loading",
+      "error": "Er liep iets mis"
+    }
+  },
+  "urls": {
+    "termsAndConditions": "/terms/nl",
+    "healthDisclaimer": "/terms/nl",
+    "privacy": "/terms/nl",
+    "nightscoutProject": "http://nightscout.info/",
+    "faqs": "/faq/nl",
+    "glucoCheckGithub": "https://github.com/nielsmaerten/gluco-check"
+  },
+  "landing": {
+    "title": "Welkom bij Gluco Check",
+    "subtitle": "Gluco Check brengt Nightscout naar je Google Home"
+  },
+  "onboarding": {
+    "q1": "[Hey Google, ask Gluco Check my blood sugar]",
+    "a1": "[6.5 and steady as of five minutes ago]",
+    "l1": "[Blood Sugar]",
+    "q2": "[Hey Google, ask Gluco Check my COB]",
+    "a2": "[There are 10 carbs on board.]",
+    "l2": "[Carbs on Board]",
+    "q3": "[Hey Google, ask Gluco Check for everything]",
+    "a3": "[Blood sugar is 6.1. There's 12 carbs on board. Sensor age is...]",
+    "l3": "[Everything]"
+  },
+  "boilerplate": {
+    "terms": "[By continuing, you are indicating that you accept our <2>Terms of Service</2> and <4>Privacy Policy</4>.]",
+    "google": "[Google Assistant is a trademark of Google Inc.]",
+    "nightscout": "[Not affiliated with the <2>Nightscout Project</2>]",
+    "logout": "[Sign Out]"
+  },
+  "welcome": {
+    "title": "Welkom bij Gluco Check",
+    "subtitle": "Gluco Check brengt Nightscout naar je Google Home",
+    "cta": "[Link your Nightscout]"
+  },
+  "login": {
+    "title": "Aanmelden",
+    "buttonLabel": "[Sign in with Google]"
+  },
+  "settings": {
+    "title": "Instellingen",
+    "betaBanner": "[While we’re in Beta, the app won’t immediately work. You will receive an email once you’ve been added to the Beta.]",
+    "form": {
+      "validationInProgress": "[Checking your Nightscout site]",
+      "labels": {
+        "glucoseUnits": "Glucose Eenheden",
+        "nightscoutToken": "Nightscout Token",
+        "nightscoutUrl": "Nightscout URL",
+        "defaultMetrics": "[Assistant will read these items to you by default]"
+      },
+      "helperText": {
+        "nightscoutToken": {
+          "default": "[Not sure how to get a token? Read on!]",
+          "empty": "[A token is required to read additional metrics]",
+          "invalid": "[Your Nightscout site is not accepting this token]"
+        },
+        "nightscoutUrl": {
+          "default": "URL van je Nightscout site",
+          "required": "[This field is required]",
+          "notNightscout": "[This URL does not point to a Nightscout site]",
+          "needsUpgrade": "[Your Nightscout site requires an update to work with Gluco Check, please update to at least {{version}}]"
+        },
+        "defaultMetrics": {
+          "required": "[You must select at least one metric]",
+          "notAvailableInvalidToken": "[* You'll need a valid token to access these metrics]",
+          "notAvailableValidToken": "[* We did not find a recent value for these metrics, but you can still select them]"
+        },
+        "glucoseUnits": {
+          "mismatch": "[Chosen unit differs from your Nightscout site's units]"
+        }
+      },
+      "submitButton": "Instellingen opslaan",
+      "submitStatus": {
+        "submitting": "Je instellingen worden opgeslagen",
+        "submitted": "Je instellingen zijn opgeslagen",
+        "error": "Er liep iets mis bij het opslaan van je instellingen"
+      }
+    }
+  },
+  "navigation": {
+    "faqs": "[Help & FAQs]",
+    "github": "[Find Us On Github]"
+  },
+  "diabetesMetrics": {
+    "Everything": "[everything]",
+    "BloodSugar": "[blood sugar]",
+    "InsulinOnBoard": "[insulin on board]",
+    "CarbsOnBoard": "[carbs on board]",
+    "SensorAge": "[sensor age]",
+    "CannulaAge": "[cannula age]",
+    "PumpBattery": "[pump battery]"
+  },
+  "tokenDialog": {
+    "title": "[Generating a Nightscout token]",
+    "preamble": "[For basic features like checking your numbers, your Nightscout url is enough. For more advanced features, you're going to need a token with full api read permissions. If you don't know what that means, don't sweat it! We'll go through it one step at a time.]",
+    "links": {
+      "howToUpdateNightscout": "http://www.nightscout.info/wiki/faqs-2/azure/updating-your-website-to-the-latest-release-pull-request",
+      "glucoCheckSettings": "/settings"
+    },
+    "step1": {
+      "label": "[Check Nightscout Version]",
+      "description": "[First, make sure your site is on at least version 14 of Nightscout. You can check the version here by clicking on the hamburger menu button and looking here:]",
+      "image": "nightscout-version.png",
+      "image_alt": ""
+    },
+    "step2": {
+      "label": "[Update Nightscout]",
+      "description": "[If you do need an upgrade, you can read more about how to do that <2>here</2>. If not, let's make that token!]"
+    },
+    "step3": {
+      "label": "[Create Role and Subject]",
+      "description": "[Click on the hamburger menu, then \"Admin Tools\".]"
+    },
+    "step4": {
+      "description": "[Click on \"Add new Role\", populate the Role with the values pictured below, and click save.]",
+      "image": "edit-role.png",
+      "image_alt": ""
+    },
+    "step5": {
+      "description": "[Click on \"Add new Subject\", populate the Subject with the values pictured below, and click save.]",
+      "image": "edit-subject.png",
+      "image_alt": ""
+    },
+    "step6": {
+      "description": "[Copy the value in the \"Access Token\" column, paste it into the Nightscout Token field in <2>Gluco Check Settings</2>, and click save.]",
+      "image": "copy-token.png",
+      "image_alt": ""
+    }
+  }
+}

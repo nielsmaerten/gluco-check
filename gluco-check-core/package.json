@@ -13,10 +13,16 @@
   "devDependencies": {
     "@types/jest": "^26.0.19",
     "@types/node": "^14.14.14",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.17.0",
     "axios-mock-adapter": "^1.19.0",
-    "gluco-check-common": "*",
+    "eslint": "7.15.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "gluco-check-common": "workspace:gluco-check-common",
     "gts": "^3.0.3",
     "jest": "^26.6.3",
+    "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
     "ts-jest": "^26.4.4",
     "typescript": "^4.1.3"

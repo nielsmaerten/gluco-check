@@ -12,11 +12,12 @@
     "purge": "rimraf node_modules/",
     "test": "yarn build && echo Package gluco-check-common has no tests.",
     "build": "yarn node compile-yaml.js && yarn toc",
-    "toc": "npx doctoc@2.0.0 . --update-only",
-    "postinstall": "yarn build",
-    "lint": "echo N/A"
+    "toc": "doctoc . --update-only",
+    "postinstall": "yarn build"
   },
   "dependencies": {
+    "doctoc": "2.0.0",
+    "glob": "^7.1.6",
     "yamljs": "^0.3.0"
   }
 }
