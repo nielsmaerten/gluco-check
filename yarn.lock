@@ -9863,7 +9863,7 @@ fsevents@^2.1.2:
     ramda: ^0.27.1
     react: ^16.13.1
     react-dom: ^16.14.0
-    react-firebase-hooks: ^2.2.0
+    react-firebase-hooks: ^3.0.3
     react-firebaseui: ^4.2.0
     react-hook-form: ^6.15.6
     react-i18next: ^11.8.13
@@ -16099,12 +16099,13 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"react-firebase-hooks@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "react-firebase-hooks@npm:2.2.0"
+"react-firebase-hooks@npm:^3.0.3":
+  version: 3.0.3
+  resolution: "react-firebase-hooks@npm:3.0.3"
   peerDependencies:
-    react: ^16.8.0
-  checksum: 5b846dc0b592115d9403666acbc4f78b76078238a65788bbdb1f769beda4a28789bc4bbf28314de78b30cc7bbdfb09f8493350e893566a8a46b64caef4a15acc
+    firebase: ">= 8.0.0"
+    react: ">= 16.8.0"
+  checksum: c226ffc8eea537b54b764d47235489ff595719484513d413838e22e38a9c6f4d0fc63dc884ff1be39a710eb18017c6ac47ccf63a871087da4851ba71fd1059e4
   languageName: node
   linkType: hard
 

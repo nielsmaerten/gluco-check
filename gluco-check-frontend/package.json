@@ -23,7 +23,7 @@
     "pure-react-carousel": "^1.27.6",
     "react": "^16.13.1",
     "react-dom": "^16.14.0",
-    "react-firebase-hooks": "^2.2.0",
+    "react-firebase-hooks": "^3.0.3",
     "react-firebaseui": "^4.2.0",
     "react-hook-form": "^6.15.6",
     "react-i18next": "^11.8.13",
