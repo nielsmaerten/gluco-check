@@ -9861,12 +9861,12 @@ fsevents@^2.1.2:
     prettier: ^2.2.1
     pure-react-carousel: ^1.27.6
     ramda: ^0.27.1
-    react: ^16.13.1
-    react-dom: ^16.13.1
-    react-firebase-hooks: ^2.2.0
-    react-firebaseui: ^4.1.0
-    react-hook-form: ^6.8.6
-    react-i18next: ^11.7.3
+    react: ^17.0.2
+    react-dom: ^17.0.2
+    react-firebase-hooks: ^3.0.3
+    react-firebaseui: ^4.2.0
+    react-hook-form: ^6.15.6
+    react-i18next: ^11.8.13
     react-router-dom: ^5.2.0
     react-scripts: ^4.0.3
     reflect-metadata: ^0.1.13
@@ -16078,17 +16078,16 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^16.13.1":
-  version: 16.14.0
-  resolution: "react-dom@npm:16.14.0"
+"react-dom@npm:^17.0.2":
+  version: 17.0.2
+  resolution: "react-dom@npm:17.0.2"
   dependencies:
     loose-envify: ^1.1.0
     object-assign: ^4.1.1
-    prop-types: ^15.6.2
-    scheduler: ^0.19.1
+    scheduler: ^0.20.2
   peerDependencies:
-    react: ^16.14.0
-  checksum: a13558f0e7c6d1a98684214460bcd4b9005500015b5048fb1b0d2856786b8764dbc713e6b078a5b1a56e17866400e1d862183c7a0a513ae8351de11f6f6749d2
+    react: 17.0.2
+  checksum: 960a74ff6670766846a73097a599115963df1574833c59ca0c2fd909758ebe7a6214cd14f5e6aa63ce846d8f39fde7f3b80474ccfcfadc45dd7f3246364718c6
   languageName: node
   linkType: hard
 
@@ -16099,16 +16098,17 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"react-firebase-hooks@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "react-firebase-hooks@npm:2.2.0"
+"react-firebase-hooks@npm:^3.0.3":
+  version: 3.0.3
+  resolution: "react-firebase-hooks@npm:3.0.3"
   peerDependencies:
-    react: ^16.8.0
-  checksum: 5b846dc0b592115d9403666acbc4f78b76078238a65788bbdb1f769beda4a28789bc4bbf28314de78b30cc7bbdfb09f8493350e893566a8a46b64caef4a15acc
+    firebase: ">= 8.0.0"
+    react: ">= 16.8.0"
+  checksum: c226ffc8eea537b54b764d47235489ff595719484513d413838e22e38a9c6f4d0fc63dc884ff1be39a710eb18017c6ac47ccf63a871087da4851ba71fd1059e4
   languageName: node
   linkType: hard
 
-"react-firebaseui@npm:^4.1.0":
+"react-firebaseui@npm:^4.2.0":
   version: 4.2.0
   resolution: "react-firebaseui@npm:4.2.0"
   dependencies:
@@ -16120,7 +16120,7 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:^6.8.6":
+"react-hook-form@npm:^6.15.6":
   version: 6.15.6
   resolution: "react-hook-form@npm:6.15.6"
   peerDependencies:
@@ -16129,7 +16129,7 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:^11.7.3":
+"react-i18next@npm:^11.8.13":
   version: 11.8.13
   resolution: "react-i18next@npm:11.8.13"
   dependencies:
@@ -16300,14 +16300,13 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"react@npm:^16.13.1":
-  version: 16.14.0
-  resolution: "react@npm:16.14.0"
+"react@npm:^17.0.2":
+  version: 17.0.2
+  resolution: "react@npm:17.0.2"
   dependencies:
     loose-envify: ^1.1.0
     object-assign: ^4.1.1
-    prop-types: ^15.6.2
-  checksum: 2769580b22952a52de3b5b2ea0f09cb904030b762d759739f49ab4da0b1f550e5c087ce3728c4be90f423d09481e0c075483c0c30b1ea9c549445c8b12020fd3
+  checksum: 7d0dfebafe1d297503157abb2e9acdb49852185deb8700c16f4a6faad87642f84903ab18cfc16f40b9a0dfe97540f99834982ee953e6d48b39c41608dc3e4b29
   languageName: node
   linkType: hard
 
@@ -17203,13 +17202,13 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"scheduler@npm:^0.19.1":
-  version: 0.19.1
-  resolution: "scheduler@npm:0.19.1"
+"scheduler@npm:^0.20.2":
+  version: 0.20.2
+  resolution: "scheduler@npm:0.20.2"
   dependencies:
     loose-envify: ^1.1.0
     object-assign: ^4.1.1
-  checksum: 804f990b9f370cca6d42b65f3cba2cc2bfed4973ee5623bed1ea36a6627842db8c891e2e5ac003f06f9ee892d1d3396921e27fa077346caf0213af05776e8dee
+  checksum: 2ba121e53e8a438394598612ec9a8f465b39157042f912d2dd5956af643e0d45ec6937ae4eeb0a807d1945b209515263aed12fc3bca95c7a027ec2a54e76b399
   languageName: node
   linkType: hard
 
