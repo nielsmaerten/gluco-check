@@ -3236,7 +3236,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/dom@npm:^7.22.3, @testing-library/dom@npm:^7.24.5":
+"@testing-library/dom@npm:^7.22.3, @testing-library/dom@npm:^7.30.3":
   version: 7.30.3
   resolution: "@testing-library/dom@npm:7.30.3"
   dependencies:
@@ -3269,7 +3269,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/react@npm:^10.4.7":
+"@testing-library/react@npm:^10.4.9":
   version: 10.4.9
   resolution: "@testing-library/react@npm:10.4.9"
   dependencies:
@@ -3282,7 +3282,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/user-event@npm:^12.1.7":
+"@testing-library/user-event@npm:^12.8.3":
   version: 12.8.3
   resolution: "@testing-library/user-event@npm:12.8.3"
   dependencies:
@@ -9828,10 +9828,10 @@ fsevents@^2.1.2:
     "@material-ui/core": ^4.11.3
     "@material-ui/icons": ^4.11.2
     "@material-ui/lab": ^4.0.0-alpha.57
-    "@testing-library/dom": ^7.24.5
+    "@testing-library/dom": ^7.30.3
     "@testing-library/jest-dom": ^4.2.4
-    "@testing-library/react": ^10.4.7
-    "@testing-library/user-event": ^12.1.7
+    "@testing-library/react": ^10.4.9
+    "@testing-library/user-event": ^12.8.3
     "@types/debounce": ^1.2.0
     "@types/jest": ^24.9.1
     "@types/jest-axe": ^3.5.1
@@ -9862,11 +9862,11 @@ fsevents@^2.1.2:
     pure-react-carousel: ^1.27.6
     ramda: ^0.27.1
     react: ^16.13.1
-    react-dom: ^16.13.1
+    react-dom: ^16.14.0
     react-firebase-hooks: ^2.2.0
-    react-firebaseui: ^4.1.0
-    react-hook-form: ^6.8.6
-    react-i18next: ^11.7.3
+    react-firebaseui: ^4.2.0
+    react-hook-form: ^6.15.6
+    react-i18next: ^11.8.13
     react-router-dom: ^5.2.0
     react-scripts: ^4.0.3
     reflect-metadata: ^0.1.13
@@ -16078,7 +16078,7 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^16.13.1":
+"react-dom@npm:^16.14.0":
   version: 16.14.0
   resolution: "react-dom@npm:16.14.0"
   dependencies:
@@ -16108,7 +16108,7 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"react-firebaseui@npm:^4.1.0":
+"react-firebaseui@npm:^4.2.0":
   version: 4.2.0
   resolution: "react-firebaseui@npm:4.2.0"
   dependencies:
@@ -16120,7 +16120,7 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:^6.8.6":
+"react-hook-form@npm:^6.15.6":
   version: 6.15.6
   resolution: "react-hook-form@npm:6.15.6"
   peerDependencies:
@@ -16129,7 +16129,7 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:^11.7.3":
+"react-i18next@npm:^11.8.13":
   version: 11.8.13
   resolution: "react-i18next@npm:11.8.13"
   dependencies:
