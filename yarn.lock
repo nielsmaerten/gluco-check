@@ -9861,7 +9861,7 @@ fsevents@^2.1.2:
     prettier: ^2.2.1
     pure-react-carousel: ^1.27.6
     ramda: ^0.27.1
-    react: ^16.13.1
+    react: ^16.14.0
     react-dom: ^16.14.0
     react-firebase-hooks: ^3.0.3
     react-firebaseui: ^4.2.0
@@ -16301,7 +16301,7 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"react@npm:^16.13.1":
+"react@npm:^16.14.0":
   version: 16.14.0
   resolution: "react@npm:16.14.0"
   dependencies:

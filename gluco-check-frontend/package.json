@@ -21,7 +21,7 @@
     "i18next-browser-languagedetector": "^6.1.0",
     "i18next-http-backend": "^1.2.1",
     "pure-react-carousel": "^1.27.6",
-    "react": "^16.13.1",
+    "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-firebase-hooks": "^3.0.3",
     "react-firebaseui": "^4.2.0",
