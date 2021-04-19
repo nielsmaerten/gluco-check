@@ -1,3 +1,4 @@
+import firebase from "firebase/app";
 import { BloodGlucoseUnit, DiabetesMetric } from "../enums";
 import { GlucoCheckUserDocument } from "../types";
 
