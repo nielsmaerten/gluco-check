@@ -20,7 +20,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.4.0",
     "gluco-check-common": "workspace:gluco-check-common",
-    "gts": "^3.0.3",
+    "gts": "^3.1.0",
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
@@ -37,12 +37,12 @@
     "test": "jest && yarn lint"
   },
   "dependencies": {
-    "@assistant/conversation": "^3.4.0",
+    "@assistant/conversation": "^3.5.0",
     "axios": "^0.21.1",
     "dayjs": "^1.10.4",
     "firebase-admin": "^9.6.0",
     "firebase-functions": "^3.13.2",
-    "i18next": "^19.9.2",
+    "i18next": "^20.2.1",
     "intl": "^1.2.5",
     "inversify": "^5.0.5",
     "reflect-metadata": "^0.1.13"
