@@ -38,6 +38,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll=false",
     "test:watch": "react-scripts test",
+    "lint": "prettier 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}' --check",
+    "lint:fix": "yarn run lint --write",
     "purge": "rimraf node_modules/",
     "test:cov": "npm test a -- --coverage",
     "test:ci": "CI=true npm run test -- --coverage",
@@ -79,23 +81,13 @@
     "@typescript-eslint/parser": "^4.22.0",
     "eslint-config-react-app": "^6.0.0",
     "firestore-jest-mock": "^0.11.0",
-    "husky": "^4.3.0",
+    "husky": "^6.0.0",
     "jest-axe": "^4.1.0",
     "jest-fetch-mock": "^3.0.3",
     "lint-staged": "^10.5.4",
     "mutationobserver-shim": "^0.3.7",
     "prettier": "^2.2.1",
     "ramda": "^0.27.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --write"
-    ]
   },
   "jest": {
     "collectCoverageFrom": [
