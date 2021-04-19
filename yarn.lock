@@ -5,9 +5,9 @@ __metadata:
   version: 4
   cacheKey: 7
 
-"@assistant/conversation@npm:^3.4.0":
-  version: 3.4.0
-  resolution: "@assistant/conversation@npm:3.4.0"
+"@assistant/conversation@npm:^3.5.0":
+  version: 3.5.0
+  resolution: "@assistant/conversation@npm:3.5.0"
   dependencies:
     "@types/aws-lambda": ^0.0.33
     "@types/debug": ^0.0.30
@@ -15,7 +15,7 @@ __metadata:
     "@types/node": 12.12.24
     debug: ^3.1.0
     google-auth-library: ^6.1.0
-  checksum: 17b329834db864828768467bc4d57b4a64009836e3d47b1cb43f5a004fccc975ab3c1b863dc5d49e1dc76d8cdbdcc0ea23f6d906d8f3b8feb00792299fe4058d
+  checksum: 5cd6397a1786a331ed9851418fe9d56b999836c75b2a5225e80b54ff07c2de3608e1f1b3617adb8c8fe75421209bccf87399b4bbf3694cfd846609db92db01fa
   languageName: node
   linkType: hard
 
@@ -3270,14 +3270,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/user-event@npm:^13.1.3":
-  version: 13.1.3
-  resolution: "@testing-library/user-event@npm:13.1.3"
+"@testing-library/user-event@npm:^13.1.5":
+  version: 13.1.5
+  resolution: "@testing-library/user-event@npm:13.1.5"
   dependencies:
     "@babel/runtime": ^7.12.5
   peerDependencies:
     "@testing-library/dom": ">=7.21.4"
-  checksum: bba6e9cf918a49ac2515569bee76cefb972e1e9431e1445cbdd2e40604e1f56d2ae5690823cc0093b03f66c7b3df87c22e47e67ac58a1bc0a42bebbd44db81d3
+  checksum: 934ec3b8ee6848730f57179cecd919803c5e91d4417006446ca62be6d8886dc3d7b7bb944ec6565ec7a2464d80074dbd8da0dcb63da1366f553015c20e414440
   languageName: node
   linkType: hard
 
@@ -6337,13 +6337,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"compare-versions@npm:^3.6.0":
-  version: 3.6.0
-  resolution: "compare-versions@npm:3.6.0"
-  checksum: 09525264502bda1f6667ad2429eaf5520b543d997e79e7a94b66a5896df8921cdc3a97140dfff75af6c9ba1859c872de1921c3cf8a6c48ed807bbf9f582cf093
-  languageName: node
-  linkType: hard
-
 "component-emitter@npm:^1.2.1":
   version: 1.3.0
   resolution: "component-emitter@npm:1.3.0"
@@ -8033,16 +8026,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-prettier@npm:^6.12.0":
-  version: 6.15.0
-  resolution: "eslint-config-prettier@npm:6.15.0"
-  dependencies:
-    get-stdin: ^6.0.0
+"eslint-config-prettier@npm:^7.0.0":
+  version: 7.2.0
+  resolution: "eslint-config-prettier@npm:7.2.0"
   peerDependencies:
-    eslint: ">=3.14.1"
+    eslint: ">=7.0.0"
   bin:
-    eslint-config-prettier-check: bin/cli.js
-  checksum: a790bc61699e43a2edc5453488576cd977fad3b3cf99c129c10760ce6970d422923fddf80b65b2b10a93c00af0180a854e4b7824cc268e5957826cbe5b969e90
+    eslint-config-prettier: bin/cli.js
+  checksum: 6812150ea49703cd64035527205b4905bc1edcd34646e71f71665e1acff9ab4648f872598389bdb209964093ad73993830a2c821ba12642764a5293513b92a58
   languageName: node
   linkType: hard
 
@@ -9001,34 +8992,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"find-up@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "find-up@npm:5.0.0"
-  dependencies:
-    locate-path: ^6.0.0
-    path-exists: ^4.0.0
-  checksum: cd0b77415bc59e5af31e4e1b29c6ff8d965d9ca3c60a4b74161f8f116c0d1ad8d35bc6e53bf8f92c69e704e98183f1628a363ed7d519eb28eff54378b8f167a7
-  languageName: node
-  linkType: hard
-
-"find-versions@npm:^3.2.0":
-  version: 3.2.0
-  resolution: "find-versions@npm:3.2.0"
-  dependencies:
-    semver-regex: ^2.0.0
-  checksum: 2ddc16b4265184e2b7ab68bfd9d84835178fef4193abd957ebe328e0de98e8ca3b31e2a19201c1c8308e24786faa295aab46c0bc21fa89440e2a1bc8174987f0
-  languageName: node
-  linkType: hard
-
-"find-versions@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "find-versions@npm:4.0.0"
-  dependencies:
-    semver-regex: ^3.1.2
-  checksum: 05174128349e522f0746cc343a509f2ce1c8c765e24968ff2ac6f82fda4e4c680f5f71c6a781ce28406d19addc32a205116ac14ee83cb2e336635dd803f56cbd
-  languageName: node
-  linkType: hard
-
 "firebase-admin@npm:^9.6.0":
   version: 9.6.0
   resolution: "firebase-admin@npm:9.6.0"
@@ -9509,13 +9472,6 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"get-stdin@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "get-stdin@npm:6.0.0"
-  checksum: b51d664838aef7f8353dc57371ce59cea54d8d584fec015a9d89d24561e95b97806d5b5ba120bc81574c9ed63cb3e210176ffa0ff9263c7e7ba4d56d0fe54913
-  languageName: node
-  linkType: hard
-
 "get-stream@npm:^4.0.0, get-stream@npm:^4.1.0":
   version: 4.1.0
   resolution: "get-stream@npm:4.1.0"
@@ -9702,7 +9658,7 @@ fsevents@^2.1.2:
   version: 0.0.0-use.local
   resolution: "gluco-check-core@workspace:gluco-check-core"
   dependencies:
-    "@assistant/conversation": ^3.4.0
+    "@assistant/conversation": ^3.5.0
     "@types/jest": ^26.0.22
     "@types/node": ^14.14.41
     "@typescript-eslint/eslint-plugin": ^4.22.0
@@ -9716,8 +9672,8 @@ fsevents@^2.1.2:
     firebase-admin: ^9.6.0
     firebase-functions: ^3.13.2
     gluco-check-common: "workspace:gluco-check-common"
-    gts: ^3.0.3
-    i18next: ^19.9.2
+    gts: ^3.1.0
+    i18next: ^20.2.1
     intl: ^1.2.5
     inversify: ^5.0.5
     jest: ^26.6.3
@@ -9739,7 +9695,7 @@ fsevents@^2.1.2:
     "@testing-library/dom": ^7.30.3
     "@testing-library/jest-dom": ^5.11.10
     "@testing-library/react": ^11.2.6
-    "@testing-library/user-event": ^13.1.3
+    "@testing-library/user-event": ^13.1.5
     "@types/debounce": ^1.2.0
     "@types/jest": ^26.0.22
     "@types/jest-axe": ^3.5.1
@@ -9759,8 +9715,8 @@ fsevents@^2.1.2:
     firebase: ^8.4.1
     firebaseui: ^4.8.0
     firestore-jest-mock: ^0.11.0
-    husky: ^4.3.0
-    i18next: ^19.9.2
+    husky: ^6.0.0
+    i18next: ^20.2.1
     i18next-browser-languagedetector: ^6.1.0
     i18next-http-backend: ^1.2.1
     jest-axe: ^4.1.0
@@ -9788,7 +9744,7 @@ fsevents@^2.1.2:
   version: 0.0.0-use.local
   resolution: "gluco-check-webhooks@workspace:gluco-check-webhooks"
   dependencies:
-    "@assistant/conversation": ^3.4.0
+    "@assistant/conversation": ^3.5.0
     "@types/jest": ^26.0.22
     "@types/node": ^14.14.41
     "@typescript-eslint/eslint-plugin": ^4.22.0
@@ -9801,7 +9757,7 @@ fsevents@^2.1.2:
     firebase-functions-test: ^0.2.3
     gluco-check-common: "workspace:gluco-check-common"
     gluco-check-core: "workspace:gluco-check-core"
-    gts: ^3.0.3
+    gts: ^3.1.0
     jest: ^26.6.3
     prettier: ^2.2.1
     rimraf: ^3.0.2
@@ -9956,20 +9912,21 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"gts@npm:^3.0.3":
-  version: 3.0.3
-  resolution: "gts@npm:3.0.3"
+"gts@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "gts@npm:3.1.0"
   dependencies:
     "@typescript-eslint/eslint-plugin": ^4.2.0
     "@typescript-eslint/parser": ^4.2.0
     chalk: ^4.1.0
     eslint: ^7.10.0
-    eslint-config-prettier: ^6.12.0
+    eslint-config-prettier: ^7.0.0
     eslint-plugin-node: ^11.1.0
     eslint-plugin-prettier: ^3.1.4
     execa: ^5.0.0
     inquirer: ^7.3.3
-    meow: ^8.0.0
+    json5: ^2.1.3
+    meow: ^9.0.0
     ncp: ^2.0.0
     prettier: ^2.1.2
     rimraf: ^3.0.2
@@ -9979,7 +9936,7 @@ fsevents@^2.1.2:
     typescript: ">=3"
   bin:
     gts: build/src/cli.js
-  checksum: f8caebf71b77905ac8f8ab3736b3e2e9dad9018a462110260038e30df95c922a70dc0ac5703769cba790f7a6277848a94ffa3ce32cd1fe648f3ef132c8cbb54d
+  checksum: b8cb573f1c1679900717c15ed6e31c0e7973f01d076b07745e8bc3563ce918b6eafb4401fc79378dcf3d10bec5dffaf620bdd2031d9efa4bf0da77d8501d6268
   languageName: node
   linkType: hard
 
@@ -10477,45 +10434,12 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"husky@npm:^4.3.0":
-  version: 4.3.8
-  resolution: "husky@npm:4.3.8"
-  dependencies:
-    chalk: ^4.0.0
-    ci-info: ^2.0.0
-    compare-versions: ^3.6.0
-    cosmiconfig: ^7.0.0
-    find-versions: ^4.0.0
-    opencollective-postinstall: ^2.0.2
-    pkg-dir: ^5.0.0
-    please-upgrade-node: ^3.2.0
-    slash: ^3.0.0
-    which-pm-runs: ^1.0.0
+"husky@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "husky@npm:6.0.0"
   bin:
-    husky-run: bin/run.js
-    husky-upgrade: lib/upgrader/bin.js
-  checksum: 1ac4fb51ffd93547ec861f185d86bdbfbac8ee24ce60417d531dbe5222e33fc754436e87e4e2b37a44dcefdc78c151f9ba4ac57c05773f5c36377cc4eb73732b
-  languageName: node
-  linkType: hard
-
-"husky@npm:^4.3.6":
-  version: 4.3.6
-  resolution: "husky@npm:4.3.6"
-  dependencies:
-    chalk: ^4.0.0
-    ci-info: ^2.0.0
-    compare-versions: ^3.6.0
-    cosmiconfig: ^7.0.0
-    find-versions: ^3.2.0
-    opencollective-postinstall: ^2.0.2
-    pkg-dir: ^4.2.0
-    please-upgrade-node: ^3.2.0
-    slash: ^3.0.0
-    which-pm-runs: ^1.0.0
-  bin:
-    husky-run: bin/run.js
-    husky-upgrade: lib/upgrader/bin.js
-  checksum: 3c8708887822c93094c4af22608df00a3bdd74784172d13cd08c5d1ed3e7a602f6016bce9982de206f060661f1ea801362edf5658c18fc4a3866d605c47ecaf9
+    husky: lib/bin.js
+  checksum: 61e1f7f53f3c969d361c2a1d4ed8018b9447406ea6cd644a2526d18b76877d135001d8cbd48a1d201fc1614d96995e691ecd2b82a8d8513a6b4a313da1188ccd
   languageName: node
   linkType: hard
 
@@ -10544,12 +10468,12 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"i18next@npm:^19.9.2":
-  version: 19.9.2
-  resolution: "i18next@npm:19.9.2"
+"i18next@npm:^20.2.1":
+  version: 20.2.1
+  resolution: "i18next@npm:20.2.1"
   dependencies:
     "@babel/runtime": ^7.12.0
-  checksum: 2570489cf92fdbc6c9c6e937deb23725afa1e2af3376f3c1d4880c4cacfc7b79e6136c62527dbc23052a206781f056a5800cda1f7379199a721623cd45e8dd6d
+  checksum: b73d828f43a8df4edfcc85f23721c1f2bc797367ac9864e75f6312a5f7e9a3729917f4ea0e6149eb78f87b3acdf9dfee72b37c2b2f00e5f5ed31ccb1de75c33c
   languageName: node
   linkType: hard
 
@@ -12258,6 +12182,17 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
+"json5@npm:^2.1.3":
+  version: 2.2.0
+  resolution: "json5@npm:2.2.0"
+  dependencies:
+    minimist: ^1.2.5
+  bin:
+    json5: lib/cli.js
+  checksum: 07b1f90c2801dc52df2b0ac8d606cc400a85cda79130e754780fa2ab9805d0fb85a0e61b6a5cdd68e88e5d0c8f9109ec415af08283175556cdccaa8563853908
+  languageName: node
+  linkType: hard
+
 "jsonfile@npm:^4.0.0":
   version: 4.0.0
   resolution: "jsonfile@npm:4.0.0"
@@ -12715,15 +12650,6 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"locate-path@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "locate-path@npm:6.0.0"
-  dependencies:
-    p-locate: ^5.0.0
-  checksum: 4c379638152e0e5fda9a8cc07005702f81fcb9899db0f66d691ac1e64193dea670af14e96c50f14d82d45959daa4c400cb712c158cffe22ae265bfc1b1e3a221
-  languageName: node
-  linkType: hard
-
 "lodash._reinterpolate@npm:^3.0.0":
   version: 3.0.0
   resolution: "lodash._reinterpolate@npm:3.0.0"
@@ -13092,12 +13018,13 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"meow@npm:^8.0.0":
-  version: 8.0.0
-  resolution: "meow@npm:8.0.0"
+"meow@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "meow@npm:9.0.0"
   dependencies:
     "@types/minimist": ^1.2.0
     camelcase-keys: ^6.2.2
+    decamelize: ^1.2.0
     decamelize-keys: ^1.1.0
     hard-rejection: ^2.1.0
     minimist-options: 4.1.0
@@ -13107,7 +13034,7 @@ fsevents@^2.1.2:
     trim-newlines: ^3.0.0
     type-fest: ^0.18.0
     yargs-parser: ^20.2.3
-  checksum: 536b8cdff381d619ba4d2647bd15bde3ebbcb289e0c6a5e618d23e6e6d922f6a2febc722a12dee7c6c426f3f37a9a3e7e7b09bf9c217e2eb178e276f9665697d
+  checksum: d1573809d6e3df55ab7b8c49f2ecfb8006664856700b556c794013ef887e47991bf1fef8ba9de60bb4afda9b62136823e4008c7f2cc459a7c036b7b649a42c0d
   languageName: node
   linkType: hard
 
@@ -14027,15 +13954,6 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"opencollective-postinstall@npm:^2.0.2":
-  version: 2.0.3
-  resolution: "opencollective-postinstall@npm:2.0.3"
-  bin:
-    opencollective-postinstall: index.js
-  checksum: d75b06b80eb426aaf099307ca4398f3119c8c86ff3806a95cfe234b979b80c07080040734fe2dc3c51fed5b15bd98dae88340807980bdc74aa1ebf045c74ef06
-  languageName: node
-  linkType: hard
-
 "opn@npm:^5.5.0":
   version: 5.5.0
   resolution: "opn@npm:5.5.0"
@@ -14189,15 +14107,6 @@ fsevents@^2.1.2:
   dependencies:
     p-limit: ^2.2.0
   checksum: 57f9abef0b29f02ff88c0936a392c9a1fbdd08169e636e0d85b7407c108014d71578c0c6fe93fa49b5bf3857b20d6f16b96389e2b356f7f599d4d2150505844f
-  languageName: node
-  linkType: hard
-
-"p-locate@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "p-locate@npm:5.0.0"
-  dependencies:
-    p-limit: ^3.0.2
-  checksum: a233d775c870e00c734adabd29f66f93824df076683c0d5a2dc16e5285b02d80c1bf3bab43b9881e4a5b16b37bb86f1922aebb094674703d30a4973041d5c0f6
   languageName: node
   linkType: hard
 
@@ -14570,15 +14479,6 @@ fsevents@^2.1.2:
   dependencies:
     find-up: ^4.0.0
   checksum: 1956ebf3cf5cc36a5d20e93851fcadd5a786774eb08667078561e72e0ab8ace91fc36a028d5305f0bfe7c89f9bf51886e2a3c8cb2c2620accfa3feb8da3c256b
-  languageName: node
-  linkType: hard
-
-"pkg-dir@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "pkg-dir@npm:5.0.0"
-  dependencies:
-    find-up: ^5.0.0
-  checksum: 86f6ecee1787d8fe1606fd831f823f967c6ea0d760ce714af6afd2fec076ce71fbedcb57b339d93b84edf90ccdd81d4e6e2c10fcde21684ef3ffee5e05fd37dc
   languageName: node
   linkType: hard
 
@@ -16918,7 +16818,7 @@ resolve@^2.0.0-next.3:
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
-    husky: ^4.3.6
+    husky: ^6.0.0
     rimraf: ^3.0.2
   languageName: unknown
   linkType: soft
@@ -17140,20 +17040,6 @@ resolve@^2.0.0-next.3:
   dependencies:
     semver: ^6.3.0
   checksum: d5c9b693e6118bf56226b52fe4bb51f1f05fd7b91bd7979d3d01b32d4e136e16e4ea110f28f0690608712473d682e7a71a05f0ab65b8ba4a70d63b536d4c6278
-  languageName: node
-  linkType: hard
-
-"semver-regex@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "semver-regex@npm:2.0.0"
-  checksum: 9b96cc8bd559c1d46968b334ccc88115a2d9d2f7a2125d6838471114ed0c52057e77aae760fbe4932aee06687584733b32aed6d2c9654b2db33e383bfb8f26ce
-  languageName: node
-  linkType: hard
-
-"semver-regex@npm:^3.1.2":
-  version: 3.1.2
-  resolution: "semver-regex@npm:3.1.2"
-  checksum: 6a83740f3fc24379629be068e677c71c57e0d9df4977eb56d863f26a7830b85f14d9f1af71ca3a84df9ac70fcd9ce8821466064f5652ffa0dc343b50ded86698
   languageName: node
   linkType: hard
 
@@ -19614,13 +19500,6 @@ resolve@^2.0.0-next.3:
   version: 2.0.0
   resolution: "which-module@npm:2.0.0"
   checksum: 3d2107ab18c3c2a0ffa4f1a2a0a8862d0bb3fd5c72b10df9cbd75a15b496533bf4c4dc6fa65cefba6fdb8af7935ffb939ef4c8f2eb7835b03d1b93680e9101e9
-  languageName: node
-  linkType: hard
-
-"which-pm-runs@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "which-pm-runs@npm:1.0.0"
-  checksum: 0bb79a782e98955afec8f35a3ae95c4711fdd3d0743772ee98211da67c2421fdd4c92c95c93532cc0b4dcc085d8e27f3ad2f8a9173cb632692379bd3d2818821
   languageName: node
   linkType: hard
 
