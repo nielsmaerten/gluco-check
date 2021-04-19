@@ -1,5 +1,5 @@
 import { getDocumentPathForUser } from "./firebase-helpers";
-import { mockUser } from './__mocks__/firebase'
+import { mockUser } from "./__mocks__/firebase";
 
 describe("getDocumentPathForUser", () => {
   it("returns the expected document path", () => {
