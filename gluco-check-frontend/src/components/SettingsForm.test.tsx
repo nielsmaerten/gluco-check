@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   cleanup,
   render,
@@ -170,8 +171,6 @@ describe("SettingsForm component", () => {
     const submitButton = await screen.findByTestId("settings-form-submit");
 
     expect(submitButton).toBeDisabled();
-    await userEvent.click(submitButton);
-    expect(mockOnSubmit).not.toHaveBeenCalled();
   });
 
   it("cannot save settings when default metrics are empty", async () => {
@@ -189,8 +188,6 @@ describe("SettingsForm component", () => {
     const submitButton = await screen.findByTestId("settings-form-submit");
 
     expect(submitButton).toBeDisabled();
-    await userEvent.click(submitButton);
-    expect(mockOnSubmit).not.toHaveBeenCalled();
   });
 
   it("attempts to save settings and handles submission error", async () => {

@@ -1,6 +1,5 @@
-import * as firebase from "firebase/app";
+import firebase from "firebase/app";
 import "firebase/auth";
-import "firebase/database";
 import "firebase/firestore";
 import "firebase/analytics";
 
@@ -18,5 +17,4 @@ firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 // firebase.auth().languageCode = "pt";// TODO: set locale here once it's available
 export const auth = firebase.auth();
-export const db = firebase.database();
 export const firestore = firebase.firestore();
