@@ -1,12 +1,11 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { Container, Grid, makeStyles, Typography } from "@material-ui/core";
-import Onboarding from "../components/Onboarding";
-
-import * as firebase from "firebase/app";
+import firebase from "firebase/app";
 import * as firebaseui from "firebaseui";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { auth } from "../lib/firebase";
+import { useTranslation } from "react-i18next";
+
+import { Container, Grid, makeStyles, Typography } from "@material-ui/core";
+import Onboarding from "../components/Onboarding";
 import Boilerplate from "../components/Boilerplate";
 
 const useStyles = makeStyles((theme) => ({
