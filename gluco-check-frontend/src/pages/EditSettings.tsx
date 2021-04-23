@@ -79,11 +79,6 @@ export default function EditSettings() {
       <Typography variant="h6" component="h2">
         {t("settings.title")}
       </Typography>
-      {!hasHeardDisclaimer && (
-        <Alert severity="warning" className={classes.alert}>
-          {t("settings.betaBanner")}
-        </Alert>
-      )}
 
       {loading && <>{t("status.general.loading")}</>}
       {error && (
