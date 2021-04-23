@@ -61,8 +61,8 @@ jobs:
     - name: "Upload snapshot"
       uses: actions/upload-artifact@v2
       with:
-        name: snapshot-${{ env.GITHUB_SHA }}
-        path: ${github.sha}
+        name: snapshot-$GITHUB_SHA
+        path: $GITHUB_SHA
         retention-days: 1
 
     - name: "Upload coverage results"
