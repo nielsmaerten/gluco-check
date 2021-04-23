@@ -60,7 +60,7 @@ jobs:
         run: yarn workspace gluco-check-frontend run build
 
       - name: "Deploy WEBHOOKS"
-        if: ${{ github.ref == 'refs/heads/main' }}
+        if: ${{ github.ref == 'refs/heads/main' && matrix.node-version == '14.x' }}
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only functions
@@ -70,7 +70,7 @@ jobs:
           PROJECT_ID: gluco-check-nightly
 
       - name: "Deploy FRONTEND"
-        if: ${{ matrix.node_version == '14.x' }}
+        if: ${{ github.ref == 'refs/heads/main' && matrix.node-version == '14.x' }}
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting
