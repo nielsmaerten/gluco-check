@@ -1,4 +1,4 @@
-name: Lint, Test & Build
+name: Test, Build & Deploy
 
 on:
   pull_request:
@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  lint-test-build:
+  test-build-deploy:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -80,4 +80,5 @@ jobs:
           PROJECT_ID: gluco-check-nightly
 
       - name: "Upload coverage results"
+        if: ${{ matrix.node-version == '14.x' }}
         run: bash <(curl -s https://codecov.io/bash)
