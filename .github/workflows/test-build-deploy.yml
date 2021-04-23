@@ -41,7 +41,7 @@ jobs:
       - name: "[SETUP] Write .env file"
         uses: timheuer/base64-to-file@v1
         with:
-          fileName: ${{ secrets.GITHUB_WORKSPACE }}/.env
+          fileName: ${{ secrets.GITHUB_WORKSPACE }}/gluco-check-frontend/.env
           encodedString: ${{ secrets.DOTENV_NIGHTLY }}
 
       - name: "Lint all code"
