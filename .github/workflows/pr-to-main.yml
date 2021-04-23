@@ -62,7 +62,8 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: snapshot-${{ env.GITHUB_SHA }}
-        path: ${{ env.GITHUB_WORKSPACE }}
+        path: ${github.sha}
+        retention-days: 1
 
     - name: "Upload coverage results"
       run: bash <(curl -s https://codecov.io/bash)
