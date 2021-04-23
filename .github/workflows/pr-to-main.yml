@@ -39,12 +39,12 @@ jobs:
 
     - name: "Lint all code"
       run: yarn lint
-      
+
     - name: "Build i18n resource bundles"
       run: yarn workspace gluco-check-common run build
 
     - name: "Test CORE package"
-      run: yarn workspace gluco-check-core run test:cov  
+      run: yarn workspace gluco-check-core run test:cov
 
     - name: "Build CORE package"
       run: yarn workspace gluco-check-core run build
@@ -53,7 +53,7 @@ jobs:
       run: yarn workspace gluco-check-webhooks run build
 
     - name: "Test FRONTEND"
-      run: yarn workspace gluco-check-frontend run test:ci 
+      run: yarn workspace gluco-check-frontend run test:ci
 
     - name: "Build FRONTEND"
       run: yarn workspace gluco-check-frontend run build
