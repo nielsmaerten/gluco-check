@@ -58,5 +58,11 @@ jobs:
     - name: "Build FRONTEND"
       run: yarn workspace gluco-check-frontend run build
 
+    - name: "Upload snapshot"
+      uses: actions/upload-artifact@v2
+      with:
+        name: snapshot-${{ env.GITHUB_SHA }}
+        path: ${{ env.GITHUB_WORKSPACE }}
+
     - name: "Upload coverage results"
       run: bash <(curl -s https://codecov.io/bash)
