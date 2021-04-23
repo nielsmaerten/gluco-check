@@ -1,12 +1,11 @@
-name: Build, Test, Lint, Deploy
+name: Deploy
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-  build:
-
+  deploy:
     runs-on: ubuntu-latest
 
     strategy:
@@ -14,28 +13,30 @@ jobs:
         node-version: [14.x]
 
     steps:
-    - name: Cloning repository
-      uses: actions/checkout@v2
+      - name: "[SETUP] Download snapshot"
+        uses: actions/download-artifact@v2
+        with:
+          name: snapshot-${{ github.sha }}-${{ matrix.node-version }}
 
-    - name: Using Node.js v${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
+      - name: "[SETUP] Enable Node v${{ matrix.node-version }}"
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - name: Installing dependencies
-      run: yarn # Includes Typescript build
+      - name: "Deploy WEBHOOKS"
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only functions
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          PROJECT_PATH: ./gluco-check-webhooks
+          PROJECT_ID: gluco-check-nightly
 
-    - name: Running tests
-      run: yarn test # Includes linting (post tests)
-
-    - name: Reporting coverage
-      run: bash <(curl -s https://codecov.io/bash)
-
-    - name: Deploying webhooks to nightly
-      uses: w9jds/firebase-action@master
-      with:
-        args: deploy --only functions
-      env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        PROJECT_PATH: ./gluco-check-webhooks
-        PROJECT_ID: nightly
+      - name: "Deploy FRONTEND"
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          PROJECT_PATH: ./gluco-check-frontend
+          PROJECT_ID: gluco-check-nightly
