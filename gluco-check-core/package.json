@@ -1,12 +1,9 @@
 {
   "name": "gluco-check-core",
-  "version": "0.0.1",
-  "description": "Core functionality of Gluco Check",
-  "repository": "https://github.com/nielsmaerten/gluco-check",
-  "author": "Niels Maerten",
-  "main": "build/src/index.js",
-  "license": "MIT",
+  "version": "1.0.0",
+  "repository": "https://github.com/nielsmaerten/gluco-check/tree/main/gluco-check-core",
   "private": true,
+  "main": "build/src/index.js",
   "engines": {
     "node": ">=10"
   },
@@ -34,7 +31,8 @@
     "watch:test": "jest --watch",
     "watch:compile": "tsc --watch",
     "purge": "rimraf node_modules/",
-    "test": "jest && yarn lint"
+    "test": "jest",
+    "test:cov": "jest --collectCoverage"
   },
   "dependencies": {
     "@assistant/conversation": "^3.5.0",

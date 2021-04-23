@@ -3,3 +3,4 @@
 
 # Verify all code is properly formatted before pushing
 yarn lint
+yarn workspace gluco-check-common run toc
