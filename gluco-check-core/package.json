@@ -31,7 +31,8 @@
     "watch:test": "jest --watch",
     "watch:compile": "tsc --watch",
     "purge": "rimraf node_modules/",
-    "test": "jest"
+    "test": "jest",
+    "test:cov": "jest --collectCoverage"
   },
   "dependencies": {
     "@assistant/conversation": "^3.5.0",
