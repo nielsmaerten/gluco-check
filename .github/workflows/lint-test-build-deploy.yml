@@ -3,6 +3,8 @@ name: Lint, Test & Build
 on:
   pull_request:
     branches: [main]
+  push:
+    branches: [main]
 
 jobs:
   lint-test-build:
@@ -57,14 +59,25 @@ jobs:
       - name: "Build FRONTEND"
         run: yarn workspace gluco-check-frontend run build
 
-      - name: "Upload snapshot"
-        uses: actions/upload-artifact@v2
+      - name: "Deploy WEBHOOKS"
+        if: ${{ github.ref == 'refs/heads/main' && matrix.node_version == '14.x' }}
+        uses: w9jds/firebase-action@master
         with:
-          name: snapshot-${{ github.sha }}-${{ matrix.node-version }}
-          path: |
-            ${{ github.workspace }}
-            !${{ github.workspace }}/**/node_modules/**/*
-          retention-days: 1
+          args: deploy --only functions
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          PROJECT_PATH: ./gluco-check-webhooks
+          PROJECT_ID: gluco-check-nightly
+
+      - name: "Deploy FRONTEND"
+        if: ${{ github.ref == 'refs/heads/main' && matrix.node_version == '14.x' }}
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          PROJECT_PATH: ./gluco-check-frontend
+          PROJECT_ID: gluco-check-nightly
 
       - name: "Upload coverage results"
         run: bash <(curl -s https://codecov.io/bash)
