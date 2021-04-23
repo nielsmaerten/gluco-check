@@ -38,6 +38,12 @@ jobs:
       - name: "[SETUP] Install dependencies"
         run: yarn
 
+      - name: "[SETUP] Write .env file"
+        uses: timheuer/base64-to-file@v1
+        with:
+          fileName: ./gluco-check-frontend/.env
+          encodedString: ${{ secrets.DOTENV_NIGHTLY }}
+
       - name: "Lint all code"
         run: yarn lint
 
