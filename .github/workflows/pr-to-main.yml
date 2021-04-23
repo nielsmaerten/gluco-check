@@ -38,7 +38,7 @@ jobs:
       run: yarn
 
     - name: "Lint all code"
-      run: yarn workspaces foreach run lint
+      run: yarn lint
       
     - name: "Build i18n resource bundles"
       run: yarn workspace gluco-check-common run build
