@@ -1,16 +1,33 @@
 {
+  "name": "gluco-check",
+  "description": "Hey Google, Check my sugar",
+  "homepage": "https://glucocheck.app",
+  "version": "1.0.0",
+  "repository": "https://github.com/nielsmaerten/gluco-check",
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Niels Maerten",
+      "url": "https://github.com/nielsmaerten"
+    },
+    {
+      "name": "David D'Amico",
+      "email": "human@ddamico.org",
+      "url": "https://github.com/ddamico"
+    }
+  ],
+  "scripts": {
+    "purge": "yarn workspaces foreach run purge && rimraf node_modules/ && echo Run yarn to reinstall dependencies.",
+    "build": "yarn workspaces foreach run build",
+    "test": "yarn workspaces foreach run test",
+    "lint": "yarn workspaces foreach run lint",
+    "prepare": "husky install"
+  },
   "private": true,
   "workspaces": {
     "packages": [
       "gluco-check-*"
     ]
-  },
-  "scripts": {
-    "purge": "yarn workspaces foreach run purge && rimraf node_modules/ && echo Run yarn to reinstall dependencies.",
-    "build": "yarn workspaces foreach run build",
-    "test": "yarn build && yarn workspaces foreach run test",
-    "lint": "yarn workspaces foreach run lint",
-    "postinstall": "husky install"
   },
   "devDependencies": {
     "husky": "^6.0.0",

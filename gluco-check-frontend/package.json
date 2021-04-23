@@ -1,12 +1,7 @@
 {
   "name": "gluco-check-frontend",
-  "version": "0.1.0",
-  "license": "MIT",
-  "contributors": [
-    "David D'Amico <human@ddamico.org>",
-    "Niels Maerten"
-  ],
-  "repository": "https://github.com/nielsmaerten/gluco-check",
+  "version": "1.0.0",
+  "repository": "https://github.com/nielsmaerten/gluco-check/tree/main/gluco-check-frontend",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.3",
@@ -45,7 +40,8 @@
     "test:ci": "CI=true npm run test -- --coverage",
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "eject": "react-scripts eject",
-    "deploy": "react-scripts build && firebase deploy --only hosting"
+    "deploy:rebuild": "yarn run build && yarn run deploy",
+    "deploy": "firebase deploy --only hosting"
   },
   "eslintConfig": {
     "extends": "react-app"

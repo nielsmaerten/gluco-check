@@ -1,12 +1,9 @@
 {
   "name": "gluco-check-webhooks",
-  "version": "0.0.1",
-  "description": "Webhooks called by Google Assistant",
-  "main": "build/src/index.js",
-  "repository": "https://github.com/nielsmaerten/gluco-check",
-  "author": "Niels Maerten",
-  "license": "MIT",
+  "version": "1.0.0",
+  "repository": "https://github.com/nielsmaerten/gluco-check/tree/main/gluco-check-webhooks",
   "private": true,
+  "main": "build/src/index.js",
   "devDependencies": {
     "@types/jest": "^26.0.22",
     "@types/node": "^14.14.41",
@@ -40,7 +37,6 @@
     "watch:test": "jest --watch",
     "watch:compile": "tsc --watch",
     "purge": "rimraf node_modules/",
-    "test": "yarn build && yarn lint",
     "serve": "echo !! Start 'watch:compile' in a separate process && firebase emulators:start --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
