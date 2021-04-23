@@ -62,7 +62,9 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: snapshot-${{ github.sha }}-${{ matrix.node-version }}
-        path: ${{ github.workspace }}
+        path: |
+          ${{ github.workspace }}
+          !${{ github.workspace }}/**/node_modules/**/*
         retention-days: 1
 
     - name: "Upload coverage results"
