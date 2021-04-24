@@ -2,7 +2,7 @@
   "name": "gluco-check-action",
   "version": "1.0.0",
   "repository": "https://github.com/nielsmaerten/gluco-check/tree/main/gluco-check-action",
-  "private": "true",
+  "private": true,
   "scripts": {
     "pull": "cd definitions && gactions pull --clean --force",
     "push": "cd definitions && gactions push -v",

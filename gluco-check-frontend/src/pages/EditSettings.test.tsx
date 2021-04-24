@@ -83,7 +83,6 @@ describe("EditSettings", () => {
       </FirebaseUserDocumentContext.Provider>
     );
 
-    expect(await screen.findByText("settings.betaBanner")).toBeTruthy();
     expect(await axe(container)).toHaveNoViolations();
   });
 

@@ -1,11 +1,10 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { useDocument } from "react-firebase-hooks/firestore";
 import { firestore } from "../lib/firebase";
 import {
   DEFAULT_USER_DOCUMENT,
   FIRESTORE_DEFAULT_SET_OPTIONS,
 } from "../lib/firebase-helpers";
-import { Alert } from "@material-ui/lab";
 import { Container, makeStyles, Typography } from "@material-ui/core";
 import { useTranslation } from "react-i18next";
 
@@ -14,7 +13,6 @@ import { SettingsFormData } from "../lib/types";
 import {
   APP_DEBUG,
   DEFAULT_GLUCOSE_UNITS,
-  FIRESTORE_FIELD_HEARD_DISCLAIMER,
   FIRESTORE_FIELD_PATH_DEFAULT_METRICS,
   FIRESTORE_FIELD_PATH_GLUCOSE_UNITS,
   FIRESTORE_FIELD_PATH_NIGHTSCOUT_TOKEN,
@@ -71,19 +69,12 @@ export default function EditSettings() {
     document?.get(FIRESTORE_FIELD_PATH_DEFAULT_METRICS) ?? [];
   const glucoseUnit =
     document?.get(FIRESTORE_FIELD_PATH_GLUCOSE_UNITS) ?? DEFAULT_GLUCOSE_UNITS;
-  const hasHeardDisclaimer =
-    document?.get(FIRESTORE_FIELD_HEARD_DISCLAIMER) ?? false;
 
   return (
     <Container maxWidth="md" className={classes.container}>
       <Typography variant="h6" component="h2">
         {t("settings.title")}
       </Typography>
-      {!hasHeardDisclaimer && (
-        <Alert severity="warning" className={classes.alert}>
-          {t("settings.betaBanner")}
-        </Alert>
-      )}
 
       {loading && <>{t("status.general.loading")}</>}
       {error && (
