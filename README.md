@@ -33,7 +33,7 @@ Pull requests are welcome.
 For detailed tech docs, check [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 [![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/nielsmaerten/gluco-check/main?style=flat-square)](https://www.codefactor.io/repository/github/nielsmaerten/gluco-check/)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/nielsmaerten/gluco-check/Build,%20Test,%20Lint,%20Deploy?style=flat-square)](https://github.com/nielsmaerten/gluco-check/actions?query=workflow%3A%22Build%2C+Test%2C+Lint%2C+Deploy%22)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/nielsmaerten/gluco-check/Test,%20Build%20&%20Deploy/main?style=flat-square)](https://github.com/nielsmaerten/gluco-check/actions/workflows/test-build-deploy.yml?query=branch%3Amain)
 [![Codecov](https://img.shields.io/codecov/c/github/nielsmaerten/gluco-check?style=flat-square)](https://codecov.io/gh/nielsmaerten/gluco-check)
 
 
