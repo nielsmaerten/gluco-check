@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import { themeOptions } from "../theme";
+import { lightThemeOptions } from "../theme";
 import ThemeWithMediaProvider from "./ThemeWithMediaProvider";
 
 import { useMediaQuery, createMuiTheme } from "@material-ui/core";
@@ -19,7 +19,7 @@ jest.mock("@material-ui/core", () => {
 describe("ThemeWithMediaProvider", () => {
   it("renders the wrapped children", () => {
     const { container } = render(
-      <ThemeWithMediaProvider themeOptions={themeOptions}>
+      <ThemeWithMediaProvider themeOptions={lightThemeOptions}>
         <div>Some Content</div>
       </ThemeWithMediaProvider>
     );
@@ -34,7 +34,7 @@ describe("ThemeWithMediaProvider", () => {
       expect(theme.palette).toMatchSnapshot();
     });
     render(
-      <ThemeWithMediaProvider themeOptions={themeOptions}>
+      <ThemeWithMediaProvider themeOptions={lightThemeOptions}>
         <div>Some Content</div>
       </ThemeWithMediaProvider>
     );
@@ -47,7 +47,7 @@ describe("ThemeWithMediaProvider", () => {
       expect(theme.palette).toMatchSnapshot();
     });
     render(
-      <ThemeWithMediaProvider themeOptions={themeOptions}>
+      <ThemeWithMediaProvider themeOptions={lightThemeOptions}>
         <div>Some Content</div>
       </ThemeWithMediaProvider>
     );
