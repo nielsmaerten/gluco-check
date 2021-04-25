@@ -63,8 +63,8 @@
         },
         "nightscoutUrl": {
           "default": "URL van je Nightscout site",
-          "required": "Dit veld is vereist",
-          "notNightscout": "Geen Nighscout site achter deze URL",
+          "required": "Dit veld is verplicht",
+          "notNightscout": "We vonden geen Nightscout site op deze URL",
           "needsUpgrade": "Je Nightscout site moet worden bijgewerkt om te kunnen werken met Gluco Check. Update naar minimaal {{version}}"
         },
         "defaultMetrics": {
