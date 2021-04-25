@@ -60,10 +60,10 @@ kan je met [deze instructies](https://glucocheck.app/assets/routines-setup.mp4) 
 
 ## Waarom herkent Nightscout mijn API secret / token niet?
 
-_API Secrets_ en _Tokens_ zijn twee verschillende dingen.  
+_API Secrets_ en _Tokens_ zijn twee verschillende manieren om info in Nightscout te delen.  
 Om Gluco Check te gebruiken heb je een _token_ nodig. Tokens zien er zo uit: `glucocheck-1d2a6bc59`.  
 Hulp nodig? Ga naar https://glucocheck.app/settings, en klik op '_Niet zeker hoe je een token aanmaakt? Lees verder!_'
 
 ## Ik heb een andere vraag!
 
-Kon je hier geen antwoord vinden? Stel je vraag in [Discussions](https://github.com/nielsmaerten/gluco-check/discussions). We helpen je graag verder!
+Kon je hier geen antwoord vinden? Stel je vraag in [Discussions](https://github.com/nielsmaerten/gluco-check/discussions). We helpen je graag verder! (Enkel in het Engels)
