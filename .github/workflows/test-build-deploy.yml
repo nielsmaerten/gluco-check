@@ -23,7 +23,12 @@ jobs:
             if [[ "${{ github.ref }}" == "refs/heads/main"  ||  "${{ github.ref }}" == "refs/heads/production" ]]; then
               echo "::set-output name=DEPLOY::true"
               echo "Commit will be deployed after building"
+            else
+              echo "Not on main or production branch: Deployment will be skipped"
             fi
+
+          else
+            echo "Not using Node v14: Deployment will be skipped"
           fi
 
           # Depending on branch, output production or nightly env vars
