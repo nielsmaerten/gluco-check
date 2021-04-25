@@ -32,7 +32,7 @@ assistant_responses:
       {{value}} koolhydraten aan boord sinds {{time}} geleden.
   insulin_on_board:
     long;with_time: >
-      Er zijn {{value}} insuline eenheden sinds {{time}} geleden.
+      Er zijn {{value}} insuline eenheden aan boord sinds {{time}} geleden.
     long;no_time: >
       {{value}} insuline eenheden aan boord.
     short;with_time: >
