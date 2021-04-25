@@ -19,7 +19,7 @@
     "l2": "Koolhydraten",
     "q3": "Hey Google, vraag Gluco Check om alle waarden",
     "a3": "Suikerspiegel is 6.1. Er zijn 12 koolhydraten. De sensor is...",
-    "l3": "Alles"
+    "l3": "Alle waarden"
   },
   "boilerplate": {
     "terms": "Door in te loggen ga je akkoord met onze <2>Gebruiksvoorwaarden</2> en <5>Privacy Policy</5>.",
@@ -30,7 +30,7 @@
   "welcome": {
     "title": "Welkom bij Gluco Check",
     "subtitle": "Gluco Check brengt Nightscout naar je Google Home",
-    "cta": "Link je Nightscout"
+    "cta": "Verbinden met Nightscout"
   },
   "login": {
     "title": "Aanmelden",
@@ -55,30 +55,30 @@
         },
         "nightscoutUrl": {
           "default": "URL van je Nightscout site",
-          "required": "Dit veld is vereist",
-          "notNightscout": "Geen Nighscout site achter deze URL",
+          "required": "Dit veld is verplicht",
+          "notNightscout": "We vonden geen Nightscout site op deze URL",
           "needsUpgrade": "Je Nightscout site moet worden bijgewerkt om te kunnen werken met Gluco Check. Update naar minimaal {{version}}"
         },
         "defaultMetrics": {
           "required": "Selecteer minstens één waarde",
-          "notAvailableInvalidToken": "* Je hebt een token nodig om deze waarden te kunnen lezen",
-          "notAvailableValidToken": "* Deze waarden konden we niet meteen vinden, maar je kan ze wel nog selecteren"
+          "notAvailableInvalidToken": "* Voor deze waarden heb je een token nodig",
+          "notAvailableValidToken": "* Deze waarden konden we niet meteen vinden. Je kan ze wel nog steeds selecteren"
         },
         "glucoseUnits": {
-          "mismatch": "De gekozen eenheid is anders dan die van je Nightscout site"
+          "mismatch": "De gekozen eenheid komt niet overeen met die van je Nightscout site"
         }
       },
       "submitButton": "Instellingen opslaan",
       "submitStatus": {
-        "submitting": "Je instellingen worden opgeslagen",
-        "submitted": "Je instellingen zijn opgeslagen",
-        "error": "Er liep iets mis bij het opslaan van je instellingen"
+        "submitting": "Je instellingen worden bewaard",
+        "submitted": "Je instellingen zijn bewaard",
+        "error": "Er liep iets mis bij het bewaren van je instellingen"
       }
     }
   },
   "navigation": {
     "faqs": "Hulp & Veelgestelde vragen",
-    "github": "Onze GitHub pagina"
+    "github": "Gluco Check op GitHub "
   },
   "diabetesMetrics": {
     "Everything": "alles",
@@ -91,20 +91,20 @@
   },
   "tokenDialog": {
     "title": "Een Nightscout token aanmaken",
-    "preamble": "Voor basis waarden zoals je bloedsuiker volstaat het om je Nightscout URL in te geven. Voor sommige andere waarden is een token met API toegang nodig. Maak je geen zorgen als je geen idee hebt wat dat betekent. We leggen het stap voor stap uit.",
+    "preamble": "Voor basiswaarden zoals je bloedsuiker volstaat het om je Nightscout URL in te geven. Voor sommige andere waarden heb je een token nodig. Geen zorgen als je niet weet hoe dit moet! We leggen het stap voor stap uit.",
     "links": {
       "howToUpdateNightscout": "http://www.nightscout.info/wiki/faqs-2/azure/updating-your-website-to-the-latest-release-pull-request",
       "glucoCheckSettings": "/settings"
     },
     "step1": {
       "label": "Controleer Nightscout versie",
-      "description": "Controleer eerst of je minimaal versie 14 van Nightscout gebruikt. Je kan je versie vinden door te klikken op het hamburger menu en onderaan te kijken:",
+      "description": "Controleer eerst of je minimaal versie 14 van Nightscout hebt. Je kan je versie vinden door te klikken op het hamburger menu en omlaag te scrollen:",
       "image": "nightscout-version.png",
       "image_alt": ""
     },
     "step2": {
       "label": "Nightscout bijwerken",
-      "description": "Als je Nightscout een update ndig heeft, lees dan <2>hier</2> verder hoe je dat doet. Laten we nu je token aanmaken."
+      "description": "Als je Nightscout een update nodig heeft, lees dan <2>hier</2> verder hoe je dat doet. Tijd nu om je token te maken."
     },
     "step3": {
       "label": "Role en Subject aanmaken",
