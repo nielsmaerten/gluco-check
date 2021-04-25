@@ -3,8 +3,6 @@
     "runtime": "nodejs10",
     "source": ".",
     "predeploy": [
-      "yarn lint",
-      "yarn workspaces run build",
       "yarn node deploy-hooks.js --pre"
     ],
     "postdeploy": [

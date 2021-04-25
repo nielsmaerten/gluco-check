@@ -1,15 +1,10 @@
-# Welcome to Gluco Check (open bèta)
-
-#### formerly [Nightscout Status](https://github.com/nielsmaerten/nightscout-assistant) 
-[![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/nielsmaerten/gluco-check/main?style=flat-square)](https://www.codefactor.io/repository/github/nielsmaerten/gluco-check/)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/nielsmaerten/gluco-check/Build,%20Test,%20Lint,%20Deploy?style=flat-square)](https://github.com/nielsmaerten/gluco-check/actions?query=workflow%3A%22Build%2C+Test%2C+Lint%2C+Deploy%22)
-[![Codecov](https://img.shields.io/codecov/c/github/nielsmaerten/gluco-check?style=flat-square)](https://codecov.io/gh/nielsmaerten/gluco-check)
+# Welcome to Gluco Check
+Nightscout for Google Home and Google Assistant.  
+Formerly known as: [Nightscout Status](https://github.com/nielsmaerten/nightscout-assistant)
 
 ## Getting started
 
 1. [Link your Nightscout site](https://glucocheck.app)
-1. During bèta, we have to manually activate your account.  
-   You'll get an email as soon as your account is ready. (Usually within 24 hours)
 1. Say: **"Hey Google, talk to Gluco Check"**  
 
 ## Things you can ask Gluco Check
@@ -36,6 +31,10 @@ Note: Routines are not supported in all languages.
 
 Pull requests are welcome.  
 For detailed tech docs, check [CONTRIBUTING.md](./CONTRIBUTING.md)
+
+[![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/nielsmaerten/gluco-check/main?style=flat-square)](https://www.codefactor.io/repository/github/nielsmaerten/gluco-check/)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/nielsmaerten/gluco-check/Test,%20Build%20&%20Deploy/main?style=flat-square)](https://github.com/nielsmaerten/gluco-check/actions/workflows/test-build-deploy.yml?query=branch%3Amain)
+[![Codecov](https://img.shields.io/codecov/c/github/nielsmaerten/gluco-check?style=flat-square)](https://codecov.io/gh/nielsmaerten/gluco-check)
 
 
 ## License & Privacy Policy

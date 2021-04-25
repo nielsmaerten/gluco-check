@@ -1,0 +1,309 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component renders the component when no user and no loading 1`] = `
+<div
+  class="makeStyles-root-17"
+>
+  <header
+    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionSticky MuiAppBar-colorPrimary MuiPaper-elevation4"
+  >
+    <div
+      class="MuiToolbar-root MuiToolbar-regular makeStyles-toolbar-23 MuiToolbar-gutters"
+    >
+      <section
+        class="makeStyles-leftToolbar-20"
+      >
+        <h1
+          class="MuiTypography-root makeStyles-navTitle-24 MuiTypography-h6"
+        >
+          <a
+            href="/"
+          >
+            title
+          </a>
+        </h1>
+      </section>
+      <section
+        class="makeStyles-rightToolbar-21"
+      >
+        <ul
+          class="makeStyles-nav-22"
+        >
+          <li>
+            <a
+              aria-disabled="false"
+              aria-label="navigation.faqs"
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
+              data-testid="navigation-home"
+              href="/faq"
+              tabindex="0"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </a>
+          </li>
+          <li>
+            <a
+              aria-disabled="false"
+              aria-label="navigation.github"
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
+              data-testid="navigation-contribute"
+              href="urls.glucoCheckGithub"
+              tabindex="0"
+              target="_contribute"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </header>
+  <div
+    class="MuiContainer-root makeStyles-container-18 MuiContainer-maxWidthLg"
+  >
+    <div
+      class="MuiPaper-root makeStyles-surface-19 MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div>
+        Landing
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`App component renders the component when user loaded 1`] = `
+<div
+  class="makeStyles-root-9"
+>
+  <header
+    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionSticky MuiAppBar-colorPrimary MuiPaper-elevation4"
+  >
+    <div
+      class="MuiToolbar-root MuiToolbar-regular makeStyles-toolbar-15 MuiToolbar-gutters"
+    >
+      <section
+        class="makeStyles-leftToolbar-12"
+      >
+        <h1
+          class="MuiTypography-root makeStyles-navTitle-16 MuiTypography-h6"
+        >
+          <a
+            href="/"
+          >
+            title
+          </a>
+        </h1>
+      </section>
+      <section
+        class="makeStyles-rightToolbar-13"
+      >
+        <ul
+          class="makeStyles-nav-14"
+        >
+          <li>
+            <a
+              aria-disabled="false"
+              aria-label="navigation.faqs"
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
+              data-testid="navigation-home"
+              href="/faq"
+              tabindex="0"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </a>
+          </li>
+          <li>
+            <a
+              aria-disabled="false"
+              aria-label="navigation.github"
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
+              data-testid="navigation-contribute"
+              href="urls.glucoCheckGithub"
+              tabindex="0"
+              target="_contribute"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </header>
+  <div
+    class="MuiContainer-root makeStyles-container-10 MuiContainer-maxWidthLg"
+  >
+    <div
+      class="MuiPaper-root makeStyles-surface-11 MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div>
+        Welcome
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`App component renders the component when user loading 1`] = `
+<div
+  class="makeStyles-root-1"
+>
+  <header
+    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionSticky MuiAppBar-colorPrimary MuiPaper-elevation4"
+  >
+    <div
+      class="MuiToolbar-root MuiToolbar-regular makeStyles-toolbar-7 MuiToolbar-gutters"
+    >
+      <section
+        class="makeStyles-leftToolbar-4"
+      >
+        <h1
+          class="MuiTypography-root makeStyles-navTitle-8 MuiTypography-h6"
+        >
+          <a
+            href="/"
+          >
+            title
+          </a>
+        </h1>
+      </section>
+      <section
+        class="makeStyles-rightToolbar-5"
+      >
+        <ul
+          class="makeStyles-nav-6"
+        >
+          <li>
+            <a
+              aria-disabled="false"
+              aria-label="navigation.faqs"
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
+              data-testid="navigation-home"
+              href="/faq"
+              tabindex="0"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </a>
+          </li>
+          <li>
+            <a
+              aria-disabled="false"
+              aria-label="navigation.github"
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
+              data-testid="navigation-contribute"
+              href="urls.glucoCheckGithub"
+              tabindex="0"
+              target="_contribute"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </header>
+  <div
+    class="MuiContainer-root makeStyles-container-2 MuiContainer-maxWidthLg"
+  >
+    <div
+      class="MuiPaper-root makeStyles-surface-3 MuiPaper-elevation1 MuiPaper-rounded"
+    />
+  </div>
+</div>
+`;

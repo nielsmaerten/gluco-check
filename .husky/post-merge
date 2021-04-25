@@ -1,0 +1,5 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# This rebuilds i18n resource packages after merging in new code
+yarn workspace gluco-check-common run build

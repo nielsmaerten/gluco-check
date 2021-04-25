@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Landing page renders the component 1`] = `
+<div
+  class="MuiGrid-root makeStyles-contentGrid-3 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column MuiGrid-wrap-xs-nowrap MuiGrid-align-items-xs-center MuiGrid-justify-xs-center"
+>
+  <div
+    class="MuiGrid-root makeStyles-subtitle-2 MuiGrid-item"
+  >
+    <div
+      class="MuiContainer-root MuiContainer-maxWidthSm"
+    >
+      <h2
+        class="MuiTypography-root MuiTypography-h5"
+      >
+        landing.subtitle
+      </h2>
+    </div>
+  </div>
+  <div
+    class="MuiGrid-root MuiGrid-item"
+  >
+    Onboarding
+  </div>
+  <div
+    class="MuiGrid-root makeStyles-ctaContainer-6 MuiGrid-item"
+  >
+    This is where the login would be
+  </div>
+  <div
+    class="MuiGrid-root makeStyles-boilerplate-5 MuiGrid-item"
+  >
+    Boilerplate
+  </div>
+</div>
+`;

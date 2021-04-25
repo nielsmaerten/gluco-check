@@ -1,0 +1,96 @@
+{
+  "name": "gluco-check-frontend",
+  "version": "1.0.0",
+  "repository": "https://github.com/nielsmaerten/gluco-check/tree/main/gluco-check-frontend",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
+    "class-transformer": "^0.4.0",
+    "class-validator": "^0.13.1",
+    "debounce": "^1.2.1",
+    "firebase": "^8.4.1",
+    "firebaseui": "^4.8.0",
+    "i18next": "^20.2.1",
+    "i18next-browser-languagedetector": "^6.1.0",
+    "i18next-http-backend": "^1.2.1",
+    "pure-react-carousel": "^1.27.6",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-firebase-hooks": "^3.0.3",
+    "react-firebaseui": "^4.2.0",
+    "react-hook-form": "^6.15.6",
+    "react-i18next": "^11.8.13",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.3",
+    "reflect-metadata": "^0.1.13",
+    "semver": "^7.3.5",
+    "typescript": "~4.2.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --watchAll=false",
+    "test:watch": "react-scripts test",
+    "lint": "prettier 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}' --check",
+    "lint:fix": "yarn run lint --write",
+    "purge": "rimraf node_modules/",
+    "test:cov": "npm test a -- --coverage",
+    "test:ci": "CI=true npm run test -- --coverage",
+    "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
+    "eject": "react-scripts eject",
+    "deploy:rebuild": "yarn run build && yarn run deploy",
+    "deploy": "firebase deploy --only hosting"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^7.30.3",
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^13.1.5",
+    "@types/debounce": "^1.2.0",
+    "@types/jest": "^26.0.22",
+    "@types/jest-axe": "^3.5.1",
+    "@types/node": "^14.14.41",
+    "@types/ramda": "^0.27.40",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "@types/react-router-dom": "^5.1.7",
+    "@types/reflect-metadata": "^0.1.0",
+    "@types/semver": "^7.3.4",
+    "@types/testing-library__jest-dom": "^5.9.5",
+    "@typescript-eslint/parser": "^4.22.0",
+    "eslint-config-react-app": "^6.0.0",
+    "firestore-jest-mock": "^0.11.0",
+    "husky": "^6.0.0",
+    "jest-axe": "^4.1.0",
+    "jest-fetch-mock": "^3.0.3",
+    "lint-staged": "^10.5.4",
+    "mutationobserver-shim": "^0.3.7",
+    "prettier": "^2.2.1",
+    "ramda": "^0.27.1"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/*.{js,jsx,ts,tsx}",
+      "src/components/*.{js,jsx,ts,tsx}",
+      "src/pages/*.{js,jsx,ts,tsx}",
+      "!src/index.{js,jsx,ts,tsx}"
+    ]
+  }
+}

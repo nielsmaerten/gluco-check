@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Landing page renders the component 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1"
+>
+  <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-body2 MuiTypography-colorError"
+  >
+    boilerplate.logout
+  </a>
+</p>
+`;
+
+exports[`Landing page renders the component when not authenticated 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1"
+/>
+`;

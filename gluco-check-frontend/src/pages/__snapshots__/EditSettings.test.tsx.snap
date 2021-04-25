@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditSettings Renders the component when loaded, with no axe violations 1`] = `
+<div
+  class="MuiContainer-root makeStyles-container-1 MuiContainer-maxWidthMd"
+>
+  <h2
+    class="MuiTypography-root MuiTypography-h6"
+  >
+    settings.title
+  </h2>
+  <div>
+    SettingsForm
+  </div>
+</div>
+`;
+
+exports[`EditSettings Renders the component when loading, with no axe violations 1`] = `
+<div
+  class="MuiContainer-root makeStyles-container-5 MuiContainer-maxWidthMd"
+>
+  <h2
+    class="MuiTypography-root MuiTypography-h6"
+  >
+    settings.title
+  </h2>
+  status.general.loading
+</div>
+`;
+
+exports[`EditSettings Renders the component with error, with no axe violations 1`] = `
+<div
+  class="MuiContainer-root makeStyles-container-7 MuiContainer-maxWidthMd"
+>
+  <h2
+    class="MuiTypography-root MuiTypography-h6"
+  >
+    settings.title
+  </h2>
+  status.general.error
+  : 
+  you blew it
+</div>
+`;
