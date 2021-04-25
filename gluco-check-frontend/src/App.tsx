@@ -19,6 +19,7 @@ import Landing from "./pages/Landing";
 import EditSettings from "./pages/EditSettings";
 import Welcome from "./pages/Welcome";
 import "./App.css";
+import { FAQS_URL, GLUCO_CHECK_GITHUB_URL } from "./lib/constants";
 
 export const FirebaseUserDocumentContext = React.createContext("");
 
@@ -93,7 +94,7 @@ export default function App() {
                 aria-label={t("navigation.faqs")}
                 color="inherit"
                 data-testid="navigation-home"
-                href="/faq"
+                href={FAQS_URL}
               >
                 <Help />
               </IconButton>
@@ -103,7 +104,7 @@ export default function App() {
                 aria-label={t("navigation.github")}
                 color="inherit"
                 data-testid="navigation-contribute"
-                href={t("urls.glucoCheckGithub")}
+                href={GLUCO_CHECK_GITHUB_URL}
                 target="_contribute"
               >
                 <GitHub />
