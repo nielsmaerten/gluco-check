@@ -8,7 +8,8 @@ import {
 } from "@material-ui/core";
 
 type ThemeWithMediaProviderProps = {
-  themeOptions: ThemeOptions;
+  lightThemeOptions: ThemeOptions;
+  darkThemeOptions: ThemeOptions;
   children: ReactNode;
 };
 
@@ -16,20 +17,22 @@ type ThemeWithMediaProviderProps = {
 // currently used to add dark mode support
 function ThemeWithMediaProvider({
   children,
-  themeOptions,
+  lightThemeOptions,
+  darkThemeOptions,
 }: ThemeWithMediaProviderProps) {
   const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
 
   const theme = React.useMemo(() => {
+    let themeToBlend = prefersDark ? darkThemeOptions : lightThemeOptions;
     let blendedTheme = createMuiTheme({
-      ...themeOptions,
       palette: {
         type: prefersDark ? "dark" : "light",
       },
+      ...themeToBlend,
     });
     blendedTheme = responsiveFontSizes(blendedTheme);
     return blendedTheme;
-  }, [prefersDark, themeOptions]);
+  }, [prefersDark, lightThemeOptions, darkThemeOptions]);
 
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 }
