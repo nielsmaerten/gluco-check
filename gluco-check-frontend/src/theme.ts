@@ -1,13 +1,7 @@
 /* istanbul ignore file */
 import red from "@material-ui/core/colors/red";
 import { ThemeOptions } from "@material-ui/core";
-import {
-  amber,
-  blue,
-  deepOrange,
-  grey,
-  indigo,
-} from "@material-ui/core/colors";
+import { amber, blue, grey, indigo, orange } from "@material-ui/core/colors";
 
 export const lightThemeOptions: ThemeOptions = {
   typography: {
@@ -29,8 +23,8 @@ export const lightThemeOptions: ThemeOptions = {
       main: red[500],
     },
     warning: {
-      light: "#d843154b", // deepOrange[800] at 75%
-      main: deepOrange[800],
+      light: "#e651004b", // deepOrange[800] at 75%
+      main: orange[900],
     },
     background: {
       default: "#fff",
