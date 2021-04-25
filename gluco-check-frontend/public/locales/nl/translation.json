@@ -69,8 +69,8 @@
         },
         "defaultMetrics": {
           "required": "Selecteer minstens één waarde",
-          "notAvailableInvalidToken": "* Je hebt een token nodig om deze waarden te kunnen lezen",
-          "notAvailableValidToken": "* Deze waarden konden we niet meteen vinden, maar je kan ze wel nog selecteren"
+          "notAvailableInvalidToken": "* Voor deze waarden heb je een token nodig",
+          "notAvailableValidToken": "* Deze waarden konden we niet meteen vinden. Je kan ze wel nog selecteren"
         },
         "glucoseUnits": {
           "mismatch": "De gekozen eenheid is anders dan die van je Nightscout site"
