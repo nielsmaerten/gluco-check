@@ -1,6 +1,5 @@
 /* istanbul ignore file */
 import red from "@material-ui/core/colors/red";
-import orange from "@material-ui/core/colors/orange";
 import { ThemeOptions } from "@material-ui/core";
 import {
   amber,
@@ -8,7 +7,6 @@ import {
   deepOrange,
   grey,
   indigo,
-  lightBlue,
 } from "@material-ui/core/colors";
 
 export const lightThemeOptions: ThemeOptions = {
@@ -16,6 +14,7 @@ export const lightThemeOptions: ThemeOptions = {
     fontFamily: ["Poppins", "sans-serif"].join(","),
   },
   palette: {
+    type: "light",
     text: {
       primary: "#202124",
     },
@@ -24,14 +23,14 @@ export const lightThemeOptions: ThemeOptions = {
       contrastText: "#fff",
     },
     secondary: {
-      main: "#4285f4",
+      main: blue[700],
     },
     error: {
       main: red[500],
     },
     warning: {
-      light: "rgba(245, 124, 0, 0.75)", // orange[700] at 75%
-      main: orange[700],
+      light: "#d843154b", // deepOrange[800] at 75%
+      main: deepOrange[800],
     },
     background: {
       default: "#fff",
@@ -44,25 +43,26 @@ export const darkThemeOptions: ThemeOptions = {
     fontFamily: ["Poppins", "sans-serif"].join(","),
   },
   palette: {
+    type: "dark",
     text: {
-      primary: "#202124",
+      primary: indigo[50],
     },
     primary: {
-      main: "#1a73e8",
+      main: indigo[500],
       contrastText: "#fff",
     },
     secondary: {
       main: "#4285f4",
     },
     error: {
-      main: red[500],
+      main: red[300],
     },
     warning: {
-      light: "rgba(245, 124, 0, 0.75)", // orange[700] at 75%
-      main: orange[700],
+      light: "#ffca284b", // amber[400] at 75%
+      main: amber[400],
     },
     background: {
-      default: "#fff",
+      default: grey[900],
     },
   },
 };
