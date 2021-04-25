@@ -40,10 +40,9 @@ jobs:
             echo "::set-output name=REACT_APP_FIREBASE_STORAGE_BUCKET::${{ secrets.PROD_REACT_APP_FIREBASE_STORAGE_BUCKET }}"
             echo "::set-output name=REACT_APP_FIREBASE_MESSAGING_SENDER_ID::${{ secrets.PROD_REACT_APP_FIREBASE_MESSAGING_SENDER_ID }}"
             echo "::set-output name=REACT_APP_FIREBASE_APP_ID::${{ secrets.PROD_REACT_APP_FIREBASE_APP_ID }}"
-            echo "::set-output name=REACT_APP_I18N_DEBUG::${{ secrets.PROD_REACT_APP_I18N_DEBUG }}"
-            echo "::set-output name=REACT_APP_I18N_FALLBACK_LANGUAGE::${{ secrets.PROD_REACT_APP_I18N_FALLBACK_LANGUAGE }}"
             echo "::set-output name=REACT_APP_NIGHTSCOUT_VALIDATION_ENDPOINT_URL::${{ secrets.PROD_REACT_APP_NIGHTSCOUT_VALIDATION_ENDPOINT_URL }}"
-            echo "::set-output name=REACT_APP_DEBUG::${{ secrets.PROD_REACT_APP_DEBUG }}"
+            echo "::set-output name=REACT_APP_I18N_DEBUG::false"
+            echo "::set-output name=REACT_APP_DEBUG::false"
           else
             echo "::set-output name=REACT_APP_FIREBASE_API_KEY::${{ secrets.NIGHTLY_REACT_APP_FIREBASE_API_KEY }}"
             echo "::set-output name=REACT_APP_FIREBASE_AUTH_DOMAIN::${{ secrets.NIGHTLY_REACT_APP_FIREBASE_AUTH_DOMAIN }}"
@@ -52,10 +51,9 @@ jobs:
             echo "::set-output name=REACT_APP_FIREBASE_STORAGE_BUCKET::${{ secrets.NIGHTLY_REACT_APP_FIREBASE_STORAGE_BUCKET }}"
             echo "::set-output name=REACT_APP_FIREBASE_MESSAGING_SENDER_ID::${{ secrets.NIGHTLY_REACT_APP_FIREBASE_MESSAGING_SENDER_ID }}"
             echo "::set-output name=REACT_APP_FIREBASE_APP_ID::${{ secrets.NIGHTLY_REACT_APP_FIREBASE_APP_ID }}"
-            echo "::set-output name=REACT_APP_I18N_DEBUG::${{ secrets.NIGHTLY_REACT_APP_I18N_DEBUG }}"
-            echo "::set-output name=REACT_APP_I18N_FALLBACK_LANGUAGE::${{ secrets.NIGHTLY_REACT_APP_I18N_FALLBACK_LANGUAGE }}"
             echo "::set-output name=REACT_APP_NIGHTSCOUT_VALIDATION_ENDPOINT_URL::${{ secrets.NIGHTLY_REACT_APP_NIGHTSCOUT_VALIDATION_ENDPOINT_URL }}"
-            echo "::set-output name=REACT_APP_DEBUG::${{ secrets.NIGHTLY_REACT_APP_DEBUG }}"
+            echo "::set-output name=REACT_APP_I18N_DEBUG::true"
+            echo "::set-output name=REACT_APP_DEBUG::true"
           fi
 
       - name: "[SETUP] Clone repository"
@@ -110,7 +108,6 @@ jobs:
           REACT_APP_FIREBASE_MESSAGING_SENDER_ID: ${{ steps.target.outputs.REACT_APP_FIREBASE_MESSAGING_SENDER_ID }}
           REACT_APP_FIREBASE_APP_ID: ${{ steps.target.outputs.REACT_APP_FIREBASE_APP_ID }}
           REACT_APP_I18N_DEBUG: ${{ steps.target.outputs.REACT_APP_I18N_DEBUG }}
-          REACT_APP_I18N_FALLBACK_LANGUAGE: ${{ steps.target.outputs.REACT_APP_I18N_FALLBACK_LANGUAGE }}
           REACT_APP_NIGHTSCOUT_VALIDATION_ENDPOINT_URL: ${{ steps.target.outputs.REACT_APP_NIGHTSCOUT_VALIDATION_ENDPOINT_URL }}
           REACT_APP_DEBUG: ${{ steps.target.outputs.REACT_APP_DEBUG }}
         run: yarn workspace gluco-check-frontend run build
