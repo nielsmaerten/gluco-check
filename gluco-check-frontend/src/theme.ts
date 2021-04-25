@@ -13,7 +13,7 @@ export const lightThemeOptions: ThemeOptions = {
       primary: "#202124",
     },
     primary: {
-      main: "#1a73e8",
+      main: indigo[500],
       contrastText: "#fff",
     },
     secondary: {
