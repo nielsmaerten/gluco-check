@@ -3,13 +3,13 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Hoe vraag ik Gluco Check naar... ?](#hoe-vraag-ik-gluco-check-naar)
+- [Hoe vraag ik Gluco Check naar... ?](#hoe-vraag-ik-gluco-check-naar-)
   - [een bepaalde waarde](#een-bepaalde-waarde)
   - [mijn eigen selectie](#mijn-eigen-selectie)
   - [meerdere waarden](#meerdere-waarden)
 - [Wat je nog meer kan vragen (experimenteel)](#wat-je-nog-meer-kan-vragen-experimenteel)
 - [Kan ik Gluco Check met een andere naam aanspreken?](#kan-ik-gluco-check-met-een-andere-naam-aanspreken)
-- [Waarom herkent Nightscout mijn API secret / token niet?](#waarom-herkent-nightscout-mijn-api-secret-token-niet)
+- [Waarom herkent Nightscout mijn API secret / token niet?](#waarom-herkent-nightscout-mijn-api-secret--token-niet)
 - [Ik heb een andere vraag!](#ik-heb-een-andere-vraag)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
