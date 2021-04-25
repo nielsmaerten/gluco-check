@@ -6,14 +6,6 @@
       "error": "Er liep iets mis"
     }
   },
-  "urls": {
-    "termsAndConditions": "/terms/nl",
-    "healthDisclaimer": "/terms/nl",
-    "privacy": "/terms/nl",
-    "nightscoutProject": "http://nightscout.info/",
-    "faqs": "/faq/nl",
-    "glucoCheckGithub": "https://github.com/nielsmaerten/gluco-check"
-  },
   "landing": {
     "title": "Welkom bij Gluco Check",
     "subtitle": "Gluco Check brengt Nightscout naar je Google Home"
