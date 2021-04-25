@@ -27,16 +27,16 @@ assistant_responses:
     long;with_time: >
       Er zijn {{value}} koolhydraten aan boord sinds {{time}} geleden.
     long;no_time: >
-      {{value}} koolhydraten aan boord.
+      Er zijn {{value}} koolhydraten aan boord.
     short;with_time: >
       {{value}} koolhydraten aan boord sinds {{time}} geleden.
   insulin_on_board:
     long;with_time: >
-      Er zijn {{value}} insuline eenheden aan boord sinds {{time}} geleden.
+      Er zijn {{value}} insuline eenheden sinds {{time}} geleden.
     long;no_time: >
-      {{value}} insuline eenheden aan boord.
+      Er zijn {{value}} insuline eenheden aan boord.
     short;with_time: >
-      {{value}} insuline eenheden aan boord sinds {{time}} ago.
+      Er zijn {{value}} insuline eenheden aan boord sinds {{time}} ago.
   cannula_age: >
     De infusie set werd {{time}} geleden ingebracht.
   sensor_age: >
