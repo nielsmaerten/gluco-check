@@ -70,23 +70,23 @@
         "defaultMetrics": {
           "required": "Selecteer minstens één waarde",
           "notAvailableInvalidToken": "* Voor deze waarden heb je een token nodig",
-          "notAvailableValidToken": "* Deze waarden konden we niet meteen vinden. Je kan ze wel nog selecteren"
+          "notAvailableValidToken": "* Deze waarden konden we niet meteen vinden. Je kan ze wel nog steeds selecteren"
         },
         "glucoseUnits": {
-          "mismatch": "De gekozen eenheid is anders dan die van je Nightscout site"
+          "mismatch": "De gekozen eenheid komt niet overeen met die van je Nightscout site"
         }
       },
       "submitButton": "Instellingen opslaan",
       "submitStatus": {
-        "submitting": "Je instellingen worden opgeslagen",
-        "submitted": "Je instellingen zijn opgeslagen",
-        "error": "Er liep iets mis bij het opslaan van je instellingen"
+        "submitting": "Je instellingen worden bewaard",
+        "submitted": "Je instellingen zijn bewaard",
+        "error": "Er liep iets mis bij het bewaren van je instellingen"
       }
     }
   },
   "navigation": {
     "faqs": "Hulp & Veelgestelde vragen",
-    "github": "Onze GitHub pagina"
+    "github": "Gluco Check op GitHub "
   },
   "diabetesMetrics": {
     "Everything": "alles",
