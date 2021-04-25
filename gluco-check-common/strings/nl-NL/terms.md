@@ -1,7 +1,7 @@
 # Gluco Check
 
 ## _Disclaimer ivm gezondheidsinformatie_
-Gluco Check kan enkel algemene info verschaffen als hulp bij het monitoren van je activiteiten. We hopen dat je deze info nuttig vindt, maar denk eraan dat ze nooit het advies van een arts kan vervangen. Praat steeds met je dokter wanneer je vragen hebt over je gezondeheid!
+Gluco Check kan enkel algemene info verschaffen om je te helpen je activiteiten te tracken. Denk eraan dat hoewel we hopen dat deze info nuttig is voor u, ze nooit het advies van een arts kan vervangen. Praat steeds met je dokter wanneer je vragen hebt over je gezondeheid!
 
 ## _Privacyverklaring_
 Dit document beschrijft welke informatie verzameld wordt door   
@@ -20,6 +20,6 @@ We delen je informatie niet met derde partijen. Enkel de 2 administrators van Gl
 #### Cookies
 We gebruiken Google Analytics om anonieme informatie over onze bezoekers te verzamelen. Dit geldt enkel voor onze website, niet voor de Assistant Actie zelf. Als je dat wil, kan je je afmelden voor Google Analytics op: https://tools.google.com/dlpage/gaoptout/
 
-## _Licentie_
+## _Licentievoorwaarden_
 Gluco Check is licensed under the [MIT License](https://github.com/nielsmaerten/gluco-check/blob/main/LICENSE)  
 Copyright (c) 2021 Niels Maerten & David D'Amico
