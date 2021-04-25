@@ -1,6 +1,6 @@
 ---
 #DO NOT TRANSLATE THIS FILE DIRECTLY
-#If you want to contribute translations, visit https://translate.diabase.app
+#If you want to contribute translations, visit https://translate.glucocheck.app
 assistant_responses:
   blood_sugar:
     long;with_trend;with_time: >
@@ -16,40 +16,40 @@ assistant_responses:
     short;with_trend;with_time: >
       {{value}} en {{trend}} sinds {{time}} geleden.
     trends:
-      DoubleUp: "snel stijgend"
-      SingleUp: "stijgend"
-      SlightUp: "langzaam stijgend"
+      DoubleUp: "stijgt snel"
+      SingleUp: "stijgt"
+      SlightUp: "stijgt langzaam"
       Stable: "stabiel"
       SlightDown: "langzaam dalend"
-      SingleDown: "dalend"
-      DoubleDown: "snel dalend"
+      SingleDown: "daalt"
+      DoubleDown: "daalt snel"
   carbs_on_board:
     long;with_time: >
       Er zijn {{value}} koolhydraten aan boord sinds {{time}} geleden.
     long;no_time: >
       Er zijn {{value}} koolhydraten aan boord.
     short;with_time: >
-      Er zijn {{value}} koolhydraten aan boord sinds {{time}} geleden.
+      {{value}} koolhydraten aan boord sinds {{time}} geleden.
   insulin_on_board:
     long;with_time: >
-      Er zijn {{value}} insuline eenheden aan boord sinds {{time}} geleden.
+      Er zijn {{value}} insuline eenheden sinds {{time}} geleden.
     long;no_time: >
       Er zijn {{value}} insuline eenheden aan boord.
     short;with_time: >
       Er zijn {{value}} insuline eenheden aan boord sinds {{time}} ago.
   cannula_age: >
-    Je infusie set is {{time}} oud.
+    De infusie set werd {{time}} geleden ingebracht.
   sensor_age: >
-    Je sensor is {{time}} oud.
+    De sensor is {{time}} oud.
   pump_battery: >
     De pompbatterij heeft nog {{percent}}.
   pump_reservoir: >
-    De pomp heeft nog {{reservoir}} eenheden.
+    Er zijn nog {{reservoir}} eenheden in de pomp.
   errors:
     User not found: >
       Hallo, bedankt voor het uitproberen Gluco Check. Voordat ik je kan helpen, moet je nog even je Nightscout site linken. Check onze website om te zien hoe je dit doet: {{gc_url}}
     Nightscout Unavailable: >
-      Sorry, er lijkt een probleem te zijn met je Nightscout site. Ik heb de gevraagde gegevens niet kunnen vinden.
+      Sorry, er lijkt een probleem te zijn met je Nightscout site. Ik kon de gevraagde info niet ophalen.
     Nightscout Unauthorized: >
       Sorry, het lijkt erop dat ik geen toegang tot je Nightscout site heb. Je kan dit oplossen door een token aan te maken. Check onze website om te zien hoe je dit doet: {{gc_url}}
     DmMetric Not Found: >
@@ -63,6 +63,6 @@ common:
     insulin on board: insuline aan boord
     carbs on board: koolhydraten aan boord
     sensor age: sensor leeftijd
-    cannula age: canule leeftijd
+    cannula age: infusie set leeftijd
     pump battery: pompbatterij
     pump reservoir: pomp reservoir
