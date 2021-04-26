@@ -6,14 +6,6 @@
       "error": "Something has gone horribly wrong"
     }
   },
-  "urls": {
-    "termsAndConditions": "/terms",
-    "healthDisclaimer": "/terms",
-    "privacy": "/terms",
-    "nightscoutProject": "http://nightscout.info/",
-    "faqs": "/faq",
-    "glucoCheckGithub": "https://github.com/nielsmaerten/gluco-check"
-  },
   "landing": {
     "title": "Welcome to Gluco Check",
     "subtitle": "Gluco Check brings Nightscout to your Google Home"

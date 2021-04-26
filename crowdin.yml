@@ -1,3 +1,5 @@
+commit_message: "[skip ci] [Commit by Crowdin]"
+
 files:
   - source: /gluco-check-common/strings/en-US/*
     translation: /gluco-check-common/strings/%locale%/%original_file_name%

@@ -1,6 +1,11 @@
 import React, { ReactEventHandler } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { Link, makeStyles, Typography } from "@material-ui/core";
+import {
+  NIGHTSCOUT_PROJECT_URL,
+  PRIVACY_URL,
+  TERMS_AND_CONDITIONS_URL,
+} from "../lib/constants";
 
 const useStyles = makeStyles((theme) => ({
   legal: {
@@ -37,15 +42,15 @@ function Boilerplate({ handleSignoutClicked }: BoilerplateProps) {
         <Typography>
           <Trans i18nKey="boilerplate.terms">
             By continuing, you are indicating that you accept our{" "}
-            <Link href={t("urls.termsAndConditions")}>Terms of Service</Link>{" "}
-            and <Link href={t("urls.privacy")}>Privacy Policy</Link>.
+            <Link href={TERMS_AND_CONDITIONS_URL}>Terms of Service</Link> and{" "}
+            <Link href={PRIVACY_URL}>Privacy Policy</Link>.
           </Trans>
         </Typography>
         <Typography>{t("boilerplate.google")}</Typography>
         <Typography>
           <Trans i18nKey="boilerplate.nightscout">
             Not affiliated with the{" "}
-            <Link href={t("urls.nightscoutProject")}>Nightscout Project</Link>
+            <Link href={NIGHTSCOUT_PROJECT_URL}>Nightscout Project</Link>
           </Trans>
         </Typography>
       </div>

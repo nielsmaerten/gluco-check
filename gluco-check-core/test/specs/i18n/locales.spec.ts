@@ -14,8 +14,8 @@ describe('Locale', () => {
   describe('Dutch (nl-NL)', () => {
     const locale = 'nl-NL';
     beforeAll(async () => new I18nHelper().ensureLocale(locale));
-    it('COB', () => runTest(locale, 'Er zijn 10,1 koolhydraten aan boord.'));
-    it('IOB', () => runTest(locale, 'Er zijn 10,1 insuline eenheden aan boord.'));
+    it('COB', () => runTest(locale, '10,1 koolhydraten aan boord.'));
+    it('IOB', () => runTest(locale, '10,1 insuline eenheden aan boord.'));
     it('BG', () =>
       runTest(locale, 'Suikerspiegel is 120 en stabiel sinds 5 minuten geleden.'));
     it('PB', () => runTest(locale, 'De pompbatterij heeft nog 85%.'));
