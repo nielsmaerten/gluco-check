@@ -14,16 +14,8 @@ i18n
       return [fallback];
     },
     detection: {
-      order: [
-        "querystring",
-        "navigator",
-        "cookie",
-        "localStorage",
-        "sessionStorage",
-        "htmlTag",
-        "path",
-        "subdomain",
-      ],
+      order: ["path", "querystring", "navigator"],
+      lookupFromPathIndex: 0,
     },
     debug: process.env.REACT_APP_I18N_DEBUG === "true" || false,
     interpolation: {

@@ -123,6 +123,9 @@ export default function App() {
     </AppBar>
   );
 
+  const availableLanguageParams = Object.values(AvailableLanguage).join("|");
+  const localesParamString = `/:locale(${availableLanguageParams})?`;
+
   return (
     <div className={classes.root}>
       <Router>
@@ -131,13 +134,13 @@ export default function App() {
           <Paper variant="elevation" className={classes.surface}>
             <Switch>
               {user && (
-                <Route path="/settings">
+                <Route path={`${localesParamString}/settings`}>
                   <FirebaseUserDocumentContext.Provider value={docPath}>
                     <EditSettings />
                   </FirebaseUserDocumentContext.Provider>
                 </Route>
               )}
-              <Route path="/">{Content}</Route>
+              <Route path={`${localesParamString}/`}>{Content}</Route>
             </Switch>
           </Paper>
         </Container>
