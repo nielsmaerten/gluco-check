@@ -43,6 +43,24 @@ describe("LanguageSelector component", () => {
     expect(mockChangeLanauge).toHaveBeenCalled();
   });
 
+  it("launches the translation contributions url when that option is selected", async () => {
+    expect.assertions(2);
+    const windowOpenSpy = jest.spyOn(global.window, "open");
+    windowOpenSpy.mockImplementationOnce((url, target, features, replace) => {
+      expect(url).toMatchInlineSnapshot(`"https://translate.glucocheck.app"`);
+      return null;
+    });
+
+    const { container } = render(<LanguageSelector />);
+
+    let button = await screen.getByLabelText("languageSelector.buttonLabel");
+    await button.click();
+    const allMenuItems = screen.getAllByRole("menuitem");
+
+    await screen.getAllByRole("menuitem")[allMenuItems.length - 1].click();
+    expect(windowOpenSpy).toHaveBeenCalled();
+  });
+
   it("Accessibility: has no axe violations", async () => {
     const { container } = render(<LanguageSelector />);
     expect(await axe(container)).toHaveNoViolations();
