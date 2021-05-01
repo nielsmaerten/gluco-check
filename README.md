@@ -6,6 +6,8 @@ Formerly known as: [Nightscout Status](https://github.com/nielsmaerten/nightscou
 
 1. [Link your Nightscout site](https://glucocheck.app)
 1. Say: **"Hey Google, talk to Gluco Check"**  
+1. (Optional): Set up a [Routine](https://glucocheck.app/assets/routines-setup.mp) to make invoking Gluco Check easier   
+   For example: **"Hey Google, check my sugar"**
 
 ## Things you can ask Gluco Check
 
