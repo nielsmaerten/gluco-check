@@ -14,10 +14,9 @@ i18n
       return [fallback];
     },
     detection: {
-      // this is just the defaults with navigator moved to the front of the line
       order: [
-        "navigator",
         "querystring",
+        "navigator",
         "cookie",
         "localStorage",
         "sessionStorage",
