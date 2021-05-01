@@ -16,6 +16,7 @@ import {
   bindMenu,
 } from "material-ui-popup-state/hooks";
 import { AvailableLanguage } from "../lib/enums";
+import { CONTRIBUTE_TRANSLATIONS } from "../lib/constants";
 
 const useStyles = makeStyles((theme) => ({
   selectorLabel: {
@@ -89,7 +90,7 @@ export default function LanguageSelector() {
           <Divider />
           <MenuItem
             onClick={() => {
-              window.open(t("urls.translations"), "_blank");
+              window.open(CONTRIBUTE_TRANSLATIONS, "_blank");
             }}
           >
             {t(`languageSelector.contribute`)}
