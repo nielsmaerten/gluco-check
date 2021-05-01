@@ -96,7 +96,7 @@ exports[`App component renders the component when no user and no loading 1`] = `
     </div>
   </header>
   <div
-    class="MuiContainer-root makeStyles-container-18 MuiContainer-maxWidthLg"
+    class="MuiContainer-root makeStyles-container-18 MuiContainer-maxWidthMd"
   >
     <div
       class="MuiPaper-root makeStyles-surface-19 MuiPaper-elevation1 MuiPaper-rounded"
@@ -205,7 +205,7 @@ exports[`App component renders the component when user loaded 1`] = `
     </div>
   </header>
   <div
-    class="MuiContainer-root makeStyles-container-10 MuiContainer-maxWidthLg"
+    class="MuiContainer-root makeStyles-container-10 MuiContainer-maxWidthMd"
   >
     <div
       class="MuiPaper-root makeStyles-surface-11 MuiPaper-elevation1 MuiPaper-rounded"
@@ -314,7 +314,7 @@ exports[`App component renders the component when user loading 1`] = `
     </div>
   </header>
   <div
-    class="MuiContainer-root makeStyles-container-2 MuiContainer-maxWidthLg"
+    class="MuiContainer-root makeStyles-container-2 MuiContainer-maxWidthMd"
   >
     <div
       class="MuiPaper-root makeStyles-surface-3 MuiPaper-elevation1 MuiPaper-rounded"
