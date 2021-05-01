@@ -125,5 +125,13 @@
       "image": "copy-token.png",
       "image_alt": ""
     }
+  },
+  "languageSelector": {
+    "buttonLabel": "Language",
+    "contribute": "Contribute Translations",
+    "availableLanguageLabels": {
+      "en": "English",
+      "nl": "Dutch"
+    }
   }
 }

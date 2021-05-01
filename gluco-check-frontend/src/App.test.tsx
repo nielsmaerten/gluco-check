@@ -34,6 +34,15 @@ jest.mock("./pages/Landing.tsx", () => {
   };
 });
 
+jest.mock("./components/LanguageSelector.tsx", () => {
+  return {
+    __esModule: true,
+    default: () => {
+      return <div>LanguageSelector</div>;
+    },
+  };
+});
+
 jest.mock("./pages/Welcome.tsx", () => {
   return {
     __esModule: true,
