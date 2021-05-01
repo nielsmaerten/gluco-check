@@ -34,9 +34,9 @@ Note: Routines are not supported in all languages.
 Pull requests are welcome.  
 For detailed tech docs, check [CONTRIBUTING.md](./CONTRIBUTING.md)
 
-[![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/nielsmaerten/gluco-check/main?style=flat-square)](https://www.codefactor.io/repository/github/nielsmaerten/gluco-check/)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/nielsmaerten/gluco-check/Test,%20Build%20&%20Deploy/main?style=flat-square)](https://github.com/nielsmaerten/gluco-check/actions/workflows/test-build-deploy.yml?query=branch%3Amain)
-[![Codecov](https://img.shields.io/codecov/c/github/nielsmaerten/gluco-check?style=flat-square)](https://codecov.io/gh/nielsmaerten/gluco-check)
+[![Test, Build & Deploy](https://github.com/nielsmaerten/gluco-check/actions/workflows/test-build-deploy.yml/badge.svg?branch=main)](https://github.com/nielsmaerten/gluco-check/actions/workflows/test-build-deploy.yml)
+[![CodeFactor](https://www.codefactor.io/repository/github/nielsmaerten/gluco-check/badge)](https://www.codefactor.io/repository/github/nielsmaerten/gluco-check)
+[![codecov](https://codecov.io/gh/nielsmaerten/gluco-check/branch/main/graph/badge.svg?token=EQQ94TXWBR)](https://codecov.io/gh/nielsmaerten/gluco-check)
 
 
 ## License & Privacy Policy
