@@ -5,7 +5,7 @@ exports[`Landing page renders the component 1`] = `
   class="MuiTypography-root MuiTypography-body1"
 >
   <a
-    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-body2 MuiTypography-colorError"
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover makeStyles-signOut-2 MuiTypography-body2 MuiTypography-colorError"
   >
     boilerplate.logout
   </a>
