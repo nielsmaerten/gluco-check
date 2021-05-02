@@ -17,7 +17,7 @@ exports[`App component renders the component when no user and no loading 1`] = `
           class="MuiTypography-root makeStyles-navTitle-24 MuiTypography-h6"
         >
           <a
-            href="/"
+            href="/en"
           >
             title
           </a>
@@ -126,7 +126,7 @@ exports[`App component renders the component when user loaded 1`] = `
           class="MuiTypography-root makeStyles-navTitle-16 MuiTypography-h6"
         >
           <a
-            href="/"
+            href="/en"
           >
             title
           </a>
@@ -235,7 +235,7 @@ exports[`App component renders the component when user loading 1`] = `
           class="MuiTypography-root makeStyles-navTitle-8 MuiTypography-h6"
         >
           <a
-            href="/"
+            href="/en"
           >
             title
           </a>

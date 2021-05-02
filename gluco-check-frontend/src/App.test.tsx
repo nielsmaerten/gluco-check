@@ -1,12 +1,9 @@
 import React from "react";
 import { render, cleanup } from "@testing-library/react";
 import { axe } from "jest-axe";
-import userEvent from "@testing-library/user-event";
-import { auth } from "./lib/firebase";
 import * as firebaseAuthHooks from "react-firebase-hooks/auth";
 import App from "./App";
 import { mockUser } from "./lib/__mocks__/firebase";
-import { act } from "react-dom/test-utils";
 
 jest.mock("./lib/firebase.ts", () => {
   return {
@@ -15,6 +12,20 @@ jest.mock("./lib/firebase.ts", () => {
     },
   };
 });
+
+const mockLanguage = "en";
+jest.mock("react-i18next", () => ({
+  useTranslation: () => {
+    return {
+      t: jest.fn().mockImplementation((i) => {
+        return i;
+      }),
+      i18n: {
+        language: mockLanguage,
+      },
+    };
+  },
+}));
 
 jest.mock("./pages/EditSettings.tsx", () => {
   return {
