@@ -17,7 +17,7 @@ import {
 } from "material-ui-popup-state/hooks";
 import { AvailableLanguage } from "../lib/enums";
 import { CONTRIBUTE_TRANSLATIONS } from "../lib/constants";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { replaceLanguageInPathname } from "../lib/navigation";
 
 const useStyles = makeStyles((theme) => ({
@@ -32,7 +32,6 @@ const MENU_ITEM_ATTRIBUTE = "data-language";
 export default function LanguageSelector() {
   const { t, i18n } = useTranslation();
   const location = useLocation();
-  const history = useHistory();
 
   const classes = useStyles();
 
@@ -53,7 +52,7 @@ export default function LanguageSelector() {
         incomingSelection as AvailableLanguage
       )
     ) {
-      history.push(
+      window.location.assign(
         replaceLanguageInPathname(location.pathname, incomingSelection)
       );
       i18n.changeLanguage(incomingSelection);

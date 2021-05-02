@@ -64,6 +64,7 @@ function Landing() {
       },
     ],
     callbacks: {
+      /* istanbul ignore next */
       signInSuccessWithAuthResult: () => {
         /* istanbul ignore next */
         return false;

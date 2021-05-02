@@ -33,22 +33,38 @@ afterEach(() => {
 
 describe("LanguageSelector component", () => {
   const mockPathname = "/en/path";
-  const mockHistoryPush = jest.fn();
+
+  const originalLocation = window.location;
 
   beforeEach(() => {
-    mockUseHistory.mockReturnValue({
-      push: mockHistoryPush,
-    });
     mockUseLocation.mockReturnValue({
       pathname: mockPathname,
     });
+
+    // @ts-ignore
+    delete window.location;
+    window.location = {
+      ...originalLocation,
+      assign: jest.fn(),
+    };
   });
+
+  afterEach(() => {
+    window.location = originalLocation;
+  });
+
   it("renders the component, handles clicks and selections", async () => {
     const { container } = render(<LanguageSelector />);
     expect(container.firstChild).toMatchSnapshot();
   });
 
   it("handles clicks on button and language selections", async () => {
+    expect.assertions(5);
+
+    window.location.assign = jest.fn().mockImplementationOnce((url) => {
+      expect(url).toMatchInlineSnapshot(`"/nl/path"`);
+    });
+
     const { container } = render(<LanguageSelector />);
 
     let button = await screen.getByLabelText("languageSelector.buttonLabel");
@@ -59,7 +75,7 @@ describe("LanguageSelector component", () => {
 
     await screen.getAllByRole("menuitem")[1].click();
     expect(mockChangeLanauge).toHaveBeenCalled();
-    expect(mockHistoryPush).toHaveBeenCalled();
+    expect(window.location.assign).toBeCalled();
   });
 
   it("launches the translation contributions url when that option is selected", async () => {
