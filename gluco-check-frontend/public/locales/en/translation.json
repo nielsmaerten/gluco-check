@@ -87,7 +87,8 @@
     "CarbsOnBoard": "carbs on board",
     "SensorAge": "sensor age",
     "CannulaAge": "cannula age",
-    "PumpBattery": "pump battery"
+    "PumpBattery": "pump battery",
+    "PumpReservoir": "pump reservoir"
   },
   "tokenDialog": {
     "title": "Generating a Nightscout token",

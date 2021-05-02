@@ -87,7 +87,8 @@
     "CarbsOnBoard": "koolhydraten aan boord",
     "SensorAge": "sensor leeftijd",
     "CannulaAge": "infusie set leeftijd",
-    "PumpBattery": "pompbatterij"
+    "PumpBattery": "pompbatterij",
+    "PumpReservoir": "pomp reservoir"
   },
   "tokenDialog": {
     "title": "Een Nightscout token aanmaken",

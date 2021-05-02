@@ -527,7 +527,7 @@ export default function SettingsForm({
                       />
                     }
                     key={metric.value}
-                    label={metric.value}
+                    label={t(metric.label)}
                   />
                 );
               });
