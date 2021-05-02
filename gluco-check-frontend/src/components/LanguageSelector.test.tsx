@@ -1,4 +1,3 @@
-import React from "react";
 import { cleanup, render, screen } from "@testing-library/react";
 import { axe } from "jest-axe";
 import LanguageSelector from "./LanguageSelector";
@@ -12,12 +11,20 @@ jest.mock("react-i18next", () => ({
         return i;
       }),
       i18n: {
-        language: jest.fn().mockReturnValue(mockLanguage),
+        language: mockLanguage,
         changeLanguage: mockChangeLanauge,
       },
     };
   },
 }));
+
+import { useHistory, useLocation } from "react-router-dom";
+jest.mock("react-router-dom", () => ({
+  useHistory: jest.fn(),
+  useLocation: jest.fn(),
+}));
+const mockUseHistory = useHistory as jest.Mock;
+const mockUseLocation = useLocation as jest.Mock;
 
 afterEach(() => {
   jest.resetAllMocks();
@@ -25,6 +32,17 @@ afterEach(() => {
 });
 
 describe("LanguageSelector component", () => {
+  const mockPathname = "/en/path";
+  const mockHistoryPush = jest.fn();
+
+  beforeEach(() => {
+    mockUseHistory.mockReturnValue({
+      push: mockHistoryPush,
+    });
+    mockUseLocation.mockReturnValue({
+      pathname: mockPathname,
+    });
+  });
   it("renders the component, handles clicks and selections", async () => {
     const { container } = render(<LanguageSelector />);
     expect(container.firstChild).toMatchSnapshot();
@@ -41,6 +59,7 @@ describe("LanguageSelector component", () => {
 
     await screen.getAllByRole("menuitem")[1].click();
     expect(mockChangeLanauge).toHaveBeenCalled();
+    expect(mockHistoryPush).toHaveBeenCalled();
   });
 
   it("launches the translation contributions url when that option is selected", async () => {
