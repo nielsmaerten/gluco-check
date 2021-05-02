@@ -28,7 +28,7 @@ exports[`Welcome page renders the component 1`] = `
     <a
       aria-disabled="false"
       class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-      href="/settings"
+      href="/en/settings"
       tabindex="0"
     >
       <span

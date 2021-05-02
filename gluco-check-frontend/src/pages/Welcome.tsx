@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Welcome() {
   const classes = useStyles();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <Grid
@@ -86,7 +86,11 @@ function Welcome() {
         <Onboarding />
       </Grid>
       <Grid item>
-        <Button variant="contained" color="primary" href="/settings">
+        <Button
+          variant="contained"
+          color="primary"
+          href={`/${i18n.language}/settings`}
+        >
           {t("welcome.cta")}
         </Button>
       </Grid>

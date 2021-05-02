@@ -3,12 +3,16 @@ import { cleanup, render } from "@testing-library/react";
 import { axe } from "jest-axe";
 import Welcome, { handleSignoutClicked } from "./Welcome";
 
+const mockLanguage = "en";
 jest.mock("react-i18next", () => ({
   useTranslation: () => {
     return {
       t: jest.fn().mockImplementation((i) => {
         return i;
       }),
+      i18n: {
+        language: mockLanguage,
+      },
     };
   },
   Trans: function (props: any) {

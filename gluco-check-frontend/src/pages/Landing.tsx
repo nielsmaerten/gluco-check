@@ -49,18 +49,23 @@ const useStyles = makeStyles((theme) => ({
 
 function Landing() {
   const classes = useStyles();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const loginButtonLabel = t("login.buttonLabel");
 
   const firebaseUIConfig = {
     credentialHelper: firebaseui.auth.CredentialHelper.NONE,
     signInFlow: "redirect",
-    signInSuccessUrl: "/",
+    signInSuccessUrl: `/${i18n.language}`,
     signInOptions: [
       {
         provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-        fullLabel: t("login.buttonLabel"),
+        fullLabel: loginButtonLabel,
       },
     ],
+    callbacks: {
+      signInSuccessWithAuthResult: () => false,
+    },
   };
 
   return (
