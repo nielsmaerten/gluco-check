@@ -86,9 +86,9 @@
     "InsulinOnBoard": "insuline aan boord",
     "CarbsOnBoard": "koolhydraten aan boord",
     "SensorAge": "sensor leeftijd",
-    "CannulaAge": "infusie set leeftijd",
+    "CannulaAge": "infusieset leeftijd",
     "PumpBattery": "pompbatterij",
-    "PumpReservoir": "pomp reservoir"
+    "PumpReservoir": "pompreservoir"
   },
   "tokenDialog": {
     "title": "Een Nightscout token aanmaken",
@@ -128,11 +128,11 @@
     }
   },
   "languageSelector": {
-    "buttonLabel": "[Language]",
-    "contribute": "[Contribute Translations]",
+    "buttonLabel": "Taal",
+    "contribute": "Vertaling bijdragen",
     "availableLanguageLabels": {
-      "en": "[English]",
-      "nl": "[Dutch]"
+      "en": "Engels",
+      "nl": "Nederlands"
     }
   }
 }
