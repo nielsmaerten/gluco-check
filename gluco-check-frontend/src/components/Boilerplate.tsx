@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
       textDecoration: "underline",
     },
   },
+  signOut: {
+    cursor: "pointer",
+  },
 }));
 
 type BoilerplateProps = {
@@ -33,7 +36,12 @@ function Boilerplate({ handleSignoutClicked }: BoilerplateProps) {
     <>
       <Typography>
         {handleSignoutClicked && (
-          <Link variant="body2" color="error" onClick={handleSignoutClicked}>
+          <Link
+            variant="body2"
+            color="error"
+            onClick={handleSignoutClicked}
+            className={classes.signOut}
+          >
             {t("boilerplate.logout")}
           </Link>
         )}

@@ -47,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
   surface: {
     padding: theme.spacing(2),
     marginBottom: theme.spacing(2),
+    marginTop: theme.spacing(2),
   },
   leftToolbar: {},
   rightToolbar: {
@@ -136,7 +137,7 @@ export default function App() {
     <div className={classes.root}>
       <Router>
         {navigation}
-        <Container maxWidth="lg" className={classes.container}>
+        <Container maxWidth="md" className={classes.container}>
           <Paper variant="elevation" className={classes.surface}>
             <Switch>
               <Redirect
