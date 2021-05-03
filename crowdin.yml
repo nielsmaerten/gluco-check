@@ -1,4 +1,4 @@
-commit_message: "[skip ci] [Commit by Crowdin]"
+commit_message: "[Commit by Crowdin]"
 
 files:
   - source: /gluco-check-common/strings/en-US/*
