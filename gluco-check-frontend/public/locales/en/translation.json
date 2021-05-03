@@ -87,7 +87,8 @@
     "CarbsOnBoard": "carbs on board",
     "SensorAge": "sensor age",
     "CannulaAge": "cannula age",
-    "PumpBattery": "pump battery"
+    "PumpBattery": "pump battery",
+    "PumpReservoir": "pump reservoir"
   },
   "tokenDialog": {
     "title": "Generating a Nightscout token",
@@ -124,6 +125,14 @@
       "description": "Copy the value in the \"Access Token\" column, paste it into the Nightscout Token field in <2>Gluco Check Settings</2>, and click save.",
       "image": "copy-token.png",
       "image_alt": ""
+    }
+  },
+  "languageSelector": {
+    "buttonLabel": "Language",
+    "contribute": "Contribute Translations",
+    "availableLanguageLabels": {
+      "en": "English",
+      "nl": "Dutch"
     }
   }
 }

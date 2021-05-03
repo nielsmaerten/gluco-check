@@ -114,15 +114,24 @@ describe("SettingsForm component", () => {
     expect(screen.getByTestId("settings-form")).toBeInTheDocument();
     const submitButton = await screen.findByTestId("settings-form-submit");
     const tokenField = await screen.findByTestId("settings-form-field-token");
-    const checkboxEverything = await screen.getByLabelText("everything", {
-      exact: false,
-    });
-    const checkbox1 = await screen.getByLabelText("insulin on board", {
-      exact: false,
-    });
-    const checkbox2 = await screen.getByLabelText("blood sugar", {
-      exact: false,
-    });
+    const checkboxEverything = await screen.getByLabelText(
+      "DiabetesMetrics.Everything",
+      {
+        exact: false,
+      }
+    );
+    const checkbox1 = await screen.getByLabelText(
+      "DiabetesMetrics.InsulinOnBoard",
+      {
+        exact: false,
+      }
+    );
+    const checkbox2 = await screen.getByLabelText(
+      "DiabetesMetrics.BloodSugar",
+      {
+        exact: false,
+      }
+    );
 
     await act(async () => {
       await userEvent.click(checkboxEverything);

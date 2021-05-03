@@ -10,6 +10,7 @@ import {
 import Onboarding from "../components/Onboarding";
 import Boilerplate from "../components/Boilerplate";
 import { auth } from "../lib/firebase";
+import { useHistory } from "react-router-dom";
 
 export const handleSignoutClicked = () => {
   auth.signOut();
@@ -63,7 +64,8 @@ const useStyles = makeStyles((theme) => ({
 
 function Welcome() {
   const classes = useStyles();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const history = useHistory();
 
   return (
     <Grid
@@ -86,7 +88,14 @@ function Welcome() {
         <Onboarding />
       </Grid>
       <Grid item>
-        <Button variant="contained" color="primary" href="/settings">
+        <Button
+          variant="contained"
+          color="primary"
+          data-testid="settings-button"
+          onClick={() => {
+            history.push(`/${i18n.language}/settings`);
+          }}
+        >
           {t("welcome.cta")}
         </Button>
       </Grid>

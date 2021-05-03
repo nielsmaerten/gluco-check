@@ -87,7 +87,8 @@
     "CarbsOnBoard": "koolhydraten aan boord",
     "SensorAge": "sensor leeftijd",
     "CannulaAge": "infusie set leeftijd",
-    "PumpBattery": "pompbatterij"
+    "PumpBattery": "pompbatterij",
+    "PumpReservoir": "pomp reservoir"
   },
   "tokenDialog": {
     "title": "Een Nightscout token aanmaken",
@@ -124,6 +125,14 @@
       "description": "Kopieer de waarde uit de kolom \"Access Token\", en plak dit in het veld Nightscout Token van <2>Gluco Check Instellingen</2>. Klik dan op opslaan.",
       "image": "copy-token.png",
       "image_alt": ""
+    }
+  },
+  "languageSelector": {
+    "buttonLabel": "[Language]",
+    "contribute": "[Contribute Translations]",
+    "availableLanguageLabels": {
+      "en": "[English]",
+      "nl": "[Dutch]"
     }
   }
 }

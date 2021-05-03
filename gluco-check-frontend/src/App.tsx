@@ -1,7 +1,13 @@
 import React from "react";
 import { auth } from "./lib/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from "react-router-dom";
 import { getDocumentPathForUser } from "./lib/firebase-helpers";
 import { useTranslation } from "react-i18next";
 import {
@@ -16,10 +22,12 @@ import {
 import { GitHub, Help } from "@material-ui/icons";
 
 import Landing from "./pages/Landing";
+import LanguageSelector from "./components/LanguageSelector";
 import EditSettings from "./pages/EditSettings";
 import Welcome from "./pages/Welcome";
 import "./App.css";
 import { FAQS_URL, GLUCO_CHECK_GITHUB_URL } from "./lib/constants";
+import { AvailableLanguage } from "./lib/enums";
 
 export const FirebaseUserDocumentContext = React.createContext("");
 
@@ -67,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
 export default function App() {
   const classes = useStyles();
   const [user, loading] = useAuthState(auth);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const docPath = user ? getDocumentPathForUser(user) : ""; // TODO: we don't want this empty path to be possible, AND we want to auth protect any other authed routes
 
   let Content: React.ReactElement | null = null;
@@ -84,11 +92,16 @@ export default function App() {
       <Toolbar variant="regular" className={classes.toolbar}>
         <section className={classes.leftToolbar}>
           <Typography variant="h6" component="h1" className={classes.navTitle}>
-            <Link to="/">{t("title")}</Link>
+            <Link to={`/${i18n.language}`}>{t("title")}</Link>
           </Typography>
         </section>
         <section className={classes.rightToolbar}>
           <ul className={classes.nav}>
+            {Object.values(AvailableLanguage).length > 1 && (
+              <li>
+                <LanguageSelector />
+              </li>
+            )}
             <li>
               <IconButton
                 aria-label={t("navigation.faqs")}
@@ -116,6 +129,9 @@ export default function App() {
     </AppBar>
   );
 
+  const availableLanguageParams = Object.values(AvailableLanguage).join("|");
+  const localesParamString = `/:locale(${availableLanguageParams})`;
+
   return (
     <div className={classes.root}>
       <Router>
@@ -123,14 +139,20 @@ export default function App() {
         <Container maxWidth="lg" className={classes.container}>
           <Paper variant="elevation" className={classes.surface}>
             <Switch>
+              <Redirect
+                exact
+                from="/settings"
+                to={`/${i18n.language}/settings`}
+              />
+              <Redirect exact from="/" to={`/${i18n.language}`} />
               {user && (
-                <Route path="/settings">
+                <Route path={`${localesParamString}/settings`}>
                   <FirebaseUserDocumentContext.Provider value={docPath}>
                     <EditSettings />
                   </FirebaseUserDocumentContext.Provider>
                 </Route>
               )}
-              <Route path="/">{Content}</Route>
+              <Route path={`${localesParamString}/`}>{Content}</Route>
             </Switch>
           </Paper>
         </Container>
