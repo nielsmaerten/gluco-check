@@ -58,16 +58,16 @@ jobs:
 
       - name: "Test FRONTEND"
         run: yarn workspace gluco-check-frontend run test:ci
-        
+
       - name: "Upload coverage results"
         if: ${{ matrix.node-version == '14.x' }}
         run: bash <(curl -s https://codecov.io/bash)
 
-      - name: 'Tar files'
+      - name: "Tar workspace"
         if: ${{ matrix.node-version == '14.x' }}
         run: tar -czf ${{ runner.temp }}/workspace.tar ./
 
-      - name: "Upload artifact"
+      - name: "Upload workspace"
         if: ${{ matrix.node-version == '14.x' }}
         uses: actions/upload-artifact@master
         with:
@@ -85,14 +85,15 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "14.x"
-    
+
       - uses: actions/download-artifact@master
+        name: "Download workspace"
         with:
           name: ${{ github.run_id }}
 
-      - name: 'Untar files'
+      - name: "Untar workspace"
         run: tar -xf workspace.tar ./
-            
+
       - name: "Deploy WEBHOOKS"
         uses: w9jds/firebase-action@master
         with:
@@ -112,14 +113,15 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "14.x"
-    
+
       - uses: actions/download-artifact@master
+        name: "Download workspace"
         with:
           name: ${{ github.run_id }}
 
-      - name: 'Untar files'
+      - name: "Untar workspace"
         run: tar -xf workspace.tar ./
-            
+
       - name: "Deploy WEBHOOKS"
         uses: w9jds/firebase-action@master
         with:
@@ -139,12 +141,13 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "14.x"
-    
+
       - uses: actions/download-artifact@master
+        name: "Download workspace"
         with:
           name: ${{ github.run_id }}
 
-      - name: 'Untar files'
+      - name: "Untar workspace"
         run: tar -xf workspace.tar ./
 
       - name: "Build FRONTEND"
@@ -180,12 +183,13 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "14.x"
-    
+
       - uses: actions/download-artifact@master
+        name: "Download workspace"
         with:
           name: ${{ github.run_id }}
 
-      - name: 'Untar files'
+      - name: "Untar workspace"
         run: tar -xf workspace.tar ./
 
       - name: "Build FRONTEND"
