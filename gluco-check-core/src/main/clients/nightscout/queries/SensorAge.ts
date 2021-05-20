@@ -8,7 +8,7 @@ export const SensorAge: QueryConfig = {
   params: {eventType: 'Sensor Change', sort$desc: 'created_at', limit: 1},
   callback: (data: any) => { // eslint-disable-line
     return {
-      sensorInserted: new Date(data.created_at).getTime(),
+      sensorInserted: new Date(data.created_at).getTime() || null,
     };
   },
 };

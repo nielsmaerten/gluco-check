@@ -6,16 +6,16 @@ import {i18next} from '..';
 import {formatNumber, translateTimestamp} from './_common';
 
 export default async function (params: FormatParams): Promise<string> {
+  if (!params.snapshot.glucoseValue()) {
+    return metricNotFound(DmMetric.BloodSugar, params);
+  }
+
   // Collect translation context
   const context = {
     value: formatNumber(params.snapshot.glucoseValue(), params.locale),
     trend: translateTrend(params.locale, params.snapshot.glucoseTrend),
     time: await translateTimestamp(params.snapshot.timestamp, params.locale),
   };
-
-  if (context.value === undefined) {
-    return metricNotFound(DmMetric.BloodSugar, params);
-  }
 
   // Build translation key
   let key = 'assistant_responses.blood_sugar.';
