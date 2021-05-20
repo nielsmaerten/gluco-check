@@ -25,7 +25,5 @@ export enum DiabetesMetric {
 
 export enum AvailableLanguage {
   English = "en",
-  // 2021-05-10(Niels): Commenting out Dutch while the Action is being translated,
-  // so that we can still push other fixes to PROD without the language showing up
-  // Dutch = "nl",
+  Dutch = "nl",
 }

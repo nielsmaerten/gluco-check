@@ -26,7 +26,7 @@ import LanguageSelector from "./components/LanguageSelector";
 import EditSettings from "./pages/EditSettings";
 import Welcome from "./pages/Welcome";
 import "./App.css";
-import { FAQS_URL, GLUCO_CHECK_GITHUB_URL } from "./lib/constants";
+import { APP_DEBUG, FAQS_URL, GLUCO_CHECK_GITHUB_URL } from "./lib/constants";
 import { AvailableLanguage } from "./lib/enums";
 
 export const FirebaseUserDocumentContext = React.createContext("");
@@ -98,7 +98,7 @@ export default function App() {
         </section>
         <section className={classes.rightToolbar}>
           <ul className={classes.nav}>
-            {Object.values(AvailableLanguage).length > 1 && (
+            {APP_DEBUG && Object.values(AvailableLanguage).length > 1 && (
               <li>
                 <LanguageSelector />
               </li>
