@@ -64,6 +64,7 @@ jobs:
         run: bash <(curl -s https://codecov.io/bash)
 
       - name: 'Tar files'
+        if: ${{ matrix.node-version == '14.x' }}
         run: tar -czf workspace.tar ./
 
       - name: "Upload artifact"
