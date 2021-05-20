@@ -58,12 +58,16 @@ jobs:
 
       - name: "Test FRONTEND"
         run: yarn workspace gluco-check-frontend run test:ci
+        
+      - name: 'Tar files'
+        run: tar -cvf workspace.tar ${{ github.workspace }}
 
       - name: "Upload artifact"
         uses: actions/upload-artifact@master
         with:
           name: ${{ github.run_id }}
-          path: ${{ github.workspace }}
+          path: workspace.tar
+          retention-days: 2
 
       - name: "Upload coverage results"
         if: ${{ matrix.node-version == '14.x' }}
@@ -83,7 +87,9 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: ${{ github.run_id }}
-          path: ${{ github.workspace }}  
+
+      - name: 'Untar files'
+        run: tar -xf workspace.tar ${{ github.workspace }}
             
       - name: "Deploy WEBHOOKS"
         uses: w9jds/firebase-action@master
@@ -108,7 +114,9 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: ${{ github.run_id }}
-          path: ${{ github.workspace }}  
+
+      - name: 'Untar files'
+        run: tar -xf workspace.tar ${{ github.workspace }}
             
       - name: "Deploy WEBHOOKS"
         uses: w9jds/firebase-action@master
@@ -133,7 +141,9 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: ${{ github.run_id }}
-          path: ${{ github.workspace }}
+
+      - name: 'Untar files'
+        run: tar -xf workspace.tar ${{ github.workspace }}
 
       - name: "Build FRONTEND"
         env:
@@ -172,7 +182,9 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: ${{ github.run_id }}
-          path: ${{ github.workspace }}
+
+      - name: 'Untar files'
+        run: tar -xf workspace.tar ${{ github.workspace }}
 
       - name: "Build FRONTEND"
         env:
