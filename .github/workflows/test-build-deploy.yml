@@ -65,14 +65,14 @@ jobs:
 
       - name: 'Tar files'
         if: ${{ matrix.node-version == '14.x' }}
-        run: tar -czf workspace.tar ./
+        run: tar -czf ${{ runner.temp }}/workspace.tar ./
 
       - name: "Upload artifact"
         if: ${{ matrix.node-version == '14.x' }}
         uses: actions/upload-artifact@master
         with:
           name: ${{ github.run_id }}
-          path: workspace.tar
+          path: ${{ runner.temp }}/workspace.tar
           retention-days: 2
 
   deploy-webhooks-prod:
