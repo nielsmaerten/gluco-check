@@ -59,19 +59,19 @@ jobs:
       - name: "Test FRONTEND"
         run: yarn workspace gluco-check-frontend run test:ci
         
+      - name: "Upload coverage results"
+        if: ${{ matrix.node-version == '14.x' }}
+        run: bash <(curl -s https://codecov.io/bash)
+        
       - name: 'Tar files'
-        run: tar -cvf workspace.tar ${{ github.workspace }}
+        run: tar -cvf workspace.tar ./
 
       - name: "Upload artifact"
         uses: actions/upload-artifact@master
         with:
-          name: ${{ github.run_id }}
+          name: ${{ github.run_id }}-${{ matrix.node-version }}
           path: workspace.tar
           retention-days: 2
-
-      - name: "Upload coverage results"
-        if: ${{ matrix.node-version == '14.x' }}
-        run: bash <(curl -s https://codecov.io/bash)
 
   deploy-webhooks-prod:
     environment: production
@@ -89,7 +89,7 @@ jobs:
           name: ${{ github.run_id }}
 
       - name: 'Untar files'
-        run: tar -xf workspace.tar ${{ github.workspace }}
+        run: tar -xf workspace.tar ./
             
       - name: "Deploy WEBHOOKS"
         uses: w9jds/firebase-action@master
@@ -116,7 +116,7 @@ jobs:
           name: ${{ github.run_id }}
 
       - name: 'Untar files'
-        run: tar -xf workspace.tar ${{ github.workspace }}
+        run: tar -xf workspace.tar ./
             
       - name: "Deploy WEBHOOKS"
         uses: w9jds/firebase-action@master
@@ -143,7 +143,7 @@ jobs:
           name: ${{ github.run_id }}
 
       - name: 'Untar files'
-        run: tar -xf workspace.tar ${{ github.workspace }}
+        run: tar -xf workspace.tar ./
 
       - name: "Build FRONTEND"
         env:
@@ -184,7 +184,7 @@ jobs:
           name: ${{ github.run_id }}
 
       - name: 'Untar files'
-        run: tar -xf workspace.tar ${{ github.workspace }}
+        run: tar -xf workspace.tar ./
 
       - name: "Build FRONTEND"
         env:
