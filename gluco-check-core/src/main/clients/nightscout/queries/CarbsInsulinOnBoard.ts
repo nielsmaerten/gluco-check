@@ -10,7 +10,7 @@ export const CarbsInsulinOnBoard: QueryConfig = {
     return {
       carbsOnBoard: data.bgs[0]?.cob,
       insulinOnBoard: data.bgs[0]?.iob,
-      timestamp: new Date(data.bgs[0]?.datetime).getTime(),
+      timestamp: new Date(data.bgs[0]?.datetime).getTime() || null,
     };
   },
 };

@@ -8,7 +8,7 @@ export const CannulaAge: QueryConfig = {
   params: {eventType: 'Site Change', sort$desc: 'created_at', limit: 1},
   callback: (data: any) => { // eslint-disable-line
     return {
-      cannulaInserted: new Date(data.created_at).getTime(),
+      cannulaInserted: new Date(data.created_at).getTime() || null,
     };
   },
 };
