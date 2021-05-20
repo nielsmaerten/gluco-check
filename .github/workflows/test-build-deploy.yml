@@ -62,14 +62,15 @@ jobs:
       - name: "Upload coverage results"
         if: ${{ matrix.node-version == '14.x' }}
         run: bash <(curl -s https://codecov.io/bash)
-        
+
       - name: 'Tar files'
         run: tar -cvf workspace.tar ./
 
       - name: "Upload artifact"
+        if: ${{ matrix.node-version == '14.x' }}
         uses: actions/upload-artifact@master
         with:
-          name: ${{ github.run_id }}-${{ matrix.node-version }}
+          name: ${{ github.run_id }}
           path: workspace.tar
           retention-days: 2
 
