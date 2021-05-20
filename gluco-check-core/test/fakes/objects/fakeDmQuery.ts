@@ -10,4 +10,5 @@ export default () =>
     DmMetric.SensorAge,
     DmMetric.CarbsOnBoard,
     DmMetric.PumpBattery,
+    DmMetric.PumpReservoir,
   ]);
