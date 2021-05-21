@@ -5,7 +5,7 @@ import {metricNotFound} from './_error';
 import {DmMetric} from '../../../types/DmMetric';
 
 export default async function (params: FormatParams): Promise<string> {
-  if (!params.snapshot.carbsOnBoard) {
+  if (params.snapshot.carbsOnBoard === undefined) {
     return metricNotFound(DmMetric.CarbsOnBoard, params);
   }
 

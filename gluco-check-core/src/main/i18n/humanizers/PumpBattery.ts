@@ -5,7 +5,7 @@ import {DmMetric} from '../../../types/DmMetric';
 import {formatNumber} from './_common';
 
 export default async function (params: FormatParams): Promise<string> {
-  if (!params.snapshot.pumpBattery) {
+  if (params.snapshot.pumpBattery === undefined) {
     return metricNotFound(DmMetric.PumpBattery, params);
   }
 
