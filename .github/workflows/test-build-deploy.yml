@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: "[SETUP] Print event info"
         uses: hmarr/debug-action@v2
-        
+
       - name: "[SETUP] Clone repository"
         uses: actions/checkout@v2
 
@@ -84,8 +84,8 @@ jobs:
     environment:
       name: Production
       url: https://glucocheck.app
-    if: ${{ github.event.action == 'published' && github.event.target_commitish == 'main' && !github.event.prerelease }}
-    needs: test
+    if: ${{ github.event.action == 'published' && github.event.release.target_commitish == 'main' && !github.event.release.prerelease }}
+    #  needs: test
     runs-on: ubuntu-latest
 
     steps:
@@ -146,8 +146,8 @@ jobs:
     environment:
       name: Production
       url: https://glucocheck.app
-    if: ${{ github.event.action == 'published' && github.event.target_commitish == 'main' && !github.event.prerelease }}
-    needs: test
+    if: ${{ github.event.action == 'published' && github.event.release.target_commitish == 'main' && !github.event.release.prerelease }}
+    #  needs: test
     runs-on: ubuntu-latest
 
     steps:
