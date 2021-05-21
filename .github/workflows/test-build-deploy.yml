@@ -80,8 +80,8 @@ jobs:
     name: Deploy webhooks (prod)
     environment:
       name: Production
-      url: https://glucocheck.app/
-    if: ${{ github.event_name == 'release' }}
+      url: https://glucocheck.app
+    if: ${{ github.event.action == 'released' }}
     needs: test
     runs-on: ubuntu-latest
 
@@ -111,7 +111,7 @@ jobs:
     name: Deploy webhooks (nightly)
     environment:
       name: Nightly
-      url: https://nightly.glucocheck.app/
+      url: https://nightly.glucocheck.app
     if: ${{ github.event_name == 'push' }}
     needs: test
     runs-on: ubuntu-latest
@@ -143,7 +143,7 @@ jobs:
     environment:
       name: Production
       url: https://glucocheck.app
-    if: ${{ github.event_name == 'release' }}
+    if: ${{ github.event.action == 'released' }}
     needs: test
     runs-on: ubuntu-latest
 
