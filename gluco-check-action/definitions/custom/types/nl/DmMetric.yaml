@@ -12,8 +12,10 @@ synonym:
     cannula age:
       synonyms:
       - canule
-      - infusie set
       - cannule
+      - infusie set
+      - pod
+      - catheter
     carbs on board:
       synonyms:
       - koolhydraten
@@ -34,7 +36,6 @@ synonym:
       synonyms:
       - batterij
       - pomp batterij
-      - pomp
     pump reservoir:
       synonyms:
       - pomp reservoir
