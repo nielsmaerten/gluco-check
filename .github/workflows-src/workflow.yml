@@ -1,4 +1,4 @@
-name: Gluco Check Workflow
+name: CI / CD
 
 on:
   pull_request:
