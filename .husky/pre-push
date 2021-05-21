@@ -3,4 +3,9 @@
 
 # Verify all code is properly formatted before pushing
 yarn lint
+
+# Compile markdown TOC
 yarn workspace gluco-check-common run toc
+
+# Compile GitHub Workflows
+yarn run gha-workflows

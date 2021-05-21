@@ -5,6 +5,20 @@ __metadata:
   version: 4
   cacheKey: 7
 
+"@allejo/gha-workflows@npm:^0.0.1":
+  version: 0.0.1
+  resolution: "@allejo/gha-workflows@npm:0.0.1"
+  dependencies:
+    argparse: ^2.0.1
+    js-yaml: ^4.0.0
+    mkdirp: ^1.0.4
+    pkg-up: ^3.1.0
+  bin:
+    gha-workflows: dist/gha-workflows.js
+  checksum: fb44beaa7a32af247e7b33125194d5272e2704254edc3ad5136548dc5fca084f1cba1b9946e37a58e07faaff3e70cbe55bd28091be12c3ec57a02c89d1df567f
+  languageName: node
+  linkType: hard
+
 "@assistant/conversation@npm:^3.7.1":
   version: 3.7.1
   resolution: "@assistant/conversation@npm:3.7.1"
@@ -4847,6 +4861,13 @@ __metadata:
   dependencies:
     sprintf-js: ~1.0.2
   checksum: 435adaef5f6671c3ef1478a22be6fd54bdb99fdbbce8f5561b9cbbb05068ccce87b7df3b9f3322ff52a6ebb9cab2b427cbedac47a07611690a9beaa5184093e2
+  languageName: node
+  linkType: hard
+
+"argparse@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "argparse@npm:2.0.1"
+  checksum: 160b7a25d2a7097fd5fdf25eb8a99e037340078f70e6c7cfdef305837ed14d54570b2b13261bcae26c8cd44ad6e9a7136a0110d815ac65a7891c69c7bf2f4afd
   languageName: node
   linkType: hard
 
@@ -9998,6 +10019,7 @@ fsevents@^2.1.2:
   version: 0.0.0-use.local
   resolution: "gluco-check@workspace:."
   dependencies:
+    "@allejo/gha-workflows": ^0.0.1
     husky: ^6.0.0
     rimraf: ^3.0.2
   languageName: unknown
@@ -12267,6 +12289,17 @@ fsevents@^2.1.2:
   bin:
     js-yaml: bin/js-yaml.js
   checksum: 2eb95464e5263aedc20ae2d9280f0e29b00adab15ece080ec42473d7055efaab24b904108644d115f687efe05a5bde02972b883aafa93607c4c108f667a56fa7
+  languageName: node
+  linkType: hard
+
+"js-yaml@npm:^4.0.0":
+  version: 4.1.0
+  resolution: "js-yaml@npm:4.1.0"
+  dependencies:
+    argparse: ^2.0.1
+  bin:
+    js-yaml: bin/js-yaml.js
+  checksum: 8973cf4296c944cc2551d1e3d3d064e7de0d0a6db3f7bafe40339ee9e5e0329560b52c4b8492b9b22365404c9be0822b62340ab49884e1dedfcc7ff80158abe0
   languageName: node
   linkType: hard
 
@@ -14789,7 +14822,7 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"pkg-up@npm:3.1.0":
+"pkg-up@npm:3.1.0, pkg-up@npm:^3.1.0":
   version: 3.1.0
   resolution: "pkg-up@npm:3.1.0"
   dependencies:
