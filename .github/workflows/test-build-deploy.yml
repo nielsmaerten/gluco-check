@@ -77,10 +77,10 @@ jobs:
           retention-days: 2
 
   deploy-webhooks-prod:
-    name: Deploy webhooks (PROD)
+    name: Deploy webhooks (prod)
     environment:
       name: Production
-      url: https://glucocheck.app/api
+      url: https://glucocheck.app/
     if: ${{ github.event_name == 'release' }}
     needs: test
     runs-on: ubuntu-latest
@@ -108,10 +108,10 @@ jobs:
           PROJECT_ID: ${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}
 
   deploy-webhooks-nightly:
-    name: Deploy webhooks (NIGHTLY)
+    name: Deploy webhooks (nightly)
     environment:
       name: Nightly
-      url: https://nightly.glucocheck.app/api
+      url: https://nightly.glucocheck.app/
     if: ${{ github.event_name == 'push' }}
     needs: test
     runs-on: ubuntu-latest
@@ -139,7 +139,7 @@ jobs:
           PROJECT_ID: ${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}
 
   deploy-frontend-prod:
-    name: Deploy frontend (PROD)
+    name: Deploy frontend (prod)
     environment:
       name: Production
       url: https://glucocheck.app
@@ -184,10 +184,10 @@ jobs:
           PROJECT_ID: ${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}
 
   deploy-frontend-nightly:
-    name: Deploy frontend (NIGHTLY)
+    name: Deploy frontend (nightly)
     environment:
       name: Nightly
-      url: https://nightly.glucocheck.app/api
+      url: https://nightly.glucocheck.app
     if: ${{ github.event_name == 'push' }}
     needs: test
     runs-on: ubuntu-latest

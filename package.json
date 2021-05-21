@@ -2,7 +2,7 @@
   "name": "gluco-check",
   "description": "Hey Google, Check my sugar",
   "homepage": "https://glucocheck.app",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "repository": "https://github.com/nielsmaerten/gluco-check",
   "license": "MIT",
   "contributors": [

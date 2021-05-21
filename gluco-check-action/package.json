@@ -1,6 +1,6 @@
 {
   "name": "gluco-check-action",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "repository": "https://github.com/nielsmaerten/gluco-check/tree/main/gluco-check-action",
   "private": true,
   "scripts": {
