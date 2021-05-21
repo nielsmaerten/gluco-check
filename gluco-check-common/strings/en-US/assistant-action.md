@@ -83,7 +83,7 @@ Before you can use Gluco Check you must link your Nightscout site on: https://gl
 Note: The information provided by Gluco Check is not a substitute for advice from a medical professional.
 
 #### Highlighted invocations
-- Talk to Gluco Tester
-- Ask Gluco Tester how old my sensor is
-- Ask Gluco Tester to read my glucose
-- Ask Gluco Tester to read my carbs on board
+- Talk to Gluco Check
+- Ask Gluco Check how old my sensor is
+- Ask Gluco Check to read my glucose
+- Ask Gluco Check to read my carbs on board
