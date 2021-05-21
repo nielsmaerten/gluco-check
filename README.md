@@ -34,7 +34,7 @@ Note: Routines are not supported in all languages.
 Pull requests are welcome.  
 For detailed tech docs, check [CONTRIBUTING.md](./CONTRIBUTING.md)
 
-[![Test, Build & Deploy](https://github.com/nielsmaerten/gluco-check/actions/workflows/test-build-deploy.yml/badge.svg?branch=main)](https://github.com/nielsmaerten/gluco-check/actions/workflows/test-build-deploy.yml)
+[![CI / CD](https://github.com/nielsmaerten/gluco-check/actions/workflows/workflow.yml/badge.svg?branch=main&event=push)](https://github.com/nielsmaerten/gluco-check/actions/workflows/workflow.yml)
 [![CodeFactor](https://www.codefactor.io/repository/github/nielsmaerten/gluco-check/badge)](https://www.codefactor.io/repository/github/nielsmaerten/gluco-check)
 [![codecov](https://codecov.io/gh/nielsmaerten/gluco-check/branch/main/graph/badge.svg?token=EQQ94TXWBR)](https://codecov.io/gh/nielsmaerten/gluco-check)
 

@@ -5,13 +5,15 @@ import {metricNotFound} from './_error';
 import {DmMetric} from '../../../types/DmMetric';
 
 export default async function (params: FormatParams): Promise<string> {
+  if (params.snapshot.carbsOnBoard === undefined) {
+    return metricNotFound(DmMetric.CarbsOnBoard, params);
+  }
+
   // Collect translation context
   const context = {
     value: formatNumber(params.snapshot.carbsOnBoard, params.locale),
     time: await translateTimestamp(params.snapshot.timestamp, params.locale),
   };
-
-  if (context.value === undefined) return metricNotFound(DmMetric.CarbsOnBoard, params);
 
   // Build translation key
   let key = 'assistant_responses.carbs_on_board.';
