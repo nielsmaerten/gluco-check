@@ -84,7 +84,7 @@ jobs:
     environment:
       name: Production
       url: https://glucocheck.app
-    if: ${{ github.event.release.action == 'released' }}
+    if: ${{ github.release.action == 'released' }}
     needs: test
     runs-on: ubuntu-latest
 
