@@ -11,6 +11,7 @@ on:
 jobs:
   test:
     if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
+    name: "Run tests"
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -20,7 +21,7 @@ jobs:
       - name: "[SETUP] Clone repository"
         uses: actions/checkout@v2
 
-      - name: "[SETUP] Enable Node v${{ matrix.node-version }}"
+      - name: "[SETUP] Set NodeJS version to ${{ matrix.node-version }}"
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
@@ -76,7 +77,10 @@ jobs:
           retention-days: 2
 
   deploy-webhooks-prod:
-    environment: Production
+    name: Deploy webhooks (PROD)
+    environment:
+      name: Production
+      url: https://glucocheck.app/api
     if: ${{ github.event_name == 'release' }}
     needs: test
     runs-on: ubuntu-latest
@@ -104,7 +108,10 @@ jobs:
           PROJECT_ID: ${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}
 
   deploy-webhooks-nightly:
-    environment: Nightly
+    name: Deploy webhooks (NIGHTLY)
+    environment:
+      name: Nightly
+      url: https://nightly.glucocheck.app/api
     if: ${{ github.event_name == 'push' }}
     needs: test
     runs-on: ubuntu-latest
@@ -132,7 +139,10 @@ jobs:
           PROJECT_ID: ${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}
 
   deploy-frontend-prod:
-    environment: Production
+    name: Deploy frontend (PROD)
+    environment:
+      name: Production
+      url: https://glucocheck.app
     if: ${{ github.event_name == 'release' }}
     needs: test
     runs-on: ubuntu-latest
@@ -174,7 +184,10 @@ jobs:
           PROJECT_ID: ${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}
 
   deploy-frontend-nightly:
-    environment: Nightly
+    name: Deploy frontend (NIGHTLY)
+    environment:
+      name: Nightly
+      url: https://nightly.glucocheck.app/api
     if: ${{ github.event_name == 'push' }}
     needs: test
     runs-on: ubuntu-latest
