@@ -45,25 +45,25 @@ jobs:
       - name: "[SETUP] Install dependencies"
         run: yarn
 
-      - name: "Lint all code"
+      - name: "Run linters"
         run: yarn lint
 
-      - name: "Build i18n resource bundles"
+      - name: "Build: i18n resource bundles"
         run: yarn workspace gluco-check-common run build
 
-      - name: "Test CORE package"
+      - name: "Test: Core package"
         run: yarn workspace gluco-check-core run test:cov
 
-      - name: "Build CORE package"
+      - name: "Build: Core package"
         run: yarn workspace gluco-check-core run build
 
-      - name: "Build WEBHOOKS"
+      - name: "Build: Webhooks"
         run: yarn workspace gluco-check-webhooks run build
 
-      - name: "Test FRONTEND"
+      - name: "Test: Frontend"
         run: yarn workspace gluco-check-frontend run test:ci
 
-      - name: "Upload coverage results"
+      - name: "Upload test coverage results"
         if: ${{ matrix.node-version == '14.x' }}
         run: bash <(curl -s https://codecov.io/bash)
 
@@ -77,10 +77,9 @@ jobs:
         with:
           name: ${{ github.run_id }}
           path: ${{ runner.temp }}/workspace.tar
-          retention-days: 2
 
   deploy-webhooks-prod:
-    name: Deploy webhooks (prod)
+    name: Deploy production webhooks
     environment:
       name: Production
       url: https://glucocheck.app
@@ -89,7 +88,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/setup-node@v1
+      - name: "Set NodeJS version to ${{ matrix.node-version }}"
+        uses: actions/setup-node@v1
         with:
           node-version: "14.x"
 
@@ -101,7 +101,7 @@ jobs:
       - name: "Untar workspace"
         run: tar -xf workspace.tar ./
 
-      - name: "Deploy WEBHOOKS"
+      - name: "Deploy: Webhooks"
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only functions
@@ -111,7 +111,7 @@ jobs:
           PROJECT_ID: ${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}
 
   deploy-webhooks-nightly:
-    name: Deploy webhooks (nightly)
+    name: Deploy nightly webhooks
     environment:
       name: Nightly
       url: https://nightly.glucocheck.app
@@ -120,7 +120,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/setup-node@v1
+      - name: "Set NodeJS version to ${{ matrix.node-version }}"
+        uses: actions/setup-node@v1
         with:
           node-version: "14.x"
 
@@ -132,7 +133,7 @@ jobs:
       - name: "Untar workspace"
         run: tar -xf workspace.tar ./
 
-      - name: "Deploy WEBHOOKS"
+      - name: "Deploy: Webhooks"
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only functions
@@ -142,7 +143,7 @@ jobs:
           PROJECT_ID: ${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}
 
   deploy-frontend-prod:
-    name: Deploy frontend (prod)
+    name: Deploy production frontend
     environment:
       name: Production
       url: https://glucocheck.app
@@ -151,7 +152,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/setup-node@v1
+      - name: "Set NodeJS version to ${{ matrix.node-version }}"
+        uses: actions/setup-node@v1
         with:
           node-version: "14.x"
 
@@ -163,7 +165,7 @@ jobs:
       - name: "Untar workspace"
         run: tar -xf workspace.tar ./
 
-      - name: "Build FRONTEND"
+      - name: "Build: Frontend"
         env:
           REACT_APP_FIREBASE_API_KEY: ${{ secrets.REACT_APP_FIREBASE_API_KEY }}
           REACT_APP_FIREBASE_AUTH_DOMAIN: ${{ secrets.REACT_APP_FIREBASE_AUTH_DOMAIN }}
@@ -177,7 +179,7 @@ jobs:
           REACT_APP_DEBUG: ${{ secrets.REACT_APP_DEBUG }}
         run: yarn workspace gluco-check-frontend run build
 
-      - name: "Deploy FRONTEND"
+      - name: "Deploy: Frontend"
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting
@@ -187,7 +189,7 @@ jobs:
           PROJECT_ID: ${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}
 
   deploy-frontend-nightly:
-    name: Deploy frontend (nightly)
+    name: Deploy nightly frontend
     environment:
       name: Nightly
       url: https://nightly.glucocheck.app
@@ -196,7 +198,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/setup-node@v1
+      - name: "Set NodeJS version to ${{ matrix.node-version }}"
+        uses: actions/setup-node@v1
         with:
           node-version: "14.x"
 
@@ -208,7 +211,7 @@ jobs:
       - name: "Untar workspace"
         run: tar -xf workspace.tar ./
 
-      - name: "Build FRONTEND"
+      - name: "Build: Frontend"
         env:
           REACT_APP_FIREBASE_API_KEY: ${{ secrets.REACT_APP_FIREBASE_API_KEY }}
           REACT_APP_FIREBASE_AUTH_DOMAIN: ${{ secrets.REACT_APP_FIREBASE_AUTH_DOMAIN }}
@@ -222,7 +225,7 @@ jobs:
           REACT_APP_DEBUG: ${{ secrets.REACT_APP_DEBUG }}
         run: yarn workspace gluco-check-frontend run build
 
-      - name: "Deploy FRONTEND"
+      - name: "Deploy: Frontend"
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting
