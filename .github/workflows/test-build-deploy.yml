@@ -85,7 +85,7 @@ jobs:
       name: Production
       url: https://glucocheck.app
     if: ${{ github.event.action == 'published' && github.event.release.target_commitish == 'main' && !github.event.release.prerelease }}
-    #  needs: test
+    needs: test
     runs-on: ubuntu-latest
 
     steps:
@@ -147,7 +147,7 @@ jobs:
       name: Production
       url: https://glucocheck.app
     if: ${{ github.event.action == 'published' && github.event.release.target_commitish == 'main' && !github.event.release.prerelease }}
-    #  needs: test
+    needs: test
     runs-on: ubuntu-latest
 
     steps:
