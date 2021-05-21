@@ -36,9 +36,9 @@ assistant_responses:
     long;no_time: >
       {{value}} insuline eenheden aan boord.
     short;with_time: >
-      {{value}} insuline eenheden aan boord sinds {{time}} ago.
+      {{value}} insuline eenheden aan boord sinds {{time}} geleden.
   cannula_age: >
-    De infusie set werd {{time}} geleden ingebracht.
+    De infusie set is {{time}} oud.
   sensor_age: >
     De sensor is {{time}} oud.
   pump_battery: >
