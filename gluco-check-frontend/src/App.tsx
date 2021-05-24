@@ -26,7 +26,7 @@ import LanguageSelector from "./components/LanguageSelector";
 import EditSettings from "./pages/EditSettings";
 import Welcome from "./pages/Welcome";
 import "./App.css";
-import { APP_DEBUG, FAQS_URL, GLUCO_CHECK_GITHUB_URL } from "./lib/constants";
+import { FAQS_URL, GLUCO_CHECK_GITHUB_URL } from "./lib/constants";
 import { AvailableLanguage } from "./lib/enums";
 
 export const FirebaseUserDocumentContext = React.createContext("");
