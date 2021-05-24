@@ -73,10 +73,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// TODO: Hide the languageSelector on PROD, but leave it enabled during tests
-// Once new languages are available in PROD, this line should be removed
-const showLanguageSelector = APP_DEBUG || process.env.NODE_ENV === "test";
-
 export default function App() {
   const classes = useStyles();
   const [user, loading] = useAuthState(auth);
@@ -102,14 +98,9 @@ export default function App() {
         </section>
         <section className={classes.rightToolbar}>
           <ul className={classes.nav}>
-            {
-              /* TODO: remove this line */ showLanguageSelector &&
-                Object.values(AvailableLanguage).length > 1 && (
-                  <li>
-                    <LanguageSelector />
-                  </li>
-                )
-            }
+            <li>
+              <LanguageSelector />
+            </li>
             <li>
               <IconButton
                 aria-label={t("navigation.faqs")}
