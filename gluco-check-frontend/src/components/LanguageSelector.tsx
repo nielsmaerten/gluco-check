@@ -71,7 +71,7 @@ export default function LanguageSelector() {
         <Translate />
         <Hidden xsDown>
           <span className={classes.selectorLabel}>
-            {t(`languageSelector.buttonLabel`)}
+            {t(`languageSelector.availableLanguageLabels.${i18n.language}`)}
           </span>
         </Hidden>
         <ExpandMore />
