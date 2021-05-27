@@ -665,6 +665,6 @@ export default function SettingsForm({
 
 SettingsForm.defaultProps = {
   autohideDuration: ALERT_AUTOHIDE_DURATION,
-  shouldShowGlucoseUnitsField: false,
+  shouldShowGlucoseUnitsField: true,
   validationDebounceDuration: VALIDATION_DEBOUNCE_DURATION,
 };
