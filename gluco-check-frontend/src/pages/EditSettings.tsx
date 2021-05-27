@@ -94,7 +94,7 @@ export default function EditSettings() {
               endpointUrl: NIGHTSCOUT_VALIDATION_ENDPOINT_URL,
             })
           }
-          shouldShowGlucoseUnitsField={APP_DEBUG}
+          shouldShowGlucoseUnitsField={true}
         />
       )}
     </Container>
