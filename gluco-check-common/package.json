@@ -1,6 +1,6 @@
 {
   "name": "gluco-check-common",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "repository": "https://github.com/nielsmaerten/gluco-check/tree/main/gluco-check-common",
   "private": true,
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "doctoc": "2.0.0",
-    "glob": "^7.1.6",
+    "glob": "^7.1.7",
     "yamljs": "^0.3.0"
   }
 }

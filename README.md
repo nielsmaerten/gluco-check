@@ -1,11 +1,14 @@
 # Welcome to Gluco Check
 Nightscout for Google Home and Google Assistant.  
-Formerly known as: [Nightscout Status](https://github.com/nielsmaerten/nightscout-assistant)
+Watch a [demonstration on YouTube](https://youtu.be/o7-T2IrDJ_A) (2m50s).  
+Formerly known as [Nightscout Status](https://github.com/nielsmaerten/nightscout-assistant).
 
 ## Getting started
 
 1. [Link your Nightscout site](https://glucocheck.app)
 1. Say: **"Hey Google, talk to Gluco Check"**  
+1. (Optional): Set up a [Routine](https://glucocheck.app/assets/routines-setup.mp) to make invoking Gluco Check easier   
+   For example: **"Hey Google, check my sugar"**
 
 ## Things you can ask Gluco Check
 
@@ -32,9 +35,9 @@ Note: Routines are not supported in all languages.
 Pull requests are welcome.  
 For detailed tech docs, check [CONTRIBUTING.md](./CONTRIBUTING.md)
 
-[![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/nielsmaerten/gluco-check/main?style=flat-square)](https://www.codefactor.io/repository/github/nielsmaerten/gluco-check/)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/nielsmaerten/gluco-check/Test,%20Build%20&%20Deploy/main?style=flat-square)](https://github.com/nielsmaerten/gluco-check/actions/workflows/test-build-deploy.yml?query=branch%3Amain)
-[![Codecov](https://img.shields.io/codecov/c/github/nielsmaerten/gluco-check?style=flat-square)](https://codecov.io/gh/nielsmaerten/gluco-check)
+[![CI / CD](https://github.com/nielsmaerten/gluco-check/actions/workflows/workflow.yml/badge.svg?branch=main&event=push)](https://github.com/nielsmaerten/gluco-check/actions/workflows/workflow.yml)
+[![CodeFactor](https://www.codefactor.io/repository/github/nielsmaerten/gluco-check/badge)](https://www.codefactor.io/repository/github/nielsmaerten/gluco-check)
+[![codecov](https://codecov.io/gh/nielsmaerten/gluco-check/branch/main/graph/badge.svg?token=EQQ94TXWBR)](https://codecov.io/gh/nielsmaerten/gluco-check)
 
 
 ## License & Privacy Policy

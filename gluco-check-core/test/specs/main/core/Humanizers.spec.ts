@@ -8,6 +8,7 @@ import I18nHelper from '../../../../src/main/i18n';
 import FormatParams from '../../../../src/types/FormatParams';
 import getFakeQuery from '../../../fakes/objects/fakeDmQuery';
 import {DmMetric} from '../../../../src/types/DmMetric';
+import * as errorHumanizer from '../../../../src/main/i18n/humanizers/_error';
 
 let params: FormatParams;
 
@@ -76,9 +77,15 @@ describe('Humanizer', () => {
   });
 
   it('formats missing metric errors', async () => {
-    const newParams = Object.assign({}, params);
-    newParams.snapshot.carbsOnBoard = undefined;
-    const result = await Humanizers.carbsOnBoard(params);
-    expect(result).toEqual("I couldn't find your carbs on board.");
+    // Use an 'empty' snapshot with no metrics
+    params.snapshot = new DmSnapshot({timestamp: 1, query: params.snapshot.query});
+
+    // Get number of metrics asked for (minus "Everything")
+    const nrOfMetrics = Object.entries(DmMetric).length - 1;
+
+    // MetricNotFound should be called once for each metric
+    jest.spyOn(errorHumanizer, 'metricNotFound');
+    await Humanizers.dmSnapshot(params.snapshot);
+    expect(errorHumanizer.metricNotFound).toHaveBeenCalledTimes(nrOfMetrics);
   });
 });

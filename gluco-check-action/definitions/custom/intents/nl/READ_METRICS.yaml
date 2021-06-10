@@ -1,10 +1,15 @@
 trainingPhrases:
-- ($DmMetric 'Koolhydraten aan boord' auto=false)
-- Check mijn ($DmMetric 'glucose' auto=false)
-- Wat is mijn ($DmMetric 'glucose' auto=false)
-- Wat is mijn ($DmMetric 'glucose' auto=false), ($DmMetric 'insuline' auto=false) en
-  ($DmMetric 'koolhydraten aan boord' auto=false)
-- Hoeveel ($DmMetric 'koolhydraten' auto=false) heb ik aan boord
-- Hoeveel ($DmMetric 'insuline' auto=false) heb ik
-- Hoeveel is mijn ($DmMetric 'bloedsuiker' auto=false)
-- Hoe zijn mijn ($DmMetric 'carbs' auto=false)
+- Hoe oud is mijn ($DmMetric 'pod' auto=true)
+- Vraag om een ($DmMetric 'volledig rapport' auto=true)
+- Vraag om ($DmMetric 'alle waarden' auto=true)
+- Vraag om ($DmMetric 'alles' auto=true)
+- Hoe oud is mijn ($DmMetric 'sensor' auto=true)
+- Wat is mijn ($DmMetric 'bloedsuiker' auto=true)
+- ($DmMetric 'Koolhydraten aan boord' auto=true)
+- Check mijn ($DmMetric 'bloedsuiker' auto=true)
+- Hoeveel is mijn ($DmMetric 'bloedsuiker' auto=true)
+- Wat zijn mijn ($DmMetric 'glucose' auto=true), ($DmMetric 'koolhydraten' auto=true)
+  en ($DmMetric 'insuline' auto=true)
+- Hoeveel ($DmMetric 'koolhydraten' auto=true) heb ik
+- Hoeveel ($DmMetric 'insuline' auto=true) heb ik
+- Hoe staat het met mijn ($DmMetric 'suikerspiegel' auto=true)

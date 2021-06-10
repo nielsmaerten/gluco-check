@@ -19,7 +19,7 @@ Screenshots, etc...
 * Breaking change (fix or feature that would cause existing functionality to not work as expected)
 
 ## Checklist:
-<!--- Go over all the following points, and put an `x` in all the boxes that apply. -->
+<!--- Here are some things to consider before merging. You can add/remove items as you see fit. -->
 <!--- If you're unsure about any of these, don't hesitate to ask. We're here to help! -->
 - [ ] I've made my changes in a separate branch
 - [ ] I've updated documentation, or created an issue to do so later

@@ -6,7 +6,7 @@ import App from "./App";
 
 import "./lib/i18n";
 import ThemeWithMediaProvider from "./components/ThemeWithMediaProvider";
-import { themeOptions } from "./theme";
+import { darkThemeOptions, lightThemeOptions } from "./theme";
 
 ReactDOM.render(
   <Suspense
@@ -24,7 +24,10 @@ ReactDOM.render(
       </Grid>
     }
   >
-    <ThemeWithMediaProvider themeOptions={themeOptions}>
+    <ThemeWithMediaProvider
+      lightThemeOptions={lightThemeOptions}
+      darkThemeOptions={darkThemeOptions}
+    >
       <CssBaseline />
       <App />
     </ThemeWithMediaProvider>

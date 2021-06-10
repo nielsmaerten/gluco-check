@@ -10,7 +10,7 @@ export const PumpStatus: QueryConfig = {
     return {
       pumpBattery: data.pump?.battery?.percent,
       pumpReservoir: data.pump?.reservoir,
-      timestamp: new Date(data.created_at).getTime(),
+      timestamp: new Date(data.created_at).getTime() || null,
     };
   },
 };

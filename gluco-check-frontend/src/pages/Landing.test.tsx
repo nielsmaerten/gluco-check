@@ -13,6 +13,20 @@ jest.mock("react-i18next", () => ({
   },
 }));
 
+const mockLanguage = "en";
+jest.mock("react-i18next", () => ({
+  useTranslation: () => {
+    return {
+      t: jest.fn().mockImplementation((i) => {
+        return i;
+      }),
+      i18n: {
+        language: mockLanguage,
+      },
+    };
+  },
+}));
+
 jest.mock("../lib/firebase");
 jest.mock("react-firebaseui/StyledFirebaseAuth", () => {
   return {

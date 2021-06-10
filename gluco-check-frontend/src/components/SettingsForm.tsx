@@ -29,8 +29,10 @@ import {
 import semver from "semver";
 import { Close, Lock } from "@material-ui/icons";
 import MuiAlert from "@material-ui/lab/Alert";
+import { indigo } from "@material-ui/core/colors";
 import { useForm, Controller, DeepMap, FieldError } from "react-hook-form";
 import { useTranslation } from "react-i18next";
+
 import { BloodGlucoseUnit, DiabetesMetric } from "../lib/enums";
 import { SettingsFormData } from "../lib/types";
 import {
@@ -72,6 +74,13 @@ const useStyles = makeStyles((theme) => ({
     "& .MuiFormHelperText-root .MuiLink-button": {
       color: theme.palette.text.secondary,
       textDecoration: "underline",
+    },
+    "& .MuiFormLabel-root.Mui-focused": {
+      color: theme.palette.type === "light" ? indigo[500] : "#72aed3",
+    },
+    "& .MuiInputBase-root.MuiInput-underline:after": {
+      borderBottomColor:
+        theme.palette.type === "light" ? indigo[500] : "#72aed3",
     },
   },
   checkboxArray: {
@@ -518,7 +527,7 @@ export default function SettingsForm({
                       />
                     }
                     key={metric.value}
-                    label={metric.value}
+                    label={t(metric.label)}
                   />
                 );
               });
@@ -656,6 +665,6 @@ export default function SettingsForm({
 
 SettingsForm.defaultProps = {
   autohideDuration: ALERT_AUTOHIDE_DURATION,
-  shouldShowGlucoseUnitsField: false,
+  shouldShowGlucoseUnitsField: true,
   validationDebounceDuration: VALIDATION_DEBOUNCE_DURATION,
 };

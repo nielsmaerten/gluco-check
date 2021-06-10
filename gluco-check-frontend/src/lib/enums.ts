@@ -22,3 +22,8 @@ export enum DiabetesMetric {
   PumpBattery = "pump battery",
   PumpReservoir = "pump reservoir",
 }
+
+export enum AvailableLanguage {
+  English = "en",
+  Dutch = "nl",
+}

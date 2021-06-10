@@ -18,6 +18,11 @@
     ],
     "redirects": [
       {
+        "source": "/demo",
+        "destination": "https://www.youtube.com/watch?v=o7-T2IrDJ_A",
+        "type": 307
+      },
+      {
         "source": "/terms",
         "destination": "/terms/en-US",
         "type": 307

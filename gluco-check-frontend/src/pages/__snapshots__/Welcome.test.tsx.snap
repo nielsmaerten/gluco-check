@@ -25,11 +25,11 @@ exports[`Welcome page renders the component 1`] = `
   <div
     class="MuiGrid-root MuiGrid-item"
   >
-    <a
-      aria-disabled="false"
+    <button
       class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-      href="/settings"
+      data-testid="settings-button"
       tabindex="0"
+      type="button"
     >
       <span
         class="MuiButton-label"
@@ -38,8 +38,17 @@ exports[`Welcome page renders the component 1`] = `
       </span>
       <span
         class="MuiTouchRipple-root"
-      />
-    </a>
+      >
+        <span
+          class="MuiTouchRipple-ripple MuiTouchRipple-rippleVisible"
+          style="width: 2.8284271247461903px; height: 2.8284271247461903px; top: -1.4142135623730951px; left: -1.4142135623730951px;"
+        >
+          <span
+            class="MuiTouchRipple-child MuiTouchRipple-childLeaving"
+          />
+        </span>
+      </span>
+    </button>
   </div>
   <div
     class="MuiGrid-root makeStyles-boilerplate-5 MuiGrid-item"

@@ -123,7 +123,7 @@ exports[`SettingsForm component renders the component 1`] = `
         <span
           class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
         >
-          everything
+          diabetesMetrics.Everything
         </span>
       </label>
       <label
@@ -161,7 +161,7 @@ exports[`SettingsForm component renders the component 1`] = `
         <span
           class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
         >
-          blood sugar
+          diabetesMetrics.BloodSugar
         </span>
       </label>
       <label
@@ -198,7 +198,7 @@ exports[`SettingsForm component renders the component 1`] = `
         <span
           class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
         >
-          insulin on board
+          diabetesMetrics.InsulinOnBoard
         </span>
       </label>
       <label
@@ -235,7 +235,7 @@ exports[`SettingsForm component renders the component 1`] = `
         <span
           class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
         >
-          carbs on board
+          diabetesMetrics.CarbsOnBoard
         </span>
       </label>
       <label
@@ -272,7 +272,7 @@ exports[`SettingsForm component renders the component 1`] = `
         <span
           class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
         >
-          sensor age
+          diabetesMetrics.SensorAge
         </span>
       </label>
       <label
@@ -309,7 +309,7 @@ exports[`SettingsForm component renders the component 1`] = `
         <span
           class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
         >
-          cannula age
+          diabetesMetrics.CannulaAge
         </span>
       </label>
       <label
@@ -346,7 +346,7 @@ exports[`SettingsForm component renders the component 1`] = `
         <span
           class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
         >
-          pump battery
+          diabetesMetrics.PumpBattery
         </span>
       </label>
       <label
@@ -383,25 +383,52 @@ exports[`SettingsForm component renders the component 1`] = `
         <span
           class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
         >
-          pump reservoir
+          diabetesMetrics.PumpReservoir
         </span>
       </label>
     </div>
   </fieldset>
   <div
-    class="MuiFormControl-root MuiTextField-root"
+    class="MuiFormControl-root MuiFormControl-fullWidth"
   >
-    <div
-      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+    <label
+      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+      data-shrink="true"
+      for="settings-form-field-bg"
     >
+      settings.form.labels.glucoseUnits
+    </label>
+    <div
+      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+    >
+      <div
+        aria-haspopup="listbox"
+        aria-labelledby="settings-form-field-bg"
+        class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+        id="settings-form-field-bg"
+        role="button"
+        tabindex="0"
+      >
+        mg/dl
+      </div>
       <input
-        aria-invalid="false"
-        class="MuiInputBase-input MuiInput-input"
+        aria-hidden="true"
+        class="MuiSelect-nativeInput"
         data-testid="settings-form-field-bg"
         name="glucoseUnit"
-        type="hidden"
+        tabindex="-1"
         value="mg/dl"
       />
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSelect-icon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+      </svg>
     </div>
   </div>
   <div

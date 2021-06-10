@@ -55,7 +55,7 @@ export default class NightscoutClient {
       logger.debug(logTag, `HTTP request: ${path} (cached)`);
     }
 
-    // ...No: send HTTP request
+    // ...No: prepare HTTP request
     else {
       logger.debug(logTag, 'HTTP request:', path);
       const request: AxiosRequestConfig = {
