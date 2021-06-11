@@ -59,7 +59,7 @@ jobs:
         run: yarn workspace gluco-check-frontend run test:ci
       - name: Upload test coverage results
         if: ${{ matrix.node-version == '14.x' }}
-        run: bash <(curl -s https://codecov.io/bash)
+        uses: codecov/codecov-action@v1
       - name: Tar workspace
         if: ${{ matrix.node-version == '14.x' }}
         run: tar -czf ${{ runner.temp }}/workspace.tar ./
