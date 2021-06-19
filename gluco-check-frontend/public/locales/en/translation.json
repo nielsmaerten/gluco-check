@@ -57,7 +57,8 @@
           "default": "URL of your Nightscout site",
           "required": "This field is required",
           "notNightscout": "This URL does not point to a Nightscout site",
-          "needsUpgrade": "Your Nightscout site requires an update to work with Gluco Check, please update to at least {{version}}"
+          "needsUpgrade": "Your Nightscout site requires an update to work with Gluco Check, please update to at least {{version}}",
+          "invalidUrl": "This field must be a valid URL"
         },
         "defaultMetrics": {
           "required": "You must select at least one metric",

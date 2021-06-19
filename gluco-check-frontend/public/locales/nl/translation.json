@@ -57,7 +57,8 @@
           "default": "URL van je Nightscout site",
           "required": "Dit veld is verplicht",
           "notNightscout": "We vonden geen Nightscout site op deze URL",
-          "needsUpgrade": "Je Nightscout site moet worden bijgewerkt om te kunnen werken met Gluco Check. Update naar minimaal {{version}}"
+          "needsUpgrade": "Je Nightscout site moet worden bijgewerkt om te kunnen werken met Gluco Check. Update naar minimaal {{version}}",
+          "invalidUrl": "[This field must be a valid URL]"
         },
         "defaultMetrics": {
           "required": "Selecteer minstens één waarde",
