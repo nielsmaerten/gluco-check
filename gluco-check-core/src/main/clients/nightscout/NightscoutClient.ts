@@ -8,7 +8,7 @@ import {ErrorType} from '../../../types/ErrorType';
 import {logger} from 'firebase-functions';
 import QueryConfig from './queries/QueryConfig.base';
 import DmSnapshot from '../../../types/DmSnapshot';
-import NightscoutValidator from './NightscoutValidator';
+import NightscoutValidator from './validation/NightscoutValidator';
 const logTag = '[NightscoutClient]';
 
 /**
