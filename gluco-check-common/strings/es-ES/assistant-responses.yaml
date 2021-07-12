@@ -1,0 +1,68 @@
+---
+#DO NOT TRANSLATE THIS FILE DIRECTLY
+#If you want to contribute translations, visit https://translate.glucocheck.app
+assistant_responses:
+  blood_sugar:
+    long;with_trend;with_time: >
+      El nivel de azúcar en sangre es {{value}} y {{trend}} desde hace {{time}}.
+    long;no_trend;with_time: >
+      El azúcar en sangre es {{value}} desde hace {{time}}.
+    long;with_trend;no_time: >
+      El azúcar en sangre es {{value}} y {{trend}}.
+    long;no_trend;no_time: >
+      El azúcar en sangre es {{value}}.
+    short;no_trend;with_time: >
+      {{value}} desde hace {{time}}.
+    short;with_trend;with_time: >
+      {{value}} y {{trend}} desde hace {{time}}.
+    trends:
+      DoubleUp: "subiendo rapidamente"
+      SingleUp: "subiendo"
+      SlightUp: "subiendo lentamente"
+      Stable: "estable"
+      SlightDown: "bajando lentamente"
+      SingleDown: "bajando"
+      DoubleDown: "bajando rapidamente"
+  carbs_on_board:
+    long;with_time: >
+      Hay {{value}} hidratos de carbono activos desde hace {{time}}
+    long;no_time: >
+      Hay {{value}} hidratos de carbono activos.
+    short;with_time: >
+      Hay {{value}} hidratos de carbono activos desde hace {{time}}
+  insulin_on_board:
+    long;with_time: >
+      Hay {{value}} unidades de insulina desde hace {{time}}
+    long;no_time: >
+      Hay {{value}} unidades de insulina activas.
+    short;with_time: >
+      {{value}} unidades de insulina activas desde hace {{time}}.
+  cannula_age: >
+    La cánula se insertó hace {{time}}.
+  sensor_age: >
+    El sensor se insertó hace {{time}}.
+  pump_battery: >
+    La batería de la bomba está a {{percent}}.
+  pump_reservoir: >
+    La bomba contiene {{reservoir}} unidades restantes.
+  errors:
+    User not found: >
+      ¡Hola! Gracias por probar Gluco Check. Antes de que pueda leer su información, primero deberá vincular su sitio de Nightscout. Para hacer esto, visite nuestro sitio web: {{gc_url}}
+    Nightscout Unavailable: >
+      Lo sentimos, parece que hay un problema con tu sitio de Nightscout. No pude obtener tu información.
+    Nightscout Unauthorized: >
+      Lo siento, parece que no puedo leer su sitio de Nightscout. Para dejarme entrar, primero debes crear un token. Para hacer esto, visite nuestro sitio web: {{gc_url}}
+    DmMetric Not Found: >
+      No pude encontrar tu {{metric}}.
+common:
+  disclaimer:
+    assistant_IANAD: >
+      Solo un recordatorio: no soy médico. Si necesita consejo médico, consulte a su doctor/a.
+  metrics:
+    blood sugar: azúcar en sangre
+    insulin on board: Insulina activa
+    carbs on board: Hidratos de carbono activos
+    sensor age: Días uso del sensor
+    cannula age: Días de uso de la cánula
+    pump battery: Batería de la Bomba
+    pump reservoir: Reservorio de la Bomba
