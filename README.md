@@ -1,6 +1,7 @@
 # Welcome to Gluco Check
 Nightscout for Google Home and Google Assistant.  
-Formerly known as: [Nightscout Status](https://github.com/nielsmaerten/nightscout-assistant)
+Watch a [demonstration on YouTube](https://youtu.be/o7-T2IrDJ_A) (2m50s).  
+Formerly known as [Nightscout Status](https://github.com/nielsmaerten/nightscout-assistant).
 
 ## Getting started
 

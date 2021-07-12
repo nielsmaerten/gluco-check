@@ -9,25 +9,25 @@
 
 ## Invocation phrases
 
-- Ask how old my {pod} is
-- Get a {full report}
-- Ask to read {everything}
-- Ask for a {full report}
-- How old is my {sensor}
-- Read my {blood sugar}
-- {Carbs on board}
-- Check my {blood sugar}
-- What's my {BG}
-- What's my {BG}, {IOB} and {carbs on board}
-- How many {carbs do I have
-- How much {insulin} do I have
-- How's my {IOB}
+- Ask how old my pod is
+- Get a full report
+- Ask to read everything
+- Ask for a full report
+- How old is my sensor
+- Read my blood sugar
+- Carbs on board
+- Check my blood sugar
+- What's my BG
+- What's my BG, IOB and carbs on board
+- How many carbs do I have
+- How much insulin do I have
+- How's my IOB
 
 > You can add more invocations if you want.
 
-## Metric Synonyms
+## Metric Names and Synonyms
 
-> The words in {curly braces} can be substituted by any of these synonyms. Take a moment to think about common ways these concepts are referred to in your language.
+> In every invocation, the name of a metric can be subsituted by any other metric or one of its synonyms. Take a moment to think about common ways these concepts are referred to in your language. You can add as many as you want.
 
 - blood sugar:
   - glucose
@@ -65,9 +65,9 @@
   - sensor
 
 ## Assistant Directory Information
-> These translations will be used in the Google Assistant Directory: https://assistant.google.com/services/a/uid/00000022bd2b313c
+> The following translations will be used in the Google Assistant Directory: https://assistant.google.com/services/a/uid/00000022bd2b313c
 
-> If the name "Gluco Check" is difficult to pronounce/understand in your language, it is possible to change it to something else. 
+> In case the name "Gluco Check" is difficult to understand and/or pronounce in your language, we are able to change it to somehing else.
 
 #### App Name
 Gluco Check
