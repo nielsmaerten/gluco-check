@@ -39,8 +39,11 @@
   - catéter
 - Hidratos de carbono activos:
   - Hidratos de carbono
+  - Hidratos de carbono
+  - hidratos de carbono activos
   - COB
 - todo:
+  - todo
   - todo ello
   - Informe completo
   - Todos los valores
