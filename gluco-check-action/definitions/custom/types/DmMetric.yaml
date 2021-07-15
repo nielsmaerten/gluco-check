@@ -52,4 +52,3 @@ synonym:
       synonyms:
       - sensor age
       - sensor
-  matchType: FUZZY_MATCH
