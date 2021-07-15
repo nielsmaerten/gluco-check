@@ -1,7 +1,7 @@
 import * as functions from 'firebase-functions';
 import conversationHandler from './conversation';
 import validationHandler from './url-validation';
-import fixUnitsHandler from './fix-units';
+// import fixUnitsHandler from './fix-units';
 const logTag = '[Webhook.Main]';
 
 export const validateNightscoutUrl = functions.https.onRequest((req, res) => {
@@ -19,4 +19,4 @@ export const conversation = functions.https.onRequest((request, response) => {
   conversationHandler.Instance(request, response);
 });
 
-export const fixUnits = functions.https.onRequest(fixUnitsHandler);
+// export const fixUnits = functions.https.onRequest(fixUnitsHandler);
