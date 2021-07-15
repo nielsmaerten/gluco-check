@@ -2,4 +2,4 @@ candidates:
 - promptResponse:
     firstSimple:
       variants:
-      - speech: What would you like to know?
+      - speech: ¿Qué te gustaría saber?
