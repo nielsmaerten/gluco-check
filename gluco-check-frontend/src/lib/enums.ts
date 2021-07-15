@@ -26,4 +26,5 @@ export enum DiabetesMetric {
 export enum AvailableLanguage {
   English = "en",
   Dutch = "nl",
+  Spanish = "es",
 }
