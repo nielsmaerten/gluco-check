@@ -6,7 +6,7 @@ defaultLocale: en
 localizedSettings:
   developerEmail: niels@glucocheck.app
   developerName: Niels Maerten
-  displayName: Gluco Check
+  displayName: Gluco Tester
   fullDescription: |-
     Gluco Check brings Nightscout to your Google Assistant. Ask for your current blood sugar level, how many carbs you've got on board, when you last changed your sensor, and more.
 
@@ -14,17 +14,17 @@ localizedSettings:
 
     Note: The information provided by Gluco Check is not a substitute for advice from a medical professional.
   privacyPolicyUrl: https://glucocheck.app/terms
-  pronunciation: Gluco Check
+  pronunciation: Gluco Tester
   sampleInvocations:
-    - Talk to Gluco Check
-    - Ask Gluco Check how old my sensor is
-    - Ask Gluco Check to read my glucose
-    - Ask Gluco Check to read my carbs on board
+  - Talk to Gluco Check
+  - Ask Gluco Check how old my sensor is
+  - Ask Gluco Check to read my glucose
+  - Ask Gluco Check to read my carbs on board
   shortDescription: Ask Google to read your blood sugar from Nightscout
   smallLogoImage: https://lh3.googleusercontent.com/iByZN58udeU-Y00jiCeY5I5piOdBaxzPRutPS1DAO8rhTd2rJJvc55t6aUzkM7b0833W9tAeK4mvlA
   termsOfServiceUrl: https://glucocheck.app/terms
   voice: female_1
-projectId: gluco-check-prod
+projectId: gluco-check-nightly
 testingInstructions: |-
   Hi!
 
