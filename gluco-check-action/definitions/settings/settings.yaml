@@ -36,8 +36,8 @@ testingInstructions: |-
   Note: If you're using an 'aog.platform.***@gmail.com' account, we will automatically populate it with test data.
   Using another account? Follow these steps:
   2. Click the 'Link your Nightscout' button
-  3. In the field "Nightscout URL", enter: "https://loop.niels.me"
-  4. In the field "Token", enter: "aogreview-daf8b883ffbeef3b"
+  3. In the field "Nightscout URL", enter: "https://cgm.example.com" @TODO
+  4. In the field "Token", enter: "aogreview-daf8b883ffbeef3b" @TODO
   5. Click Save
 
   Done! You can now invoke the action.
