@@ -3,14 +3,14 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [¿Cómo puedo preguntar a Gluco Check por... ?](#%C2%BFc%C3%B3mo-puedo-preguntar-a-gluco-check-por-)
-  - [una métrica específica](#una-m%C3%A9trica-espec%C3%ADfica)
-  - [mi selección personal](#mi-selecci%C3%B3n-personal)
-  - [múltiples métricas](#m%C3%BAltiples-m%C3%A9tricas)
-- [Otras preguntas que puedes probar (experimental)](#otras-preguntas-que-puedes-probar-experimental)
-- [¿Puedo usar una invocación personalizada?](#%C2%BFpuedo-usar-una-invocaci%C3%B3n-personalizada)
-- [¿Por qué Nightscout no acepta mi API secret / token?](#%C2%BFpor-qu%C3%A9-nightscout-no-acepta-mi-api-secret--token)
-- [¡Tengo una pregunta diferente!](#%C2%A1tengo-una-pregunta-diferente)
+- [¿Cómo puedo preguntar a Gluco Check por... ?](#how-do-i-ask-gluco-check-for-)
+  - [una métrica específica](#a-specific-metric)
+  - [mi selección personal](#my-personal-selection)
+  - [múltiples métricas](#multiple-metrics)
+- [Otras preguntas que puedes probar (experimental)](#other-questions-you-can-try-experimental)
+- [¿Puedo usar una invocación personalizada?](#can-i-use-a-custom-invocation)
+- [¿Por qué Nightscout no acepta mi API secret / token?](#why-is-nightscout-not-accepting-my-api-secret--token)
+- [¡Tengo una pregunta diferente!](#i-have-a-different-question)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
