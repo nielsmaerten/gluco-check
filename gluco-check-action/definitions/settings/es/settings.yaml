@@ -1,0 +1,21 @@
+localizedSettings:
+  developerEmail: niels@glucocheck.app
+  developerName: Niels Maerten
+  displayName: Gluco Check
+  fullDescription: |-
+    Gluco Check lleva Nightscout a su Asistente de Google. Pregunte por su nivel actual de azúcar en sangre, cuántos hidratos de carbono tiene a bordo, cuándo cambió por última vez el sensor y más.
+
+    Antes de poder usar Gluco Check, debe vincular su sitio de Nightscout en: https://glucocheck.app
+
+    Nota: La información proporcionada por Gluco Check no sustituye el consejo de un profesional médico.
+  privacyPolicyUrl: https://glucocheck.app/terms/es-ES
+  pronunciation: Gluco Check
+  sampleInvocations:
+  - Hablar con Gluco Check
+  - Pregúntale a Gluco Check cuánto tiempo tiene mi sensor
+  - Pedirle a Gluco Check que lea mi glucosa
+  - Pedirle a Gluco Check que lea mis hidratos de carbono activos
+  shortDescription: Pídale a Google que lea su nivel de azúcar en sangre de Nightscout
+  smallLogoImage: https://lh3.googleusercontent.com/iByZN58udeU-Y00jiCeY5I5piOdBaxzPRutPS1DAO8rhTd2rJJvc55t6aUzkM7b0833W9tAeK4mvlA
+  termsOfServiceUrl: https://glucocheck.app/terms/es-ES
+  voice: female_1

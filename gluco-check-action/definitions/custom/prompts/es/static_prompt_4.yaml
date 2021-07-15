@@ -1,0 +1,6 @@
+candidates:
+- promptResponse:
+    firstSimple:
+      variants:
+      - speech: Lo siento, no entendí eso. ¿Puedes intentarlo de nuevo?
+        text: Lo siento, no entendí eso. ¿Puedes intentarlo de nuevo?
