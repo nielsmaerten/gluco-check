@@ -1,7 +1,7 @@
 localizedSettings:
   developerEmail: niels@glucocheck.app
   developerName: Niels Maerten
-  displayName: Gluco Tester
+  displayName: Gluco Check
   fullDescription: |-
     Met Gluco Check komt Nightscout naar je Google Assistent. Vraag naar je glucose, hoeveel koolhydraten je nog aan boord hebt, wanneer je laatst je sensor hebt vervangen, en nog meer.
 
@@ -9,7 +9,7 @@ localizedSettings:
 
     Denk eraan dat de info die Gluco Check verstrekt geen vervanging is voor het advies van een arts.
   privacyPolicyUrl: https://glucocheck.app/terms/nl-NL
-  pronunciation: Gluco Tester
+  pronunciation: Gluco Check
   sampleInvocations:
   - Praat met Gluco Check
   - Vraag Gluco Check hoe oud mijn sensor is
