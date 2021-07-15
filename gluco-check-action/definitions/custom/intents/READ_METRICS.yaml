@@ -13,8 +13,8 @@ trainingPhrases:
 - ($DmMetric 'Carbs on board' auto=true)
 - Check my ($DmMetric 'blood sugar' auto=true)
 - What's my ($DmMetric 'BG' auto=true)
-- What's my ($DmMetric 'BG' auto=true), ($DmMetric 'IOB' auto=false) and ($DmMetric
-  'carbs on board' auto=false)
+- What's my ($DmMetric 'BG' auto=true), ($DmMetric 'IOB' auto=true) and ($DmMetric
+  'carbs on board' auto=true)
 - How many ($DmMetric 'carbs' auto=true) do I have
 - How much ($DmMetric 'insulin' auto=true) do I have
 - How's my ($DmMetric 'IOB' auto=true)

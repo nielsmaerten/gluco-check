@@ -1,6 +1,6 @@
 trainingPhrases:
-- Cuál es mi ($DmMetric 'glucemia' auto=true), ($DmMetric 'insulina' auto=false) e
-  ($DmMetric 'hidratos de carbono' auto=false) activos
+- Cuál es mi ($DmMetric 'glucemia' auto=true), ($DmMetric 'insulina' auto=true) e
+  ($DmMetric 'hidratos de carbono' auto=true) activos
 - ¿Cual es mi ($DmMetric 'insulina' auto=true) activa?
 - Cuanta ($DmMetric 'insulina' auto=true) tengo
 - Cuantos ($DmMetric 'hidratos de carbono' auto=true) tengo
