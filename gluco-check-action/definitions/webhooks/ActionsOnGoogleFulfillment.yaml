@@ -2,5 +2,5 @@ handlers:
 - name: default_metrics
 - name: custom_metrics
 httpsEndpoint:
-  baseUrl: https://nightly.glucocheck.app/api/v1/handle-conversation?v=7
+  baseUrl: {{webhookUrl}}
   endpointApiVersion: 2
