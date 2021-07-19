@@ -52,4 +52,4 @@ synonym:
       synonyms:
       - sensor age
       - sensor
-  matchType: FUZZY_MATCH
+  matchType: EXACT_MATCH

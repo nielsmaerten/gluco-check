@@ -1,0 +1,8 @@
+candidates:
+- promptResponse:
+    firstSimple:
+      variants:
+      - speech: Lo siento, todavía no lo entendí. La aplicación se cerrará ahora.
+          Por favor, inténtalo la aplicación de nuevo.
+        text: Lo siento, todavía no lo entendí. La aplicación se cerrará ahora. Por
+          favor, inténtalo la aplicación de nuevo.

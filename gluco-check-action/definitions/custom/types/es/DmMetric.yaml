@@ -1,0 +1,49 @@
+synonym:
+  entities:
+    blood sugar:
+      synonyms:
+      - glucosa
+      - azúcar en sangre
+      - azúcar
+      - Glucemia
+    cannula age:
+      synonyms:
+      - Cánula
+      - edad de la cánula
+      - pod
+      - Set de infusión
+      - catéter
+    carbs on board:
+      synonyms:
+      - Hidratos de carbono activos
+      - Hidratos de carbono
+      - COB
+    everything:
+      synonyms:
+      - todo
+      - todo ello
+      - Informe completo
+      - Todos los valores
+    insulin on board:
+      synonyms:
+      - IOB
+      - Insulina activa
+      - insulina
+    pump battery:
+      synonyms:
+      - batería
+      - batería de la bomba
+      - nivel de batería
+    pump reservoir:
+      synonyms:
+      - reservorio de la bomba
+      - insulina restante
+      - unidades en la bomba
+      - Bomba
+      - Reservorio
+      - insulina restante
+      - nivel de la bomba
+    sensor age:
+      synonyms:
+      - Sensor
+      - Días uso del sensor
