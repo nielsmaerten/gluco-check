@@ -28,6 +28,7 @@ import Welcome from "./pages/Welcome";
 import "./App.css";
 import { FAQS_URL, GLUCO_CHECK_GITHUB_URL } from "./lib/constants";
 import { AvailableLanguage } from "./lib/enums";
+import Banner from "./components/Banner";
 
 export const FirebaseUserDocumentContext = React.createContext("");
 
@@ -147,6 +148,7 @@ export default function App() {
               {user && (
                 <Route path={`${localesParamString}/settings`}>
                   <FirebaseUserDocumentContext.Provider value={docPath}>
+                    <Banner />
                     <EditSettings />
                   </FirebaseUserDocumentContext.Provider>
                 </Route>
