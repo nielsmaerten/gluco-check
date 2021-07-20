@@ -38,7 +38,10 @@
   },
   "settings": {
     "title": "Edit Settings",
-    "betaBanner": "While we’re in Beta, the app won’t immediately work. You will receive an email once you’ve been added to the Beta.",
+    "betaBanner": {
+      "title": "This language is not available yet",
+      "message": "If you speak both {language} and English, we could use your help. <1>Message us</1> if you'd like to join our Beta."
+    },
     "form": {
       "validationInProgress": "Checking your Nightscout site",
       "labels": {
