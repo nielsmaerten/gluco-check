@@ -5,7 +5,7 @@ jest.mock("react-i18next", () => ({
   useTranslation: () => {
     return {
       i18n: {
-        language: 'debug'
+        language: "debug",
       },
       t: jest.fn().mockImplementation((i) => {
         return i;
