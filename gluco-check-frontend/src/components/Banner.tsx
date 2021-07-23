@@ -4,7 +4,6 @@ import { Button } from "@material-ui/core";
 import { JOIN_BETA } from "../lib/constants";
 import { Alert, AlertTitle } from "@material-ui/lab";
 
-
 function Banner() {
   const { t, i18n } = useTranslation();
   const currentLngName = t(

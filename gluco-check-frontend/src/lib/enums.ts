@@ -32,5 +32,5 @@ export enum AvailableLanguage {
 // These languages are being tested.
 // We'll show a message informing users they have to sign up to get access.
 export enum BetaLanguage {
-  Spanish = AvailableLanguage.Spanish
+  Spanish = AvailableLanguage.Spanish,
 }

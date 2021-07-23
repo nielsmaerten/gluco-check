@@ -131,7 +131,7 @@ export default function App() {
 
   const availableLanguageParams = Object.values(AvailableLanguage).join("|");
   const localesParamString = `/:locale(${availableLanguageParams})`;
-  const showBanner = Object.values(BetaLanguage).includes(i18n.language)
+  const showBanner = Object.values(BetaLanguage).includes(i18n.language);
 
   return (
     <div className={classes.root}>
@@ -149,7 +149,7 @@ export default function App() {
               {user && (
                 <Route path={`${localesParamString}/settings`}>
                   <FirebaseUserDocumentContext.Provider value={docPath}>
-                    { showBanner && <Banner />}
+                    {showBanner && <Banner />}
                     <EditSettings />
                   </FirebaseUserDocumentContext.Provider>
                 </Route>
