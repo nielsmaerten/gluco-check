@@ -27,6 +27,6 @@ export const FAQS_URL = "/faq";
 export const GLUCO_CHECK_GITHUB_URL =
   "https://github.com/nielsmaerten/gluco-check";
 export const CONTRIBUTE_TRANSLATIONS = "https://translate.glucocheck.app";
-export const TRANSLATOR_RECRUITMENT = "/join-beta"
+export const JOIN_BETA = "/join-beta"
 
 export const APP_DEBUG = process.env.REACT_APP_DEBUG === "true" || false;

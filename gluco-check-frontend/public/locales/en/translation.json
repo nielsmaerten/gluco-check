@@ -39,8 +39,9 @@
   "settings": {
     "title": "Edit Settings",
     "betaBanner": {
+      "action": "Join beta",
       "title": "This language is not available yet",
-      "message": "If you speak both {language} and English, we could use your help. <1>Message us</1> if you'd like to join our Beta."
+      "message": "If you speak both {{language}} and English, we could use your help. Join our beta and help us finalize this translation."
     },
     "form": {
       "validationInProgress": "Checking your Nightscout site",
@@ -136,7 +137,7 @@
     "availableLanguageLabels": {
       "en": "English",
       "nl": "Dutch",
-      "es": "Spanish (coming soon)"
+      "es": "Spanish"
     }
   }
 }
