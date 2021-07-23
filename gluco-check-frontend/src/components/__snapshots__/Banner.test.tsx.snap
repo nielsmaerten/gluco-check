@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Banner component renders 1`] = `
+<div
+  class="MuiPaper-root MuiAlert-root MuiAlert-standardWarning MuiPaper-elevation0"
+  role="alert"
+>
+  <div
+    class="MuiAlert-icon"
+  >
+    <svg
+      aria-hidden="true"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+      focusable="false"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z"
+      />
+    </svg>
+  </div>
+  <div
+    class="MuiAlert-message"
+  >
+    <div
+      class="MuiTypography-root MuiAlertTitle-root MuiTypography-body1 MuiTypography-gutterBottom"
+    >
+      settings.betaBanner.title
+    </div>
+    settings.betaBanner.message
+  </div>
+  <div
+    class="MuiAlert-action"
+  >
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSizeSmall MuiButton-sizeSmall"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        settings.betaBanner.action
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+  </div>
+</div>
+`;
