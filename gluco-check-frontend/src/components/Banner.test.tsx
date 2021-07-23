@@ -12,9 +12,6 @@ jest.mock("react-i18next", () => ({
       }),
     };
   },
-  Trans: function (props: any) {
-    return <span>{props.i18nKey}</span>;
-  },
 }));
 
 describe("Banner component", () => {
