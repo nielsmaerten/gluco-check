@@ -51,6 +51,11 @@
         "source": "/faq/:locale",
         "destination": "https://github.com/nielsmaerten/gluco-check/blob/main/gluco-check-common/strings/:locale/faq.md#frequently-asked-questions",
         "type": 307
+      },
+      {
+        "source": "/join-beta/es",
+        "destination": "https://github.com/nielsmaerten/gluco-check/discussions/142",
+        "type": 307
       }
     ]
   }
