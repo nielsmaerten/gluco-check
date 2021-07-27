@@ -137,6 +137,7 @@ export default function App() {
     <div className={classes.root}>
       <Router>
         {navigation}
+        {showBanner && <Banner />}
         <Container maxWidth="md" className={classes.container}>
           <Paper variant="elevation" className={classes.surface}>
             <Switch>
@@ -149,7 +150,6 @@ export default function App() {
               {user && (
                 <Route path={`${localesParamString}/settings`}>
                   <FirebaseUserDocumentContext.Provider value={docPath}>
-                    {showBanner && <Banner />}
                     <EditSettings />
                   </FirebaseUserDocumentContext.Provider>
                 </Route>

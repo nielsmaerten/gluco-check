@@ -1,51 +1,70 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Banner component renders 1`] = `
+exports[`Banner renders the component 1`] = `
 <div
-  class="MuiPaper-root MuiAlert-root MuiAlert-standardWarning MuiPaper-elevation0"
-  role="alert"
+  class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
 >
   <div
-    class="MuiAlert-icon"
-  >
-    <svg
-      aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
-      focusable="false"
-      viewBox="0 0 24 24"
-    >
-      <path
-        d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z"
-      />
-    </svg>
-  </div>
-  <div
-    class="MuiAlert-message"
+    class="MuiContainer-root MuiContainer-maxWidthMd"
   >
     <div
-      class="MuiTypography-root MuiAlertTitle-root MuiTypography-body1 MuiTypography-gutterBottom"
+      class="MuiBox-root MuiBox-root-4"
     >
-      settings.betaBanner.title
-    </div>
-    settings.betaBanner.message
-  </div>
-  <div
-    class="MuiAlert-action"
-  >
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSizeSmall MuiButton-sizeSmall"
-      tabindex="0"
-      type="button"
-    >
-      <span
-        class="MuiButton-label"
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-wrap-xs-nowrap MuiGrid-align-items-xs-flex-start"
       >
-        settings.betaBanner.action
-      </span>
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </button>
+        <div
+          class="MuiGrid-root MuiGrid-item"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-colorPrimary"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+            />
+          </svg>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item"
+        >
+          <p
+            class="MuiTypography-root makeStyles-title-1 MuiTypography-body1 MuiTypography-colorPrimary"
+          >
+            settings.betaBanner.title
+          </p>
+          <p
+            class="MuiTypography-root makeStyles-subtitle-2 MuiTypography-body1"
+          >
+            settings.betaBanner.message
+          </p>
+        </div>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-8 MuiGrid-justify-xs-flex-end"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-item"
+        >
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-3 MuiButton-textPrimary"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              settings.betaBanner.action
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
