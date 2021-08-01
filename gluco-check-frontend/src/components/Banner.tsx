@@ -4,22 +4,28 @@ import {
   Button,
   Container,
   Divider,
+  Fab,
   Grid,
   makeStyles,
   Paper,
   Typography,
 } from "@material-ui/core";
-import { Info } from "@material-ui/icons";
+import { Warning } from "@material-ui/icons";
 import { JOIN_BETA } from "../lib/constants";
 
 const useStyles = makeStyles((theme) => ({
   title: {
-    fontSize: "1.1rem",
+    fontSize: theme.typography.body1.fontSize,
     fontWeight: 600,
+    color: theme.palette.text.secondary,
   },
-  subtitle: {},
+  subtitle: {
+    fontSize: theme.typography.body2.fontSize,
+  },
   button: {
     fontWeight: 600,
+    backgroundColor: theme.palette.warning.main,
+    color: theme.palette.warning.contrastText,
   },
 }));
 
@@ -44,7 +50,9 @@ function Banner() {
           <Box pt={2} pr={1} pb={1} pl={2}>
             <Grid container spacing={2} alignItems="flex-start" wrap="nowrap">
               <Grid item>
-                <Info color="secondary" />
+                <Fab component="div">
+                  <Warning />
+                </Fab>
               </Grid>
               <Grid item>
                 <Typography className={classes.title} color="secondary">
@@ -61,7 +69,8 @@ function Banner() {
               <Grid item>
                 <Button
                   className={classes.button}
-                  color="secondary"
+                  color="primary"
+                  variant="contained"
                   onClick={() => joinBeta()}
                 >
                   {t("settings.betaBanner.action")}
