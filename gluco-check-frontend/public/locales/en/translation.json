@@ -132,7 +132,8 @@
     "contribute": "Contribute Translations",
     "availableLanguageLabels": {
       "en": "English",
-      "nl": "Dutch"
+      "nl": "Dutch",
+      "es": "Spanish (coming soon)"
     }
   }
 }
