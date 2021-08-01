@@ -57,7 +57,7 @@ assistant_responses:
 common:
   disclaimer:
     assistant_IANAD: >
-      Solo un recordatorio: no soy médico. Si necesita consejo médico, consulte a su doctor.
+      Solo un recordatorio: no soy médico. Si necesita consejo médico, consulte a su doctor/a.
   metrics:
     blood sugar: azúcar en sangre
     insulin on board: Insulina activa
