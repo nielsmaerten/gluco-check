@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import {
+  Avatar,
   Box,
   Button,
   Container,
@@ -22,10 +23,18 @@ const useStyles = makeStyles((theme) => ({
   subtitle: {
     fontSize: theme.typography.body2.fontSize,
   },
+  icon: {
+    backgroundColor: theme.palette.warning.main,
+    color: theme.palette.warning.contrastText,
+    marginTop: theme.spacing(1)
+  },
   button: {
     fontWeight: 600,
     backgroundColor: theme.palette.warning.main,
     color: theme.palette.warning.contrastText,
+    "&:hover": {
+      backgroundColor: theme.palette.warning.dark
+    }
   },
 }));
 
@@ -50,9 +59,9 @@ function Banner() {
           <Box pt={2} pr={1} pb={1} pl={2}>
             <Grid container spacing={2} alignItems="flex-start" wrap="nowrap">
               <Grid item>
-                <Fab component="div">
-                  <Warning />
-                </Fab>
+                <Avatar className={classes.icon}>
+                  <Warning/>
+                </Avatar>
               </Grid>
               <Grid item>
                 <Typography className={classes.title} color="secondary">
