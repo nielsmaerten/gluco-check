@@ -78,21 +78,31 @@ export default function LanguageSelector() {
       </Button>
       <Paper>
         <Menu {...bindMenu(menuState)}>
-          {Object.values(AvailableLanguage).map((value, index) => {
-            const dataProp = {
-              [MENU_ITEM_ATTRIBUTE]: value,
-            };
-            return (
-              <MenuItem
-                key={`language-selector-${index}`}
-                onClick={handleItemClick}
-                selected={value === i18n.language}
-                {...dataProp}
-              >
-                {t(`languageSelector.availableLanguageLabels.${value}`)}
-              </MenuItem>
-            );
-          })}
+          {Object.values(AvailableLanguage)
+            .map((code) => {
+              return {
+                code,
+                name: t(`languageSelector.availableLanguageLabels.${code}`),
+              };
+            })
+            .sort((a, b) => {
+              return a.name < b.name ? -1 : 1;
+            })
+            .map((lng, index) => {
+              const dataProp = {
+                [MENU_ITEM_ATTRIBUTE]: lng.code,
+              };
+              return (
+                <MenuItem
+                  key={`language-selector-${index}`}
+                  onClick={handleItemClick}
+                  selected={lng.code === i18n.language}
+                  {...dataProp}
+                >
+                  {lng.name}
+                </MenuItem>
+              );
+            })}
           <Divider />
           <MenuItem
             onClick={() => {
