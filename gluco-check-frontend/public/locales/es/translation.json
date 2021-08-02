@@ -39,9 +39,9 @@
   "settings": {
     "title": "Editar configuración",
     "betaBanner": {
-      "action": "I want to help",
-      "title": "Heads up! Gluco Check is not yet available in Spanish",
-      "message": "Do you speak both Spanish and English? You can help us finalize this translation."
+      "action": "Quiero ayudar",
+      "title": "¡Aviso! Gluco Check aún no está disponible en español",
+      "message": "¿Hablas español e inglés? Puede ayudarnos a finalizar esta traducción."
     },
     "form": {
       "validationInProgress": "Comprobando su sitio de Nightscout",
