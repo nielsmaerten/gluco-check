@@ -131,9 +131,9 @@
     "buttonLabel": "Taal",
     "contribute": "Vertaling bijdragen",
     "availableLanguageLabels": {
-      "en": "Engels",
+      "en": "English",
       "nl": "Nederlands",
-      "es": "Spaans"
+      "es": "Español"
     }
   }
 }

@@ -38,7 +38,11 @@
   },
   "settings": {
     "title": "Editar configuración",
-    "betaBanner": "Mientras estamos en Beta, la aplicación no funcionará de inmediato. Recibirás un correo electrónico una vez que hayas sido agregado a la Beta.",
+    "betaBanner": {
+      "action": "I want to help",
+      "title": "Heads up! Gluco Check is not yet available in Spanish",
+      "message": "Do you speak both Spanish and English? You can help us finalize this translation."
+    },
     "form": {
       "validationInProgress": "Comprobando su sitio de Nightscout",
       "labels": {
@@ -131,8 +135,8 @@
     "buttonLabel": "Idioma",
     "contribute": "Contribuir Traducciones",
     "availableLanguageLabels": {
-      "en": "Inglés",
-      "nl": "Holandés",
+      "en": "English",
+      "nl": "Nederlands",
       "es": "Español"
     }
   }

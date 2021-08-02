@@ -40,7 +40,7 @@
     "title": "Edit Settings",
     "betaBanner": {
       "action": "Join beta",
-      "title": "This language is not available yet",
+      "title": "Heads up! Gluco Check is not yet available in English",
       "message": "If you speak both {{language}} and English, we could use your help. Join our beta and help us finalize this translation."
     },
     "form": {
@@ -136,8 +136,8 @@
     "contribute": "Contribute Translations",
     "availableLanguageLabels": {
       "en": "English",
-      "nl": "Dutch",
-      "es": "Spanish"
+      "nl": "Nederlands",
+      "es": "Español"
     }
   }
 }
