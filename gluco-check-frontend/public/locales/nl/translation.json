@@ -38,7 +38,11 @@
   },
   "settings": {
     "title": "Instellingen",
-    "betaBanner": "We zijn nog in Beta, dus de app werkt waarschijnlijk niet onmiddellijk. Je krijgt een email zodra je bent toegevoegd aan de Beta.",
+    "betaBanner": {
+      "action": "Ik wil helpen",
+      "title": "Let op! Gluco Check is nog niet beschikbaar in het Nederlands",
+      "message": "Spreek je zowel Nederlands als Engels? Dan kan je ons helpen deze vertaling af te werken."
+    },
     "form": {
       "validationInProgress": "Nightscout site wordt gecontroleerd",
       "labels": {
@@ -131,7 +135,7 @@
     "buttonLabel": "Taal",
     "contribute": "Vertaling bijdragen",
     "availableLanguageLabels": {
-      "en": "English",
+      "en": "Engels",
       "nl": "Nederlands",
       "es": "Español"
     }
