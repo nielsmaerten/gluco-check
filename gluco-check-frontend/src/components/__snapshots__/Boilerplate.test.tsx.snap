@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Landing page renders the component 1`] = `
+exports[`Boilerplate renders the component 1`] = `
 <p
   class="MuiTypography-root MuiTypography-body1"
 >
@@ -12,7 +12,7 @@ exports[`Landing page renders the component 1`] = `
 </p>
 `;
 
-exports[`Landing page renders the component when not authenticated 1`] = `
+exports[`Boilerplate renders the component when not authenticated 1`] = `
 <p
   class="MuiTypography-root MuiTypography-body1"
 />
