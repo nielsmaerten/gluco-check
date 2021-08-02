@@ -26,15 +26,15 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     backgroundColor: theme.palette.warning.main,
     color: theme.palette.warning.contrastText,
-    marginTop: theme.spacing(1)
+    marginTop: theme.spacing(1),
   },
   button: {
     fontWeight: 600,
     backgroundColor: theme.palette.warning.main,
     color: theme.palette.warning.contrastText,
     "&:hover": {
-      backgroundColor: theme.palette.warning.dark
-    }
+      backgroundColor: theme.palette.warning.dark,
+    },
   },
 }));
 
@@ -60,7 +60,7 @@ function Banner() {
             <Grid container spacing={2} alignItems="flex-start" wrap="nowrap">
               <Grid item>
                 <Avatar className={classes.icon}>
-                  <Warning/>
+                  <Warning />
                 </Avatar>
               </Grid>
               <Grid item>
