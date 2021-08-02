@@ -27,7 +27,7 @@ jest.mock("react-i18next", () => ({
 
 afterEach(cleanup);
 
-describe("Landing page", () => {
+describe("Boilerplate", () => {
   const mockHandleSignoutClicked = jest.fn();
   beforeEach(() => {
     mockHandleSignoutClicked.mockReset();

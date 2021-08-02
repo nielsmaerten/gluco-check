@@ -62,7 +62,7 @@ describe("LanguageSelector component", () => {
     expect.assertions(5);
 
     window.location.assign = jest.fn().mockImplementationOnce((url) => {
-      expect(url).toMatchInlineSnapshot(`"/nl/path"`);
+      expect(url).toMatchInlineSnapshot(`"/es/path"`);
     });
 
     const { container } = render(<LanguageSelector />);

@@ -27,7 +27,8 @@ import EditSettings from "./pages/EditSettings";
 import Welcome from "./pages/Welcome";
 import "./App.css";
 import { FAQS_URL, GLUCO_CHECK_GITHUB_URL } from "./lib/constants";
-import { AvailableLanguage } from "./lib/enums";
+import { AvailableLanguage, BetaLanguage } from "./lib/enums";
+import Banner from "./components/Banner";
 
 export const FirebaseUserDocumentContext = React.createContext("");
 
@@ -130,11 +131,13 @@ export default function App() {
 
   const availableLanguageParams = Object.values(AvailableLanguage).join("|");
   const localesParamString = `/:locale(${availableLanguageParams})`;
+  const showBanner = Object.values(BetaLanguage).includes(i18n.language);
 
   return (
     <div className={classes.root}>
       <Router>
         {navigation}
+        {showBanner && <Banner />}
         <Container maxWidth="md" className={classes.container}>
           <Paper variant="elevation" className={classes.surface}>
             <Switch>
