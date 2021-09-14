@@ -3,14 +3,14 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Hur ber jag Gluco Check om ...?](#how-do-i-ask-gluco-check-for-)
-  - [ett specifikt mått](#a-specific-metric)
-  - [mitt personliga val](#my-personal-selection)
-  - [flera mått](#multiple-metrics)
-- [Andra frågor du kan prova (experimentellt)](#other-questions-you-can-try-experimental)
-- [Kan jag använda en anpassad kallelse?](#can-i-use-a-custom-invocation)
-- [Varför accepterar inte Nightscout min API-hemlighet / token?](#why-is-nightscout-not-accepting-my-api-secret--token)
-- [Jag har en annan fråga!](#i-have-a-different-question)
+- [Hur ber jag Gluco Check om ...?](#hur-ber-jag-gluco-check-om-)
+  - [ett specifikt mått](#ett-specifikt-m%C3%A5tt)
+  - [mitt personliga val](#mitt-personliga-val)
+  - [flera mått](#flera-m%C3%A5tt)
+- [Andra frågor du kan prova (experimentellt)](#andra-fr%C3%A5gor-du-kan-prova-experimentellt)
+- [Kan jag använda en anpassad kallelse?](#kan-jag-anv%C3%A4nda-en-anpassad-kallelse)
+- [Varför accepterar inte Nightscout min API-hemlighet / token?](#varf%C3%B6r-accepterar-inte-nightscout-min-api-hemlighet--token)
+- [Jag har en annan fråga!](#jag-har-en-annan-fr%C3%A5ga)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
