@@ -40,7 +40,7 @@
     "title": "Ändra inställningar",
     "betaBanner": {
       "action": "Jag vill hjälpa",
-      "title": "Se upp! Gluco Check är ännu inte tillgängligt på [[ditt språk]]",
+      "title": "Se upp! Gluco Check är ännu inte tillgängligt på Svenska",
       "message": "Talar du både {{language}} och engelska? Du kan hjälpa oss att slutföra denna översättning."
     },
     "form": {
@@ -135,9 +135,10 @@
     "buttonLabel": "Språk",
     "contribute": "Bidra med översättningar",
     "availableLanguageLabels": {
-      "en": "engelsk",
-      "nl": "Holländska",
-      "es": "Spanska"
+      "en": "English",
+      "nl": "Nederlands",
+      "es": "Español",
+      "sv": "Svenska"
     }
   }
 }
