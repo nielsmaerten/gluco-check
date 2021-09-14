@@ -27,6 +27,7 @@ export enum AvailableLanguage {
   English = "en",
   Dutch = "nl",
   Spanish = "es",
+  Swedish = "sv",
 }
 
 // These languages are being tested.
