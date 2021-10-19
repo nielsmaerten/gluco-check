@@ -4,18 +4,18 @@ We are working hard to make Gluco Check available in as many languages as possib
 
 | Language | Status                             | Remarks                                         |
 | -------- | ---------------------------------- | ----------------------------------------------- |
-| English  | ✅ Done                             | *Hey Google, Talk to Gluco Check* |
-| Dutch    | ✅ Done                             | *OK Google, Praat met Gluco Check* |
-| Swedish  | 👓 Looking for reviewers | [Email us](mailto:translate@glucocheck.app) or [leave a message](https://github.com/nielsmaerten/gluco-check/issues/148) if you want to help |
-| Spanish  | 👓 Looking for reviewers | [Email us](mailto:translate@glucocheck.app) or [leave a message](https://github.com/nielsmaerten/gluco-check/issues/138) if you want to help |
-| Danish | 🌐 Accepting Translations | Visit [https://translate.glucocheck.app](https://translate.glucocheck.app) |
-| French | 🌐 Accepting Translations | Visit [https://translate.glucocheck.app](https://translate.glucocheck.app) |
-| German | 🌐 Accepting Translations | Visit [https://translate.glucocheck.app](https://translate.glucocheck.app) |
-| Italian | 🌐 Accepting Translations | Visit [https://translate.glucocheck.app](https://translate.glucocheck.app) |
-| Norwegian | 🌐 Accepting Translations | Visit [https://translate.glucocheck.app](https://translate.glucocheck.app) |
-| Polish | 🌐 Accepting Translations | Visit [https://translate.glucocheck.app](https://translate.glucocheck.app) |
-| Portuguese (Brazilian) | 🌐 Accepting Translations | Visit [https://translate.glucocheck.app](https://translate.glucocheck.app) |
-| *Other languages* | Contact us (in English only) | [translations@glucocheck.app](mailto:translations@glucocheck.app) |
+| English  | ✅ Done                             |  |
+| Dutch    | ✅ Done                             |  |
+| Swedish  | 👓 Looking for reviewers | [GitHub thread](https://github.com/nielsmaerten/gluco-check/issues/148) |
+| Spanish  | 👓 Looking for reviewers | [GitHub thread](https://github.com/nielsmaerten/gluco-check/issues/138) |
+| Danish | 🌐 Accepting Translations |  |
+| French | 🌐 Accepting Translations |  |
+| German | 🌐 Accepting Translations |  |
+| Italian | 🌐 Accepting Translations |  |
+| Norwegian | 🌐 Accepting Translations |  |
+| Polish | 🌐 Accepting Translations |  |
+| Portuguese (Brazilian) | 🌐 Accepting Translations |  |
+| *Other languages* | Contact us (in English only) | translate@glucocheck.app |
 
 ## Translation Phases
 
