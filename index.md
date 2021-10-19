@@ -1,37 +1,27 @@
-## Welcome to GitHub Pages
+# Gluco Check - Translations
 
-You can use the [editor on GitHub](https://github.com/nielsmaerten/gluco-check/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+We are working hard to make Gluco Check available in as many languages as possible. This page will show you how far along we are for all languages we plan on supporting:
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+| Language | Status                             | Remarks                                         |
+| -------- | ---------------------------------- | ----------------------------------------------- |
+| English  | ✅ Done                             | *Hey Google, Talk to Gluco Check* |
+| Dutch    | ✅ Done                             | *OK Google, Praat met Gluco Check* |
+| Swedish  | 👓 Looking for reviewers | Email us or leave a message if you want to help |
+| Spanish  | 👓 Looking for reviewers | Email us or leave a message if you want to help |
+| Danish | 🌐 Accepting Translations | Visit https://translate.glucocheck.app |
+| French | 🌐 Accepting Translations | Visit https://translate.glucocheck.app |
+| German | 🌐 Accepting Translations | Visit https://translate.glucocheck.app |
+| Italian | 🌐 Accepting Translations | Visit https://translate.glucocheck.app |
+| Norwegian | 🌐 Accepting Translations | Visit https://translate.glucocheck.app |
+| Polish | 🌐 Accepting Translations | Visit https://translate.glucocheck.app |
+| Portuguese (Brazilian) | 🌐 Accepting Translations | Visit https://translate.glucocheck.app |
+| *Other languages* | Contact us (in English only) | translations@glucocheck.app |
 
-### Markdown
+## Translation Phases
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/nielsmaerten/gluco-check/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+| #                                                 | Phase                       | Explanation                                                  |
+| ------------------------------------------------------------ | --------------------------- | --------------------------- |
+| 1 | 🌐 Accepting Translations | Visit https://translate.glucocheck.app to add translations for your language. |
+| 2 | 👓 Looking for reviewers  | We are looking for someone to proofread the translation, and test it on their own Google Home device. This phase starts once the app is fully translated. |
+| 3 | 📑 Submitted to Google     | When we have confirmed the app is working in the new language, we submit it to Google for approval. |
+| 4 | ✅ Done                   | Google has approved the translation, and Gluco Check is now available in this language! |
