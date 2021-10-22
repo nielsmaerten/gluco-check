@@ -61,6 +61,11 @@ describe("LanguageSelector component", () => {
   it("handles clicks on button and language selections", async () => {
     expect.assertions(5);
 
+    const findMenuItem = (lngCode: string) =>
+      screen
+        .getAllByRole("menuitem")
+        .find((item) => item.textContent?.endsWith(lngCode));
+
     window.location.assign = jest.fn().mockImplementationOnce((url) => {
       expect(url).toMatchInlineSnapshot(`"/es/path"`);
     });
@@ -71,9 +76,9 @@ describe("LanguageSelector component", () => {
     expect(button).toBeInTheDocument();
     await button.focus();
     await button.click();
-    expect(screen.getAllByRole("menuitem")[0]).toHaveFocus();
+    expect(findMenuItem("en")).toHaveFocus();
 
-    await screen.getAllByRole("menuitem")[1].click();
+    await findMenuItem("es").click();
     expect(mockChangeLanauge).toHaveBeenCalled();
     expect(window.location.assign).toBeCalled();
   });
