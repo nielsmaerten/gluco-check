@@ -24,10 +24,10 @@ Gluco Check was already scheduled to be the successor to Nightscout Status. But 
 
 #### If you used Nightscout Status in English or Dutch
 
-Visit https://glucocheck.app and sign up. Once your Nightscout is linked, you'll be able to use Gluco Check instead of Nightscout Status while having access to the same (and additional) features.
+Visit [https://glucocheck.app](https://glucocheck.app) and sign up. Once your Nightscout is linked, you'll be able to use Gluco Check instead of Nightscout Status while having access to the same (and additional) features.
 
 #### If you used Nightscout Status in another language
 
-Visit https://pages.glucocheck.app/translations. We're trying to get Gluco Check translated as quickly as possible.
+Visit [https://pages.glucocheck.app/translations](https://pages.glucocheck.app/translations). We're trying to get Gluco Check translated as quickly as possible.
 
 You're more than welcome to help if you can :)
