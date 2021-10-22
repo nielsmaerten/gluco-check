@@ -57,7 +57,7 @@ assistant_responses:
 common:
   disclaimer:
     assistant_IANAD: >
-      Zur Erinnerung: Ich bin kein Arzt. Wenn Sie ärztlichen Rat benötigen, wenden Sie sich an Ihren Arzt.
+      Zur Erinnerung: Ich bin kein Arzt. Wenn du ärztlichen Rat benötigst, wende Dich an deinen Arzt.
   metrics:
     blood sugar: Blutzucker
     insulin on board: Aktives Insulin
