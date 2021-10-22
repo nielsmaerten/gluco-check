@@ -3,7 +3,7 @@ import { axe } from "jest-axe";
 import LanguageSelector from "./LanguageSelector";
 
 const mockLanguage = "en";
-const mockChangeLanauge = jest.fn();
+const mockChangeLanguage = jest.fn();
 jest.mock("react-i18next", () => ({
   useTranslation: () => {
     return {
@@ -12,7 +12,7 @@ jest.mock("react-i18next", () => ({
       }),
       i18n: {
         language: mockLanguage,
-        changeLanguage: mockChangeLanauge,
+        changeLanguage: mockChangeLanguage,
       },
     };
   },
@@ -61,6 +61,11 @@ describe("LanguageSelector component", () => {
   it("handles clicks on button and language selections", async () => {
     expect.assertions(5);
 
+    const findMenuItem = (lngCode: string) =>
+      screen
+        .getAllByRole("menuitem")
+        .find((item) => item.textContent?.endsWith(lngCode));
+
     window.location.assign = jest.fn().mockImplementationOnce((url) => {
       expect(url).toMatchInlineSnapshot(`"/es/path"`);
     });
@@ -71,10 +76,10 @@ describe("LanguageSelector component", () => {
     expect(button).toBeInTheDocument();
     await button.focus();
     await button.click();
-    expect(screen.getAllByRole("menuitem")[0]).toHaveFocus();
+    expect(findMenuItem("en")).toHaveFocus();
 
-    await screen.getAllByRole("menuitem")[1].click();
-    expect(mockChangeLanauge).toHaveBeenCalled();
+    await findMenuItem("es").click();
+    expect(mockChangeLanguage).toHaveBeenCalled();
     expect(window.location.assign).toBeCalled();
   });
 
