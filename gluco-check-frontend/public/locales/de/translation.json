@@ -1,0 +1,144 @@
+{
+  "title": "Gluco Check",
+  "status": {
+    "general": {
+      "loading": "Laden",
+      "error": "Etwas ist furchtbar schief gelaufen"
+    }
+  },
+  "landing": {
+    "title": "Willkommen bei Gluco Check",
+    "subtitle": "Gluco Check bringt Nightscout zu Ihrem Google Home"
+  },
+  "onboarding": {
+    "q1": "Hey Google, frag Gluco Check nach meinem Blutzucker.",
+    "a1": "6,5 und stabil seit fünf Minuten.",
+    "l1": "Blutzucker",
+    "q2": "Hey Google, frag Gluco Check nach meinen verbliebenen Kohlehydraten",
+    "a2": "Es sind noch 10 Kohlenhydrate vorhanden.",
+    "l2": "Aktive Kohlenhydrate",
+    "q3": "Hey Google, frag Gluco Check nach allem",
+    "a3": "Blutzucker ist 6.1. Es sind 12 Kohlenhydrate verblieben. Sensoralter ist...",
+    "l3": "Alles"
+  },
+  "boilerplate": {
+    "terms": "Indem du fortfährst, akzeptierst du unsere <2>Nutzungsbedingungen</2> und <5>Datenschutzerklärung</5> .",
+    "google": "Google Assistant ist eine Marke von Google Inc.",
+    "nightscout": "Nicht mit dem <2>Nightscout-Projekt</2> verbunden",
+    "logout": "Abmelden"
+  },
+  "welcome": {
+    "title": "Willkommen bei Gluco Check",
+    "subtitle": "Gluco Check bringt Nightscout zu Ihrem Google Home",
+    "cta": "mit Nightscout linken"
+  },
+  "login": {
+    "title": "Anmelden",
+    "buttonLabel": "Mit Google Konto anmelden"
+  },
+  "settings": {
+    "title": "Einstellungen ändern",
+    "betaBanner": {
+      "action": "Ich helfe gerne",
+      "title": "Achtung! Gluco Check ist noch nicht in [[Ihre Sprache]] verfügbar",
+      "message": "Sprechen Sie sowohl {{language}} als auch Englisch? Sie können uns helfen, diese Übersetzung zu vervollständigen."
+    },
+    "form": {
+      "validationInProgress": "Überprüfen Sie Ihre Nightscout-Site",
+      "labels": {
+        "glucoseUnits": "BZ Einheiten",
+        "nightscoutToken": "Nightscout Token",
+        "nightscoutUrl": "Nightscout URL",
+        "defaultMetrics": "Assistant liest diese Elemente standardmäßig vor"
+      },
+      "helperText": {
+        "nightscoutToken": {
+          "default": "Sie sind sich nicht sicher, wie Sie ein Token erhalten? Weiter lesen!",
+          "empty": "Ohne gültiges Token haben Sie möglicherweise keinen Zugriff auf alle Werte",
+          "invalid": "Dieses Token hat nicht funktioniert"
+        },
+        "nightscoutUrl": {
+          "default": "Deine Nightscout Seite",
+          "required": "Dieses Feld ist erforderlich",
+          "notNightscout": "Diese URL verweist nicht auf eine Nightscout-Site",
+          "needsUpgrade": "Ihre Nightscout-Site erfordert ein Update, um mit Gluco Check zu funktionieren. Bitte aktualisieren Sie auf mindestens {{version}}"
+        },
+        "defaultMetrics": {
+          "required": "Sie müssen mindestens ein Element auswählen",
+          "notAvailableInvalidToken": "* Sie benötigen ein gültiges Token, um auf diese Werte zuzugreifen",
+          "notAvailableValidToken": "* Wir haben keinen aktuellen Wert für diese Werte gefunden, aber Sie können sie trotzdem auswählen"
+        },
+        "glucoseUnits": {
+          "mismatch": "Gewählte Einheit unterscheidet sich von den Einheiten deiner Nachtcout-Seite"
+        }
+      },
+      "submitButton": "Einstellungen speichern",
+      "submitStatus": {
+        "submitting": "Einstellungen speichern",
+        "submitted": "Einstellungen gespeichert",
+        "error": "Beim Speichern deiner Einstellungen ist ein schrecklicher Fehler aufgetreten"
+      }
+    }
+  },
+  "navigation": {
+    "faqs": "Hilfe & FAQ",
+    "github": "Finde uns auf Github"
+  },
+  "diabetesMetrics": {
+    "Everything": "alles",
+    "BloodSugar": "Blutzucker",
+    "InsulinOnBoard": "Aktives Insulin",
+    "CarbsOnBoard": "Aktive Kohlenhydrate",
+    "SensorAge": "Sensoralter",
+    "CannulaAge": "Kanülenalter",
+    "PumpBattery": "Pumpenbatterie",
+    "PumpReservoir": "Pumpenreservoir"
+  },
+  "tokenDialog": {
+    "title": "Generieren eines Nightscout-Tokens",
+    "preamble": "Für grundlegende Funktionen wie das Überprüfen Ihrer Werte reicht Ihre Nightscout-URL aus. Für erweiterte Funktionen benötigen Sie ein Token mit vollständigen API-Leseberechtigungen. Wenn Sie nicht wissen, was das bedeutet, kein Problem! Wir werden es Schritt für Schritt durchgehen.",
+    "links": {
+      "howToUpdateNightscout": "http://www.nightscout.info/wiki/faqs-2/azure/updating-your-website-to-the-latest-release-pull-request",
+      "glucoCheckSettings": "/settings"
+    },
+    "step1": {
+      "label": "Nightscout Version prüfen",
+      "description": "Stellen Sie zunächst sicher, dass auf Ihrer Website mindestens Version 14 von Nightscout installiert ist. Sie können die Version hier überprüfen, indem Sie auf die Hamburger-Menüschaltfläche klicken und hier suchen:",
+      "image": "nightscout-version.png",
+      "image_alt": ""
+    },
+    "step2": {
+      "label": "Nightscout aktualisieren",
+      "description": "Wenn Sie ein Upgrade benötigen, können Sie <2>hier mehr darüber lesen</2> . Wenn nicht, machen wir dieses Token!"
+    },
+    "step3": {
+      "label": "Rolle und Thema erstellen",
+      "description": "Klicken Sie auf das Hamburger-Menü und dann auf \"Admin-Tools\"."
+    },
+    "step4": {
+      "description": "Klicken Sie auf \"Neue Rolle hinzufügen\", füllen Sie die Rolle mit den unten abgebildeten Werten und klicken Sie auf Speichern.",
+      "image": "edit-role.png",
+      "image_alt": ""
+    },
+    "step5": {
+      "description": "Klicken Sie auf \"Neues Thema hinzufügen\", füllen Sie den Betreff mit den unten abgebildeten Werten und klicken Sie auf Speichern.",
+      "image": "edit-subject.png",
+      "image_alt": ""
+    },
+    "step6": {
+      "description": "Kopieren Sie den Wert in die Spalte \"Access Token\" und fügen Sie ihn in das Feld Nightscout Token in <2>Gluco Check Settings</2>. ein und klicken Sie auf Speichern.",
+      "image": "copy-token.png",
+      "image_alt": ""
+    }
+  },
+  "languageSelector": {
+    "buttonLabel": "Sprache",
+    "contribute": "Übersetzungen beitragen",
+    "availableLanguageLabels": {
+      "en": "Englisch",
+      "nl": "Niederländisch",
+      "es": "Spanisch",
+      "sv": "Schwedisch"
+    }
+  }
+}
