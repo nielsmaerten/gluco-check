@@ -1,0 +1,68 @@
+---
+#DO NOT TRANSLATE THIS FILE DIRECTLY
+#If you want to contribute translations, visit https://translate.glucocheck.app
+assistant_responses:
+  blood_sugar:
+    long;with_trend;with_time: >
+      Blutzucker ist {{value}} und {{trend}} vor {{time}}.
+    long;no_trend;with_time: >
+      Blutzucker ist {{value}} vor {{time}}.
+    long;with_trend;no_time: >
+      Blutzucker ist {{value}} und {{trend}}.
+    long;no_trend;no_time: >
+      Blutzucker ist {{value}}.
+    short;no_trend;with_time: >
+      {{value}} vor {{time}}.
+    short;with_trend;with_time: >
+      {{value}} und {{trend}} vor {{time}}.
+    trends:
+      DoubleUp: "schnell steigend"
+      SingleUp: "steigend"
+      SlightUp: "langsam steigend"
+      Stable: "gleichbleibend"
+      SlightDown: "langsam fallend"
+      SingleDown: "fallend"
+      DoubleDown: "schnell fallend"
+  carbs_on_board:
+    long;with_time: >
+      Es gibt {{value}} wirksame Kohlenhydrate vor {{time}}.
+    long;no_time: >
+      Es sind {{value}} wirksame Kohlenhydrate.
+    short;with_time: >
+      {{value}} wirksame Kohlenhydrate vor {{time}}.
+  insulin_on_board:
+    long;with_time: >
+      Es gibt {{value}} wirksames Insulin vor {{time}}.
+    long;no_time: >
+      Es gibt {{value}} wirksames Insulin.
+    short;with_time: >
+      {{value}} wirksames Insulin vor {{time}}.
+  cannula_age: >
+    Die Kanüle wurde vor {{time}} eingeführt.
+  sensor_age: >
+    Der Sensor wurde vor {{time}} gestartet.
+  pump_battery: >
+    Der Akku der Pumpe ist bei {{percent}}.
+  pump_reservoir: >
+    Die Pumpe hat noch {{reservoir}} Einheiten.
+  errors:
+    User not found: >
+      Hallo! Danke, dass du Gluco Check ausprobierst. Bevor ich deine Informationen lesen kann, musst du zuerst deine Nigtscout-Seite verlinken. Um dies zu tun, besuche unsere Website: {{gc_url}}
+    Nightscout Unavailable: >
+      Entschuldigung, anscheinend gibt es ein Problem mit deiner Nightscout-Site. Ich konnte deine Daten nicht abrufen.
+    Nightscout Unauthorized: >
+      Sorry, es sieht so aus, als ob ich deine Nacht-cout-Seite nicht lesen darf. Um mich zu legitimieren, solltest du zuerst ein Token erstellen. Um dies zu tun, besuche unsere Website: {{gc_url}}
+    DmMetric Not Found: >
+      Ich konnte {{metric}} nicht finden.
+common:
+  disclaimer:
+    assistant_IANAD: >
+      Zur Erinnerung: Ich bin kein Arzt. Wenn du ärztlichen Rat benötigst, wende Dich an deinen Arzt.
+  metrics:
+    blood sugar: Blutzucker
+    insulin on board: Aktives Insulin
+    carbs on board: Aktive Kohlenhydrate
+    sensor age: Sensoralter
+    cannula age: Kanülenalter
+    pump battery: Pumpenbatterie
+    pump reservoir: Pumpenreservoir
