@@ -3,7 +3,7 @@ import { axe } from "jest-axe";
 import LanguageSelector from "./LanguageSelector";
 
 const mockLanguage = "en";
-const mockChangeLanauge = jest.fn();
+const mockChangeLanguage = jest.fn();
 jest.mock("react-i18next", () => ({
   useTranslation: () => {
     return {
@@ -12,7 +12,7 @@ jest.mock("react-i18next", () => ({
       }),
       i18n: {
         language: mockLanguage,
-        changeLanguage: mockChangeLanauge,
+        changeLanguage: mockChangeLanguage,
       },
     };
   },
@@ -79,7 +79,7 @@ describe("LanguageSelector component", () => {
     expect(findMenuItem("en")).toHaveFocus();
 
     await findMenuItem("es").click();
-    expect(mockChangeLanauge).toHaveBeenCalled();
+    expect(mockChangeLanguage).toHaveBeenCalled();
     expect(window.location.assign).toBeCalled();
   });
 
