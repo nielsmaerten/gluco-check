@@ -1,3 +1,5 @@
-theme: jekyll-theme-cayman
+title: 
+description: 
 show_downloads: false
-description: ""
+google_analytics:
+theme: jekyll-theme-cayman
