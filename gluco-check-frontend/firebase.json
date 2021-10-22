@@ -61,6 +61,11 @@
         "source": "/join-beta/sv",
         "destination": "https://github.com/nielsmaerten/gluco-check/discussions/149",
         "type": 307
+      },
+      {
+        "source": "/join-beta/de",
+        "destination": "https://github.com/nielsmaerten/gluco-check/discussions/151",
+        "type": 307
       }
     ]
   }

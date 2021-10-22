@@ -28,6 +28,7 @@ export enum AvailableLanguage {
   Dutch = "nl",
   Spanish = "es",
   Swedish = "sv",
+  German = "de",
 }
 
 // These languages are being tested.
@@ -35,4 +36,5 @@ export enum AvailableLanguage {
 export enum BetaLanguage {
   Spanish = AvailableLanguage.Spanish,
   Swedish = AvailableLanguage.Swedish,
+  German = AvailableLanguage.German,
 }
