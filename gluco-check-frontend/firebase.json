@@ -19,7 +19,12 @@
     "redirects": [
       {
         "source": "/demo",
-        "destination": "https://www.youtube.com/watch?v=o7-T2IrDJ_A",
+        "destination": "https://youtu.be/o7-T2IrDJ_A",
+        "type": 307
+      },
+      {
+        "source": "/routines",
+        "destination": "https://youtu.be/xfVby1EjmRM",
         "type": 307
       },
       {
