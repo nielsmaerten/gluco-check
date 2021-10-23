@@ -1,0 +1,52 @@
+synonym:
+  entities:
+    blood sugar:
+      synonyms:
+      - Blutzucker
+      - Glukose
+      - Zucker
+      - BZ
+    cannula age:
+      synonyms:
+      - Kanülenalter
+      - Kanüle
+      - Pod
+      - Infusionsset
+      - Katheter
+    carbs on board:
+      synonyms:
+      - aktive Kohlenhydrate
+      - Kohlenhydrate
+      - Kohlenhydrate an Bord
+      - Kohlenhydrate on board
+    everything:
+      synonyms:
+      - alles
+      - alle Werte
+      - alle Daten
+      - komplett
+      - vollständiger Report
+    insulin on board:
+      synonyms:
+      - Aktives Insulin
+      - IOB
+      - I.O.B.
+      - Insulin
+    pump battery:
+      synonyms:
+      - Pumpenbatterie
+      - Batterie
+      - Akku
+      - pumpen batterie
+    pump reservoir:
+      synonyms:
+      - Pumpenreservoir
+      - Verbleibendes Insulin
+      - Einheiten Pumpe
+      - Pumpe
+      - Reservoir
+      - Pumpenstand
+    sensor age:
+      synonyms:
+      - Sensoralter
+      - Sensor

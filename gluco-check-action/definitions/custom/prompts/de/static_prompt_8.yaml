@@ -1,0 +1,8 @@
+candidates:
+- promptResponse:
+    firstSimple:
+      variants:
+      - speech: Entschuldigung, ich habe dich nicht verstanden. Kannst du es anders
+          sagen?
+        text: Entschuldigung, ich habe dich nicht verstanden. Kannst du es anders
+          sagen?
