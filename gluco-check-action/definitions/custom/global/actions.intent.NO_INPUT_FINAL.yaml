@@ -1,3 +1,3 @@
 handler:
-  staticPromptName: static_prompt_3
+  staticPromptName: static_prompt_7
 transitionToScene: actions.scene.END_CONVERSATION

@@ -13,7 +13,7 @@ slots:
   name: DmMetric
   promptSettings:
     initialPrompt:
-      staticPromptName: static_prompt_1
+      staticPromptName: static_prompt_5
   required: true
   type:
     list: true
