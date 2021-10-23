@@ -41,7 +41,7 @@ Assistent liest nun die von dir auf https://glucocheck.app gewählten Werte ein.
 
 ### mehrere Werte
 
-Sag: **Hey Google, frage Gluco Check nach meinem  _[Blutzucker]_ und _[Sensoralter]_**
+Sag: **Hey Google, frage Gluco Check nach meinem _[Blutzucker]_ und _[Sensoralter]_**
 
 ## Andere Fragen, die du ausprobieren kannst (experimentell)
 
@@ -53,7 +53,7 @@ Sag: **Hey Google, frage Gluco Check nach meinem  _[Blutzucker]_ und _[Sensoralt
 
 Ja!  
 Wenn Google Assistant [Routienen](https://support.google.com/googlenest/answer/7029585?co=GENIE.Platform%3DAndroid&hl=en) für deine Sprache unterstützt,  
-folge [diesen Anweisungen](https://glucocheck.app/assets/routines-setup.mp4) um deine eigenen Anrufe zu erstellen. Zum Beispiel:
+folge [diesen Anweisungen](https://glucocheck.app/routines) um deine eigenen Anrufe zu erstellen. Zum Beispiel:
 
 | Statt...                                                      | sage                                |
 | ------------------------------------------------------------- | ----------------------------------- |

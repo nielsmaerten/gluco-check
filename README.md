@@ -7,7 +7,7 @@ Formerly known as [Nightscout Status](https://github.com/nielsmaerten/nightscout
 
 1. [Link your Nightscout site](https://glucocheck.app)
 1. Say: **"Hey Google, talk to Gluco Check"**  
-1. (Optional): Set up a [Routine](https://glucocheck.app/assets/routines-setup.mp4) to make invoking Gluco Check easier   
+1. (Optional): Set up a [Routine](https://glucocheck.app/routines) to make invoking Gluco Check easier   
    For example: **"Hey Google, check my sugar"**
 
 ## Things you can ask Gluco Check
@@ -23,7 +23,7 @@ Formerly known as [Nightscout Status](https://github.com/nielsmaerten/nightscout
 
 ## Protip: Using a shorter invocation
 
-Use [Routines](https://glucocheck.app/assets/routines-setup.mp4) to turn "Hey Google, ask Gluco Check my blood sugar" into  
+Use [Routines](https://glucocheck.app/routines) to turn "Hey Google, ask Gluco Check my blood sugar" into  
 "Hey Google, check my sugar".
 
 Note: Routines are not supported in all languages.
