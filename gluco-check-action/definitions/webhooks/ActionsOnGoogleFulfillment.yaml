@@ -2,5 +2,5 @@ handlers:
 - name: default_metrics
 - name: custom_metrics
 httpsEndpoint:
-  baseUrl: https://glucocheck.app/api/v1/handle-conversation?v=8
+  baseUrl: https://glucocheck.app/api/v1/handle-conversation?v=9
   endpointApiVersion: 2

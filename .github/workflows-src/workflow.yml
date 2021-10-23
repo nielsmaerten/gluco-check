@@ -65,7 +65,7 @@ jobs:
 
       - name: "Upload test coverage results"
         if: ${{ matrix.node-version == '14.x' }}
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@v2
 
       - name: "Tar workspace"
         if: ${{ matrix.node-version == '14.x' }}
