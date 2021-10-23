@@ -87,7 +87,9 @@ describe("LanguageSelector component", () => {
     expect.assertions(2);
     const windowOpenSpy = jest.spyOn(global.window, "open");
     windowOpenSpy.mockImplementationOnce((url, target, features, replace) => {
-      expect(url).toMatchInlineSnapshot(`"https://translate.glucocheck.app"`);
+      expect(url).toMatchInlineSnapshot(
+        `"https://pages.glucocheck.app/translations"`
+      );
       return null;
     });
 

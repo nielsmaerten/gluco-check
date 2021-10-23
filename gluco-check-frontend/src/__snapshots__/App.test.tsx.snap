@@ -40,7 +40,7 @@ exports[`App component renders the component when no user and no loading 1`] = `
               aria-label="navigation.faqs"
               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
               data-testid="navigation-home"
-              href="/faq"
+              href="/faq/i18nCode"
               tabindex="0"
             >
               <span
@@ -149,7 +149,7 @@ exports[`App component renders the component when user loaded 1`] = `
               aria-label="navigation.faqs"
               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
               data-testid="navigation-home"
-              href="/faq"
+              href="/faq/i18nCode"
               tabindex="0"
             >
               <span
@@ -258,7 +258,7 @@ exports[`App component renders the component when user loading 1`] = `
               aria-label="navigation.faqs"
               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
               data-testid="navigation-home"
-              href="/faq"
+              href="/faq/i18nCode"
               tabindex="0"
             >
               <span

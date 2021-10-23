@@ -131,6 +131,7 @@
       "image_alt": ""
     }
   },
+  "i18nCode": "en-US",
   "languageSelector": {
     "buttonLabel": "Language",
     "contribute": "Contribute Translations",
