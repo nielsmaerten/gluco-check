@@ -53,7 +53,7 @@ function Boilerplate({ handleSignoutClicked }: BoilerplateProps) {
             <Link href={`${TERMS_AND_CONDITIONS_URL}/${t("i18nCode")}`}>
               Terms of Service
             </Link>
-            {" and "}
+            and{" "}
             <Link href={`${PRIVACY_URL}/${t("i18nCode")}`}>Privacy Policy</Link>
             .
           </Trans>
