@@ -53,7 +53,7 @@ Say: **Hey Google, ask Gluco Check to read my _[blood sugar]_ and _[sensor age]_
 
 Yes!  
 If Google Assistant supports [Routines](https://support.google.com/googlenest/answer/7029585?co=GENIE.Platform%3DAndroid&hl=en) for your language,  
-follow [these instructions](https://glucocheck.app/assets/routines-setup.mp4) to create your own invocations. For example:
+follow [these instructions](https://glucocheck.app/routines) to create your own invocations. For example:
 
 | Instead of...                                      | say:                       |
 | -------------------------------------------------- | -------------------------- |

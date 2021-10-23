@@ -53,7 +53,7 @@ Diga: **Ok Google, pida a Gluco Check que lea mi _[azúcar en sangre]_ y _[tiemp
 
 ¡Sí!  
 Si el Asistente de Google admite [rutinas](https://support.google.com/googlenest/answer/7029585?co=GENIE.Platform%3DAndroid&hl=en) para su idioma,  
-siga [estas instrucciones](https://glucocheck.app/assets/routines-setup.mp4) para crear sus propias invocaciones. Por ejemplo:
+siga [estas instrucciones](https://glucocheck.app/routines) para crear sus propias invocaciones. Por ejemplo:
 
 | En vez de...                                                         | decir:                           |
 | -------------------------------------------------------------------- | -------------------------------- |

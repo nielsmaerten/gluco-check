@@ -53,7 +53,7 @@ Säg: **Hej Google, fråga Gluco Check för att läsa min _[blodsocker]_ och _[s
 
 ja!  
 Om Google Assistant stöder [rutiner](https://support.google.com/googlenest/answer/7029585?co=GENIE.Platform%3DAndroid&hl=en) för ditt språk,  
-följ [dessa instruktioner](https://glucocheck.app/assets/routines-setup.mp4) att skapa dina egna anrop. Till exempel:
+följ [dessa instruktioner](https://glucocheck.app/routines) att skapa dina egna anrop. Till exempel:
 
 | Istället för...                                            | säga:                         |
 | ---------------------------------------------------------- | ----------------------------- |
