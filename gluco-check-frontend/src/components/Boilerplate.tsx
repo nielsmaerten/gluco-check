@@ -50,8 +50,12 @@ function Boilerplate({ handleSignoutClicked }: BoilerplateProps) {
         <Typography>
           <Trans i18nKey="boilerplate.terms">
             By continuing, you are indicating that you accept our{" "}
-            <Link href={TERMS_AND_CONDITIONS_URL}>Terms of Service</Link> and{" "}
-            <Link href={PRIVACY_URL}>Privacy Policy</Link>.
+            <Link href={`${TERMS_AND_CONDITIONS_URL}/${t("i18nCode")}`}>
+              Terms of Service
+            </Link>
+            and{" "}
+            <Link href={`${PRIVACY_URL}/${t("i18nCode")}`}>Privacy Policy</Link>
+            .
           </Trans>
         </Typography>
         <Typography>{t("boilerplate.google")}</Typography>

@@ -107,7 +107,7 @@ export default function App() {
                 aria-label={t("navigation.faqs")}
                 color="inherit"
                 data-testid="navigation-home"
-                href={FAQS_URL}
+                href={`${FAQS_URL}/${t("i18nCode")}`}
               >
                 <Help />
               </IconButton>

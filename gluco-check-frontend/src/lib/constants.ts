@@ -26,7 +26,8 @@ export const NIGHTSCOUT_PROJECT_URL = "http://nightscout.info/";
 export const FAQS_URL = "/faq";
 export const GLUCO_CHECK_GITHUB_URL =
   "https://github.com/nielsmaerten/gluco-check";
-export const CONTRIBUTE_TRANSLATIONS = "https://translate.glucocheck.app";
+export const CONTRIBUTE_TRANSLATIONS =
+  "https://pages.glucocheck.app/translations";
 export const JOIN_BETA = "/join-beta";
 
 export const APP_DEBUG = process.env.REACT_APP_DEBUG === "true" || false;
