@@ -11,9 +11,6 @@ slots:
   defaultValue:
     sessionParam: DmMetric
   name: DmMetric
-  promptSettings:
-    initialPrompt:
-      staticPromptName: static_prompt_5
   required: true
   type:
     list: true
