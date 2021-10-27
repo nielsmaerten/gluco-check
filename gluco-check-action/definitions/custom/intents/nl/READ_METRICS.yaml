@@ -8,8 +8,7 @@ trainingPhrases:
 - ($DmMetric 'Koolhydraten aan boord' auto=true)
 - Check mijn ($DmMetric 'bloedsuiker' auto=true)
 - Hoeveel is mijn ($DmMetric 'bloedsuiker' auto=true)
-- Wat zijn mijn ($DmMetric 'glucose' auto=true), ($DmMetric 'koolhydraten' auto=true)
-  en ($DmMetric 'insuline' auto=true)
+- Wat zijn mijn ($DmMetric 'glucose' auto=true), ($DmMetric 'koolhydraten' auto=true) en ($DmMetric 'insuline' auto=true)
 - Hoeveel ($DmMetric 'koolhydraten' auto=true) heb ik
 - Hoeveel ($DmMetric 'insuline' auto=true) heb ik
 - Hoe staat het met mijn ($DmMetric 'suikerspiegel' auto=true)
