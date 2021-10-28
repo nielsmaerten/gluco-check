@@ -13,12 +13,12 @@ We aim to support Gluco Check in the following languages:
 | German | 👓 Looking for testers | [GitHub thread](https://github.com/nielsmaerten/gluco-check/issues/153) |
 | Swedish  | 👓 Looking for testers | [GitHub thread](https://github.com/nielsmaerten/gluco-check/discussions/149) |
 | Spanish  | 👓 Looking for testers | [GitHub thread](https://github.com/nielsmaerten/gluco-check/issues/138) |
-| Danish | 🌐 Accepting Translations |  |
-| French | 🌐 Accepting Translations |  |
-| Italian | 🌐 Accepting Translations |  |
-| Norwegian | 🌐 Accepting Translations |  |
-| Polish | 🌐 Accepting Translations |  |
-| Portuguese (Brazilian) | 🌐 Accepting Translations |  |
+| Danish | [🌐 Accepting Translations](https://translate.glucocheck.app) |  |
+| French | [🌐 Accepting Translations](https://translate.glucocheck.app) |  |
+| Italian | [🌐 Accepting Translations](https://translate.glucocheck.app) |  |
+| Norwegian | [🌐 Accepting Translations](https://translate.glucocheck.app) |  |
+| Polish | [🌐 Accepting Translations](https://translate.glucocheck.app) |  |
+| Portuguese (Brazilian) | [🌐 Accepting Translations](https://translate.glucocheck.app) |  |
 | *Other languages* | Contact us (in English only) | translations@glucocheck.app |
 
 ## Translation Phases
