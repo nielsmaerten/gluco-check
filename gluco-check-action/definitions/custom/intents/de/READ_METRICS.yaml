@@ -1,14 +1,14 @@
 trainingPhrases:
-- Frage wie alt mein Pod ist
-- Vollständigen Bericht generieren
-- Alles lesen
-- Frage nach einem vollständigen Bericht
-- Wie alt ist mein Sensor
-- Prüfe meinen Blutzucker
-- Aktive Kohlenhydrate
-- Prüfe meinen Zucker
-- Wie ist mein BZ
-- Wie ist mein BZ, IOB und Kohlenhydrate an Bord
-- Wie viele Kohlenhydrate habe ich
-- Wie viel Insulin habe ich
-- Wie ist mein IOB
+- Wie ist mein ($DmMetric 'IOB' auto=true)
+- Wie viel ($DmMetric 'Insulin' auto=true) habe ich
+- Wie viele ($DmMetric 'Kohlenhydrate' auto=true) habe ich
+- Wie ist mein ($DmMetric 'BZ' auto=true), ($DmMetric 'IOB' auto=false) und ($DmMetric 'Kohlenhydrate an Bord' auto=false)
+- Wie ist mein ($DmMetric 'BZ' auto=true)
+- Prüfe meinen ($DmMetric 'Zucker' auto=false)
+- ($DmMetric 'Aktive Kohlenhydrate' auto=true)
+- Prüfe meinen ($DmMetric 'Blutzucker' auto=false)
+- Wie alt ist mein ($DmMetric 'Sensor' auto=true)
+- Frage nach einem nach ($DmMetric 'vollständigen Bericht' auto=false)
+- ($DmMetric 'Alles' auto=true) lesen
+- ($DmMetric 'Vollständigen Bericht' auto=false) generieren
+- Frage wie alt mein ($DmMetric 'Pod' auto=true) ist

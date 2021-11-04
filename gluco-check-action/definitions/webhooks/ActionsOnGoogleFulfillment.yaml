@@ -1,6 +1,12 @@
 handlers:
 - name: default_metrics
 - name: custom_metrics
+- name: no_match3
+- name: no_match2
+- name: no_match1
+- name: no_input1
+- name: no_input3
+- name: no_input2
 httpsEndpoint:
   baseUrl: https://glucocheck.app/api/v1/handle-conversation?v=9
   endpointApiVersion: 2

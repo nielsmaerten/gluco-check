@@ -1,2 +1,2 @@
 handler:
-  staticPromptName: static_prompt_6
+  webhookHandler: no_input1

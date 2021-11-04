@@ -1,8 +1,0 @@
-candidates:
-- promptResponse:
-    firstSimple:
-      variants:
-      - speech: Entschuldigung, ich habe es immer noch nicht verstanden. Die App wird
-          nun geschlossen.
-        text: Entschuldigung, ich habe es immer noch nicht verstanden. Die App wird
-          nun geschlossen.
