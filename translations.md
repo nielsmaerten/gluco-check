@@ -12,7 +12,7 @@ We aim to support Gluco Check in the following languages:
 | Dutch    | ✅ Done                             |  |
 | German | 👓 Looking for testers | [GitHub thread](https://github.com/nielsmaerten/gluco-check/issues/153) |
 | Swedish  | 👓 Looking for testers | [GitHub thread](https://github.com/nielsmaerten/gluco-check/discussions/149) |
-| Spanish  | 👓 Looking for testers | [GitHub thread](https://github.com/nielsmaerten/gluco-check/issues/138) |
+| Spanish  | 👓 Looking for testers | [GitHub thread](https://github.com/nielsmaerten/gluco-check/discussions/142) |
 | Danish | [🌐 Accepting Translations](https://translate.glucocheck.app) |  |
 | French | [🌐 Accepting Translations](https://translate.glucocheck.app) |  |
 | Italian | [🌐 Accepting Translations](https://translate.glucocheck.app) |  |
