@@ -84,5 +84,5 @@ Hinweis: Die von Gluco Check bereitgestellten Informationen sind kein Ersatz fü
 #### Hervorgehobene Aufrufe
 - Mit Gluco Check sprechen
 - Frage Gluco Check, wie alt mein Sensor ist
-- Frage Gluco Check meinen Blutzucker auszulesen
+- Bitte Gluco Check, meinen Blutzucker auszulesen
 - Gluco Check bitten, meine Carbs an Bord zu lesen
