@@ -49,7 +49,7 @@ export default class ConversationDecoder {
     // Log status
     logger.info(`${logTag} ${censoredUserId} said: '${dmQuery.metadata.invocation}'`);
     logger.debug(`${logTag} Matched intent: ${conv.intent.name}`);
-    logger.debug(`${logTag} Matched params: ${conv.intent.params}`);
+    logger.debug(`${logTag} Matched params: ${JSON.stringify(conv.intent.params)}`);
     if (!user.exists) {
       logger.warn(
         `${logTag} '${censoredUserId}' invoked Gluco Check but does not exist in db`
