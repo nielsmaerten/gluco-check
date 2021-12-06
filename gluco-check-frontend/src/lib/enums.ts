@@ -24,17 +24,19 @@ export enum DiabetesMetric {
 }
 
 export enum AvailableLanguage {
-  English = "en",
   Dutch = "nl",
+  English = "en",
+  German = "de",
+  Norwegian = "no",
   Spanish = "es",
   Swedish = "sv",
-  German = "de",
 }
 
 // These languages are being tested.
 // We'll show a message informing users they have to sign up to get access.
 export enum BetaLanguage {
+  German = AvailableLanguage.German,
+  Norwegian = AvailableLanguage.Norwegian,
   Spanish = AvailableLanguage.Spanish,
   Swedish = AvailableLanguage.Swedish,
-  German = AvailableLanguage.German,
 }

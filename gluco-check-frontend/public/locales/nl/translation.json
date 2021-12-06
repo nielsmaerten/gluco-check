@@ -136,11 +136,12 @@
     "buttonLabel": "Taal",
     "contribute": "Vertaling bijdragen",
     "availableLanguageLabels": {
+      "de": "Deutsch",
       "en": "English",
-      "nl": "Nederlands",
       "es": "Español",
-      "sv": "Svenska",
-      "de": "Deutsch"
+      "nl": "Nederlands",
+      "no": "Norsk",
+      "sv": "Svenska"
     }
   }
 }

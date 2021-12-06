@@ -1,0 +1,68 @@
+---
+#DO NOT TRANSLATE THIS FILE DIRECTLY
+#If you want to contribute translations, visit https://translate.glucocheck.app
+assistant_responses:
+  blood_sugar:
+    long;with_trend;with_time: >
+      Blodsukkeret er {{value}} og {{trend}} for {{time}} siden.
+    long;no_trend;with_time: >
+      Blodsukkeret er {{value}} for {{time}} siden.
+    long;with_trend;no_time: >
+      Blodsukkeret er {{value}} og {{trend}}.
+    long;no_trend;no_time: >
+      Blodsukkeret er {{value}}.
+    short;no_trend;with_time: >
+      {{value}} for {{time}} siden.
+    short;with_trend;with_time: >
+      {{value}} og {{trend}} for {{time}} siden.
+    trends:
+      DoubleUp: "stiger raskt"
+      SingleUp: "stiger"
+      SlightUp: "stiger sakte"
+      Stable: "stabilt"
+      SlightDown: "synker sakte"
+      SingleDown: "synker"
+      DoubleDown: "synker raskt"
+  carbs_on_board:
+    long;with_time: >
+      Det er {{value}} karbo om bord, oppdatert for {{time}} siden.
+    long;no_time: >
+      Det er {{value}} karbo om bord.
+    short;with_time: >
+      {{value}} karbo om bord, oppdatert for {{time}} siden.
+  insulin_on_board:
+    long;with_time: >
+      Det er {{value}} enheter med insulin, oppdatert for {{time}} siden.
+    long;no_time: >
+      Det er {{value}} enheter med insulin om bord.
+    short;with_time: >
+      {{value}} enheter med aktivt insulin om bord, oppdatert for {{time}} siden.
+  cannula_age: >
+    Kanylen ble satt inn for {{time}} siden.
+  sensor_age: >
+    Sensoren ble satt inn for {{time}} siden.
+  pump_battery: >
+    Pumpens batteri er på {{percent}}.
+  pump_reservoir: >
+    Pumpen har {{reservoir}} enheter igjen.
+  errors:
+    User not found: >
+      Hei! Takk for at du tester ut Gluco Check. Før jeg kan lese informasjonen din, må du koble til Nightscout-siden din. For å gjøre dette, besøk vår nettside: {{gc_url}}
+    Nightscout Unavailable: >
+      Beklager, det ser ut til at det er et problem med Nightscout-siden din. Jeg klarte ikke å hente ut informasjonen din.
+    Nightscout Unauthorized: >
+      Beklager, det ser ut til at jeg ikke har fått tilgang til å lese Nightscout-siden din. For å slippe meg inn, må du først opprette et token. For å gjøre dette, besøk vår nettside: {{gc_url}}
+    DmMetric Not Found: >
+      Jeg kunne ikke finne din {{metric}}.
+common:
+  disclaimer:
+    assistant_IANAD: >
+      Bare en påminnelse: Jeg er ikke en lege. Hvis du trenger medisinske råd, rådfør deg med din lege.
+  metrics:
+    blood sugar: blodsukker
+    insulin on board: insulin om bord
+    carbs on board: karbo om bord
+    sensor age: sensorens alder
+    cannula age: kanylens alder
+    pump battery: pumpebatteri
+    pump reservoir: pumpe reservoar

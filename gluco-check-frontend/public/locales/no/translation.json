@@ -1,0 +1,147 @@
+{
+  "title": "Gluco Check",
+  "status": {
+    "general": {
+      "loading": "Laster inn",
+      "error": "En feil har oppstått"
+    }
+  },
+  "landing": {
+    "title": "Velkommen til Gluco Check",
+    "subtitle": "Gluco Check gjør det mulig å bruke Nightscout med Google Home"
+  },
+  "onboarding": {
+    "q1": "Hei Google, be Gluco Check om blodsukkeret mitt.",
+    "a1": "6,5 og stabil for fem minutter siden.",
+    "l1": "Blodsukker",
+    "q2": "Hei Google, be Gluco Check om min KOB",
+    "a2": "Det er 10 karbo om bord.",
+    "l2": "Karbo om bord",
+    "q3": "Hei Google, be Gluco Check om alt",
+    "a3": "Blodsukkeret er 6,1. Det er 12 karbo om bord. Sensoralderen er...",
+    "l3": "Alt"
+  },
+  "boilerplate": {
+    "terms": "Ved å fortsette indikerer du at du godtar våre <2>brukervilkår</2> og <5>personvernsregler</5>.",
+    "google": "Google Assistant er et varemerke for Google Inc.",
+    "nightscout": "Ikke tilknyttet <2>Nightscout Project</2>",
+    "logout": "Logg ut"
+  },
+  "welcome": {
+    "title": "Velkommen til Gluco Check",
+    "subtitle": "Gluco Check gjør det mulig å bruke Nightscout med Google Home",
+    "cta": "Koble til din Nightscout"
+  },
+  "login": {
+    "title": "Logg inn",
+    "buttonLabel": "Logg inn med Google"
+  },
+  "settings": {
+    "title": "Endre innstillinger",
+    "betaBanner": {
+      "action": "Jeg vil hjelpe",
+      "title": "Vær oppmerksom! Gluco Check er ennå ikke tilgjengelig på norsk",
+      "message": "Snakker du både {{language}} og engelsk? Du kan hjelpe oss med å fullføre denne oversettelsen."
+    },
+    "form": {
+      "validationInProgress": "Sjekker Nightscout-siden din",
+      "labels": {
+        "glucoseUnits": "Glukoseenheter",
+        "nightscoutToken": "Nightscout Token",
+        "nightscoutUrl": "Nightscout URL",
+        "defaultMetrics": "Assistenten vil lese disse elementene til deg som standard"
+      },
+      "helperText": {
+        "nightscoutToken": {
+          "default": "Ikke sikker på hvordan du får et token? Les videre!",
+          "empty": "Du har kanskje ikke tilgang til alle beregninger uten et gyldig token",
+          "invalid": "Dette tokenet fungerte ikke"
+        },
+        "nightscoutUrl": {
+          "default": "URL-adressen til Nightscout-siden din",
+          "required": "Dette feltet er påkrevd",
+          "notNightscout": "Denne URL-adressen peker ikke til en Nightscout-side",
+          "needsUpgrade": "Din Nightscout-side krever en oppdatering for å fungere med Gluco Check, vennligst oppdater til minst {{version}}"
+        },
+        "defaultMetrics": {
+          "required": "Du må velge minst én beregning",
+          "notAvailableInvalidToken": "* Du trenger et gyldig token for å få tilgang til disse beregningene",
+          "notAvailableValidToken": "* Vi fant ingen nyere verdi for disse beregningene, men du kan fortsatt velge dem"
+        },
+        "glucoseUnits": {
+          "mismatch": "Den valgte enheten er forskjellig fra enhetene til Nightscout-siden din"
+        }
+      },
+      "submitButton": "Lagre innstillinger",
+      "submitStatus": {
+        "submitting": "Lagrer innstillingene dine",
+        "submitted": "Lagret innstillingene dine",
+        "error": "Noe har gått fryktelig galt med å lagre innstillingene dine"
+      }
+    }
+  },
+  "navigation": {
+    "faqs": "Hjelp og vanlige spørsmål",
+    "github": "Finn oss på Github"
+  },
+  "diabetesMetrics": {
+    "Everything": "alt",
+    "BloodSugar": "blodsukker",
+    "InsulinOnBoard": "insulin om bord",
+    "CarbsOnBoard": "karbo om bord",
+    "SensorAge": "sensorens alder",
+    "CannulaAge": "kanylens alder",
+    "PumpBattery": "pumpebatteri",
+    "PumpReservoir": "pumpe reservoar"
+  },
+  "tokenDialog": {
+    "title": "Generer en Nightscout token",
+    "preamble": "For grunnleggende funksjoner som å sjekke tallene dine, er Nightscout-nettadressen din nok. For mer avanserte funksjoner, trenger du et token med fulle api-lesetillatelser. Hvis du ikke vet hva det betyr, ikke vær redd! Vi går gjennom det ett trinn av gangen.",
+    "links": {
+      "howToUpdateNightscout": "http://www.nightscout.info/wiki/faqs-2/azure/updating-your-website-to-the-latest-release-pull-request",
+      "glucoCheckSettings": "/settings"
+    },
+    "step1": {
+      "label": "Sjekk Nightscout versjon",
+      "description": "Først må du sørge for at siden din er på minst versjon 14 av Nightscout. Du kan sjekke versjonen her ved å klikke på hamburgermenyknappen og se her:",
+      "image": "nightscout-version.png",
+      "image_alt": ""
+    },
+    "step2": {
+      "label": "Oppdater Nightscout",
+      "description": "Hvis du trenger en oppgradering, kan du lese mer om hvordan du gjør det <2>her</2>. Hvis ikke, la oss lage et token!"
+    },
+    "step3": {
+      "label": "Opprett rolle og ressurs",
+      "description": "Klikk på hamburgermenyen og deretter \"Administrasjonsverktøy\"."
+    },
+    "step4": {
+      "description": "Klikk på \"Legg til ny rolle\", fyll inn rollen med verdiene som er avbildet nedenfor, og klikk lagre.",
+      "image": "edit-role.png",
+      "image_alt": ""
+    },
+    "step5": {
+      "description": "Klikk på \"Legg til ny ressurs\", fyll inn ressursen med verdiene som er avbildet nedenfor, og klikk lagre.",
+      "image": "edit-subject.png",
+      "image_alt": ""
+    },
+    "step6": {
+      "description": "Kopier verdien i \"Access Token\"-kolonnen, lim den inn i Nightscout Token-feltet i <2>Gluco Check innstillinger</2>, og klikk lagre.",
+      "image": "copy-token.png",
+      "image_alt": ""
+    }
+  },
+  "i18nCode": "en-US",
+  "languageSelector": {
+    "buttonLabel": "Språk",
+    "contribute": "Bidra med oversettelser",
+    "availableLanguageLabels": {
+      "de": "Deutsch",
+      "en": "English",
+      "es": "Español",
+      "nl": "Nederlands",
+      "no": "Norsk",
+      "sv": "Svenska"
+    }
+  }
+}
