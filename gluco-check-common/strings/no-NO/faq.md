@@ -3,14 +3,14 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Hvordan spør jeg Gluco Check om... ?](#how-do-i-ask-gluco-check-for-)
-  - [en bestemt beregning](#a-specific-metric)
-  - [mitt personlige valg](#my-personal-selection)
-  - [flere beregninger](#multiple-metrics)
-- [Andre spørsmål du kan prøve (eksperimentelle)](#other-questions-you-can-try-experimental)
-- [Kan jeg bruke en egendefinert frase?](#can-i-use-a-custom-invocation)
-- [Hvorfor godtar ikke Nightscout min API-hemmelighet/token?](#why-is-nightscout-not-accepting-my-api-secret--token)
-- [Jeg har et annet spørsmål!](#i-have-a-different-question)
+- [Hvordan spør jeg Gluco Check om... ?](#hvordan-sp%C3%B8r-jeg-gluco-check-om-)
+  - [en bestemt beregning](#en-bestemt-beregning)
+  - [mitt personlige valg](#mitt-personlige-valg)
+  - [flere beregninger](#flere-beregninger)
+- [Andre spørsmål du kan prøve (eksperimentelle)](#andre-sp%C3%B8rsm%C3%A5l-du-kan-pr%C3%B8ve-eksperimentelle)
+- [Kan jeg bruke en egendefinert frase?](#kan-jeg-bruke-en-egendefinert-frase)
+- [Hvorfor godtar ikke Nightscout min API-hemmelighet/token?](#hvorfor-godtar-ikke-nightscout-min-api-hemmelighettoken)
+- [Jeg har et annet spørsmål!](#jeg-har-et-annet-sp%C3%B8rsm%C3%A5l)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
