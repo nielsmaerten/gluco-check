@@ -1,6 +1,6 @@
 {
   "name": "gluco-check-common",
-  "version": "1.4.1-beta.1",
+  "version": "1.4.1-beta.4",
   "repository": "https://github.com/nielsmaerten/gluco-check/tree/main/gluco-check-common",
   "private": true,
   "scripts": {
