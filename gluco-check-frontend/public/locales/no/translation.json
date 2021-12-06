@@ -40,7 +40,7 @@
     "title": "Endre innstillinger",
     "betaBanner": {
       "action": "Jeg vil hjelpe",
-      "title": "Vær oppmerksom! Gluco Check er ennå ikke tilgjengelig på norsk",
+      "title": "Vær oppmerksom! Gluco Check er ennå ikke tilgjengelig på [[your language]]",
       "message": "Snakker du både {{language}} og engelsk? Du kan hjelpe oss med å fullføre denne oversettelsen."
     },
     "form": {
@@ -131,17 +131,17 @@
       "image_alt": ""
     }
   },
-  "i18nCode": "no-NO",
+  "i18nCode": "en-US",
   "languageSelector": {
     "buttonLabel": "Språk",
     "contribute": "Bidra med oversettelser",
     "availableLanguageLabels": {
-      "de": "Deutsch",
-      "en": "English",
-      "es": "Español",
-      "nl": "Nederlands",
+      "de": "Tysk",
+      "en": "Engelsk",
+      "es": "Spansk",
+      "nl": "Nederlandsk",
       "no": "Norsk",
-      "sv": "Svenska"
+      "sv": "Svensk"
     }
   }
 }
