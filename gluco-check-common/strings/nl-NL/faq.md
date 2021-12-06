@@ -51,6 +51,7 @@ Zeg: **Hey Google, vraag Gluco Check naar mijn _[suiker]_ en _[sensor]_**
 
 ## Kan ik Gluco Check met een andere naam aanspreken?
 
+Ja!  
 Als Google Assistant [Routines](https://support.google.com/googlenest/answer/7029585?co=GENIE.Platform%3DAndroid&hl=en) ondersteunt in jouw taal,  
 kan je met [deze instructies](https://glucocheck.app/routines) je eigen aanroep instellen. Bijvoorbeeld:
 
