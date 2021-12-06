@@ -39,9 +39,9 @@
   "settings": {
     "title": "Instellingen",
     "betaBanner": {
-      "action": "Ik wil helpen",
-      "title": "Let op! Gluco Check is nog niet beschikbaar in het Nederlands",
-      "message": "Spreek je zowel Nederlands als Engels? Dan kan je ons helpen deze vertaling af te werken."
+      "action": "Ik kan helpen",
+      "title": "Let op! Gluco Check is nog niet beschikbaar in Nederlands",
+      "message": "Spreek je zowel {{language}} als Engels? Dan kan je ons helpen deze vertaling te vervolledigen."
     },
     "form": {
       "validationInProgress": "Nightscout site wordt gecontroleerd",
