@@ -30,7 +30,10 @@ export default class I18nHelper {
 
   async ensureLocale(locale: string): Promise<void> {
     // Bail if the locale is already loaded
-    if (this.loadedLocales.has(locale)) return;
+    if (this.loadedLocales.has(locale)) {
+      logger.info(logTag, `Locale ${locale} already loaded`);
+      return;
+    }
 
     // Wait until i18next is ready
     await this.i18nextInitialized;
