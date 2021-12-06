@@ -1,0 +1,51 @@
+synonym:
+  entities:
+    blood sugar:
+      synonyms:
+      - blodsukker
+      - glukose
+      - sukker
+      - BS
+    cannula age:
+      synonyms:
+      - kanylens alder
+      - kanyle
+      - pod
+      - infusjonssett
+      - kateter
+    carbs on board:
+      synonyms:
+      - karbo om bord
+      - karbohydrater
+      - karbo
+      - karbohydrater om bord
+      - KOB
+    everything:
+      synonyms:
+      - alt
+      - alle
+      - alt sammen
+      - fullstendig rapport
+      - alle verdier
+    insulin on board:
+      synonyms:
+      - insulin om bord
+      - IOB
+      - insulin
+    pump battery:
+      synonyms:
+      - pumpebatteri
+      - batteri
+      - batterinivå
+    pump reservoir:
+      synonyms:
+      - pumpereservoar
+      - insulin igjen
+      - pumpeenheter
+      - pumpe
+      - reservoar
+      - pumpenivå
+    sensor age:
+      synonyms:
+      - sensor
+      - sensorens alder

@@ -1,0 +1,21 @@
+localizedSettings:
+  developerEmail: niels@glucocheck.app
+  developerName: Niels Maerten
+  displayName: Gluco Check
+  fullDescription: |-
+    Gluco Check gjør det mulig å bruke Nightscout med Google-assistenten din. Spør om ditt nåværende blodsukkernivå, hvor mange karbo du har om bord, når du sist byttet sensor og mer.
+
+    Før du kan bruke Gluco Check må du koble til Nightscout-siden din på: https://glucocheck.app
+
+    Merk: Informasjonen gitt av Gluco Check er ikke en erstatning for råd fra helsepersonell.
+  privacyPolicyUrl: https://glucocheck.app/terms/no-NO
+  pronunciation: Gluco Check
+  sampleInvocations:
+  - Snakk med Gluco Check
+  - Spør Gluco Check hvor gammel sensoren min er
+  - Be Gluco Check om å lese glukosen min
+  - Be Gluco Check om å lese mine karbo om bord
+  shortDescription: Be Google om å lese blodsukkeret ditt fra Nightscout
+  smallLogoImage: https://lh3.googleusercontent.com/qhE7FiMfd4EhToY6GyEl6_Cy-OXyTaMtW3-DvcajAMog4OeJX1bgPvoYkJCiYULGOS0uNEgOarGr
+  termsOfServiceUrl: https://glucocheck.app/terms/no-NO
+  voice: female_1

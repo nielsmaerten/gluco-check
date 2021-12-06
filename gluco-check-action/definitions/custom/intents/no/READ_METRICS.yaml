@@ -1,0 +1,13 @@
+trainingPhrases:
+- Spør hvor gammel ($DmMetric 'poden' auto=true) min er
+- Få en ($DmMetric 'fullstendig rapport' auto=true)
+- Be om en ($DmMetric 'fullstendig rapport' auto=true)
+- Hvordan er min ($DmMetric 'IOB' auto=true)
+- Hvor mye ($DmMetric 'insulin' auto=true) har jeg
+- Hvor mange ($DmMetric 'karbo' auto=true) har jeg
+- Hva er mitt ($DmMetric 'BS' auto=true), ($DmMetric 'IOB' auto=false) og ($DmMetric 'karbo om bord' auto=false)
+- Hva er ($DmMetric 'BS' auto=true)
+- Sjekk ($DmMetric 'blodsukkeret' auto=true) mitt
+- ($DmMetric 'Karbo om bord' auto=true)
+- Sjekk ($DmMetric 'blodsukkeret' auto=true) mitt
+- Hvor gammel er ($DmMetric 'sensoren' auto=true) min
