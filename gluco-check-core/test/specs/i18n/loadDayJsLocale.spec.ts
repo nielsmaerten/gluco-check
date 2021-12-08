@@ -7,8 +7,8 @@ describe('loadDayJsLocale', () => {
     expect(actual).toBe(expected);
   });
 
-  it("falls back to 'nn' for 'no-NO'", async () => {
-    const expected = 'nn';
+  it("falls back to 'nb' for 'no-NO'", async () => {
+    const expected = 'nb';
     const actual = await loadDayJsLocale('no-NO');
     expect(actual).toBe(expected);
   });
