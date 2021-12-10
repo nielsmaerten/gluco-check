@@ -43,7 +43,7 @@ async function tryLoadingLocale(locale: string) {
 function getPossibleLocaleIds(locale: string) {
   const lowercaseLocale = locale.toLowerCase(); // 'en-US' -> 'en-us'
   const twoLetterLocale = lowercaseLocale.substring(0, 2); // 'en-US' -> 'en'
-  const customLocale = customFallbackMap.get(twoLetterLocale); // 'en-US' -> 'custom'
+  const customLocale = customFallbackMap.get(twoLetterLocale); // 'no-NO' -> 'nb'
 
   const possibleLocales = [lowercaseLocale, twoLetterLocale];
 
@@ -59,4 +59,4 @@ function getPossibleLocaleIds(locale: string) {
  * If both the main locale (eg en-US) and its fallback (eg en) fail,
  * select a fallback from this map.
  */
-const customFallbackMap = new Map<string, string>([['no', 'nn']]);
+const customFallbackMap = new Map<string, string>([['no', 'nb']]);
