@@ -1,0 +1,68 @@
+---
+#DO NOT TRANSLATE THIS FILE DIRECTLY
+#If you want to contribute translations, visit https://translate.glucocheck.app
+assistant_responses:
+  blood_sugar:
+    long;with_trend;with_time: >
+      La glicemia è {{value}} e {{trend}} come {{time}} fa.
+    long;no_trend;with_time: >
+      La glicemia è {{value}} come {{time}} fa.
+    long;with_trend;no_time: >
+      La glicemia è {{value}} e {{trend}}.
+    long;no_trend;no_time: >
+      La glicemia è {{value}}.
+    short;no_trend;with_time: >
+      {{value}} come {{time}} fa.
+    short;with_trend;with_time: >
+      {{value}} e {{trend}} come {{time}} fa.
+    trends:
+      DoubleUp: "in crescita veloce"
+      SingleUp: "in crescita"
+      SlightUp: "in crescita leggera"
+      Stable: "stabile"
+      SlightDown: "in discesa leggera"
+      SingleDown: "in discesa"
+      DoubleDown: "in discesa rapida"
+  carbs_on_board:
+    long;with_time: >
+      Ci sono ancora {{value}} carboidrati come {{time}} fa.
+    long;no_time: >
+      Ci sono ancora {{value}} carboidrati.
+    short;with_time: >
+      {{value}} carboidrati come {{time}} fa.
+  insulin_on_board:
+    long;with_time: >
+      Ci sono ancora {{value}} unità di insulina come {{time}} fa.
+    long;no_time: >
+      Ci sono ancora {{value}} unità di insulina.
+    short;with_time: >
+      {{value}} unità di insulina come {{time}} fa.
+  cannula_age: >
+    La cannula è stata inserita {{time}} fa.
+  sensor_age: >
+    Il sensore è stato inserito {{time}} fa.
+  pump_battery: >
+    La batteria del microinfusore è al {{percent}}.
+  pump_reservoir: >
+    Il microinfusore ha {{reservoir}} unità residue.
+  errors:
+    User not found: >
+      Ciao! Grazie per aver scelto di provare Gluco Check. Prima di poter leggere le tue informazioni, dovrai collegarti al tuo sito Nightscout. Per farlo, visito il nostro sito: {{gc_url}}
+    Nightscout Unavailable: >
+      Mi spiace, sembra ci sia un problema con il tuo sito Nightscout. Non sono stato in grado di recuperare le tue informazioni.
+    Nightscout Unauthorized: >
+      Mi spiace, sembra che non possa leggere i dati dal tuo sito Nightscout. Per permettermelo, dovresti prima creare un token. Per farlo, visita il nostro sito: {{gc_url}}
+    DmMetric Not Found: >
+      Non sono riuscito a trovare il tuo {{metric}}.
+common:
+  disclaimer:
+    assistant_IANAD: >
+      Ricorda: non sono un dottore. Se hai bisogno di supporto medico, consulta il tuo diabetologo.
+  metrics:
+    blood sugar: glicemia
+    insulin on board: insulina attiva
+    carbs on board: carboidrati attivi
+    sensor age: '"età" del sensore'
+    cannula age: '"età" della cannula'
+    pump battery: batteria del microinfusore
+    pump reservoir: cartuccia del microinfusore
