@@ -27,6 +27,7 @@ export enum AvailableLanguage {
   Dutch = "nl",
   English = "en",
   German = "de",
+  Italian = "it",
   Norwegian = "no",
   Spanish = "es",
   Swedish = "sv",
@@ -36,6 +37,7 @@ export enum AvailableLanguage {
 // We'll show a message informing users they have to sign up to get access.
 export enum BetaLanguage {
   German = AvailableLanguage.German,
+  Italian = AvailableLanguage.Italian,
   Norwegian = AvailableLanguage.Norwegian,
   Spanish = AvailableLanguage.Spanish,
   Swedish = AvailableLanguage.Swedish,

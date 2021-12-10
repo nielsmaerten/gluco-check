@@ -1,0 +1,148 @@
+{
+  "title": "Gluco Check",
+  "status": {
+    "general": {
+      "loading": "Caricamento",
+      "error": "Qualcosa è andato storto"
+    }
+  },
+  "landing": {
+    "title": "Benvenuto su Gluco Check",
+    "subtitle": "Gluco Check porta Nightscout sul tuo Google Home"
+  },
+  "onboarding": {
+    "q1": "Ehi Google, chiedi a Gluco Check la mia glicemia.",
+    "a1": "6.5 e stabile fino a cinque minuti fa.",
+    "l1": "Glicemia",
+    "q2": "Ehi Google, chiedi a Gluco Check il mio COB",
+    "a2": "Ci sono 10 carboidrati attivi.",
+    "l2": "Carboidrati Attivi",
+    "q3": "Ehi Google, chiedi a Gluco Check tutto",
+    "a3": "La glicemia è 6.1. Ci sono 12 carboidrati attivi. L'età del sensore è...",
+    "l3": "Tutto"
+  },
+  "boilerplate": {
+    "terms": "Continuando, stai indicando che accetto i nostri<0>Termini di servizio</0> e <1>Privacy Policy</1>.",
+    "google": "Google Assistant è un marchio registrato di Google Inc.",
+    "nightscout": "Non affiliato al <2>Progetto Nightscout</2>",
+    "logout": "Disconnetti"
+  },
+  "welcome": {
+    "title": "Benvenuto su Gluco Check",
+    "subtitle": "Gluco Check porta Nightscout sul tuo Google Home",
+    "cta": "Collega il tuo Nightscout"
+  },
+  "login": {
+    "title": "Accedi",
+    "buttonLabel": "Accedi con Google"
+  },
+  "settings": {
+    "title": "Modifica impostazioni",
+    "betaBanner": {
+      "action": "Voglio aiutarti",
+      "title": "Attenzione! Gluco Check non è ancora disponibile in Italiano",
+      "message": "Parli sia {{language}} che inglese? Puoi aiutarci a completare questa traduzione."
+    },
+    "form": {
+      "validationInProgress": "Verifica del tuo sito Nightscout",
+      "labels": {
+        "glucoseUnits": "Unità glicemica",
+        "nightscoutToken": "Token Nightscout",
+        "nightscoutUrl": "URL di Nightscout",
+        "defaultMetrics": "L'assistente ti leggerà questi elementi per impostazione predefinita"
+      },
+      "helperText": {
+        "nightscoutToken": {
+          "default": "Non sai come ottenere un token? Continuare a leggere!",
+          "empty": "Potresti non avere accesso a tutte le metriche senza un token valido",
+          "invalid": "Questo token non ha funzionato"
+        },
+        "nightscoutUrl": {
+          "default": "URL del tuo Nightscout",
+          "required": "Questo campo è obbligatorio",
+          "notNightscout": "Questo URL non punta a un sito Nightscout",
+          "needsUpgrade": "Il tuo sito Nightscout richiede un aggiornamento per funzionare con Gluco Check, per favore aggiorna ad almeno {{version}}"
+        },
+        "defaultMetrics": {
+          "required": "Devi selezionare almeno una traccia",
+          "notAvailableInvalidToken": "* Avrai bisogno di un token valido per accedere a queste tracce",
+          "notAvailableValidToken": "* Non abbiamo trovato un valore recente per queste tracce, ma puoi comunque selezionarle"
+        },
+        "glucoseUnits": {
+          "mismatch": "L'unità scelta è diversa dalle unità del tuo sito Nightscout"
+        }
+      },
+      "submitButton": "Salva impostazioni",
+      "submitStatus": {
+        "submitting": "Salvando le tue impostazioni",
+        "submitted": "Impostazioni salvate",
+        "error": "Qualcosa è andato terribilmente storto salvando le impostazioni"
+      }
+    }
+  },
+  "navigation": {
+    "faqs": "Aiuto & Domande frequenti",
+    "github": "Cercaci su Github"
+  },
+  "diabetesMetrics": {
+    "Everything": "tutto",
+    "BloodSugar": "glicemia",
+    "InsulinOnBoard": "insulina attiva",
+    "CarbsOnBoard": "carboidrati attivi",
+    "SensorAge": "\"età\" del sensore",
+    "CannulaAge": "\"età\" della cannula",
+    "PumpBattery": "batteria del microinfusore",
+    "PumpReservoir": "cartuccia del microinfusore"
+  },
+  "tokenDialog": {
+    "title": "Generare un token Nightscout",
+    "preamble": "Per funzionalità di base come il controllo dei tuoi numeri, il tuo Url di Nightscout è sufficiente. Per funzionalità più avanzate, avrai bisogno di un token con autorizzazioni di lettura Api complete. Se non sai cosa significa, non preoccuparti! Lo esamineremo un passo alla volta.",
+    "links": {
+      "howToUpdateNightscout": "http://www.nightscout.info/wiki/faqs-2/azure/updating-your-website-to-the-latest-release-pull-request",
+      "glucoCheckSettings": "impostazioni"
+    },
+    "step1": {
+      "label": "Controlla la versione di Nightscout",
+      "description": "Innanzitutto, assicurati che il tuo sito sia almeno alla versione 14 di Nightscout. Puoi controllare la versione facendo clic sul pulsante del menu \"hamburger\" e guardando qui:",
+      "image": "nightscout-version.png",
+      "image_alt": ""
+    },
+    "step2": {
+      "label": "Aggiorna Nightscout",
+      "description": "Se hai bisogno di un aggiornamento, puoi leggere di più su come farlo <2>qui</2>. In caso contrario, facciamo quel token!"
+    },
+    "step3": {
+      "label": "Crea Ruolo e Oggetto",
+      "description": "Fai clic sul menu \"hamburger\", quindi su \"Strumenti di amministrazione\"."
+    },
+    "step4": {
+      "description": "Fai clic su \"Aggiungi nuovo ruolo\", compila il ruolo con i valori illustrati di seguito e fai clic su Salva.",
+      "image": "edit-role.png",
+      "image_alt": ""
+    },
+    "step5": {
+      "description": "Fai clic su \"Aggiungi nuovo Oggetto\", compila l'Oggetto con i valori illustrati di seguito e fai clic su Salva.",
+      "image": "edit-subject.png",
+      "image_alt": ""
+    },
+    "step6": {
+      "description": "Copia il valore nella colonna \"Access Token\", incollalo nel campo Nightscout Token in <2>Gluco Check Settings</2> e fai clic su salva.",
+      "image": "copy-token.png",
+      "image_alt": ""
+    }
+  },
+  "i18nCode": "it-IT",
+  "languageSelector": {
+    "buttonLabel": "Lingua",
+    "contribute": "Contribuisci alle traduzioni",
+    "availableLanguageLabels": {
+      "de": "Deutsch",
+      "en": "English",
+      "es": "Español",
+      "it": "Italiano",
+      "nl": "Nederlands",
+      "no": "Norsk",
+      "sv": "Svenska"
+    }
+  }
+}
