@@ -1,0 +1,47 @@
+synonym:
+  entities:
+    blood sugar:
+      synonyms:
+      - glicemia
+      - zucchero
+    cannula age:
+      synonyms:
+      - età della cannula
+      - cannula
+      - pod
+      - set di infusione
+      - catetere
+    carbs on board:
+      synonyms:
+      - carboidrati attivi
+      - carboidrati
+    everything:
+      synonyms:
+      - tutto
+      - tutti
+      - report completo
+      - tutti i valori
+    insulin on board:
+      synonyms:
+      - insulina attiva
+      - iob
+      - insulina
+      - I.O.B.
+    pump battery:
+      synonyms:
+      - batteria del microinfusore
+      - batteria
+      - livello della batteria
+    pump reservoir:
+      synonyms:
+      - cartuccia del microinfusore
+      - insulina rimanente
+      - unità nel microinfusore
+      - microinfusore
+      - cartuccia
+      - insulina residua
+      - livello del microinfusore
+    sensor age:
+      synonyms:
+      - sensore
+      - età del sensore
