@@ -66,4 +66,4 @@ Hulp nodig? Ga naar https://glucocheck.app/settings, en klik op '_Niet zeker hoe
 
 ## Ik heb een andere vraag!
 
-Kon je hier geen antwoord vinden? Stel je vraag in [Discussions](https://github.com/nielsmaerten/gluco-check/discussions). We helpen je graag verder! (Enkel in het Engels)
+Kon je hier geen antwoord vinden? Stel je vraag in [Discussions](https://github.com/nielsmaerten/gluco-check/discussions). We helpen je graag verder!
