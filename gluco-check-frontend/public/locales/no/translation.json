@@ -136,12 +136,13 @@
     "buttonLabel": "Språk",
     "contribute": "Bidra med oversettelser",
     "availableLanguageLabels": {
-      "de": "Tysk",
-      "en": "Engelsk",
-      "es": "Spansk",
-      "nl": "Nederlandsk",
+      "de": "Deutsch",
+      "en": "English",
+      "es": "Español",
+      "it": "Italiano",
+      "nl": "Nederlands",
       "no": "Norsk",
-      "sv": "Svensk"
+      "sv": "Svenska"
     }
   }
 }

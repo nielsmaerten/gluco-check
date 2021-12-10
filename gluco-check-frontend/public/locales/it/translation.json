@@ -40,7 +40,7 @@
     "title": "Modifica impostazioni",
     "betaBanner": {
       "action": "Voglio aiutarti",
-      "title": "Attenzione! Gluco Check non è ancora disponibile in [[your language]]",
+      "title": "Attenzione! Gluco Check non è ancora disponibile in Italiano",
       "message": "Parli sia {{language}} che inglese? Puoi aiutarci a completare questa traduzione."
     },
     "form": {
@@ -131,17 +131,18 @@
       "image_alt": ""
     }
   },
-  "i18nCode": "en-US",
+  "i18nCode": "it-IT",
   "languageSelector": {
     "buttonLabel": "Lingua",
     "contribute": "Contribuisci alle traduzioni",
     "availableLanguageLabels": {
-      "de": "Tedesco",
-      "en": "Inglese",
-      "es": "Spagnolo",
-      "nl": "Olandese",
-      "no": "Norvegese",
-      "sv": "Svedese"
+      "de": "Deutsch",
+      "en": "English",
+      "es": "Español",
+      "it": "Italiano",
+      "nl": "Nederlands",
+      "no": "Norsk",
+      "sv": "Svenska"
     }
   }
 }

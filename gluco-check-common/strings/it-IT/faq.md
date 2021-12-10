@@ -3,14 +3,14 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Come posso chiedere a Gluco Check di... ?](#how-do-i-ask-gluco-check-for-)
-  - [una metrica specifica](#a-specific-metric)
-  - [la mia scelta personale](#my-personal-selection)
-  - [metriche multiple](#multiple-metrics)
-- [Altre domande che puoi provare (sperimentale)](#other-questions-you-can-try-experimental)
-- [Posso usare un'invocazione personalizzata?](#can-i-use-a-custom-invocation)
-- [Perchè Nightscout non accetta la mia API secret / token?](#why-is-nightscout-not-accepting-my-api-secret--token)
-- [Ho una domanda diversa!](#i-have-a-different-question)
+- [Come posso chiedere a Gluco Check di... ?](#come-posso-chiedere-a-gluco-check-di-)
+  - [una metrica specifica](#una-metrica-specifica)
+  - [la mia scelta personale](#la-mia-scelta-personale)
+  - [metriche multiple](#metriche-multiple)
+- [Altre domande che puoi provare (sperimentale)](#altre-domande-che-puoi-provare-sperimentale)
+- [Posso usare un'invocazione personalizzata?](#posso-usare-uninvocazione-personalizzata)
+- [Perchè Nightscout non accetta la mia API secret / token?](#perch%C3%A8-nightscout-non-accetta-la-mia-api-secret--token)
+- [Ho una domanda diversa!](#ho-una-domanda-diversa)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
