@@ -39,6 +39,5 @@ export enum BetaLanguage {
   German = AvailableLanguage.German,
   Italian = AvailableLanguage.Italian,
   Norwegian = AvailableLanguage.Norwegian,
-  Spanish = AvailableLanguage.Spanish,
   Swedish = AvailableLanguage.Swedish,
 }
