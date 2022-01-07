@@ -81,6 +81,11 @@
         "source": "/join-beta/it",
         "destination": "https://github.com/nielsmaerten/gluco-check/discussions/173",
         "type": 307
+      },
+      {
+        "source": "/try-it",
+        "destination": "https://assistant.google.com/services/a/uid/0000008351d3e7c0",
+        "type": 307
       }
     ]
   }
