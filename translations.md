@@ -3,6 +3,7 @@ layout: default
 ---
 
 # Gluco Check Translations
+Crowdin link: https://translate.glucocheck.app
 
 We aim to support Gluco Check in the following languages:
 
