@@ -16,7 +16,7 @@ const logTag = '[NightscoutClient]';
  */
 export default class NightscoutClient {
   constructor(private nightscoutProps: NightscoutProps) {
-    logger.debug(logTag, 'Initializing for:', nightscoutProps.url);
+    //logger.debug(logTag, 'Initializing for:', nightscoutProps.url);
     axios.interceptors.response.use(this.unwrap);
   }
   private cache: Record<string, Promise<any>> = {};
