@@ -1,14 +1,9 @@
 trainingPhrases:
-- Wie ist mein ($DmMetric 'IOB' auto=true)
-- Wie viel ($DmMetric 'Insulin' auto=true) habe ich
-- Wie viele ($DmMetric 'Kohlenhydrate' auto=true) habe ich
-- Wie ist mein ($DmMetric 'BZ' auto=true), ($DmMetric 'IOB' auto=false) und ($DmMetric 'Kohlenhydrate an Bord' auto=false)
-- Wie ist mein ($DmMetric 'BZ' auto=true)
-- Prüfe meinen ($DmMetric 'Zucker' auto=false)
-- ($DmMetric 'Aktive Kohlenhydrate' auto=true)
-- Prüfe meinen ($DmMetric 'Blutzucker' auto=false)
-- Wie alt ist mein ($DmMetric 'Sensor' auto=true)
-- Frage nach einem nach ($DmMetric 'vollständigen Bericht' auto=false)
-- ($DmMetric 'Alles' auto=true) lesen
-- ($DmMetric 'Vollständigen Bericht' auto=false) generieren
-- Frage wie alt mein ($DmMetric 'Pod' auto=true) ist
+- frage wie alt mein ($DmMetric 'pod' auto=true) ist
+- ($DmMetric 'alles' auto=true) lesen
+- wie alt ist mein ($DmMetric 'sensor' auto=true)
+- wie ist mein ($DmMetric 'glukose' auto=true)
+- wie ist mein ($DmMetric 'glukose' auto=true), ($DmMetric 'kohlenhydrate' auto=false) und actives ($DmMetric 'insulin' auto=false)
+- vie viele ($DmMetric 'kohlenhydrate' auto=true) habe ich
+- wie viel ($DmMetric 'insulin' auto=true) habe ich
+- Wie ist mein ($DmMetric 'Zucker' auto=true)
