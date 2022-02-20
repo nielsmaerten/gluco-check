@@ -5,7 +5,7 @@ First off, thanks for taking the time to contribute! 🎉👍
 ### 🙋‍♀️ Who's this document for?
 
 - For _you_:  
-  If you want to contribute, reading this document if the fastest way to understanding the codebase
+  If you want to contribute, reading this document is the fastest way to understanding the codebase
 - For _myself_ (the creator of Gluco Check):  
   If I'm coming back to this project after working on something else for a while, this doc will quickly get me reacquainted
 
