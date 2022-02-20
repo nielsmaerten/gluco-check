@@ -8,5 +8,5 @@ handlers:
 - name: no_input3
 - name: no_input2
 httpsEndpoint:
-  baseUrl: https://glucocheck.app/api/v1/handle-conversation?v=9
+  baseUrl: https://glucocheck.app/api/v1/handle-conversation?v=10
   endpointApiVersion: 2
