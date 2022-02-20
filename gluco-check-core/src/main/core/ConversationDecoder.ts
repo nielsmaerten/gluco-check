@@ -35,7 +35,7 @@ export default class ConversationDecoder {
     const locale = conv.user.locale;
     const userId = conv.user.params.tokenPayload.email;
     const user = await this.userProfileClient.getUser(userId);
-    const censoredUserId = `${user.userId.substr(0, 7)}***`;
+    const censoredUserId = `${user.userId.substring(0, 7)}***`;
 
     // Build DmQuery object with all info required to respond to the user
     const dmMetrics = await this.extractMetrics(conv, user);
