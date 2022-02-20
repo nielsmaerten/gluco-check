@@ -36,7 +36,6 @@
   },
   "dependencies": {
     "@assistant/conversation": "^3.7.1",
-    "@assistant/conversation-testing": "^1.0.0",
     "axios": "^0.21.1",
     "dayjs": "^1.10.4",
     "firebase-admin": "^9.8.0",
