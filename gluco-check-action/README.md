@@ -35,3 +35,10 @@ gactions deploy preview
 - For all languages about to be submitted, test the sample invocations in simulator (settings.yaml)
 - Check if testing instructions are up-to-date (Nightscout token)
 - Check if auto-population of AoG users uses correct testing credentials
+- Request review for Closed Beta only
+  - Must be on gluco-check-prod, and function must be redeployed!
+- After approval:
+  - Bump lastKnownActionVersion and redeploy cloud functions
+  - Remove Beta banner for any new languages
+  - Deploy to Production
+  - Create a new release on GitHub, add contributors
