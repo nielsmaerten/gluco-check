@@ -3,7 +3,7 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [¿Cómo puedo preguntar a Gluco Check por... ?](#%C2%BFc%C3%B3mo-puedo-preguntar-a-gluco-check-por-)
+- [¿Cómo le pido a Gluco Check... ?](#%C2%BFc%C3%B3mo-le-pido-a-gluco-check-)
   - [una métrica específica](#una-m%C3%A9trica-espec%C3%ADfica)
   - [mi selección personal](#mi-selecci%C3%B3n-personal)
   - [múltiples métricas](#m%C3%BAltiples-m%C3%A9tricas)
@@ -16,7 +16,7 @@
 
 ---
 
-## ¿Cómo puedo preguntar a Gluco Check por... ?
+## ¿Cómo le pido a Gluco Check... ?
 
 ### una métrica específica
 
@@ -41,7 +41,7 @@ Asistente ahora leerá los valores que seleccionó en https://glucocheck.app.
 
 ### múltiples métricas
 
-Diga: **Ok Google, pida a Gluco Check que lea mi _[azúcar en sangre]_ y _[tiempo del sensor]_**
+Di: **Ok Google, pida a Gluco Check que lea mi _[azúcar en sangre]_ y _[tiempo del sensor]_**
 
 ## Otras preguntas que puedes probar (experimental)
 
