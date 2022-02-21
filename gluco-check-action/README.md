@@ -28,3 +28,17 @@ gactions push [-v]
 gactions deploy preview
 # From here, you can submit the action for approval to get it in Production
 ```
+
+## Checklist when deploying a new version of the Action
+- Bump the version number on the webhook url (ActionsOnGoogleFulfillment.yaml)
+- Only submit tested/finished languages for review
+- For all languages about to be submitted, test the sample invocations in simulator (settings.yaml)
+- Check if testing instructions are up-to-date (Nightscout token)
+- Check if auto-population of AoG users uses correct testing credentials
+- Request review for Closed Beta only
+  - Must be on gluco-check-prod, and function must be redeployed!
+- After approval:
+  - Bump lastKnownActionVersion and redeploy cloud functions
+  - Remove Beta banner for any new languages
+  - Deploy to Production
+  - Create a new release on GitHub, add contributors

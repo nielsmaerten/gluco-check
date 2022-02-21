@@ -7,9 +7,9 @@ localizedSettings:
   pronunciation: Gluco Check
   sampleInvocations:
   - Mit Gluco Check sprechen
-  - Frage Gluco Check, wie alt mein Sensor ist
+  - Frage Gluco Check wie alt mein Sensor ist
   - Frage Gluco Check meinen Blutzucker auszulesen
-  - Gluco Check bitten, meine Carbs an Bord zu lesen
+  - Frage Gluco Check wie viel Kohlenhydrate ich habe
   shortDescription: Frage Google nach deinem Blutzucker auf Nightscout
   smallLogoImage: https://lh3.googleusercontent.com/qhE7FiMfd4EhToY6GyEl6_Cy-OXyTaMtW3-DvcajAMog4OeJX1bgPvoYkJCiYULGOS0uNEgOarGr
   termsOfServiceUrl: https://glucocheck.app/terms/de-DE
