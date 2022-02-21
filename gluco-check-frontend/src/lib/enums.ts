@@ -36,7 +36,6 @@ export enum AvailableLanguage {
 // These languages are being tested.
 // We'll show a message informing users they have to sign up to get access.
 export enum BetaLanguage {
-  German = AvailableLanguage.German,
   Italian = AvailableLanguage.Italian,
   Norwegian = AvailableLanguage.Norwegian,
   Swedish = AvailableLanguage.Swedish,
