@@ -59,27 +59,22 @@
       },
       {
         "source": "/join-beta/es",
-        "destination": "https://github.com/nielsmaerten/gluco-check/discussions/142",
+        "destination": "https://pages.glucocheck.app/translations",
         "type": 307
       },
       {
         "source": "/join-beta/sv",
-        "destination": "https://github.com/nielsmaerten/gluco-check/discussions/149",
-        "type": 307
-      },
-      {
-        "source": "/join-beta/de",
-        "destination": "https://github.com/nielsmaerten/gluco-check/discussions/151",
+        "destination": "https://pages.glucocheck.app/translations",
         "type": 307
       },
       {
         "source": "/join-beta/no",
-        "destination": "https://github.com/nielsmaerten/gluco-check/discussions/165",
+        "destination": "https://pages.glucocheck.app/translations",
         "type": 307
       },
       {
         "source": "/join-beta/it",
-        "destination": "https://github.com/nielsmaerten/gluco-check/discussions/173",
+        "destination": "https://pages.glucocheck.app/translations",
         "type": 307
       },
       {
