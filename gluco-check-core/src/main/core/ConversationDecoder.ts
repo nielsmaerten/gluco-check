@@ -64,6 +64,14 @@ export default class ConversationDecoder {
    * - OR: Invoked using a newer version of the Action
    */
   private shouldMentionDisclaimer(conv: ConversationV3, user: User): boolean {
+    // TODO: Experiment: Randomly mention the disclaimer again 1 in x times
+    const chance = 10;
+    const randomDisclaimer = Math.floor(Math.random() * chance) === 0;
+    if (randomDisclaimer) {
+      logger.info(`${logTag} Randomly mentioning disclaimer`);
+      return true;
+    }
+
     // User hasn't heard disclaimer before
     if (!user.heardDisclaimer) return true;
 
