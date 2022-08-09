@@ -3,7 +3,7 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [¿Cómo le pido a Gluco Check... ?](#how-do-i-ask-gluco-check-for-)
+- [¿Cómo le pido a Gluco Check... ?](#%C2%BFc%C3%B3mo-puedo-preguntar-a-gluco-check-por-)
   - [una métrica específica](#a-specific-metric)
   - [mi selección personal](#my-personal-selection)
   - [múltiples métricas](#multiple-metrics)
