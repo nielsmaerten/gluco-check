@@ -5,7 +5,7 @@ layout: default
 # Gluco Check is shutting down on June 13th, 2023 😢
 
 Google has announced they are removing voice-based apps from Google Assistant.  
-You can read more about it here: https://developers.google.com/assistant/ca-sunset
+You can read more about it here: [https://developers.google.com/assistant/ca-sunset](https://developers.google.com/assistant/ca-sunset)
 
 In light of this, I am no longer accepting new pull requests and/or translations for Gluco Check.  
 You can keep using Gluco Check in English, Dutch, Spanish and German until Google kills the service on June 13th.
