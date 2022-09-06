@@ -86,7 +86,8 @@ function Landing() {
         <Grid item className={classes.subtitle}>
           <Container maxWidth="sm">
             <Typography variant="h5" component="h2">
-              {t("landing.subtitle")}
+              <a href="https://pages.glucocheck.app/sunset">Gluco Check is shutting down on June 13th, 2023</a>
+            
             </Typography>
           </Container>
         </Grid>
