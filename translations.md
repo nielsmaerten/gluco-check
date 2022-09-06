@@ -2,32 +2,25 @@
 layout: default
 ---
 
-# Gluco Check Translations
-Crowdin link: https://translate.glucocheck.app
+# Gluco Check is shutting down on June 13th, 2023 😢
 
-We aim to support Gluco Check in the following languages:
+Google has announced they are removing voice-based apps from Google Assistant.  
+You can read more about it here: https://developers.google.com/assistant/ca-sunset
 
-| Language | Status                             | Remarks                                         |
-| -------- | ---------------------------------- | ----------------------------------------------- |
-| English  | ✅ Done                             |  |
-| Dutch    | ✅ Done                             |  |
-| Spanish  | ✅ Done |  |
-| German | ✅ Done |  |
-| Swedish  | 🤚 Help wanted | More info below |
-| Norwegian  | 🤚 Help wanted | More info below |
-| Italian  | 🤚 Help wanted | More info below |
-| Danish | [🌐 Accepting Translations](https://translate.glucocheck.app) |  |
-| French | [🌐 Accepting Translations](https://translate.glucocheck.app) |  |
-| Polish | [🌐 Accepting Translations](https://translate.glucocheck.app) |  |
-| Portuguese (Brazilian) | [🌐 Accepting Translations](https://translate.glucocheck.app) |  |
-| *Other languages* | Contact us (in English only) | translate@glucocheck.app |
+In light of this, I am no longer accepting new pull requests and/or translations for Gluco Check.  
+You can keep using Gluco Check in English, Dutch, Spanish and German until Google kills the service on June 13th.
 
-## Translation Phases
+After this date Gluco Check, along will all voice-based apps, will no longer be available.  
+That means all apps you could invoke by saying: "Hey Google, talk to \<app name\>"
 
-Every language has to go through these steps before it's available to everyone:
+Thanks to everyone who used Gluco Check and Nightscout Status over the past 5 years.  
+Thanks to everyone who helped build this app. Thanks [David D'Amico](https://github.com/ddamico) for your invaluable help!   
+Thanks to everyone who submitted and reviewed translations.
 
-| #                                                 | Phase                       | Explanation                                                  |
-| ------------------------------------------------------------ | --------------------------- | --------------------------- |
-| 1 | 🌐 Accepting Translations | To add a translation, visit [https://translate.glucocheck.app](https://translate.glucocheck.app) |
-| 2 | 🤚**Help wanted** | An initial translation of these languages has been completed. I'm looking for someone to review the translation and make corrections. **Email translate@glucocheck.app if you'd like to help.** |
-| 3 | ✅ Done                   | Once Google approves the tranlations, Gluco Check is available in this language |
+And fuck Google for choosing profit over people.
+
+_niels_   
+_2022-09-06_
+
+## Any alternatives?
+Maybe? I have some ideas. Head on over to the [discussions tab on GitHub](https://github.com/nielsmaerten/gluco-check/discussions).
