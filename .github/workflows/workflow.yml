@@ -155,14 +155,14 @@ jobs:
           name: ${{ github.run_id }}
       - name: Untar workspace
         run: tar -xf workspace.tar ./
-      - name: 'Deploy: Webhooks'
-        uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only functions
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          PROJECT_PATH: ./gluco-check-webhooks
-          PROJECT_ID: ${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}
+      # - name: 'Deploy: Webhooks'
+      #   uses: w9jds/firebase-action@master
+      #   with:
+      #     args: deploy --only functions
+      #   env:
+      #     FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      #     PROJECT_PATH: ./gluco-check-webhooks
+      #     PROJECT_ID: ${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}
   deploy-production-frontend:
     name: Deploy frontend (Prod)
     environment:
