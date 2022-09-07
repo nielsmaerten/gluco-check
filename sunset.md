@@ -15,11 +15,11 @@ That means all apps you could invoke by saying: "Hey Google, talk to \<app name\
 
 Thanks to everyone who used Gluco Check and Nightscout Status over the past 5 years.  
 Thanks to everyone who helped build this app. Thanks [David D'Amico](https://github.com/ddamico) for your invaluable help!   
-Thanks to everyone who submitted and reviewed translations.
+Thanks to everyone who submitted and reviewed translations, bugsreports, suggestions, ...
 
 And fuck Google for choosing profit over people.
 
-_niels_   
+_niels_    
 _2022-09-06_
 
 ## Any alternatives?
