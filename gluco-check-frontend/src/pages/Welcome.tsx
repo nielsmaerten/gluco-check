@@ -82,6 +82,14 @@ function Welcome() {
           <Typography variant="h5" component="h2">
             {t("welcome.subtitle")}
           </Typography>
+          <Typography variant="h6" component="h4">
+            <a
+              style={{ color: "orange" }}
+              href="https://pages.glucocheck.app/sunset"
+            >
+              Gluco Check is shutting down <br /> June 13th, 2023
+            </a>
+          </Typography>
         </Container>
       </Grid>
       <Grid item>
