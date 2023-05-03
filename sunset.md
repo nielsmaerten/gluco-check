@@ -2,25 +2,32 @@
 layout: default
 ---
 
-# Gluco Check is shutting down on June 13th, 2023 😢
+# Gluco Check Will Shut Down on June 13th
 
-Google has announced they are removing voice-based apps from Google Assistant.  
-You can read more about it here: [https://developers.google.com/assistant/ca-sunset](https://developers.google.com/assistant/ca-sunset)
+### [Google Is Shutting Down Voice-Based Apps on Google Assistant](https://developers.google.com/assistant/ca-sunset)
 
-In light of this, I am no longer accepting new pull requests and/or translations for Gluco Check.  
-You can keep using Gluco Check in English, Dutch, Spanish and German until Google kills the service on June 13th.
+This means Gluco Check will no longer work after June 13th, 2023, along with all other apps you could invoke by saying:
+> Hey Google, talk to [app name]
 
-After this date Gluco Check, along will all voice-based apps, will no longer be available.  
-That means all apps you could invoke by saying: "Hey Google, talk to \<app name\>"
+## Alternatives
+We've started a [discussion on GitHub](https://github.com/nielsmaerten/gluco-check/discussions) to try and figure out where we go from here.
 
-Thanks to everyone who used Gluco Check and Nightscout Status over the past 5 years.  
-Thanks to everyone who helped build this app. Thanks [David D'Amico](https://github.com/ddamico) for your invaluable help!   
-Thanks to everyone who submitted and reviewed translations, bugsreports, suggestions, ...
+### TL;DR
 
-And fuck Google for choosing profit over people.
+- Amazon Alexa seems to be the most viable alternative right now:
+  - https://www.youtube.com/shorts/toIqWbIfgRo
+  - https://www.youtube.com/watch?v=wyRkYw2iZfc
+  - https://www.youtube.com/watch?v=wyRkYw2iZfc
+- Some of us (including myself) have switched to Home Assistant.
+- Avoid Google products, since they all seem to end on [KilledByGoogle.com](https://killedbygoogle.com).
 
-_niels_    
-_2022-09-06_
+## Thanks!
 
-## Any alternatives?
-Maybe? I have some ideas. Head on over to the [discussions tab on GitHub](https://github.com/nielsmaerten/gluco-check/discussions).
+Thanks, [David D'Amico](https://github.com/ddamico), for your incredible help!  
+
+Thanks to everyone who helped build Gluco Check by contributing suggestions, translations, bug reports, and code.
+
+And thank you for using Gluco Check and/or Nightscout Status over the past 5 years.   
+It's been an honor being part of the open-source diabetes community ❤️ 
+
+_niels_
