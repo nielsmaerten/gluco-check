@@ -9,6 +9,14 @@ import Onboarding from "../components/Onboarding";
 import Boilerplate from "../components/Boilerplate";
 
 const useStyles = makeStyles((theme) => ({
+  alert: {
+    backgroundColor: theme.palette.warning.main,
+    color: theme.palette.warning.contrastText,
+    padding: theme.spacing(1),
+    borderRadius: theme.shape.borderRadius,
+    marginBottom: theme.spacing(2),
+    textAlign: 'center'
+  },
   container: {
     paddingTop: theme.spacing(2),
     textAlign: "center",
@@ -74,6 +82,14 @@ function Landing() {
 
   return (
     <>
+      <div className={classes.alert}>
+        <Typography variant="h4">
+          Gluco Check will shut down June 13th, 2023.
+        </Typography>
+        <Typography variant="h5">
+          <a style={{ color: 'black' }} href="https://pages.glucocheck.app/sunset">Learn more</a>
+        </Typography>
+      </div>
       <Grid
         className={classes.contentGrid}
         container
@@ -87,14 +103,6 @@ function Landing() {
           <Container maxWidth="sm">
             <Typography variant="h5" component="h2">
               {t("welcome.subtitle")}
-            </Typography>
-            <Typography variant="h6" component="h4">
-              <a
-                style={{ color: "orange" }}
-                href="https://pages.glucocheck.app/sunset"
-              >
-                Gluco Check is shutting down <br /> June 13th, 2023
-              </a>
             </Typography>
           </Container>
         </Grid>
